@@ -228,7 +228,7 @@
 <li>SpringBoot工程启动后创建并初始化Spring容器</li>
 </ol>
 <h2 id="辅助功能"><a href="#辅助功能" class="headerlink" title="辅助功能"></a>辅助功能</h2><p>辅助功能 内嵌tomcat</p>
-<p><img src="D:\Project\weiblog\source_posts\黑马程序员-springboot2-基础\watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pqX5oGL6Iqx6aaZ,size_20,color_FFFFFF,t_70,g_se,x_16.png" alt="img"></p>
+<p><img src="/img%5C%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80%5Cwatermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pqX5oGL6Iqx6aaZ,size_20,color_FFFFFF,t_70,g_se,x_16.png" alt="img"></p>
 <ul>
 <li>使用maven依赖管理变更起步依赖项</li>
 </ul>
@@ -249,15 +249,38 @@
 <li>内嵌Tomcat工作原理是将Tomcat服务器作为对象运行，并将该对象交给Spring容器管理</li>
 <li>变更内嵌服务器思想是去除现有服务器，添加全新的服务器</li>
 </ol>
-<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结:"></a>总结:</h2><ol>
+<p>总结:</p>
+<ol>
 <li>入门案例（4种方式）</li>
 <li>SpringBoot概述<br>parent<br>starter<br>引导类<br>辅助功能（内嵌tomcat）</li>
 </ol>
+<h1 id="REST风格"><a href="#REST风格" class="headerlink" title="REST风格"></a><strong>REST风格</strong></h1><h2 id="REST风格简介"><a href="#REST风格简介" class="headerlink" title="REST风格简介"></a>REST风格简介</h2><p><strong>什么是 rest ：</strong></p>
+<p>REST（Representational State Transfer）表现形式状态转换</p>
+<p>传统风格资源描述形式<br><a target="_blank" rel="noopener" href="http://localhost/user/getById?id=1">http://localhost/user/getById?id=1</a> (得到id为1的用户)<br><a target="_blank" rel="noopener" href="http://localhost/user/saveUser">http://localhost/user/saveUser</a> (保存用户)</p>
+<p>REST风格描述形式<br><a target="_blank" rel="noopener" href="http://localhost/user/1">http://localhost/user/1</a> (得到id为1的用户)<br><a target="_blank" rel="noopener" href="http://localhost/user">http://localhost/user</a> (保存用户)</p>
+<p><strong>优点:</strong></p>
+<ul>
+<li>隐藏资源的访问行为， 无法通过地址得知对资源是何种操作</li>
+<li>书写简化</li>
+</ul>
+<p>按照REST风格访问资源时使用<strong>行为动作</strong>区分对资源进行了何种操作</p>
+<p><strong>GET 用来获取资源，POST 用来新建资源，PUT 用来更新资源，DELETE 用来删除资源</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http://localhost/users 查询全部用户信息 GET (查询)</span><br><span class="line">http://localhost/users/1 查询指定用户信息 GET (查询)</span><br><span class="line">http://localhost/users 添加用户信息 POST (新增/保存)</span><br><span class="line">http://localhost/users 修改用户信息 PUT (修改/更新)</span><br><span class="line">http://localhost/users/1 删除用户信息 DELETE (删除)</span><br></pre></td></tr></table></figure>
 
+<p><strong>注意:</strong></p>
+<p>上述行为是约定方式，约定不是规范，可以打破，所以称REST风格，而不是REST规范<br>描述模块的名称通常使用复数，也就是加s的格式描述，表示此类资源,而非单个资源，例如: users、 books、 accounts…</p>
+<p>根据REST风格对资源进行访问称为<strong>RESTful</strong></p>
+<p>小结：</p>
+<ol>
+<li>REST</li>
+<li>动作4个</li>
+<li>RESTful</li>
+</ol>
+<h2 id="RESTful入门案例"><a href="#RESTful入门案例" class="headerlink" title="RESTful入门案例"></a><strong>RESTful入门案例</strong></h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://weishao996.gitee.io/weiblog/2022/08/26/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/" data-id="cl7c1uew30002ogtu0dnc908c" class="article-share-link">Share</a>
+      <a data-url="https://weishao996.gitee.io/weiblog/2022/08/26/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/" data-id="cl7c24g1v00026gtufjiv6g07" class="article-share-link">Share</a>
       
       
     </footer>
@@ -466,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://weishao996.gitee.io/weiblog/2022/08/26/Spring/" data-id="cl7c1uew00001ogtu3lbbe6db" class="article-share-link">Share</a>
+      <a data-url="https://weishao996.gitee.io/weiblog/2022/08/26/Spring/" data-id="cl7c24g1s00016gtu5daceyje" class="article-share-link">Share</a>
       
       
     </footer>
