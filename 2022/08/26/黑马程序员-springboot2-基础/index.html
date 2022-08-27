@@ -37,8 +37,15 @@
 <meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pqX5oGL6Iqx6aaZ,size_20,color_FFFFFF,t_70,g_se,x_16-166152899995522.png">
 <meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pqX5oGL6Iqx6aaZ,size_20,color_FFFFFF,t_70,g_se,x_16-166152990382124.png">
 <meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pqX5oGL6Iqx6aaZ,size_20,color_FFFFFF,t_70,g_se,x_16.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/8fc4afea23a513d605b885db910e2ac8.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/d35b1e484bae94e8f5b5c5804610afbe.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/1b6cff3e21c9f8f39d03609ca5549dc5.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/70f82ea4f1c61a34eb68fda48cc9ada3.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/9b9324456b495d978751d23ce868c101.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/image-20220828011434213.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/image-20220828011609581.png">
 <meta property="article:published_time" content="2022-08-26T14:48:26.000Z">
-<meta property="article:modified_time" content="2022-08-27T16:25:56.859Z">
+<meta property="article:modified_time" content="2022-08-27T17:19:09.521Z">
 <meta property="article:author" content="Wei Shao">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://weishao996.gitee.io/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5pqX5oGL6Iqx6aaZ,size_20,color_FFFFFF,t_70,g_se,x_16.png">
@@ -467,7 +474,37 @@
 <li>动作4个</li>
 <li>RESTful</li>
 </ol>
-<h2 id="RESTful入门案例"><a href="#RESTful入门案例" class="headerlink" title="RESTful入门案例"></a><strong>RESTful入门案例</strong></h2>
+<h2 id="RESTful入门案例"><a href="#RESTful入门案例" class="headerlink" title="RESTful入门案例"></a><strong>RESTful入门案例</strong></h2><p>步骤:</p>
+<p>①:设定http请求动作(动词)</p>
+<p>使用 @RequestMapping 注解的 method 属性声明请求的方式</p>
+<p>使用 @RequestBody 注解 获取请求体内容。直接使用得到是 key=value&amp;key=value…结构的数据。get 请求方式不适用。</p>
+<p>使用@ResponseBody 注解实现将 controller 方法返回对象转换为 json 响应给客户端。</p>
+<p>@RequestMapping(value=”/users”,method=RequestMethod.POST)</p>
+<p><img src="/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/8fc4afea23a513d605b885db910e2ac8.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220111162324969"></p>
+<p>②:设定请求参数(路径变量)</p>
+<p>使用<code>@PathVariable</code> 用于绑定 url 中的占位符。例如：请求 url 中 /delete/<code>&#123;id&#125;</code>，这个<code>&#123;id&#125;</code>就是 url 占位符。</p>
+<p><img src="/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/d35b1e484bae94e8f5b5c5804610afbe.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220111163317065"></p>
+<ul>
+<li>@RequestMapping</li>
+</ul>
+<p><img src="/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/1b6cff3e21c9f8f39d03609ca5549dc5.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220111163720579"></p>
+<ul>
+<li>@PathVariable</li>
+</ul>
+<p><img src="/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/70f82ea4f1c61a34eb68fda48cc9ada3.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220111163858308"></p>
+<ul>
+<li>@RequestBody @RequestParam @PathVariable</li>
+</ul>
+<p><img src="/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/9b9324456b495d978751d23ce868c101.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220111164352046"></p>
+<h2 id="RESTful快速开发"><a href="#RESTful快速开发" class="headerlink" title="RESTful快速开发"></a><strong>RESTful快速开发</strong></h2><ul>
+<li>使用 <strong>@RestController</strong> 注解开发 RESTful 风格</li>
+</ul>
+<p><img src="/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/image-20220828011434213.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220828011434213"></p>
+<ul>
+<li>使用 <strong>@GetMapping @PostMapping @PutMapping @DeleteMapping</strong> 简化 <strong>@RequestMapping</strong> 注解开发</li>
+</ul>
+<p><img src="/weiblog/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-springboot2-%E5%9F%BA%E7%A1%80/image-20220828011609581.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220828011609581"></p>
+
                 
               </div>
             
