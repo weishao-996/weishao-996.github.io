@@ -23,48 +23,48 @@
 <meta property="og:site_name" content="WeiBlog">
 <meta property="og:description" content="基础为什么要使用多线程呢?先从总体上来说：  从计算机底层来说： 线程可以比作是轻量级的进程，是程序执行的最小单位,线程间的切换和调度的成本远远小于进程。另外，多核 CPU 时代意味着多个线程可以同时运行，这减少了线程上下文切换的开销。  从当代互联网发展趋势来说： 现在的系统动不动就要求百万级甚至千万级的并发量，而多线程并发编程正是开发高并发系统的基础，利用好多线程机制可以大大提高系统整体的并发">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902114109343.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902114143558.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902140118921.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902140459345.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902141434005.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902141608203.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902145605462.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160048587.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160358011.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160517970.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160908374.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/2019-4%E6%AD%BB%E9%94%811.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902163020732.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902170811800.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902173027266.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902193325147.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902194739313.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902212750305.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902213343066.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902213432939.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903114356751.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903114449779.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903115952545.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903133213700.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903133644636.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903134841710.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903134956909.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903135524735.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903140353177.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903140503354.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903140518029.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903180902786.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903181654514.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903190305715.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903190457240.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903215849935.png">
-<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903221140669.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902114109343.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902114143558.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902140118921.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902140459345.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902141434005.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902141608203.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902145605462.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160048587.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160358011.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160517970.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160908374.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/2019-4%E6%AD%BB%E9%94%811.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902163020732.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902170811800.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902173027266.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902193325147.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902194739313.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902212750305.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902213343066.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902213432939.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903114356751.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903114449779.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903115952545.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903133213700.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903133644636.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903134841710.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903134956909.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903135524735.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903140353177.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903140503354.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903140518029.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903180902786.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903181654514.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903190305715.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903190457240.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903215849935.png">
+<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903221140669.png">
 <meta property="article:published_time" content="2022-09-02T03:30:31.000Z">
-<meta property="article:modified_time" content="2022-09-03T14:18:20.539Z">
+<meta property="article:modified_time" content="2022-09-03T16:54:34.416Z">
 <meta property="article:author" content="Wei Shao">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902114109343.png">
+<meta name="twitter:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902114109343.png">
   
   
   
@@ -324,9 +324,9 @@
 <li>并行就是同一时刻，两个线程都在执行。这就要求有两个CPU去分别执行两个线程。</li>
 <li>并发就是同一时刻，只有一个执行，但是一个时间段内，两个线程都执行了。并发的实现依赖于CPU切换线程，因为切换的时间特别短，所以基本对于用户是无感知的。</li>
 </ul>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902114109343.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902114109343"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902114109343.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902114109343"></p>
 <p>就好像我们去食堂打饭，并行就是我们在多个窗又排队，几个阿姨同时打菜；并发就是我们挤在一个窗又，阿姨给这个打一勺，又手忙脚乱地给那个打一勺。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902114143558.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902114143558"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902114143558.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902114143558"></p>
 <h2 id="说说什么是进程和线程？"><a href="#说说什么是进程和线程？" class="headerlink" title="说说什么是进程和线程？"></a>说说什么是进程和线程？</h2><p>要说线程，必须得先说说进程。</p>
 <ul>
 <li>进程：进程是代码在数据集合上的一次运行活动，是<strong>系统进行资源分配和调度的基本单位</strong>。</li>
@@ -335,9 +335,9 @@
 <p>操作系统在分配资源时是把资源分配给进程的， 但是 CPU 资源比较特殊，它是被分配到线程的，因为真正要占用CPU运行的是线程，所以也说线程是 CPU分配的基本单位。</p>
 <p>比如在Java中，当我们启动 main 函数其实就启动了一个JVM进程，而 main 函数在的线程就是这个进程中的一个线程，也称主线程。</p>
 <p>一个进程中有多个线程，多个线程共用进程的堆和方法区资源，但是每个线程有自己的程序计数器和栈。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902140118921.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902140118921"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902140118921.png" srcset="/weiblog/img/loading.gif" lazyload></p>
 <h2 id="说说线程有几种创建方式"><a href="#说说线程有几种创建方式" class="headerlink" title="说说线程有几种创建方式"></a>说说线程有几种创建方式</h2><p>Java中创建线程主要有三种方式，分别为继承<strong>Thread</strong>类、实现<strong>Runnable</strong>接口、实现<strong>Callable</strong>接口。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902140459345.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902140459345"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902140459345.png" srcset="/weiblog/img/loading.gif" lazyload></p>
 <ul>
 <li><h3 id="继承Thread类，重写run-方法，调用start-方法启动线程"><a href="#继承Thread类，重写run-方法，调用start-方法启动线程" class="headerlink" title="继承Thread类，重写run()方法，调用start()方法启动线程"></a>继承Thread类，重写run()方法，调用start()方法启动线程</h3></li>
 </ul>
@@ -355,9 +355,9 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CallerTask</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Callable</span>&lt;String&gt; &#123;<br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">call</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>    	<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello,i am running!&quot;</span>;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>                <span class="hljs-comment">//创建异步任务</span><br>                FutureTask&lt;String&gt; task=<span class="hljs-keyword">new</span> <span class="hljs-title class_">FutureTask</span>&lt;String&gt;(<span class="hljs-keyword">new</span> <span class="hljs-title class_">CallerTask</span>());<br>                <span class="hljs-comment">//启动线程</span><br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(task).start();<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-comment">//等待执行完成，并获取返回结果</span><br>                String result=task.get();<br>                System.out.println(result);<br>            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">catch</span> (ExecutionException e) &#123;<br>        e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h2 id="为什么调用start-方法时会执行run-方法，那怎么不直接调用run-方法？"><a href="#为什么调用start-方法时会执行run-方法，那怎么不直接调用run-方法？" class="headerlink" title="为什么调用start()方法时会执行run()方法，那怎么不直接调用run()方法？"></a>为什么调用start()方法时会执行run()方法，那怎么不直接调用run()方法？</h2><p>JVM执行start方法，会先创建一条线程，由创建出来的新线程去执行thread的run方法，这才起到多线程的效果。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902141434005.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902141434005"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902141434005.png" srcset="/weiblog/img/loading.gif" lazyload></p>
 <p><strong>为什么我们不能直接调用run()方法？</strong> 也很清楚， 如果直接调用Thread的run()方法，那么run方法还是运行在主线程中，相当于顺序执行，就起不到多线程的效果。</p>
-<h2 id="线程有哪些常用的调度方法？"><a href="#线程有哪些常用的调度方法？" class="headerlink" title="线程有哪些常用的调度方法？"></a>线程有哪些常用的调度方法？</h2><p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902141608203.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902141608203"></p>
+<h2 id="线程有哪些常用的调度方法？"><a href="#线程有哪些常用的调度方法？" class="headerlink" title="线程有哪些常用的调度方法？"></a>线程有哪些常用的调度方法？</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902141608203.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902141608203"></p>
 <h3 id="线程等待与通知"><a href="#线程等待与通知" class="headerlink" title="线程等待与通知"></a>线程等待与通知</h3><p>在Object类中有一些函数可以用于线程的等待与通知。</p>
 <ul>
 <li><p>**wait()**：当一个线程A调用一个共享变量的 wait()方法时， 线程A会被阻塞挂起， 发生下面几种情况才会返回 ：</p>
@@ -395,18 +395,18 @@
 <li><strong>boolean interrupted() 方法</strong>： 检测当前线程是否被中断，与 <strong>isInterrupted</strong> 不同的是，该方法如果发现当前线程被中断，则会清除中断标志。</li>
 </ul>
 <h2 id="线程有几种状态？"><a href="#线程有几种状态？" class="headerlink" title="线程有几种状态？"></a>线程有几种状态？</h2><p>在Java中，线程共有六种状态：</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902145605462.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902145605462"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902145605462.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902145605462"></p>
 <p>线程在自身的生命周期中， 并不是固定地处于某个状态，而是随着代码的执行在不同的状态之间进行切换，Java线程状态变化如图示：</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160048587.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902160048587"></p>
-<h2 id="什么是线程上下文切换？"><a href="#什么是线程上下文切换？" class="headerlink" title="什么是线程上下文切换？"></a>什么是线程上下文切换？</h2><p>使用多线程的目的是为了充分利用CPU，但是我们知道，并发其实是一个CPU来应付多个线程。<img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160358011.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902160358011"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160048587.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902160048587"></p>
+<h2 id="什么是线程上下文切换？"><a href="#什么是线程上下文切换？" class="headerlink" title="什么是线程上下文切换？"></a>什么是线程上下文切换？</h2><p>使用多线程的目的是为了充分利用CPU，但是我们知道，并发其实是一个CPU来应付多个线程。<img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160358011.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902160358011"></p>
 <p>为了让用户感觉多个线程是在同时执行的， CPU 资源的分配采用了时间片轮转也就是给每个线程分配一个时间片，线程在时间片内占用 CPU 执行任务。当线程使用完时间片后，就会处于就绪状态并让出 CPU 让其他线程占用，这就是上下文切换。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160517970.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902160517970"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160517970.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902160517970"></p>
 <h2 id="守护线程了解吗？"><a href="#守护线程了解吗？" class="headerlink" title="守护线程了解吗？"></a>守护线程了解吗？</h2><ul>
 <li>Java中的线程分为两类，分别为 daemon 线程（守护线程）和 user 线程（用户线程）。</li>
 <li>在JVM 启动时会调用 main 函数，main函数所在的钱程就是一个用户线程。其实在 JVM 内部同时还启动了很多守护线程， 比如垃圾回收线程。</li>
 <li>那么守护线程和用户线程有什么区别呢？区别之一是当最后一个非守护线程束时， JVM会正常退出，而不管当前是否存在守护线程，也就是说守护线程是否结束并不影响 JVM退出。换而言之，只要有一个用户线程还没结束，正常情况下JVM就不会退出。</li>
 </ul>
-<h2 id="线程间有哪些通信方式？"><a href="#线程间有哪些通信方式？" class="headerlink" title="线程间有哪些通信方式？"></a>线程间有哪些通信方式？</h2><p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160908374.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902160908374"></p>
+<h2 id="线程间有哪些通信方式？"><a href="#线程间有哪些通信方式？" class="headerlink" title="线程间有哪些通信方式？"></a>线程间有哪些通信方式？</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902160908374.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902160908374"></p>
 <h3 id="volatile和synchronized关键字"><a href="#volatile和synchronized关键字" class="headerlink" title="volatile和synchronized关键字"></a>volatile和synchronized关键字</h3><ul>
 <li><p>关键字volatile可以用来修饰字段（成员变量），就是告知程序任何对该变量的访问均需要从共享内存中获取，而对它的改变必须同步刷新回共享内存，它能保证所有线程对变量访问的可见性。</p>
 </li>
@@ -451,7 +451,7 @@
 <p>所以，为了<strong>保证线程中的局部变量不被别的线程访问到</strong>，虚拟机栈和本地方法栈是<strong>线程私有的</strong>。</p>
 <h2 id="什么是线程死锁-如何避免死锁"><a href="#什么是线程死锁-如何避免死锁" class="headerlink" title="什么是线程死锁?如何避免死锁?"></a>什么是线程死锁?如何避免死锁?</h2><h3 id="认识线程死锁"><a href="#认识线程死锁" class="headerlink" title="认识线程死锁"></a>认识线程死锁</h3><p>线程死锁描述的是这样一种情况：多个线程同时被阻塞，它们中的一个或者全部都在等待某个资源被释放。由于线程被无限期地阻塞，因此程序不可能正常终止。</p>
 <p>如下图所示，线程 A 持有资源 2，线程 B 持有资源 1，他们同时都想申请对方的资源，所以这两个线程就会互相等待而进入死锁状态。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/2019-4%E6%AD%BB%E9%94%811.png" srcset="/weiblog/img/loading.gif" lazyload alt="线程死锁示意图 "></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/2019-4%E6%AD%BB%E9%94%811.png" srcset="/weiblog/img/loading.gif" lazyload alt="线程死锁示意图 "></p>
 <p>下面通过一个例子来说明线程死锁,代码模拟了上图的死锁的情况 (代码来源于《并发编程之美》)：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DeadLockDemo</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">Object</span> <span class="hljs-variable">resource1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>();<span class="hljs-comment">//资源 1</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">Object</span> <span class="hljs-variable">resource2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>();<span class="hljs-comment">//资源 2</span><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(() -&gt; &#123;<br>            <span class="hljs-keyword">synchronized</span> (resource1) &#123;<br>                System.out.println(Thread.currentThread() + <span class="hljs-string">&quot;get resource1&quot;</span>);<br>                <span class="hljs-keyword">try</span> &#123;<br>                    Thread.sleep(<span class="hljs-number">1000</span>);<br>                &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>                System.out.println(Thread.currentThread() + <span class="hljs-string">&quot;waiting get resource2&quot;</span>);<br>                <span class="hljs-keyword">synchronized</span> (resource2) &#123;<br>                    System.out.println(Thread.currentThread() + <span class="hljs-string">&quot;get resource2&quot;</span>);<br>                &#125;<br>            &#125;<br>        &#125;, <span class="hljs-string">&quot;线程 1&quot;</span>).start();<br><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(() -&gt; &#123;<br>            <span class="hljs-keyword">synchronized</span> (resource2) &#123;<br>                System.out.println(Thread.currentThread() + <span class="hljs-string">&quot;get resource2&quot;</span>);<br>                <span class="hljs-keyword">try</span> &#123;<br>                    Thread.sleep(<span class="hljs-number">1000</span>);<br>                &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>                System.out.println(Thread.currentThread() + <span class="hljs-string">&quot;waiting get resource1&quot;</span>);<br>                <span class="hljs-keyword">synchronized</span> (resource1) &#123;<br>                    System.out.println(Thread.currentThread() + <span class="hljs-string">&quot;get resource1&quot;</span>);<br>                &#125;<br>            &#125;<br>        &#125;, <span class="hljs-string">&quot;线程 2&quot;</span>).start();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
@@ -486,7 +486,7 @@
 <p>我们分析一下上面的代码为什么避免了死锁的发生?</p>
 <p>线程 1 首先获得到 resource1 的监视器锁,这时候线程 2 就获取不到了。然后线程 1 再去获取 resource2 的监视器锁，可以获取到。然后线程 1 释放了对 resource1、resource2 的监视器锁的占用，线程 2 获取到就可以执行了。这样就破坏了破坏循环等待条件，因此避免了死锁。</p>
 <h1 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h1><h2 id="ThreadLocal是什么"><a href="#ThreadLocal是什么" class="headerlink" title="ThreadLocal是什么"></a>ThreadLocal是什么</h2><p>ThreadLocal，也就是线程本地变量。如果你创建了一个ThreadLocal变量，那么访问这个变量的每个线程都会有这个变量的一个本地拷贝，多个线程操作这个变量的时候，实际是操作自己本地内存里面的变量，从而起到线程隔离的作用，避免了线程安全问题。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902163020732.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902163020732"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902163020732.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902163020732"></p>
 <ul>
 <li><p>创建</p>
 <p>创建了一个<strong>ThreadLocal</strong>变量<strong>localVariable</strong>，任何一个线程都能并发访问<strong>localVariable</strong>。</p>
@@ -511,7 +511,7 @@
 <p>一个token，在控制层可以根据这个token，解析出用户的基本信息。那么问题来了，假如在服务层和持久层都要用到用户信息，比如rpc调用、更新用户获取等等，那应该怎么办呢？</p>
 <p>一种办法是显式定义用户相关的参数，比如账号、用户名……这样一来，我们可能需要大面积地修改代码，多少有点瓜皮，那该怎么办呢？</p>
 <p>这时候我们就可以用到ThreadLocal，在控制层拦截请求把用户信息存入ThreadLocal，这样我们在任何一个地方，都可以取ThreadLocal中存的用户数据。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902170811800.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902170811800"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902170811800.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902170811800"></p>
 <p>很多其它场景的cookie、session等等数据隔离也都可以通过ThreadLocal去实现。</p>
 <p>我们常用的数据库连接池也用到了ThreadLocal：</p>
 <ul>
@@ -530,7 +530,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-title function_">WeakReference</span><span class="hljs-params">(T referent)</span> &#123;<br>	<span class="hljs-built_in">super</span>(referent);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>key的赋值，使用的是WeakReference的赋值。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902173027266.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902173027266"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902173027266.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902173027266"></p>
 <p>所以，怎么回答ThreadLocal原理？要答出这几个点：</p>
 <ul>
 <li>Thread类有一个类型为<strong>ThreadLocal.ThreadLocalMap</strong>的实例变量<strong>threadLocals</strong>，每个线程都有一个属于自己的<strong>ThreadLocalMap</strong>。</li>
@@ -540,7 +540,7 @@
 </ul>
 <h2 id="ThreadLocal-内存泄露是怎么回事？"><a href="#ThreadLocal-内存泄露是怎么回事？" class="headerlink" title="ThreadLocal 内存泄露是怎么回事？"></a>ThreadLocal 内存泄露是怎么回事？</h2><p>我们先来分析一下使用<strong>ThreadLocal</strong>时的内存，我们都知道，在<strong>JVM</strong>中，<strong>栈内存线程私有</strong>，存储了对象的引用，<strong>堆内存线程共享</strong>，存储了对象实例。</p>
 <p>所以呢，栈中存储了ThreadLocal、Thread的引用，堆中存储了它们的具体实例。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902193325147.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902193325147"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902193325147.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902193325147"></p>
 <p><strong>ThreadLocalMap</strong>中使用的 key 为 <strong>ThreadLocal</strong> 的弱引用。</p>
 <p><em>“弱引用：只要垃圾回收机制一运行，不管JVM的内存空间是否充足，都会回收该对象占用的内存。”</em></p>
 <p>那么现在问题就来了，弱引用很容易被回收，如果<strong>ThreadLocal（ThreadLocalMap的Key）</strong>被垃圾回收器回收了，但是<strong>ThreadLocalMap</strong>生命周期和<strong>Thread</strong>是一样的，它这时候如果不被回收，就会出现这种情况：<strong>ThreadLocalMap</strong>的<strong>key</strong>没了，<strong>value</strong>还在，这就会 <strong>造成了内存泄漏问题</strong> 。</p>
@@ -551,7 +551,7 @@
 <p>key设计成弱引用同样是为了防止内存泄漏。</p>
 <p>假如key被设计成强引用，如果ThreadLocal Reference被销毁，此时它指向ThreadLoca的强引用就没有了，但是此时key还强引用指向ThreadLoca，就会导致ThreadLocal不能被回收，这时候就发生了内存泄漏的问题。</p>
 <h2 id="ThreadLocalMap的结构了解吗？"><a href="#ThreadLocalMap的结构了解吗？" class="headerlink" title="ThreadLocalMap的结构了解吗？"></a>ThreadLocalMap的结构了解吗？</h2><p>ThreadLocalMap虽然被叫做Map，其实它是没有实现Map接又的，但是结构还是和HashMap比较类似的，主要关注的是两个要素：<strong>元素数组和散列方法。</strong></p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902194739313.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902194739313"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902194739313.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902194739313"></p>
 <p><strong>元素数组</strong></p>
 <p>一个table数组，存储Entry类型的元素，Entry是ThreaLocal弱引用作为key，Object作为value的结构。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> Entry[] table;<br></code></pre></td></tr></table></figure>
@@ -565,7 +565,7 @@
 
 <h2 id="ThreadLocalMap怎么解决Hash冲突的？"><a href="#ThreadLocalMap怎么解决Hash冲突的？" class="headerlink" title="ThreadLocalMap怎么解决Hash冲突的？"></a>ThreadLocalMap怎么解决Hash冲突的？</h2><p>我们可能都知道<strong>HashMap</strong>使用了链表来解决冲突，也就是所谓的链地址法。</p>
 <p><strong>ThreadLocalMap</strong>没有使用链表，自然也不是用链地址法来解决冲突了，它用的是另外一种方式—— <strong>开放定址法</strong> 。开放定址法是什么意思呢？简单来说，就是这个坑被人占了，那就接着去找空着的坑。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902212750305.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902212750305"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902212750305.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902212750305"></p>
 <p>如上图所示，如果我们插入一个value=27的数据，通过 hash计算后应该落入第 4 个槽位中，而槽位 4 已经有了 Entry数据，而且Entry数据的key和当前不相等。此时就会线性向后查找，一直找到 Entry为 null的槽位才会停止查找，把元素放到空的槽中。</p>
 <p>在get的时候，也会根据ThreadLocal对象的hash值，定位到table中的位置，然后判断该槽位Entry对象中的key是否和get的key一致，如果不一致，就判断下一个位置。</p>
 <h2 id="ThreadLocalMap扩容机制了解吗？"><a href="#ThreadLocalMap扩容机制了解吗？" class="headerlink" title="ThreadLocalMap扩容机制了解吗？"></a>ThreadLocalMap扩容机制了解吗？</h2><p>在<strong>ThreadLocalMap.set()**方法的最后，如果执行完启发式清理工作后，未清理到任何数据，且当前散列数组中</strong>Entry<strong>的数量已经达到了列表的扩容阈值</strong>(len*2/3)<strong>，就开始执行</strong>rehash()**逻辑：</p>
@@ -575,9 +575,9 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (!cleanSomeSlots(i, sz) &amp;&amp; sz &gt;= threshold)<br>    rehash();<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">rehash</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">//清理过期Entry</span><br>        expungeStaleEntries();<br>        <span class="hljs-comment">//扩容</span><br>        <span class="hljs-keyword">if</span> (size &gt;= threshold - threshold / <span class="hljs-number">4</span> )<br>        resize();<br>    &#125;<br>    <span class="hljs-comment">//清理过期Entry</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">expungeStaleEntries</span><span class="hljs-params">()</span> &#123;<br>        Entry[] tab = table;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> tab.length;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span> ; j &lt; len; j++) &#123;<br>        <span class="hljs-type">Entry</span> <span class="hljs-variable">e</span> <span class="hljs-operator">=</span> tab[j];<br>        <span class="hljs-keyword">if</span> (e != <span class="hljs-literal">null</span> &amp;&amp; e.get() == <span class="hljs-literal">null</span>)<br>        expungeStaleEntry(j);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>接着看看具体的<strong>resize</strong>()方法，扩容后的<strong>newTab</strong>的大小为老数组的两倍，然后遍历老的table数组，散列方法重新计算位置，开放地址解决冲突，然后放到新的newTab，遍历完成之后，<strong>oldTab</strong>中所有的<strong>entry</strong>数据都已经放入到<strong>newTab</strong>中了，然后table引用指向<strong>newTab</strong></p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902213343066.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902213343066"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902213343066.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902213343066"></p>
 <p>具体代码：</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902213432939.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902213432939"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902213432939.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220902213432939"></p>
 <h2 id="父子线程怎么共享数据"><a href="#父子线程怎么共享数据" class="headerlink" title="父子线程怎么共享数据"></a>父子线程怎么共享数据</h2><p>父线程能用ThreadLocal来给子线程传值吗？毫无疑问，不能。那该怎么办？</p>
 <p>这时候可以用到另外一个类——<strong>InheritableThreadLocal</strong>。</p>
 <p>使用起来很简单，在主线程的<strong>InheritableThreadLocal</strong>实例设置值，在子线程中就可以拿到了。</p>
@@ -592,9 +592,9 @@
 <h1 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h1><h2 id="说一下你对Java内存模型（JMM）的理解？"><a href="#说一下你对Java内存模型（JMM）的理解？" class="headerlink" title="说一下你对Java内存模型（JMM）的理解？"></a>说一下你对Java内存模型（JMM）的理解？</h2><p>Java内存模型（<strong>Java Memory Model</strong>，JMM），是一种<strong>抽象的模型</strong>，被定义出来屏蔽各种硬件和操作系统的<strong>内存访问差异</strong>。</p>
 <p>JMM定义了<strong>线程和主内存</strong>之间的抽象关系：线程之间的<strong>共享变量</strong>存储在主内存（<strong>Main Memory</strong>）中，每个线程都有一个私有的本地内存（<strong>Local Memory</strong>），本地内存中存储了该线程<strong>以读/写共享变量的副本</strong>。</p>
 <p>Java内存模型的抽象图：</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903114356751.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903114356751"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903114356751.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903114356751"></p>
 <p>本地内存是JMM的 一个抽象概念，并不真实存在。它其实涵盖了缓存、写缓冲区、寄存器以及其他的硬件和编译器优化。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903114449779.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903114449779"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903114449779.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903114449779"></p>
 <p>图里面的是一个<strong>双核 CPU 系统架构</strong> ，每个核有自己的<strong>控制器和运算器</strong>，其中控制器包含一组寄存器和操作控制器，运算器执行算术逻辅运算。每个核都有自己的<strong>一级缓存</strong>，在有些架构里面还有一个<strong>所有 CPU 共享的二级缓存</strong>。 那么 Java 内存模型里面的工作内存，就对应这里的 Ll 缓存或者 L2 缓存或者 CPU 寄存器。</p>
 <h2 id="说说你对原子性、可见性、有序性的理解"><a href="#说说你对原子性、可见性、有序性的理解" class="headerlink" title="说说你对原子性、可见性、有序性的理解"></a>说说你对原子性、可见性、有序性的理解</h2><p>原子性、有序性、可见性是并发编程中非常重要的基础概念，JMM的很多技术都是围绕着这三大特性展开。</p>
 <ul>
@@ -624,9 +624,9 @@
 </li>
 </ol>
 <p>从Java源代码到最终实际执行的指令序列，会分别经历下面 3 种重排序，如图：</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903115952545.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903115952545"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903115952545.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903115952545"></p>
 <p>我们比较熟悉的<strong>双重校验单例模式</strong>就是一个经典的指令重排的例子，<strong>Singleton instance=new Singleton()；</strong>对应的JVM指令分为三步：<strong>分配内存空间–&gt;初始化对象—&gt;对象指向分配的内存空间</strong>，但是经过了编译器的指令重排序，第二步和第三步就可能会重排序。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903133213700.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903133213700"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903133213700.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903133213700"></p>
 <p>JMM属于语言级的内存模型，它确保在不同的编译器和不同的处理器平台之上，通过禁止特定类型的编译器重排序和处理器重排序，为程序员提供一致的内存可见性保证。</p>
 <h2 id="指令重排有限制吗？happens-before了解吗？"><a href="#指令重排有限制吗？happens-before了解吗？" class="headerlink" title="指令重排有限制吗？happens-before了解吗？"></a>指令重排有限制吗？happens-before了解吗？</h2><p>指令重排也是有一些限制的，有两个规则<strong>happens-before和as-if-serial</strong>来约束。</p>
 <p><strong>happens-before</strong>的定义：</p>
@@ -635,7 +635,7 @@
 <li>两个操作之间存在happens-before关系，并不意味着Java平台的具体实现必须要按照happens-before关系指定的顺序来执行。如果重排序之后的执行结果，与按happens-before关系来执行的结果一致，那么这种重排序并不非法。</li>
 </ul>
 <p>happens-before和我们息息相关的有<strong>六大规则</strong>：</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903133644636.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903133644636"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903133644636.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903133644636"></p>
 <ul>
 <li><strong>程序顺序规则</strong>：一个线程中的每个操作，happens-before于该线程中的任意后续操作。</li>
 <li><strong>监视器锁规则</strong>：对一个锁的解锁，happens-before于随后对这个锁的加锁。</li>
@@ -649,21 +649,21 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">double</span> <span class="hljs-variable">pi</span> <span class="hljs-operator">=</span> <span class="hljs-number">3.14</span>; <span class="hljs-comment">// A</span><br><span class="hljs-type">double</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> <span class="hljs-number">1.0</span>; <span class="hljs-comment">// B</span><br><span class="hljs-type">double</span> <span class="hljs-variable">area</span> <span class="hljs-operator">=</span> pi * r * r; <span class="hljs-comment">// C</span><br></code></pre></td></tr></table></figure>
 
 <p>上面 3 个操作的数据依赖关系：</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903134841710.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903134841710"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903134841710.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903134841710"></p>
 <p>A和C之间存在数据依赖关系，同时B和C之间也存在数据依赖关系。因此在最终执行的指令序列中，C不能被重排序到A和B的前面（C排到A和B的前面，程序的结果将会被改变）。但A和B之间没有数据依赖关系，编译器和处理器可以重排序A和B之间的执行顺序。所以最终，程序可能会有两种执行顺序：</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903134956909.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903134956909"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903134956909.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903134956909"></p>
 <p>as-if-serial语义把单线程程序保护了起来，遵守as-if-serial语义的编译器、runtime和处理器共同编织了这么一个“楚门的世界”：单线程程序是按程序的“顺序”来执行的。as- if-serial语义使单线程情况下，我们不需要担心重排序的问题，可见性的问题。</p>
 <h2 id="volatile实现原理了解吗？"><a href="#volatile实现原理了解吗？" class="headerlink" title="volatile实现原理了解吗？"></a>volatile实现原理了解吗？</h2><p>volatile有两个作用，保证 <strong>可见性</strong> 和 <strong>有序性</strong> 。</p>
 <h3 id="volatile怎么保证可见性的呢？"><a href="#volatile怎么保证可见性的呢？" class="headerlink" title="volatile怎么保证可见性的呢？"></a>volatile怎么保证可见性的呢？</h3><p>相比synchronized的加锁方式来解决共享变量的内存可见性问题，volatile就是更轻量的选择，它没有上下文切换的额外开销成本。</p>
 <p>volatile可以确保对某个变量的更新对其他线程马上可见，一个变量被声明为volatile 时，线程在写入变量时不会把值缓存在寄存器或者其他地方，而是会把值刷新回主内存 当其它线程读取该共享变量 ，会从主内存重新获取最新值，而不是使用当前线程的本地内存中的值。</p>
 <p>例如，我们声明一个 volatile 变量 volatile int x = 0，线程A修改x=1，修改完之后就会把新的值刷新回主内存，线程B读取x的时候，就会清空本地内存变量，然后再从主内存获取最新值。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903135524735.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903135524735"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903135524735.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903135524735"></p>
 <h3 id="volatile怎么保证有序性的呢？"><a href="#volatile怎么保证有序性的呢？" class="headerlink" title="volatile怎么保证有序性的呢？"></a>volatile怎么保证有序性的呢？</h3><p>重排序可以分为编译器重排序和处理器重排序，valatile保证有序性，就是通过分别限制这两种类型的重排序。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903140353177.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903140353177"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903140353177.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903140353177"></p>
 <p>为了实现volatile的内存语义，编译器在生成字节码时，会在指令序列中插入内存屏障来禁止特定类型的处理器重排序。</p>
 <p><strong>1.</strong> 在每个volatile写操作的前面插入一个StoreStore 屏障<br><strong>2.</strong> 在每个volatile写操作的后面插入一个StoreLoad 屏障<br><strong>3.</strong> 在每个volatile读操作的后面插入一个LoadLoad 屏障<br><strong>4.</strong> 在每个volatile读操作的后面插入一个LoadStore 屏障</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903140503354.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903140503354"></p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903140518029.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903140518029"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903140503354.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903140503354"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903140518029.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903140518029"></p>
 <h3 id="双重校验锁实现对象单例（线程安全）"><a href="#双重校验锁实现对象单例（线程安全）" class="headerlink" title="双重校验锁实现对象单例（线程安全）"></a>双重校验锁实现对象单例（线程安全）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Singleton</span> &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">static</span> Singleton uniqueInstance;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-title function_">Singleton</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span>  <span class="hljs-keyword">static</span> Singleton <span class="hljs-title function_">getUniqueInstance</span><span class="hljs-params">()</span> &#123;<br>       <span class="hljs-comment">//先判断对象是否已经实例过，没有实例化过才进入加锁代码</span><br>        <span class="hljs-keyword">if</span> (uniqueInstance == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-comment">//类对象加锁</span><br>            <span class="hljs-keyword">synchronized</span> (Singleton.class) &#123;<br>                <span class="hljs-keyword">if</span> (uniqueInstance == <span class="hljs-literal">null</span>) &#123;<br>                    uniqueInstance = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Singleton</span>();<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> uniqueInstance;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>uniqueInstance 采用 volatile 关键字修饰也是很有必要的， uniqueInstance = new Singleton(); 这段代码其实是分为三步执行：</p>
@@ -692,9 +692,9 @@
 
 <h2 id="synchronized的实现原理？"><a href="#synchronized的实现原理？" class="headerlink" title="synchronized的实现原理？"></a>synchronized的实现原理？</h2><h3 id="synchronized是怎么加锁的呢？"><a href="#synchronized是怎么加锁的呢？" class="headerlink" title="synchronized是怎么加锁的呢？"></a>synchronized是怎么加锁的呢？</h3><p>我们使用synchronized的时候，发现不用自己去lock和unlock，是因为JVM帮我们把这个事情做了。</p>
 <p><strong>1.</strong> <strong>synchronized修饰代码块时</strong>，JVM采用<strong>monitorenter、monitorexit</strong>两个指令来实现同步，monitorenter 指令指向同步代码块的开始位置， monitorexit 指令则指向同步代码块的结束位置。反编译一段synchronized修饰代码块代码，<strong>javap -c -s -v -l</strong><br><strong>SynchronizedDemo.class</strong>，可以看到相应的字节码指令。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903180902786.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903180902786"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903180902786.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903180902786"></p>
 <p><strong>2.</strong> <strong>synchronized修饰同步方法时</strong>，JVM采用ACC_SYNCHRONIZED标记符来实现同步，这个标识指明了该方法是一个同步方法。<br>同样可以写段代码反编译看一下。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903181654514.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903181654514"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903181654514.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903181654514"></p>
 <h3 id="synchronized锁住的是什么呢？"><a href="#synchronized锁住的是什么呢？" class="headerlink" title="synchronized锁住的是什么呢？"></a>synchronized锁住的是什么呢？</h3><p>monitorenter、monitorexit或者ACC_SYNCHRONIZED都是 <strong>基于Monitor实现</strong> 的。</p>
 <p>实例对象结构里有对象头，对象头里面有一块结构叫Mark Word，Mark Word指针指向了<strong>monitor</strong> 。</p>
 <p>所谓的Monitor其实是一种 <strong>同步工具</strong> ，也可以说是一种 <strong>同步机制</strong> 。在Java虚拟机（HotSpot）中，Monitor是由 <strong>ObjectMonitor实现</strong> 的，可以叫做内部锁，或者Monitor锁。</p>
@@ -717,7 +717,7 @@
 </ul>
 </li>
 <li><p>就诊结束后， 走出就诊室 ，候诊室的 下一位候诊患者 进入就诊室。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903190305715.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903190305715"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903190305715.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903190305715"></p>
 </li>
 </ul>
 <p>这个过程就和<strong>Monitor机制</strong>比较相似：</p>
@@ -726,7 +726,7 @@
 <li>就诊室：就诊室_Owner里里只能有一个线程就诊，就诊完线程就自行离开</li>
 <li>候诊室：就诊室繁忙时，进入等待区（Wait Set），就诊室空闲的时候就从等待区（Wait Set）叫新的线程</li>
 </ul>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903190457240.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903190457240"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903190457240.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903190457240"></p>
 <p>所以我们就知道了，同步是锁住的什么东西：</p>
 <ul>
 <li><strong>monitorenter</strong>，在判断拥有同步标识 <strong>ACC_SYNCHRONIZED</strong> 抢先进入此方法的线程会优先拥有 <strong>Monitor</strong> 的 <strong>owner</strong> ，此时计数器 +1。</li>
@@ -749,7 +749,7 @@
 </ul>
 <h2 id="锁升级？synchronized优化了解吗？"><a href="#锁升级？synchronized优化了解吗？" class="headerlink" title="锁升级？synchronized优化了解吗？"></a>锁升级？synchronized优化了解吗？</h2><p>了解锁升级，得先知道，不同锁的状态是什么样的。这个状态指的是什么呢？</p>
 <p>Java对象头里，有一块结构，叫<strong>Mark Word</strong>标记字段，这块结构会随着锁的状态变化而变化。64 位虚拟机 Mark Word 是 64bit，我们来看看它的状态变化：</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903215849935.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903215849935"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903215849935.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903215849935"></p>
 <p>Mark Word存储对象自身的运行数据，如<strong>哈希码、GC分代年龄、锁状态标志、偏向时间戳（Epoch）</strong> 等。</p>
 <h4 id="synchronized做了哪些优化？"><a href="#synchronized做了哪些优化？" class="headerlink" title="synchronized做了哪些优化？"></a>synchronized做了哪些优化？</h4><p>在JDK1.6之前，synchronized的实现直接调用ObjectMonitor的enter和exit，这种锁被称之为<strong>重量级锁</strong> 。从JDK6开始，HotSpot虚拟机开发团队对Java中的锁进行优化，如增加了适应性自旋、锁消除、锁粗化、轻量级锁和偏向锁等优化策略，提升了synchronized的性能。</p>
 <ul>
@@ -760,7 +760,7 @@
 <li><strong>锁消除</strong>：虚拟机即时编译器在运行时，对一些代码上要求同步，但是被检测到不可能存在共享数据竞争的锁进行消除。</li>
 </ul>
 <h4 id="锁升级的过程是什么样的？"><a href="#锁升级的过程是什么样的？" class="headerlink" title="锁升级的过程是什么样的？"></a>锁升级的过程是什么样的？</h4><p>锁升级方向：无锁–&gt;偏向锁—&gt; 轻量级锁—-&gt;重量级锁，这个方向基本上是不可逆的。</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903221140669.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903221140669"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903221140669.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903221140669"></p>
 
                 
               </div>
@@ -768,6 +768,27 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/weiblog/categories/%E9%9D%A2%E8%AF%95/" class="category-chain-item">面试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
 </div>
