@@ -60,8 +60,19 @@
 <meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903190457240.png">
 <meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903215849935.png">
 <meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903221140669.png">
+<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904142059373.png">
+<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904142838070.png">
+<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904163310518.png">
+<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904165058873.png">
+<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904165133380.png">
+<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904165250668.png">
+<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904184232357.png">
+<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904184726138.png">
+<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904192625392.png">
+<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904223156739.png">
+<meta property="og:image" content="d:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904223443822.png">
 <meta property="article:published_time" content="2022-09-02T03:30:31.000Z">
-<meta property="article:modified_time" content="2022-09-03T16:54:34.416Z">
+<meta property="article:modified_time" content="2022-09-06T14:36:54.776Z">
 <meta property="article:author" content="Wei Shao">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220902114109343.png">
@@ -732,17 +743,17 @@
 <li><strong>monitorenter</strong>，在判断拥有同步标识 <strong>ACC_SYNCHRONIZED</strong> 抢先进入此方法的线程会优先拥有 <strong>Monitor</strong> 的 <strong>owner</strong> ，此时计数器 +1。</li>
 <li><strong>monitorexit</strong>，当执行完退出后，计数器 -1，归 0 后被其他进入的线程获得。</li>
 </ul>
-<h2 id="除了原子性，synchronized可见性，有序性，可重入性怎么实现？"><a href="#除了原子性，synchronized可见性，有序性，可重入性怎么实现？" class="headerlink" title="除了原子性，synchronized可见性，有序性，可重入性怎么实现？"></a>除了原子性，synchronized可见性，有序性，可重入性怎么实现？</h2><h4 id="synchronized怎么保证可见性？"><a href="#synchronized怎么保证可见性？" class="headerlink" title="synchronized怎么保证可见性？"></a>synchronized怎么保证可见性？</h4><ul>
+<h2 id="除了原子性，synchronized可见性，有序性，可重入性怎么实现？"><a href="#除了原子性，synchronized可见性，有序性，可重入性怎么实现？" class="headerlink" title="除了原子性，synchronized可见性，有序性，可重入性怎么实现？"></a>除了原子性，synchronized可见性，有序性，可重入性怎么实现？</h2><h3 id="synchronized怎么保证可见性？"><a href="#synchronized怎么保证可见性？" class="headerlink" title="synchronized怎么保证可见性？"></a>synchronized怎么保证可见性？</h3><ul>
 <li>线程加锁前，将清空工作内存中共享变量的值，从而使用共享变量时需要从主内存中重新读取最新的值。</li>
 <li>线程加锁后，其它线程无法获取主内存中的共享变量。</li>
 <li>线程解锁前，必须把共享变量的最新值刷新到主内存中。</li>
 </ul>
-<h4 id="synchronized怎么保证有序性？"><a href="#synchronized怎么保证有序性？" class="headerlink" title="synchronized怎么保证有序性？"></a>synchronized怎么保证有序性？</h4><ul>
+<h3 id="synchronized怎么保证有序性？"><a href="#synchronized怎么保证有序性？" class="headerlink" title="synchronized怎么保证有序性？"></a>synchronized怎么保证有序性？</h3><ul>
 <li>synchronized同步的代码块，具有排他性，一次只能被一个线程拥有，所以synchronized保证同一时刻，代码是单线程执行的。</li>
 <li>因为as-if-serial语义的存在，单线程的程序能保证最终结果是有序的，但是不保证不会指令重排。</li>
 <li>所以synchronized保证的有序是执行结果的有序性，而不是防止指令重排的有序性。</li>
 </ul>
-<h4 id="synchronized怎么实现可重入的呢？"><a href="#synchronized怎么实现可重入的呢？" class="headerlink" title="synchronized怎么实现可重入的呢？"></a>synchronized怎么实现可重入的呢？</h4><ul>
+<h3 id="synchronized怎么实现可重入的呢？"><a href="#synchronized怎么实现可重入的呢？" class="headerlink" title="synchronized怎么实现可重入的呢？"></a>synchronized怎么实现可重入的呢？</h3><ul>
 <li>synchronized 是可重入锁，也就是说，允许一个线程二次请求自己持有对象锁的临界资源，这种情况称为可重入锁。</li>
 <li>synchronized 锁对象的时候有个计数器，他会记录下线程获取锁的次数，在执行完对应的代码、块之后，计数器就会-1，直到计数器清零，就释放锁了。</li>
 <li>之所以，是可重入的。是因为 synchronized 锁对象有个计数器，会随着线程获取锁后 +1 计数，当线程执行完毕后 -1，直到清零释放锁。</li>
@@ -751,7 +762,7 @@
 <p>Java对象头里，有一块结构，叫<strong>Mark Word</strong>标记字段，这块结构会随着锁的状态变化而变化。64 位虚拟机 Mark Word 是 64bit，我们来看看它的状态变化：</p>
 <p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903215849935.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903215849935"></p>
 <p>Mark Word存储对象自身的运行数据，如<strong>哈希码、GC分代年龄、锁状态标志、偏向时间戳（Epoch）</strong> 等。</p>
-<h4 id="synchronized做了哪些优化？"><a href="#synchronized做了哪些优化？" class="headerlink" title="synchronized做了哪些优化？"></a>synchronized做了哪些优化？</h4><p>在JDK1.6之前，synchronized的实现直接调用ObjectMonitor的enter和exit，这种锁被称之为<strong>重量级锁</strong> 。从JDK6开始，HotSpot虚拟机开发团队对Java中的锁进行优化，如增加了适应性自旋、锁消除、锁粗化、轻量级锁和偏向锁等优化策略，提升了synchronized的性能。</p>
+<h3 id="synchronized做了哪些优化？"><a href="#synchronized做了哪些优化？" class="headerlink" title="synchronized做了哪些优化？"></a>synchronized做了哪些优化？</h3><p>在JDK1.6之前，synchronized的实现直接调用ObjectMonitor的enter和exit，这种锁被称之为<strong>重量级锁</strong> 。从JDK6开始，HotSpot虚拟机开发团队对Java中的锁进行优化，如增加了适应性自旋、锁消除、锁粗化、轻量级锁和偏向锁等优化策略，提升了synchronized的性能。</p>
 <ul>
 <li><strong>偏向锁</strong>：在无竞争的情况下，只是在Mark Word里存储当前线程指针，CAS操作都不做。</li>
 <li><strong>轻量级锁</strong>：在没有多线程竞争时，相对重量级锁，减少操作系统互斥量带来的性能消耗。但是，如果存在锁竞争，除了互斥量本身开销，还额外有CAS操作的开销。</li>
@@ -759,8 +770,139 @@
 <li><strong>锁粗化</strong>：将多个连续的加锁、解锁操作连接在一起，扩展成一个范围更大的锁。</li>
 <li><strong>锁消除</strong>：虚拟机即时编译器在运行时，对一些代码上要求同步，但是被检测到不可能存在共享数据竞争的锁进行消除。</li>
 </ul>
-<h4 id="锁升级的过程是什么样的？"><a href="#锁升级的过程是什么样的？" class="headerlink" title="锁升级的过程是什么样的？"></a>锁升级的过程是什么样的？</h4><p>锁升级方向：无锁–&gt;偏向锁—&gt; 轻量级锁—-&gt;重量级锁，这个方向基本上是不可逆的。</p>
+<h3 id="锁升级的过程是什么样的？"><a href="#锁升级的过程是什么样的？" class="headerlink" title="锁升级的过程是什么样的？"></a>锁升级的过程是什么样的？</h3><p>锁升级方向：无锁–&gt;偏向锁—&gt; 轻量级锁—-&gt;重量级锁，这个方向基本上是不可逆的。</p>
 <p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220903221140669.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220903221140669"></p>
+<p>我们看一下升级的过程：</p>
+<p><strong>偏向锁：</strong></p>
+<p><strong>偏向锁的获取：</strong></p>
+<p><strong>1.</strong> 判断是否为可偏向状态–MarkWord中锁标志是否为‘01’，是否偏向锁是否为‘1’<br><strong>2.</strong> 如果是可偏向状态，则查看线程ID是否为当前线程，如果是，则进入步骤’5’，否则进入步骤‘3’<br><strong>3.</strong> 通过CAS操作竞争锁，如果竞争成功，则将MarkWord中线程ID设置为当前线程ID，然后执行‘5’；竞争失败，则执行‘4’<br><strong>4.</strong> CAS获取偏向锁失败表示有竞争。当达到safepoint时获得偏向锁的线程被挂起，偏向锁升级为轻量级锁，然后被阻塞在安全点的线程继续往下执行同步代码块<br>**5. ** 执行同步代码</p>
+<p><strong>偏向锁的撤销：</strong></p>
+<ol>
+<li> 偏向锁不会主动释放(撤销)，只有遇到其他线程竞争时才会执行撤销，由于撤销需要知道当前持有该偏向锁的线程栈状态，因此要等到<strong>safepoint</strong>时执行，此时持有该偏向锁的线程（T）有‘2’，‘3’两种情况；</li>
+<li>撤销—-T线程已经退出同步代码块，或者已经不再存活，则直接撤销偏向锁，变成无锁状态—-该状态达到阈值 20 则执行批量重偏向</li>
+<li>升级—-T线程还在同步代码块中，则将T线程的偏向锁升级为轻量级锁，当前线程执行轻量级锁状态下的锁获取步骤—-该状态达到阈值 40 则执行批量撤销</li>
+</ol>
+<p><strong>轻量级锁：</strong></p>
+<p><strong>轻量级锁的获取：</strong></p>
+<p><strong>1.</strong> 进行加锁操作时，jvm会判断是否已经时重量级锁，如果不是，则会在当前线程栈帧中划出一块空间，作为该锁的锁记录，并且将锁对象MarkWord复制到该锁记录中<br><strong>2.</strong> 复制成功之后，jvm使用CAS操作将对象头MarkWord更新为指向锁记录的指针，并将锁记录里的owner指针指向对象头的MarkWord。如果成功，则执行‘3’，否则执行‘4’<br><strong>3.</strong> 更新成功，则当前线程持有该对象锁，并且对象MarkWord锁标志设置为‘00’，即表示此对象处于轻量级锁状态<br><strong>4.</strong> 更新失败，jvm先检查对象MarkWord是否指向当前线程栈帧中的锁记录，如果是则执行‘5’，否则执行‘6’<br><strong>5.</strong> 表示锁重入；然后当前线程栈帧中增加一个锁记录第一部分（Displaced Mark Word）为null，并指向Mark Word的锁对象，起到一个重入计数器的作用。<br><strong>6.</strong> 表示该锁对象已经被其他线程抢占，则进行自旋等待（默认 10 次），等待次数达到阈值仍未获取到锁，则升级为重量级锁</p>
+<p>大体上省简的升级过程：</p>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904142059373.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220904142059373"></p>
+<p>完整的升级过程：</p>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904142838070.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220904142838070"></p>
+<h2 id="说说synchronized和ReentrantLock的区别？"><a href="#说说synchronized和ReentrantLock的区别？" class="headerlink" title="说说synchronized和ReentrantLock的区别？"></a>说说synchronized和ReentrantLock的区别？</h2><p>可以从<strong>锁的实现、功能特点、性能</strong>等几个维度去回答这个问题：</p>
+<ul>
+<li><strong>锁的实现</strong>： synchronized是<strong>Java语言的关键字</strong>，基于<strong>JVM</strong>实现。而ReentrantLock是基于JDK的<strong>API层面</strong>实现的（一般是lock()和unlock()方法配合try/finally 语句块来完成。）</li>
+<li><strong>性能</strong>： 在JDK1.6锁优化以前，synchronized的性能比ReenTrantLock差很多。但是JDK6开始，增加了适应性自旋、锁消除等，两者性能就差不多了。</li>
+<li><strong>功能特点</strong>： ReentrantLock 比 synchronized 增加了一些高级功能，如等待可中断、可实现公平锁、可实现选择性通知。<ul>
+<li>ReentrantLock提供了一种能够中断等待锁的线程的机制，通过lock.lockInterruptibly()来实现这个机制</li>
+<li>ReentrantLock可以指定是公平锁还是非公平锁。而synchronized只能是非公平锁。所谓的公平锁就是先等待的线程先获得锁。</li>
+<li>synchronized与wait()和notify()/notifyAll()方法结合实现等待/通知机制，ReentrantLock类借助Condition接又与newCondition()方法实现。</li>
+<li>ReentrantLock需要手工声明来加锁和释放锁，一般跟finally配合释放锁。而synchronized不用手动释放锁。</li>
+</ul>
+</li>
+</ul>
+<p>下面的表格列出出了两种锁之间的区别：</p>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904163310518.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220904163310518"></p>
+<h2 id="AQS了解多少？"><a href="#AQS了解多少？" class="headerlink" title="AQS了解多少？"></a>AQS了解多少？</h2><p>AbstractQueuedSynchronizer <strong>抽象同步队列</strong>，简称 AQS ，它是Java并发包的根基，并发包中的锁就是基于AQS实现的。</p>
+<ul>
+<li>AQS是基于一个<strong>FIFO的双向队列</strong>，其内部定义了一个节点类Node，Node 节点内部的SHARED 用来标记该线程是获取共享资源时被阻挂起后放入AQS 队列的， EXCLUSIVE用来标记线程是 取独占资源时被挂起后放入AQS 队列</li>
+<li>AQS 使用一个 volatile 修饰的 int 类型的成员变量 state 来表示同步状态，修改同步状态成功即为获得锁，volatile 保证了变量在多线程之间的可见性，修改 State 值时通过 CAS 机制来保证修改的原子性</li>
+<li>获取state的方式分为两种，独占方式和共享方式，一个线程使用独占方式获取了资源，其它线程就会在获取失败后被阻塞。一个线程使用共享方式获取了资源，另外一个线程还可以通过CAS的方式进行获取。</li>
+<li>如果共享资源被占用，需要一定的阻塞等待唤醒机制来保证锁的分配，AQS 中会将竞争共享资源失败的线程添加到一个变体的 CLH 队列中。</li>
+</ul>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904165058873.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220904165058873"></p>
+<p>先简单了解一下CLH：Craig、Landin and Hagersten 队列，是 <strong>单向链表实现的队列</strong> 。申请线程只在本地变量上自旋， <strong>它不断轮询前驱的状态</strong> ，如果发现 <strong>前驱节点释放了锁就结束自旋</strong></p>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904165133380.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220904165133380"></p>
+<p>AQS 中的队列是 CLH 变体的虚拟双向队列，通过将每条请求共享资源的线程封装成一个节点来实现锁的分配：</p>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904165250668.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220904165250668"></p>
+<p>AQS 中的 CLH 变体等待队列拥有以下特性：</p>
+<ul>
+<li>AQS 中队列是个双向链表，也是 FIFO 先进先出的特性</li>
+<li>通过 Head、Tail 头尾两个节点来组成队列结构，通过 volatile 修饰保证可见性</li>
+<li>Head 指向节点为已获得锁的节点，是一个虚拟节点，节点本身不持有具体线程</li>
+<li>获取不到同步状态，会将节点进行自旋获取锁，自旋一定次数失败后会将线程阻塞，相对于 CLH 队列性能较好</li>
+</ul>
+<h2 id="ReentrantLock实现原理？"><a href="#ReentrantLock实现原理？" class="headerlink" title="ReentrantLock实现原理？"></a>ReentrantLock实现原理？</h2><p>ReentrantLock 是可重入的独占锁，只能有一个线程可以获取该锁，其它获取该锁的线程会被阻塞而被放入该锁的阻塞队列里面。</p>
+<p>看看ReentrantLock的加锁操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 创建非公平锁</span><br><span class="hljs-type">ReentrantLock</span> <span class="hljs-variable">lock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReentrantLock</span>();<br>    <span class="hljs-comment">// 获取锁操作</span><br>    lock.lock();<br>    <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-comment">// 执行代码逻辑</span><br>    &#125; <span class="hljs-keyword">catch</span> (Exception ex) &#123;<br>    <span class="hljs-comment">// ...</span><br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>    <span class="hljs-comment">// 解锁操作</span><br>    lock.unlock();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>new ReentrantLock()构造函数默认创建的是非公平锁 NonfairSync。</p>
+<h3 id="公平锁-FairSync"><a href="#公平锁-FairSync" class="headerlink" title="公平锁 FairSync"></a>公平锁 FairSync</h3><ul>
+<li>公平锁是指多个线程按照申请锁的顺序来获取锁，线程直接进入队列中排队，队列中的第一个线程才能获得锁</li>
+<li>公平锁的优点是等待锁的线程不会饿死。缺点是整体吞吐效率相对非公平锁要低，等待队列中除第一个线程以外的所有线程都会阻塞,CPU 唤醒阻塞线程的开销比非公平锁大</li>
+</ul>
+<h3 id="非公平锁-NonfairSync"><a href="#非公平锁-NonfairSync" class="headerlink" title="非公平锁 NonfairSync"></a><strong>非公平锁 NonfairSync</strong></h3><ul>
+<li>非公平锁是多个线程加锁时直接尝试获取锁，获取不到才会到等待队列的队尾等待。但如果此时锁刚好可用，那么这个线程可以无需阻塞直接获取到锁</li>
+<li>非公平锁的优点是可以减少唤起线程的开销，整体的吞吐效率高，因为线程有几率不阻塞直接获得锁，CPU 不必唤醒所有线程。缺点是处于等待队列中的线程可能会饿死，或者等很久才会获得锁</li>
+</ul>
+<p>默认创建的对象lock()的时候：</p>
+<ul>
+<li>如果锁当前没有被其它线程占用，并且当前线程之前没有获取过该锁，则当前线程会获取到该锁，然后设置当前锁的拥有者为当前线程，并设置 AQS 的状态值为 1 ，然后直接返回。</li>
+<li>如果当前线程之前己经获取过该锁，则这次只是简单地把 AQS 的状态值加 1 后返回。如果该锁己经被其他线程持有，非公平锁会尝试去获取锁，获取失败的话，则调用该方法程会被放入 AQS 队列阻塞挂起。</li>
+</ul>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904184232357.png" srcset="/weiblog/img/loading.gif" lazyload></p>
+<h2 id="ReentrantLock怎么实现公平锁的？"><a href="#ReentrantLock怎么实现公平锁的？" class="headerlink" title="ReentrantLock怎么实现公平锁的？"></a>ReentrantLock怎么实现公平锁的？</h2><p>new ReentrantLock()构造函数默认创建的是非公平锁 NonfairSync</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-title function_">ReentrantLock</span><span class="hljs-params">()</span> &#123;<br>	sync = <span class="hljs-keyword">new</span> <span class="hljs-title class_">NonfairSync</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>同时也可以在创建锁构造函数中传入具体参数创建公平锁 FairSync</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ReentrantLock</span> <span class="hljs-variable">lock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReentrantLock</span>(<span class="hljs-literal">true</span>);<br>--- ReentrantLock<br><span class="hljs-comment">// true 代表公平锁，false 代表非公平锁</span><br><span class="hljs-keyword">public</span> <span class="hljs-title function_">ReentrantLock</span><span class="hljs-params">(<span class="hljs-type">boolean</span> fair)</span> &#123;<br>sync = fair? <span class="hljs-keyword">new</span> <span class="hljs-title class_">FairSync</span>() : <span class="hljs-keyword">new</span> <span class="hljs-title class_">NonfairSync</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>FairSync、NonfairSync 代表公平锁和非公平锁，两者都是 ReentrantLock 静态内部类，只不过实现不同锁语义。</p>
+<p><strong>非公平锁和公平锁的两处不同：</strong></p>
+<ul>
+<li>非公平锁在调用 lock 后，首先就会调用 CAS 进行一次抢锁，如果这个时候恰巧锁没有被占用，那么直接就获取到锁返回了。</li>
+<li>非公平锁在 CAS 失败后，和公平锁一样都会进入到 tryAcquire 方法，在 tryAcquire 方法中，如果发现锁这个时候被释放了（state == 0），非公平锁会直接 CAS 抢锁，但是公平锁会判断等待队列是否有线程处于等待状态，如果有则不去抢锁，乖乖排到后面。</li>
+</ul>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904184726138.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220904184726138"></p>
+<p>相对来说，非公平锁会有更好的性能，因为它的吞吐量比较大。当然，非公平锁让获取锁的时间变得更加不确定，可能会导致在阻塞队列中的线程长期处于饥饿状态。</p>
+<h2 id="CAS呢？CAS了解多少？"><a href="#CAS呢？CAS了解多少？" class="headerlink" title="CAS呢？CAS了解多少？"></a>CAS呢？CAS了解多少？</h2><p>CAS叫做<strong>CompareAndSwap</strong>，<strong>比较并交换</strong>，主要是通过处理器的指令来保证操作的原子性的。</p>
+<p>CAS 指令包含 3 个参数：<strong>共享变量的内存地址 A、预期的值 B 和共享变量的新值 C</strong>。只有当内存中地址 A 处的值等于 B 时，才能将内存中地址 A 处的值更新为新值 C。作为一条CPU 指令，CAS 指令本身是能够保证原子性的 。</p>
+<h2 id="CAS-有什么问题？如何解决？"><a href="#CAS-有什么问题？如何解决？" class="headerlink" title="CAS 有什么问题？如何解决？"></a>CAS 有什么问题？如何解决？</h2><p>CAS的经典三大问题：</p>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904192625392.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220904192625392"></p>
+<h3 id="ABA-问题"><a href="#ABA-问题" class="headerlink" title="ABA 问题"></a>ABA 问题</h3><p>并发环境下，假设初始条件是A，去修改数据时，发现是A就会执行修改。但是看到的虽然是A，中间可能发生了A变B，B又变回A的情况。此时A已经非彼A，数据即使成功修改，也可能有问题。</p>
+<h4 id="怎么解决ABA问题？"><a href="#怎么解决ABA问题？" class="headerlink" title="怎么解决ABA问题？"></a>怎么解决ABA问题？</h4><ul>
+<li>加版本号</li>
+</ul>
+<p>每次修改变量，都在这个变量的版本号上加 1 ，这样，刚刚A-&gt;B-&gt;A，虽然A的值没变，但是它的版本号已经变了，再判断版本号就会发现此时的A已经被改过了。参考乐观锁的版本号，这种做法可以给数据带上了一种实效性的检验。</p>
+<p>Java提供了AtomicStampReference类，它的compareAndSet方法首先检查当前的对象引用值是否等于预期引用，并且当前印戳（Stamp）标志是否等于预期标志，如果全部相等，则以原子方式将引用值和印戳标志的值更新为给定的更新值。</p>
+<h3 id="循环性能开销"><a href="#循环性能开销" class="headerlink" title="循环性能开销"></a>循环性能开销</h3><p>自旋CAS，如果一直循环执行，一直不成功，会给CPU带来非常大的执行开销。</p>
+<h4 id="怎么解决循环性能开销问题？"><a href="#怎么解决循环性能开销问题？" class="headerlink" title="怎么解决循环性能开销问题？"></a>怎么解决循环性能开销问题？</h4><p>在Java中，很多使用自旋CAS的地方，会有一个自旋次数的限制，超过一定次数，就停止自旋。</p>
+<h3 id="只能保证一个变量的原子操作"><a href="#只能保证一个变量的原子操作" class="headerlink" title="只能保证一个变量的原子操作"></a><strong>只能保证一个变量的原子操作</strong></h3><p>CAS 保证的是对一个变量执行操作的原子性，如果对多个变量操作时，CAS 目前无法直接保证操作的原子性的。</p>
+<h4 id="怎么解决只能保证一个变量的原子操作问题？"><a href="#怎么解决只能保证一个变量的原子操作问题？" class="headerlink" title="怎么解决只能保证一个变量的原子操作问题？"></a>怎么解决只能保证一个变量的原子操作问题？</h4><ul>
+<li>可以考虑改用锁来保证操作的原子性</li>
+<li>可以考虑合并多个变量，将多个变量封装成一个对象，通过AtomicReference来保证原子性。</li>
+</ul>
+<h2 id="Java有哪些保证原子性的方法？如何保证多线程下i-结果正确？"><a href="#Java有哪些保证原子性的方法？如何保证多线程下i-结果正确？" class="headerlink" title="Java有哪些保证原子性的方法？如何保证多线程下i++ 结果正确？"></a>Java有哪些保证原子性的方法？如何保证多线程下i++ 结果正确？</h2><p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904223156739.png" srcset="/weiblog/img/loading.gif" lazyload></p>
+<ul>
+<li>使用循环原子类，例如AtomicInteger，实现i++原子操作</li>
+<li>使用juc包下的锁，如ReentrantLock ，对i++操作加锁lock.lock()来实现原子性</li>
+<li>使用synchronized，对i++操作加锁</li>
+</ul>
+<h2 id="原子操作类了解多少？"><a href="#原子操作类了解多少？" class="headerlink" title="原子操作类了解多少？"></a>原子操作类了解多少？</h2><p>当程序更新一个变量时，如果多线程同时更新这个变量，可能得到期望之外的值，比如变量i=1，A线程更新i+1，B线程也更新i+1，经过两个线程操作之后可能i不等于 3 ，而是等于 2 。因为A和B线程在更新变量i的时候拿到的i都是 1 ，这就是线程不安全的更新操作，一般我们会使用synchronized来解决这个问题，synchronized会保证多线程不会同时更新变量i。</p>
+<p>其实除此之外，还有更轻量级的选择，Java从JDK 1.5开始提供了java.util.concurrent.atomic包，这个包中的原子操作类提供了一种用法简单、性能高效、线程安全地更新一个变量的方式。</p>
+<p>因为变量的类型有很多种，所以在Atomic包里一共提供了 13 个类，属于 4 种类型的原子更新方式，分别是原子更新基本类型、原子更新数组、原子更新引用和原子更新属性（字段）。</p>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/image-20220904223443822.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220904223443822"></p>
+<p>Atomic包里的类基本都是使用Unsafe实现的包装类。</p>
+<p>使用原子的方式更新基本类型，Atomic包提供了以下 3 个类：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">AtomicBoolean：原子更新布尔类型。<br>AtomicInteger：原子更新整型。<br>AtomicLong：原子更新长整型。<br></code></pre></td></tr></table></figure>
+
+<p>通过原子的方式更新数组里的某个元素，Atomic包提供了以下 4 个类：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs">AtomicIntegerArray：原子更新整型数组里的元素。<br>AtomicLongArray：原子更新长整型数组里的元素。<br>AtomicReferenceArray：原子更新引用类型数组里的元素。<br>AtomicIntegerArray类主要是提供原子的方式更新数组里的整型<br></code></pre></td></tr></table></figure>
+
+<p>原子更新基本类型的AtomicInteger，只能更新一个变量，如果要原子更新多个变量，就需要使<br>用这个原子更新引用类型提供的类。Atomic包提供了以下 3 个类：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">AtomicReference：原子更新引用类型。<br>AtomicReferenceFieldUpdater：原子更新引用类型里的字段。<br>AtomicMarkableReference：原子更新带有标记位的引用类型。可以原子更新一个布尔类型<br>的标记位和引用类型。构造方法是AtomicMarkableReference（V initialRef，<span class="hljs-built_in">bool</span>ean<br>initialMark）。<br></code></pre></td></tr></table></figure>
+
+<p>如果需原子地更新某个类里的某个字段时，就需要使用原子更新字段类，Atomic包提供了以<br>下 3 个类进行原子字段更新：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs objectivec">AtomicIntegerFieldUpdater：原子更新整型的字段的更新器。<br>AtomicLongFieldUpdater：原子更新长整型字段的更新器。<br>AtomicStampedReference：原子更新带有版本号的引用类型。该类将整数值与引用关联起<br>来，可用于原子的更新数据和数据的版本号，可以解决使用<span class="hljs-built_in">CAS</span>进行原子更新时可能出现<br>的 ABA问题。<br></code></pre></td></tr></table></figure>
+
+<h2 id="AtomicInteger-的原理？"><a href="#AtomicInteger-的原理？" class="headerlink" title="AtomicInteger 的原理？"></a>AtomicInteger 的原理？</h2><p><strong>一句话概括： 使用CAS实现 。</strong></p>
+<p>以AtomicInteger的添加方法为例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getAndIncrement</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-keyword">return</span> unsafe.getAndAddInt(<span class="hljs-built_in">this</span>, valueOffset, <span class="hljs-number">1</span> );<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>通过Unsafe类的实例来进行添加操作，来看看具体的CAS操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getAndAddInt</span><span class="hljs-params">(Object var1, <span class="hljs-type">long</span> var2, <span class="hljs-type">int</span> var4)</span> &#123;<br>    <span class="hljs-type">int</span> var5;<br>    <span class="hljs-keyword">do</span> &#123;<br>    	var5 = <span class="hljs-built_in">this</span>.getIntVolatile(var1, var2);<br>&#125; <span class="hljs-keyword">while</span>(!<span class="hljs-built_in">this</span>.compareAndSwapInt(var1, var2, var5, var5 + var4));<br>    <span class="hljs-keyword">return</span> var5;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>compareAndSwapInt</strong> 是一个<strong>native</strong>方法，基于CAS来操作int类型变量。其它的原子操作类基本都是大同小异。</p>
 
                 
               </div>
@@ -842,6 +984,12 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/weiblog/2022/09/06/%E9%9D%A2%E8%AF%95-Java%E5%9F%BA%E7%A1%80/" title="面试-Java基础">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">面试-Java基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
@@ -865,6 +1013,76 @@
 
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="面试"
+        id="heading-1573c74e227f14ded2daa71bb049ecda" role="tab" data-toggle="collapse" href="#collapse-1573c74e227f14ded2daa71bb049ecda"
+        aria-expanded="true"
+      >
+        面试
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-1573c74e227f14ded2daa71bb049ecda"
+           role="tabpanel" aria-labelledby="heading-1573c74e227f14ded2daa71bb049ecda">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/weiblog/2022/09/02/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" title="面试-Java并发编程"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">面试-Java并发编程</span>
+        </a>
+      
+    
+      
+      
+        <a href="/weiblog/2022/08/31/%E9%9D%A2%E8%AF%95-Mybatis/" title="面试-Mybatis"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">面试-Mybatis</span>
+        </a>
+      
+    
+      
+      
+        <a href="/weiblog/2022/08/29/%E9%9D%A2%E8%AF%95-Spring/" title="面试-Spring"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">面试-Spring</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
 
     </div>
   </div>
