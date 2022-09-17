@@ -57,7 +57,7 @@
 <meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%9F%BA%E7%A1%80/image-20220907220715855.png">
 <meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Java%E5%9F%BA%E7%A1%80/image-20220907221423842.png">
 <meta property="article:published_time" content="2022-09-06T03:11:45.000Z">
-<meta property="article:modified_time" content="2022-09-07T16:25:39.525Z">
+<meta property="article:modified_time" content="2022-09-14T10:22:24.907Z">
 <meta property="article:author" content="Wei Shao">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary_large_image">
@@ -2144,7 +2144,7 @@ after method send()<span aria-hidden="true" class="line-numbers-rows"><span></sp
 <p>可以输出结果看出，我们已经增加了 <code>SmsServiceImpl</code> 的<code>send()</code>方法。</p>
 <h2 id="动态代理-1"><a href="#动态代理-1" class="headerlink" title="动态代理"></a>动态代理</h2><p>相比于静态代理来说，动态代理更加灵活。我们不需要针对每个目标类都单独创建一个代理类，并且也不需要我们必须实现接口，我们可以直接代理实现类( <em>CGLIB 动态代理机制</em>)。</p>
 <p><strong>从 JVM 角度来说，动态代理是在运行时动态生成类字节码，并加载到 JVM 中的。</strong></p>
-<p>**说到动态代理，Spring AOP、RPC 框架应该是两个不得不提的，它们的实现都依赖了动态代理。<br>**</p>
+<p><strong>说到动态代理，Spring AOP、RPC 框架应该是两个不得不提的，它们的实现都依赖了动态代理。</strong></p>
 <p><strong>动态代理在我们日常开发中使用的相对较少，但是在框架中的几乎是必用的一门技术。学会了动态代理之后，对于我们理解和学习各种框架的原理也非常有帮助。</strong></p>
 <p><strong>就 Java 来说，动态代理的实现方式有很多种，比如 JDK 动态代理、CGLIB 动态代理等等。</strong></p>
 <p>guide-rpc-framework<a target="_blank" rel="noopener" href="https://github.com/Snailclimb/guide-rpc-framework"> </a> (opens new window) 使用的是 JDK 动态代理，我们先来看看 JDK 动态代理的使用。</p>
@@ -2174,7 +2174,7 @@ after method send()<span aria-hidden="true" class="line-numbers-rows"><span></sp
         <span class="token keyword">throws</span> <span class="token class-name">Throwable</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p>**<code>invoke()</code> 方法有下面三个参数： **</p>
+<p>**invoke()方法有下面三个参数： **</p>
 <ul>
 <li><p><strong>proxy:动态生成的代理类</strong> </p>
 </li>
@@ -2484,7 +2484,7 @@ after method send<span aria-hidden="true" class="line-numbers-rows"><span></span
         aria-expanded="true"
       >
         面试
-        <span class="list-group-count">(5)</span>
+        <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -2502,6 +2502,15 @@ after method send<span aria-hidden="true" class="line-numbers-rows"><span></span
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">面试-Java基础</span>
+        </a>
+      
+    
+      
+      
+        <a href="/weiblog/2022/09/12/%E9%9D%A2%E8%AF%95-Java%E5%AE%B9%E5%99%A8/" title="面试-Java容器"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">面试-Java容器</span>
         </a>
       
     
