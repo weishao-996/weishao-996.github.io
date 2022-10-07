@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/weiblog/img/fluid.png">
-  <link rel="icon" href="/weiblog/img/bg/%E5%A4%B4%E5%83%8F.jpg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/WeiShao-996/img/fluid.png">
+  <link rel="icon" href="/WeiShao-996/img/bg/%E5%A4%B4%E5%83%8F.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,50 +19,50 @@
     <meta name="description" content="基础说说什么是MyBatis? 优点：Mybatis 是一个半 ORM（对象关系映射）框架，它内部封装了 JDBC，开发时只需要关注SQL 语句本身，不需要花费精力去处理加载驱动、创建连接、创建statement 等繁杂的过程。程序员直接编写原生态 sql，可以严格控制 sql 执行性能，灵活度高。MyBatis 可以使用 XML 或注解来配置和映射原生信息，将 POJO 映射成数据库中的记录，避">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试-Mybatis">
-<meta property="og:url" content="https://weishao996.gitee.io/weiblog/2022/08/31/%E9%9D%A2%E8%AF%95-Mybatis/index.html">
+<meta property="og:url" content="https://weishao-996.github.io/2022/08/31/%E9%9D%A2%E8%AF%95-Mybatis/index.html">
 <meta property="og:site_name" content="WeiBlog">
 <meta property="og:description" content="基础说说什么是MyBatis? 优点：Mybatis 是一个半 ORM（对象关系映射）框架，它内部封装了 JDBC，开发时只需要关注SQL 语句本身，不需要花费精力去处理加载驱动、创建连接、创建statement 等繁杂的过程。程序员直接编写原生态 sql，可以严格控制 sql 执行性能，灵活度高。MyBatis 可以使用 XML 或注解来配置和映射原生信息，将 POJO 映射成数据库中的记录，避">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124353772.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124733088.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831125002543.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831130749515.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831150538063.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831155449848.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831155632178.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831165343833.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831172605851.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831172905299.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831185515276.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831212914015.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/c6d2a5c38b2e4e6fae3da740b37596f7.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/06ed9e43f8644ff7a40eca96c27f15c1.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/f954119fbd3944ebbeccba11d8ee1ad9.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/cc432713b29a465babe833106535ffe9.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/57ebea0ab2e34e3fb6a15c8916b65100.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/dae47bea7d764a45809d612ac0a62b71.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/3c6f0b1fb377457c867002bbf8546a40.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/d52366f288e940b2afbf51d5035db571.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901114614900.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901114627565.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901123812730.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901130322195.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901145328294.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901153231196.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901153540814.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901154447146.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901155803040.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901162602848.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901163556036.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901163645793.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/2600280-20220303161626997-395362475.png">
-<meta property="og:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/2600280-20220303163713816-2112457012.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124353772.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124733088.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831125002543.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831130749515.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831150538063.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831155449848.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831155632178.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831165343833.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831172605851.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831172905299.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831185515276.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831212914015.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/c6d2a5c38b2e4e6fae3da740b37596f7.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/06ed9e43f8644ff7a40eca96c27f15c1.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/f954119fbd3944ebbeccba11d8ee1ad9.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/cc432713b29a465babe833106535ffe9.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/57ebea0ab2e34e3fb6a15c8916b65100.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/dae47bea7d764a45809d612ac0a62b71.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/3c6f0b1fb377457c867002bbf8546a40.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/d52366f288e940b2afbf51d5035db571.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901114614900.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901114627565.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901123812730.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901130322195.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901145328294.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901153231196.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901153540814.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901154447146.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901155803040.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901162602848.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901163556036.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901163645793.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/2600280-20220303161626997-395362475.png">
+<meta property="og:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/2600280-20220303163713816-2112457012.png">
 <meta property="article:published_time" content="2022-08-31T03:29:36.000Z">
 <meta property="article:modified_time" content="2022-09-11T12:24:26.256Z">
 <meta property="article:author" content="Wei Shao">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://weishao996.gitee.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124353772.png">
+<meta name="twitter:image" content="https://weishao-996.github.io/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124353772.png">
   
   
   
@@ -92,12 +92,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/weiblog/css/main.css" />
+<link  rel="stylesheet" href="/WeiShao-996/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/weiblog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/WeiShao-996/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/weiblog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/WeiShao-996/css/highlight-dark.css" />
   
 
 
@@ -106,15 +106,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"weishao996.gitee.io","root":"/weiblog/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"Java"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/weiblog/local-search.xml"};
+    var CONFIG = {"hostname":"weishao-996.github.io","root":"/WeiShao-996/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"Java"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/WeiShao-996/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/weiblog/js/utils.js" ></script>
-  <script  src="/weiblog/js/color-schema.js" ></script>
+  <script  src="/WeiShao-996/js/utils.js" ></script>
+  <script  src="/WeiShao-996/js/color-schema.js" ></script>
   
 
 
@@ -131,7 +131,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/weiblog/">
+    <a class="navbar-brand" href="/WeiShao-996/">
       <strong>威少のBlog</strong>
     </a>
 
@@ -150,7 +150,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/weiblog/">
+              <a class="nav-link" href="/WeiShao-996/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -162,7 +162,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/weiblog/archives/">
+              <a class="nav-link" href="/WeiShao-996/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -174,7 +174,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/weiblog/categories/">
+              <a class="nav-link" href="/WeiShao-996/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -186,7 +186,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/weiblog/tags/">
+              <a class="nav-link" href="/WeiShao-996/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -198,7 +198,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/weiblog/about/">
+              <a class="nav-link" href="/WeiShao-996/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -227,7 +227,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/weiblog/img/bg/iTab-6ozkzl.jfif') no-repeat center center; background-size: cover;">
+     style="background: url('/WeiShao-996/img/bg/iTab-6ozkzl.jfif') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -304,26 +304,26 @@
             
               <div class="markdown-body">
                 
-                <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="说说什么是MyBatis"><a href="#说说什么是MyBatis" class="headerlink" title="说说什么是MyBatis?"></a>说说什么是MyBatis?</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124353772.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220831124353772"></p>
+                <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="说说什么是MyBatis"><a href="#说说什么是MyBatis" class="headerlink" title="说说什么是MyBatis?"></a>说说什么是MyBatis?</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124353772.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220831124353772"></p>
 <p>优点：<br>Mybatis 是一个半 ORM（对象关系映射）框架，它内部封装了 JDBC，开发时只需要关注SQL 语句本身，不需要花费精力去处理加载驱动、创建连接、创建statement 等繁杂的过程。程序员直接编写原生态 sql，可以严格控制 sql 执行性能，灵活度高。MyBatis 可以使用 XML 或注解来配置和映射原生信息，将 POJO 映射成数据库中的记录，避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。</p>
 <p>缺点：<br>SQL语句的编写工作量较大，尤其当字段多、关联表多时，对开发人员编写SQL语句的功底有一定要求SQL语句依赖于数据库，导致数据库移植性差，不能随意更换数据库。</p>
-<h3 id="ORM是什么"><a href="#ORM是什么" class="headerlink" title="ORM是什么?"></a>ORM是什么?</h3><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124733088.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220831124733088"></p>
+<h3 id="ORM是什么"><a href="#ORM是什么" class="headerlink" title="ORM是什么?"></a>ORM是什么?</h3><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124733088.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220831124733088"></p>
 <p>ORM（Object Relational Mapping），对象关系映射，是一种为了解决关系型数据库数据与简单Java对象（POJO）的映射关系的技术。简单来说，ORM是通过使用描述对象和数据库之间映射的元数据，将程序中的对象自动持久化到关系型数据库中。</p>
 <h3 id="为什么说Mybatis是半自动ORM映射工具？它与全自动的区别在哪里？"><a href="#为什么说Mybatis是半自动ORM映射工具？它与全自动的区别在哪里？" class="headerlink" title="为什么说Mybatis是半自动ORM映射工具？它与全自动的区别在哪里？"></a>为什么说Mybatis是半自动ORM映射工具？它与全自动的区别在哪里？</h3><p>Hibernate属于全自动ORM映射工具，使用Hibernate查询关联对象或者关联集合对象时，可以根据对象关系模型直接获取，所以它是全自动的。而Mybatis在查询关联对象或关联集合对象时，需要手动编写SQL来完成，所以，被称之为半自动ORM映射工具。</p>
-<h3 id="JDBC编程有哪些不足之处，MyBatis是如何解决的？"><a href="#JDBC编程有哪些不足之处，MyBatis是如何解决的？" class="headerlink" title="JDBC编程有哪些不足之处，MyBatis是如何解决的？"></a>JDBC编程有哪些不足之处，MyBatis是如何解决的？</h3><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831125002543.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220831125002543"></p>
+<h3 id="JDBC编程有哪些不足之处，MyBatis是如何解决的？"><a href="#JDBC编程有哪些不足之处，MyBatis是如何解决的？" class="headerlink" title="JDBC编程有哪些不足之处，MyBatis是如何解决的？"></a>JDBC编程有哪些不足之处，MyBatis是如何解决的？</h3><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831125002543.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220831125002543"></p>
 <p>1 、数据连接创建、释放频繁造成系统资源浪费从而影响系统性能<br><strong>解决：在mybatis-config.xml中配置数据链接池，使用连接池统一管理数据库连接。</strong><br>2 、sql语句写在代码中造成代码不易维护<br><strong>解决：将sql语句配置在XXXXmapper.xml文件中与java代码分离。</strong><br>3 、向sql语句传参数麻烦，因为sql语句的where条件不一定，可能多也可能少，占位符需要和参数一一对应。<br><strong>解决： Mybatis自动将java对象映射至sql语句。</strong><br>4 、对结果集解析麻烦，sql变化导致解析代码变化，且解析前需要遍历，如果能将数据库记录封装成pojo对象解析比较方便。<br><strong>解决：Mybatis自动将sql执行结果映射至java对象。</strong></p>
 <h2 id="Hibernate-和-MyBatis-有什么区别？"><a href="#Hibernate-和-MyBatis-有什么区别？" class="headerlink" title="Hibernate 和 MyBatis 有什么区别？"></a>Hibernate 和 MyBatis 有什么区别？</h2><p><strong>相同点</strong></p>
 <p>都是对jdbc的封装，都是应用于持久层的框架。</p>
 <p><strong>不同点</strong></p>
 <p><strong>映射关系</strong><br>MyBatis 是一个半自动映射的框架，配置Java对象与sql语句执行结果的对应关系，多表关联关系配置简单<br>Hibernate 是一个全表映射的框架，配置Java对象与数据库表的对应关系，多表关联关系配置复杂</p>
 <p><strong>SQL优化和移植性</strong><br>Hibernate 对SQL语句封装，提供了日志、缓存、级联（级联比 MyBatis 强大）等特性，此外还提供 HQL（Hibernate Query Language）操作数据库，数据库无关性支持好，但会多消耗性能。如果项目需要支持多种数据库，代码开发量少，但SQL语句优化困难。<br>MyBatis 需要手动编写 SQL，支持动态 SQL、处理列表、动态生成表名、支持存储过程。开发工作量相对大些。直接使用SQL语句操作数据库，不支持数据库无关性，但sql语句优化容易。</p>
-<h3 id="MyBatis和Hibernate的适用场景"><a href="#MyBatis和Hibernate的适用场景" class="headerlink" title="MyBatis和Hibernate的适用场景?"></a>MyBatis和Hibernate的适用场景?</h3><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831130749515.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220831130749515"></p>
+<h3 id="MyBatis和Hibernate的适用场景"><a href="#MyBatis和Hibernate的适用场景" class="headerlink" title="MyBatis和Hibernate的适用场景?"></a>MyBatis和Hibernate的适用场景?</h3><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831130749515.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220831130749515"></p>
 <ul>
 <li>Hibernate 是标准的ORM框架，SQL编写量较少，但不够灵活，适合于需求相对稳定，中小型的软件项目，比如：办公自动化系统</li>
 <li>MyBatis 是半ORM框架，需要编写较多SQL，但是比较灵活，适合于需求变化频繁，快速迭代的项目，比如：电商网站</li>
 </ul>
 <h2 id="MyBatis使用过程？生命周期？"><a href="#MyBatis使用过程？生命周期？" class="headerlink" title="MyBatis使用过程？生命周期？"></a>MyBatis使用过程？生命周期？</h2><p>MyBatis基本使用的过程大概可以分为这么几步：</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831150538063.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220831150538063"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831150538063.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220831150538063"></p>
 <p><strong>1 、 创建SqlSessionFactory</strong></p>
 <ul>
 <li>可以从配置或者直接编码来创建SqlSessionFactory</li>
@@ -382,9 +382,9 @@
 </ul>
 </li>
 </ul>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831155449848.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220831155449848"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831155449848.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220831155449848"></p>
 <p>当然，万物皆可集成Spring，MyBatis通常也是和Spring集成使用，Spring可以帮助我们创建线程安全的、基于事务的 SqlSession 和映射器，并将它们直接注入到我们的 bean 中，我们不需要关心它们的创建过程和生命周期，那就是另外的故事了。</p>
-<h2 id="在mapper中如何传递多个参数？"><a href="#在mapper中如何传递多个参数？" class="headerlink" title="在mapper中如何传递多个参数？"></a>在mapper中如何传递多个参数？</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831155632178.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220831155632178"></p>
+<h2 id="在mapper中如何传递多个参数？"><a href="#在mapper中如何传递多个参数？" class="headerlink" title="在mapper中如何传递多个参数？"></a>在mapper中如何传递多个参数？</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831155632178.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220831155632178"></p>
 <h3 id="方法-1-：顺序传参法"><a href="#方法-1-：顺序传参法" class="headerlink" title="方法 1 ：顺序传参法"></a>方法 1 ：顺序传参法</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">User</span> <span class="token function">selectUser</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token keyword">int</span> deptId<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">"selectUser"</span> resultMap<span class="token operator">=</span><span class="token string">"UserResultMap"</span><span class="token operator">></span>
@@ -456,7 +456,7 @@ select * from orders where order_id=#&#123;id&#125;
 <li>Mybatis当然可以映射枚举类，不单可以映射枚举类，Mybatis可以映射任何对象到表的一列上。映射方式为自定义一个TypeHandler，实现TypeHandler的setParameter()和getResult()接口方法。</li>
 <li>TypeHandler有两个作用，一是完成从javaType至jdbcType的转换，二是完成jdbcType至javaType的转换，体现为setParameter()和getResult()两个方法，分别代表设置sql问号占位符参数和获取列查询结果。</li>
 </ul>
-<h2 id="和-的区别"><a href="#和-的区别" class="headerlink" title="#{}和${}的区别?"></a>#{}和${}的区别?</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831165343833.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220831165343833"></p>
+<h2 id="和-的区别"><a href="#和-的区别" class="headerlink" title="#{}和${}的区别?"></a>#{}和${}的区别?</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831165343833.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220831165343833"></p>
 <ul>
 <li>#{}是占位符，预编译处理；${}是拼接符，字符串替换，没有预编译处理。</li>
 <li>Mybatis在处理#{}时，#{}传入参数是以字符串传入，会将SQL中的#{}替换为?号，调用PreparedStatement的set方法来赋值。</li>
@@ -491,7 +491,7 @@ select * from orders where order_id=#&#123;id&#125;
 <p>#{}的变量替换是在DBMS中、变量替换后，#{}对应的变量自动加上单引号</p>
 <p>${}的变量替换是在DBMS外,变量替换后 ，{}的变量替换是在DBMS外、变量替换后，的变量替换是在DBMS外、变量替换后，{}对应的变量不会加上单引号</p>
 <p>使用#{}可以有效的防止sql注入，提高系统的安全性</p>
-<h2 id="模糊查询like语句该怎么写"><a href="#模糊查询like语句该怎么写" class="headerlink" title="模糊查询like语句该怎么写?"></a>模糊查询like语句该怎么写?</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831172605851.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220831172605851"></p>
+<h2 id="模糊查询like语句该怎么写"><a href="#模糊查询like语句该怎么写" class="headerlink" title="模糊查询like语句该怎么写?"></a>模糊查询like语句该怎么写?</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831172605851.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220831172605851"></p>
 <p>1 ’**%${question}%**’ 可能引起SQL注入，不推荐<br>2 “%”#{question}”%” 注意：因为#{…}解析成sql语句时候，会在变量外侧自动加单引号’’，所以这里 % 需要使用双引号” “，不能使用单引号 ’ ‘，不然会查不到任何结果。<br>3 CONCAT(’%’,#{question},’%’) 使用CONCAT()函数，（推荐✨）<br>4 使用bind标签（不推荐）</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>listUserLikeUsername<span class="token punctuation">"</span></span> <span class="token attr-name">resultType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.jourwon.pojo.User<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bind</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pattern<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">'</span>%' + username + '%'<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
@@ -500,7 +500,7 @@ select id,sex,age,username,password from person where username LIKE #
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <h2 id="Mybatis能执行一对一、一对多的关联查询吗？"><a href="#Mybatis能执行一对一、一对多的关联查询吗？" class="headerlink" title="Mybatis能执行一对一、一对多的关联查询吗？"></a>Mybatis能执行一对一、一对多的关联查询吗？</h2><p>当然可以，不止支持一对一、一对多的关联查询，还支持多对多、多对一的关联查询。</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831172905299.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220831172905299"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831172905299.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220831172905299"></p>
 <ul>
 <li><p><strong>一对一<association></strong></p>
 <p>比如订单和支付是一对一的关系，这种关联的实现：</p>
@@ -590,7 +590,7 @@ on c.id = p.cid
 user<span class="token punctuation">.</span>getId<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 
 <h2 id="MyBatis支持动态SQL吗？"><a href="#MyBatis支持动态SQL吗？" class="headerlink" title="MyBatis支持动态SQL吗？"></a>MyBatis支持动态SQL吗？</h2><p>MyBatis中有一些支持动态SQL的标签，它们的原理是使用OGNL从SQL参数对象中计算表达式的值，根据表达式的值动态拼接SQL，以此来完成动态SQL的功能。</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831185515276.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220831185515276"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831185515276.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220831185515276"></p>
 <ul>
 <li><p>if</p>
 <p>根据条件来组成where子句</p>
@@ -671,7 +671,7 @@ user<span class="token punctuation">.</span>getId<span class="token punctuation"
 </ul>
 </li>
 </ul>
-<h2 id="MyBatis如何执行批量操作？"><a href="#MyBatis如何执行批量操作？" class="headerlink" title="MyBatis如何执行批量操作？"></a>MyBatis如何执行批量操作？</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831212914015.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220831212914015"></p>
+<h2 id="MyBatis如何执行批量操作？"><a href="#MyBatis如何执行批量操作？" class="headerlink" title="MyBatis如何执行批量操作？"></a>MyBatis如何执行批量操作？</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831212914015.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220831212914015"></p>
 <p><strong>第一种方法：使用foreach标签</strong></p>
 <p>foreach的主要用在构建in条件中，它可以在SQL语句中进行迭代一个集合。foreach标签的属性主要有item，index，collection，open，separator，close。</p>
 <ul>
@@ -745,8 +745,8 @@ user<span class="token punctuation">.</span>getId<span class="token punctuation"
 
 <h2 id="MyBatis中一级缓存和二级缓存详解"><a href="#MyBatis中一级缓存和二级缓存详解" class="headerlink" title="MyBatis中一级缓存和二级缓存详解"></a>MyBatis中一级缓存和二级缓存详解</h2><h3 id="缓存的作用"><a href="#缓存的作用" class="headerlink" title="缓存的作用"></a>缓存的作用</h3><p>首先缓存的合理使用是优化中最常见的，将从数据库中查询出来的数据放入缓存中，下次使用时不必从数据库查询，而是直接从缓存中读取，避免频繁操作数据库，减轻数据的压力，同时提高系统性能。</p>
 <h3 id="为什么需要缓存"><a href="#为什么需要缓存" class="headerlink" title="为什么需要缓存"></a>为什么需要缓存</h3><p>BS架构里面，用户的所有操作都是对数据库的增删改查，其中查询的操作是最多的，但如果用户想要某个数据时每次都去数据库查询，这无疑会增加数据库的压力，而且获取时间效率也会降低，所以为了解决这些问题，缓存应用而生，使用了缓存之后，服务器只需要查询一次数据库，然后将数据保存到服务器主机的内存中，以后读取时就直接取内存中的数据，而不需要每次都查数据库，这种方案除了降低数据库压力之外，还提高了响应速度，简直一箭双雕哇~</p>
-<h3 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h3><p>一级缓存是<strong>SqlSession</strong>级别的缓存，在操作数据库时需要构造SqlSession对象，在对象中有一个数据结构用于存储缓存数据。不同的sqlSession之间的缓存数据区域是<strong>互相不影响</strong>的。也就是他只能作用在同一个<strong>sqlSession</strong>中，不同的<strong>sqlSession</strong>中的缓存是互相不能读取的。<br><strong>一级缓存的工作原理：</strong><br>一级缓存默认是开启的，它在一个sqlSession会话里面的所有查询操作都会保存到缓存中，一般来说一个请求中的所有增删改查操作都是在同一个sqlSession里面的，所以我们可以认为每个请求都有自己的一级缓存，如果同一个sqlSession会话中2 个查询中间有一个 insert 、update或delete 语句，那么之前查询的所有缓存都会清空；<br><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/c6d2a5c38b2e4e6fae3da740b37596f7.png" srcset="/weiblog/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/06ed9e43f8644ff7a40eca96c27f15c1.png" srcset="/weiblog/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h3 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h3><p>一级缓存是<strong>SqlSession</strong>级别的缓存，在操作数据库时需要构造SqlSession对象，在对象中有一个数据结构用于存储缓存数据。不同的sqlSession之间的缓存数据区域是<strong>互相不影响</strong>的。也就是他只能作用在同一个<strong>sqlSession</strong>中，不同的<strong>sqlSession</strong>中的缓存是互相不能读取的。<br><strong>一级缓存的工作原理：</strong><br>一级缓存默认是开启的，它在一个sqlSession会话里面的所有查询操作都会保存到缓存中，一般来说一个请求中的所有增删改查操作都是在同一个sqlSession里面的，所以我们可以认为每个请求都有自己的一级缓存，如果同一个sqlSession会话中2 个查询中间有一个 insert 、update或delete 语句，那么之前查询的所有缓存都会清空；<br><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/c6d2a5c38b2e4e6fae3da740b37596f7.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/06ed9e43f8644ff7a40eca96c27f15c1.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <p>1、用户发起查询请求，查询某条数据，sqlSession先去缓存中查找，是否有该条数据，如果有，则读取并返回；如果没有，则需要从数据库中查询，并将查询到的数据放入到一级缓存区域，供下次查找使用。</p>
 <p>2、sqlSession执行增删改操作并执行commit操作，则会清空缓存，这样做的<strong>目的是避免脏读</strong>。</p>
 <p>3、如果commit不清空缓存，会有以下场景：A查询了某商品库存为10件，并将10件库存的数据存入缓存中，之后被客户买走了10件，数据被delete了，但是下次查询这件商品时，并不从数据库中查询，而是从缓存中查询，就会出现错误。</p>
@@ -775,7 +775,7 @@ user<span class="token punctuation">.</span>getId<span class="token punctuation"
     <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/f954119fbd3944ebbeccba11d8ee1ad9.png" srcset="/weiblog/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/f954119fbd3944ebbeccba11d8ee1ad9.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <p><strong>根据结果可以看到，代码中执行了2次查询， 但实际运行时只查询了一次数据库，第二次获取数据时直接从缓存中读取，并且2次读取的数据都是一样的，到这里，一级缓存就已经生效了；</strong><br>接下来我们来测试第二种情况 ：<strong>查询 -&gt; 修改 -&gt; 查询</strong><br>示例代码：</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
  
@@ -802,18 +802,18 @@ user<span class="token punctuation">.</span>getId<span class="token punctuation"
     <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/cc432713b29a465babe833106535ffe9.png" srcset="/weiblog/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/cc432713b29a465babe833106535ffe9.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <p>控制台打印了三次sql,其中第一个查询和第三个查询是一样的，但是并没有使用缓存<strong>，是因为每次增删改操作都有可能会改变原来的数据，所以必须刷新缓存</strong>。</p>
 <h3 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h3><p><strong>二级缓存是mapper级别的缓存</strong>，多个SqlSession去操作同一个Mapper的sql语句，<strong>多个SqlSession可以共用二级缓存，二级缓存是跨SqlSession的。二级缓存的作用范围更大</strong>。</p>
 <p>二级缓存流程图：</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/57ebea0ab2e34e3fb6a15c8916b65100.png" srcset="/weiblog/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/57ebea0ab2e34e3fb6a15c8916b65100.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <p>第一种配置方式</p>
 <p>单个mapper配置，主需要在需要开启二级缓存的mapper.xml文件中加入以下配置即可开启。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!-- 开启单个mapper的二级缓存，也叫全局缓存--></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cache</span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 
 <p>注意一定要加到xxMapper.xml的文件内，千万不要加到[mybatis] 的主配置文件里面了，会报错的。</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/dae47bea7d764a45809d612ac0a62b71.png" srcset="/weiblog/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/dae47bea7d764a45809d612ac0a62b71.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <p>第二种配置方式</p>
 <p>所有的mapper都开启二级缓存，在mybatis.xml主配置文件中加入以下配置即可</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>settings</span><span class="token punctuation">></span></span>
@@ -822,7 +822,7 @@ user<span class="token punctuation">.</span>getId<span class="token punctuation"
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>settings</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/3c6f0b1fb377457c867002bbf8546a40.png" srcset="/weiblog/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/3c6f0b1fb377457c867002bbf8546a40.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <p>示例代码：</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">    
   	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
@@ -853,18 +853,18 @@ user<span class="token punctuation">.</span>getId<span class="token punctuation"
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <p>打印结果：</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/d52366f288e940b2afbf51d5035db571.png" srcset="/weiblog/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/d52366f288e940b2afbf51d5035db571.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <p><strong>打印结果很明显，2次查询，但是日志显示只查询了一次数据库， 第二次是从缓存中获取的数据，至此，二级缓存已开启！</strong></p>
 <p>总结：</p>
 <p><strong>1.</strong> 一级缓存: 基于 PerpetualCache 的 HashMap 本地缓存，其存储作用域为SqlSession，各个SqlSession之间的缓存相互隔离，当Session flush 或 close 之后，该 SqlSession 中的所有Cache 就将清空，MyBatis默认打开一级缓存。</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901114614900.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220901114614900"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901114614900.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220901114614900"></p>
 <p><strong>2.</strong> 二级缓存与一级缓存其机制相同，默认也是采用 PerpetualCache，HashMap 存储，不同之处在于其存储作用域为 Mapper(Namespace)，可以在多个SqlSession之间共享，并且可自定义存储源，如 Ehcache。默认不打开二级缓存，要开启二级缓存，使用二级缓存属性类需要实现Serializable序列化接又(可用来保存对象的状态),可在它的映射文件中配置。</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901114627565.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220901114627565"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901114627565.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220901114627565"></p>
 <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="能说说MyBatis的工作原理吗？"><a href="#能说说MyBatis的工作原理吗？" class="headerlink" title="能说说MyBatis的工作原理吗？"></a>能说说MyBatis的工作原理吗？</h2><p>我们已经大概知道了MyBatis的工作流程，按工作原理，可以分为两大步：<strong>生成会话工厂、会话运行</strong>。</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901123812730.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220901123812730"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901123812730.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220901123812730"></p>
 <p>MyBatis是一个成熟的框架，篇幅限制，这里抓大放小，来看看它的主要工作流程。</p>
 <h3 id="构建会话工厂"><a href="#构建会话工厂" class="headerlink" title="构建会话工厂"></a>构建会话工厂</h3><p>构造会话工厂也可以分为两步：</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901130322195.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220901130322195"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901130322195.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220901130322195"></p>
 <ul>
 <li>获取配置</li>
 </ul>
@@ -893,7 +893,7 @@ user<span class="token punctuation">.</span>getId<span class="token punctuation"
 	<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">DefaultSqlSessionFactory</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<h3 id="会话运行"><a href="#会话运行" class="headerlink" title="会话运行"></a>会话运行</h3><p>会话运行是MyBatis最复杂的部分，它的运行离不开四大组件的配合：<img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901145328294.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220901145328294"></p>
+<h3 id="会话运行"><a href="#会话运行" class="headerlink" title="会话运行"></a>会话运行</h3><p>会话运行是MyBatis最复杂的部分，它的运行离不开四大组件的配合：<img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901145328294.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220901145328294"></p>
 <ul>
 <li><strong>Executor（执行器）</strong><br>Executor起到了至关重要的作用，SqlSession只是一个门面，相当于客服，真正干活的是是Executor，就像是默默无闻的工程师。它提供了相应的查询和更新方法，以及事务方法。</li>
 </ul>
@@ -958,11 +958,11 @@ var8 <span class="token operator">=</span> <span class="token keyword">new</span
 
 <p>它会使用typeHandle处理类型，然后用ObjectFactory提供的规则组装对象，返回给调用者。</p>
 <p>整体上总结一下会话运行：</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901153231196.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220901153231196"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901153231196.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220901153231196"></p>
 <p>把整个的⼯作流程串联起来，简单总结⼀下：</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901153540814.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220901153540814"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901153540814.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220901153540814"></p>
 <p><strong>1.</strong> 读取 MyBatis 配置文件——<strong>mybatis-config.xml 、加载映射文件</strong>——映射文件即 SQL 映射文件，文件中配置了操作数据库的 SQL 语句。最后生成一个<strong>配置对象</strong>。<br><strong>2.</strong> 构造会话工厂：通过 MyBatis 的环境等配置信息构建<strong>会话工厂 SqlSessionFactory</strong>。<br><strong>3.</strong> 创建会话对象：由会话工厂<strong>创建 SqlSession 对象</strong>，该对象中包含了执行 SQL 语句的所有方法。<br><strong>4.</strong> Executor 执行器：MyBatis 底层定义了一个 Executor 接口来操作数据库，它将根据SqlSession 传递的参数动态地生成需要执行的 SQL 语句，同时负责查询缓存的维护。<br><strong>5.</strong> <strong>StatementHandler</strong>：数据库会话器，串联起参数映射的处理和运行结果映射的处理。<br>**6.**参数处理：对输入参数的类型进行处理，并预编译<br>**7.**结果处理：对返回结果的类型进行处理，根据对象映射规则，返回相应的对象。</p>
-<h2 id="MyBatis的功能架构是什么样的？"><a href="#MyBatis的功能架构是什么样的？" class="headerlink" title="MyBatis的功能架构是什么样的？"></a>MyBatis的功能架构是什么样的？</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901154447146.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220901154447146"></p>
+<h2 id="MyBatis的功能架构是什么样的？"><a href="#MyBatis的功能架构是什么样的？" class="headerlink" title="MyBatis的功能架构是什么样的？"></a>MyBatis的功能架构是什么样的？</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901154447146.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220901154447146"></p>
 <p>我们一般把Mybatis的功能架构分为三层：</p>
 <ul>
 <li><strong>API接口层</strong>：提供给外部使用的接又API，开发人员通过这些本地API来操纵数据库。接口层一接收到调用请求就会调用数据处理层来完成具体的数据处理。</li>
@@ -970,7 +970,7 @@ var8 <span class="token operator">=</span> <span class="token keyword">new</span
 <li><strong>基础支撑层</strong>：负责最基础的功能支撑，包括<strong>连接管理、事务管理、配置加载和缓存处理</strong>，这些都是共用的东西，将他们抽取出来作为最基础的组件。为上层的数据处理层提供最基础的支撑。</li>
 </ul>
 <h2 id="为什么Mapper接又不需要实现类？"><a href="#为什么Mapper接又不需要实现类？" class="headerlink" title="为什么Mapper接又不需要实现类？"></a>为什么Mapper接又不需要实现类？</h2><p>四个字回答： <strong>动态代理</strong> ，我们来看一下获取Mapper的过程：</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901155803040.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220901155803040"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901155803040.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220901155803040"></p>
 <ul>
 <li><p>获取Mapper<br>我们都知道定义的Mapper接口是没有实现类的，Mapper映射其实是通过 动态代理 实现的。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">BlogMapper</span> mapper <span class="token operator">=</span> session<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">BlogMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
@@ -1055,7 +1055,7 @@ var8 <span class="token operator">=</span> <span class="token keyword">new</span
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<h2 id="Mybatis都有哪些Executor执行器？"><a href="#Mybatis都有哪些Executor执行器？" class="headerlink" title="Mybatis都有哪些Executor执行器？"></a>Mybatis都有哪些Executor执行器？</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901162602848.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220901162602848"></p>
+<h2 id="Mybatis都有哪些Executor执行器？"><a href="#Mybatis都有哪些Executor执行器？" class="headerlink" title="Mybatis都有哪些Executor执行器？"></a>Mybatis都有哪些Executor执行器？</h2><p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901162602848.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220901162602848"></p>
 <p>Mybatis有三种基本的Executor执行器，<strong>SimpleExecutor、ReuseExecutor、BatchExecutor</strong>。</p>
 <ul>
 <li><strong>SimpleExecutor</strong>：每执行一次update或select，就开启一个Statement对象，用完立刻关闭Statement对象。</li>
@@ -1068,9 +1068,9 @@ var8 <span class="token operator">=</span> <span class="token keyword">new</span
 <li>配置默认的执行器。<strong>SIMPLE</strong> 就是普通的执行器；<strong>REUSE</strong> 执行器会重用预处理语句（prepared statements）； <strong>BATCH</strong> 执行器将重用语句并执行批量更新。</li>
 </ul>
 <h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><h2 id="说说Mybatis的插件运行原理，如何编写一个插件？"><a href="#说说Mybatis的插件运行原理，如何编写一个插件？" class="headerlink" title="说说Mybatis的插件运行原理，如何编写一个插件？"></a>说说Mybatis的插件运行原理，如何编写一个插件？</h2><h3 id="插件的运行原理？"><a href="#插件的运行原理？" class="headerlink" title="插件的运行原理？"></a>插件的运行原理？</h3><p>Mybatis会话的运行需要ParameterHandler、ResultSetHandler、StatementHandler、Executor这四大对象的配合，插件的原理就是在这四大对象调度的时候，插入一些我我们自己的代码。</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901163556036.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220901163556036"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901163556036.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220901163556036"></p>
 <p>Mybatis使用JDK的动态代理，为目标对象生成代理对象。它提供了一个工具类<strong>Plugin</strong>，实现了<strong>InvocationHandler</strong>接口。</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901163645793.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220901163645793"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901163645793.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220901163645793"></p>
 <p>使用Plugin生成代理对象，代理对象在调用方法的时候，就会进入invoke方法，在invoke方法中，如果存在签名的拦截方法，插件的intercept方法就会在这里被我们调用，然后就返回结果。如果不存在签名方法，那么将直接反射调用我们要执行的方法。</p>
 <h3 id="如何编写一个插件？"><a href="#如何编写一个插件？" class="headerlink" title="如何编写一个插件？"></a>如何编写一个插件？</h3><p>我们自己编写MyBatis 插件，只需要实现拦截器接又 Interceptor (org.apache.ibatis. pluginInterceptor ），在实现类中对拦截对象和方法进行处理。</p>
 <ul>
@@ -1127,7 +1127,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <p><strong>2.在mybatis主配置文件中配置分页插件：</strong></p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/2600280-20220303161626997-395362475.png" srcset="/weiblog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/2600280-20220303161626997-395362475.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="img"></p>
 <p><strong>分页插件使用：</strong></p>
 <p>　　使用mybatis的分页插件实现分页功能：</p>
 <p>　　　　1.需要在查询功能之前开启分页</p>
@@ -1161,7 +1161,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
 <p>　　emps：表示分页数据</p>
 <p>　　5：表示当前导航分页的数量</p>
 <p>​        运行结果：</p>
-<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/2600280-20220303163713816-2112457012.png" srcset="/weiblog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/weiblog/img/%E9%9D%A2%E8%AF%95-Mybatis/2600280-20220303163713816-2112457012.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="img"></p>
 <p>显示第二页，一页4条数据</p>
 <p>结果具体分析：</p>
 <p>PageInfo{pageNum=2, pageSize=4, size=4, startRow=5, endRow=8, total=11, pages=3, list=Page{count=true, pageNum=2, pageSize=4, startRow=4, endRow=8, total=11, pages=3, reasonable=false, pageSizeZero=false}prePage=1, nextPage=3, isFirstPage=false, isLastPage=false, hasPreviousPage=true, hasNextPage=true, navigatePages=5, navigateFirstPage=1, navigateLastPage=3, navigatepageNums=[1, 2, 3]}</p>
@@ -1251,7 +1251,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
     
       <span class="category-chain">
         
-  <a href="/weiblog/categories/%E9%9D%A2%E8%AF%95/" class="category-chain-item">面试</a>
+  <a href="/WeiShao-996/categories/%E9%9D%A2%E8%AF%95/" class="category-chain-item">面试</a>
   
   
 
@@ -1266,7 +1266,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/weiblog/tags/%E9%9D%A2%E8%AF%95/">#面试</a>
+        <a href="/WeiShao-996/tags/%E9%9D%A2%E8%AF%95/">#面试</a>
       
     </div>
   
@@ -1279,7 +1279,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
   <div class="license-box my-3">
     <div class="license-title">
       <div>面试-Mybatis</div>
-      <div>https://weishao996.gitee.io/weiblog/2022/08/31/面试-Mybatis/</div>
+      <div>https://weishao-996.github.io/2022/08/31/面试-Mybatis/</div>
     </div>
     <div class="license-meta">
       
@@ -1321,7 +1321,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/weiblog/2022/09/02/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" title="面试-Java并发编程">
+                      <a href="/WeiShao-996/2022/09/02/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" title="面试-Java并发编程">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">面试-Java并发编程</span>
                         <span class="visible-mobile">上一篇</span>
@@ -1331,7 +1331,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
                   <article class="post-next col-6">
                     
                     
-                      <a href="/weiblog/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/" title="软件安装-JDK">
+                      <a href="/WeiShao-996/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/" title="软件安装-JDK">
                         <span class="hidden-mobile">软件安装-JDK</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -1384,7 +1384,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
     
       
       
-        <a href="/weiblog/2022/09/06/%E9%9D%A2%E8%AF%95-Java%E5%9F%BA%E7%A1%80/" title="面试-Java基础"
+        <a href="/WeiShao-996/2022/09/06/%E9%9D%A2%E8%AF%95-Java%E5%9F%BA%E7%A1%80/" title="面试-Java基础"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">面试-Java基础</span>
@@ -1393,7 +1393,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
     
       
       
-        <a href="/weiblog/2022/09/12/%E9%9D%A2%E8%AF%95-Java%E5%AE%B9%E5%99%A8/" title="面试-Java容器"
+        <a href="/WeiShao-996/2022/09/12/%E9%9D%A2%E8%AF%95-Java%E5%AE%B9%E5%99%A8/" title="面试-Java容器"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">面试-Java容器</span>
@@ -1402,7 +1402,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
     
       
       
-        <a href="/weiblog/2022/09/02/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" title="面试-Java并发编程"
+        <a href="/WeiShao-996/2022/09/02/%E9%9D%A2%E8%AF%95-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" title="面试-Java并发编程"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">面试-Java并发编程</span>
@@ -1411,7 +1411,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
     
       
       
-        <a href="/weiblog/2022/08/31/%E9%9D%A2%E8%AF%95-Mybatis/" title="面试-Mybatis"
+        <a href="/WeiShao-996/2022/08/31/%E9%9D%A2%E8%AF%95-Mybatis/" title="面试-Mybatis"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">面试-Mybatis</span>
@@ -1420,7 +1420,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
     
       
       
-        <a href="/weiblog/2022/09/08/%E9%9D%A2%E8%AF%95-MySQL/" title="面试-Mysql"
+        <a href="/WeiShao-996/2022/09/08/%E9%9D%A2%E8%AF%95-MySQL/" title="面试-Mysql"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">面试-Mysql</span>
@@ -1429,7 +1429,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
     
       
       
-        <a href="/weiblog/2022/08/29/%E9%9D%A2%E8%AF%95-Spring/" title="面试-Spring"
+        <a href="/WeiShao-996/2022/08/29/%E9%9D%A2%E8%AF%95-Spring/" title="面试-Spring"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">面试-Spring</span>
@@ -1545,8 +1545,8 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/weiblog/js/events.js" ></script>
-<script  src="/weiblog/js/plugins.js" ></script>
+<script  src="/WeiShao-996/js/events.js" ></script>
+<script  src="/WeiShao-996/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -1568,7 +1568,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
 
 
   
-    <script  src="/weiblog/js/img-lazyload.js" ></script>
+    <script  src="/WeiShao-996/js/img-lazyload.js" ></script>
   
 
 
@@ -1642,7 +1642,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/weiblog/js/local-search.js" ></script>
+  <script  src="/WeiShao-996/js/local-search.js" ></script>
 
 
 
@@ -1650,7 +1650,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/weiblog/js/boot.js" ></script>
+<script  src="/WeiShao-996/js/boot.js" ></script>
 
 
   

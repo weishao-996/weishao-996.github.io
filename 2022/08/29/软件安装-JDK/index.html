@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/weiblog/img/fluid.png">
-  <link rel="icon" href="/weiblog/img/bg/%E5%A4%B4%E5%83%8F.jpg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/WeiShao-996/img/fluid.png">
+  <link rel="icon" href="/WeiShao-996/img/bg/%E5%A4%B4%E5%83%8F.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="基于CentOS8.2安装JDK8（压缩包下载版）下载 JDK因为Java JDK区分32位和64位系统，所以在安装之前必须先要判断以下我们的Centos系统为多少位系统，命令如下： uname -a   解释：如果有x86_64就是64位的，没有就是32位的。后面是X86或X86_64则内核是64位的，i686或i386则内核是32位的 由此可以判断我的centos为64位系统，故而我需要下载6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="软件安装-JDK">
-<meta property="og:url" content="https://weishao996.gitee.io/weiblog/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/index.html">
+<meta property="og:url" content="https://weishao-996.github.io/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/index.html">
 <meta property="og:site_name" content="WeiBlog">
 <meta property="og:description" content="基于CentOS8.2安装JDK8（压缩包下载版）下载 JDK因为Java JDK区分32位和64位系统，所以在安装之前必须先要判断以下我们的Centos系统为多少位系统，命令如下： uname -a   解释：如果有x86_64就是64位的，没有就是32位的。后面是X86或X86_64则内核是64位的，i686或i386则内核是32位的 由此可以判断我的centos为64位系统，故而我需要下载6">
 <meta property="og:locale" content="zh_CN">
@@ -63,12 +63,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/weiblog/css/main.css" />
+<link  rel="stylesheet" href="/WeiShao-996/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/weiblog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/WeiShao-996/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/weiblog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/WeiShao-996/css/highlight-dark.css" />
   
 
 
@@ -77,15 +77,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"weishao996.gitee.io","root":"/weiblog/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"Java"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/weiblog/local-search.xml"};
+    var CONFIG = {"hostname":"weishao-996.github.io","root":"/WeiShao-996/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"Java"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/WeiShao-996/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/weiblog/js/utils.js" ></script>
-  <script  src="/weiblog/js/color-schema.js" ></script>
+  <script  src="/WeiShao-996/js/utils.js" ></script>
+  <script  src="/WeiShao-996/js/color-schema.js" ></script>
   
 
 
@@ -102,7 +102,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/weiblog/">
+    <a class="navbar-brand" href="/WeiShao-996/">
       <strong>威少のBlog</strong>
     </a>
 
@@ -121,7 +121,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/weiblog/">
+              <a class="nav-link" href="/WeiShao-996/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -133,7 +133,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/weiblog/archives/">
+              <a class="nav-link" href="/WeiShao-996/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -145,7 +145,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/weiblog/categories/">
+              <a class="nav-link" href="/WeiShao-996/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -157,7 +157,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/weiblog/tags/">
+              <a class="nav-link" href="/WeiShao-996/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -169,7 +169,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/weiblog/about/">
+              <a class="nav-link" href="/WeiShao-996/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -198,7 +198,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/weiblog/img/bg/iTab-6ozkzl.jfif') no-repeat center center; background-size: cover;">
+     style="background: url('/WeiShao-996/img/bg/iTab-6ozkzl.jfif') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -278,23 +278,23 @@
                 <h1 id="基于CentOS8-2安装JDK8（压缩包下载版）"><a href="#基于CentOS8-2安装JDK8（压缩包下载版）" class="headerlink" title="基于CentOS8.2安装JDK8（压缩包下载版）"></a>基于CentOS8.2安装JDK8（压缩包下载版）</h1><h2 id="下载-JDK"><a href="#下载-JDK" class="headerlink" title="下载 JDK"></a>下载 JDK</h2><p>因为Java JDK区分32位和64位系统，所以在安装之前必须先要判断以下我们的Centos系统为多少位系统，命令如下：</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">uname</span> <span class="token parameter variable">-a</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Spring%20-%20%E5%89%AF%E6%9C%AC/image-20220929222014734.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220929222014734"></p>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Spring%20-%20%E5%89%AF%E6%9C%AC/image-20220929222014734.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220929222014734"></p>
 <p>解释：如果有<code>x86_64</code>就是64位的，没有就是32位的。后面是X86或X86_64则内核是64位的，i686或i386则内核是32位的</p>
 <p>由此可以判断我的centos为64位系统，故而我需要下载64位系统的JDK。</p>
 <p>下载JDK，地址：<a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Spring%20-%20%E5%89%AF%E6%9C%AC/image-20220929222205170.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220929222205170"></p>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Spring%20-%20%E5%89%AF%E6%9C%AC/image-20220929222205170.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220929222205170"></p>
 <h2 id="安装Java-JDK8-0"><a href="#安装Java-JDK8-0" class="headerlink" title="安装Java JDK8.0"></a>安装Java JDK8.0</h2><p>然后在Xshell中使用命令跳转到local下面创建者自己的文件夹：<code>weishao</code></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> usr/local/   
 <span class="token function">mkdir</span> weishao   
 <span class="token builtin class-name">cd</span> weishao<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <p>然后使用Xftp将jdk复制到weishao文件夹下面，如图所示：</p>
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Spring%20-%20%E5%89%AF%E6%9C%AC/image-20220929223548833.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220929223548833"></p>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Spring%20-%20%E5%89%AF%E6%9C%AC/image-20220929223548833.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220929223548833"></p>
 <p>将上传的jdk解压，解压之后重命名为jdk8，如图所示：</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> jdk-8u301-linux-x64.tar.gz
 <span class="token function">mv</span> jdk1.8.0_301 jdk8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Spring%20-%20%E5%89%AF%E6%9C%AC/image-20220930104145336.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220930104145336"></p>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Spring%20-%20%E5%89%AF%E6%9C%AC/image-20220930104145336.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220930104145336"></p>
 <p>通过上面的步骤，我们的jdk已经全部完成安装了，接下来就是更重要的一步：配置[环境变量]</p>
 <h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
@@ -314,7 +314,7 @@
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">java</span> <span class="token parameter variable">-version</span>
 <span class="token builtin class-name">echo</span> <span class="token variable">$JAVA_HOME</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Spring%20-%20%E5%89%AF%E6%9C%AC/image-20220930105059388.png" srcset="/weiblog/img/loading.gif" lazyload alt="image-20220930105059388"></p>
+<p><img src="D:/Project/weiblog/source/_posts/%E9%9D%A2%E8%AF%95-Spring%20-%20%E5%89%AF%E6%9C%AC/image-20220930105059388.png" srcset="/WeiShao-996/img/loading.gif" lazyload alt="image-20220930105059388"></p>
 <p>出现版本与环境变量了就是安装成功了。</p>
 
                 
@@ -334,7 +334,7 @@
     
       <span class="category-chain">
         
-  <a href="/weiblog/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="category-chain-item">软件安装</a>
+  <a href="/WeiShao-996/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="category-chain-item">软件安装</a>
   
   
 
@@ -349,7 +349,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/weiblog/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">#软件安装</a>
+        <a href="/WeiShao-996/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">#软件安装</a>
       
     </div>
   
@@ -362,7 +362,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>软件安装-JDK</div>
-      <div>https://weishao996.gitee.io/weiblog/2022/08/29/软件安装-JDK/</div>
+      <div>https://weishao-996.github.io/2022/08/29/软件安装-JDK/</div>
     </div>
     <div class="license-meta">
       
@@ -404,7 +404,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/weiblog/2022/08/31/%E9%9D%A2%E8%AF%95-Mybatis/" title="面试-Mybatis">
+                      <a href="/WeiShao-996/2022/08/31/%E9%9D%A2%E8%AF%95-Mybatis/" title="面试-Mybatis">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">面试-Mybatis</span>
                         <span class="visible-mobile">上一篇</span>
@@ -414,7 +414,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/weiblog/2022/08/29/%E9%9D%A2%E8%AF%95-Spring/" title="面试-Spring">
+                      <a href="/WeiShao-996/2022/08/29/%E9%9D%A2%E8%AF%95-Spring/" title="面试-Spring">
                         <span class="hidden-mobile">面试-Spring</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -467,7 +467,7 @@
     
       
       
-        <a href="/weiblog/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/" title="软件安装-JDK"
+        <a href="/WeiShao-996/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/" title="软件安装-JDK"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">软件安装-JDK</span>
@@ -583,8 +583,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/weiblog/js/events.js" ></script>
-<script  src="/weiblog/js/plugins.js" ></script>
+<script  src="/WeiShao-996/js/events.js" ></script>
+<script  src="/WeiShao-996/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -606,7 +606,7 @@
 
 
   
-    <script  src="/weiblog/js/img-lazyload.js" ></script>
+    <script  src="/WeiShao-996/js/img-lazyload.js" ></script>
   
 
 
@@ -680,7 +680,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/weiblog/js/local-search.js" ></script>
+  <script  src="/WeiShao-996/js/local-search.js" ></script>
 
 
 
@@ -688,7 +688,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/weiblog/js/boot.js" ></script>
+<script  src="/WeiShao-996/js/boot.js" ></script>
 
 
   
