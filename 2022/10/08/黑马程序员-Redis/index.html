@@ -1,0 +1,1855 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/bg/%E5%A4%B4%E5%83%8F.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Wei Shao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Redis入门问题的抛出出现的问题：  海量用户 高并发  罪魁祸首——关系型数据库：  性能瓶颈：磁盘IO性能低下 扩展瓶颈：数据关系复杂，扩展性差，不便于大规模集群  解决思路 降低磁盘IO次数，越低越好 —— 内存存储 去除数据间的关系，越简单越好 —— 不存储关系，仅存储数据  Nosql简介NoSQL：即Not-OnlySQL（泛指非关系型的数据库），作为关系型数据库的补充。 作用：应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-Redis">
+<meta property="og:url" content="https://weishao-996.github.io/2022/10/08/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/index.html">
+<meta property="og:site_name" content="WeiBlog">
+<meta property="og:description" content="Redis入门问题的抛出出现的问题：  海量用户 高并发  罪魁祸首——关系型数据库：  性能瓶颈：磁盘IO性能低下 扩展瓶颈：数据关系复杂，扩展性差，不便于大规模集群  解决思路 降低磁盘IO次数，越低越好 —— 内存存储 去除数据间的关系，越简单越好 —— 不存储关系，仅存储数据  Nosql简介NoSQL：即Not-OnlySQL（泛指非关系型的数据库），作为关系型数据库的补充。 作用：应用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221008185402254.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221008185941452.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221008190042511.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221008190110484.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/20200409191821527.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221008193222956.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221008193637593.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221008193707121.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221008194430071.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221008195132656.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221008195627422.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/20200413220259916.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652303781884.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652314848056.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652318807278.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523190155910.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523194297412.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523626646014.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221008215815344.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523647532016.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221008220123068.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200419195350115.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652943755982.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/20200420110014423.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652944831775.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652961455767.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652965719209.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529658190511.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529756430013.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/20200420131157293.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/20200420132321704.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529806574817.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529807350419.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221009174400409.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221009174553101.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221009174829031.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221009175046572.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221009204434585.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221009210540279.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010115536757.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010120957375.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010121604452.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010122116412.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010122310424.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010123927631.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010124244936.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010125149349.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010130449881.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010130013766.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010130712193.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010130827016.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010164820275.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010165103534.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010170628637.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010170643138.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010170926880.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010171723018.png">
+<meta property="og:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221010172032344.png">
+<meta property="article:published_time" content="2022-10-08T10:48:31.000Z">
+<meta property="article:modified_time" content="2022-10-10T12:18:56.288Z">
+<meta property="article:author" content="Wei Shao">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="d:/Project/weishao-996.github.io/source_posts/黑马程序员-Redis/image-20221008185402254.png">
+  
+  
+  
+  <title>黑马程序员-Redis - WeiBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.27.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"weishao-996.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"Java"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>威少のBlog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/iTab-6ozkzl.jfif') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="黑马程序员-Redis"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-08 18:48" pubdate>
+          2022年10月8日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">黑马程序员-Redis</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Redis入门"><a href="#Redis入门" class="headerlink" title="Redis入门"></a>Redis入门</h1><h2 id="问题的抛出"><a href="#问题的抛出" class="headerlink" title="问题的抛出"></a>问题的抛出</h2><p><strong>出现的问题：</strong></p>
+<ul>
+<li>海量用户</li>
+<li>高并发</li>
+</ul>
+<p><strong>罪魁祸首——关系型数据库：</strong></p>
+<ul>
+<li>性能瓶颈：磁盘IO性能低下</li>
+<li>扩展瓶颈：数据关系复杂，扩展性差，不便于大规模集群</li>
+</ul>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a><strong>解决思路</strong></h2><ul>
+<li>降低磁盘IO次数，越低越好 —— 内存存储</li>
+<li>去除数据间的关系，越简单越好 —— 不存储关系，仅存储数据</li>
+</ul>
+<h2 id="Nosql简介"><a href="#Nosql简介" class="headerlink" title="Nosql简介"></a>Nosql简介</h2><p>NoSQL：<br>即<code>Not-OnlySQL</code>（泛指非关系型的数据库），作为关系型数据库的补充。</p>
+<p>作用：<br>应用对于海量用户和海量数据前提吓得数据处理问题。</p>
+<p>特征：</p>
+<ul>
+<li>可扩容，可伸缩</li>
+<li>大数据量下得高性能</li>
+<li>灵活得数据模型</li>
+<li>高可用</li>
+</ul>
+<p>常见<code>Nosql</code>数据库：</p>
+<ul>
+<li>Redis</li>
+<li>memcache</li>
+<li>HBase</li>
+<li>MongoDB</li>
+</ul>
+<h2 id="解决方案（电商场景）"><a href="#解决方案（电商场景）" class="headerlink" title="解决方案（电商场景）"></a>解决方案（电商场景）</h2><p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221008185402254.png" srcset="/img/loading.gif" lazyload alt="image-20221008185402254"></p>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>概念：<br><code>Redis(REmote DIctinary Server)</code>是用C语言开发的一个开源的高性能键值对<code>(key-value)</code>数据库<br>特征：</p>
+<ul>
+<li><p>数据间没有必然的关联关系</p>
+</li>
+<li><p>内部采用单线程机制进行工作</p>
+</li>
+<li><p>高性能。官方提供测试数据，50个并发执行100000个请求，读的速度是110000次/s，写的速度是81000次/s。</p>
+</li>
+<li><p>多数据类型支持：<code>string（字符串类型）</code>、<code>list（列表类型）</code>、<code>hash（散列类型）</code>、<code>set（集合类型）</code>、<code>sorted_set（有序集合类型）</code></p>
+</li>
+<li><p>持久化支持。可以进行数据灾难恢复</p>
+</li>
+</ul>
+<h2 id="Redis的应用"><a href="#Redis的应用" class="headerlink" title="Redis的应用"></a>Redis的应用</h2><ul>
+<li>为热点数据加速查询（主要场景）、如热点商品、热点新闻、热点资讯、推广类等提高访问量信息等。</li>
+<li>任务队列、如秒杀、抢购、购票等</li>
+<li>即时信息查询，如各位排行榜、各类网站访问统计、公交到站信息、在线人数信息（聊天室、网站）、设备信号等</li>
+<li>时效性信息控制，如验证码控制，投票控制等</li>
+<li>分布式数据共享，如分布式集群构架中的<code>session</code>分离</li>
+<li>消息队列</li>
+<li>分布式锁</li>
+</ul>
+<h2 id="Redis的基本操作"><a href="#Redis的基本操作" class="headerlink" title="Redis的基本操作"></a>Redis的基本操作</h2><p>命令行模式工具使用思考</p>
+<ul>
+<li>功能性命令</li>
+<li>清除屏幕信息</li>
+<li>帮助信息查阅</li>
+<li>退出指令</li>
+</ul>
+<h3 id="信息添加"><a href="#信息添加" class="headerlink" title="信息添加"></a>信息添加</h3><ul>
+<li>功能：设置key,value数据</li>
+<li>命令</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">set</span> key value<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>范例</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">set</span> name itheima<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<h3 id="信息查询"><a href="#信息查询" class="headerlink" title="信息查询"></a>信息查询</h3><ul>
+<li>功能：根据key查询对应的value,如果不存在，返回空（null)</li>
+<li>命令</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">get key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>范例</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">get name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221008185941452.png" srcset="/img/loading.gif" lazyload alt="image-20221008185941452"></p>
+<h3 id="清除屏幕信息"><a href="#清除屏幕信息" class="headerlink" title="清除屏幕信息"></a>清除屏幕信息</h3><ul>
+<li>功能：清除屏幕中的信息</li>
+<li>命令</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">clear</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<h3 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h3><ul>
+<li>功能：获取命令帮助文档，获取组中所有命令信息名称</li>
+<li>命令</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">help</span> 命令名称
+<span class="token builtin class-name">help</span> @组名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221008190042511.png" srcset="/img/loading.gif" lazyload alt="image-20221008190042511"></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221008190110484.png" srcset="/img/loading.gif" lazyload alt="image-20221008190110484"></p>
+<p>推出客户端命令行模式</p>
+<ul>
+<li>功能：推出客户端</li>
+<li>命令</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">quit
+<span class="token builtin class-name">exit</span>
+<span class="token operator">&lt;</span> ESC<span class="token operator">></span><span class="token punctuation">(</span>慎用<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h1 id="Redis数据类型"><a href="#Redis数据类型" class="headerlink" title="Redis数据类型"></a>Redis数据类型</h1><h2 id="Redis数据类型-String"><a href="#Redis数据类型-String" class="headerlink" title="Redis数据类型 String"></a>Redis数据类型 String</h2><h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CJ411m7Gc?p=6">https://www.bilibili.com/video/BV1CJ411m7Gc?p=6</a></p>
+<h3 id="数据存储类型介绍"><a href="#数据存储类型介绍" class="headerlink" title="数据存储类型介绍"></a>数据存储类型介绍</h3><p>业务数据的特殊性</p>
+<p><strong>作为缓存使用</strong></p>
+<ol>
+<li>原始业务功能设计<br>秒杀<br>618活动<br>双十一活动<br>排队购票</li>
+<li>运营平台监控到的突发高频访问数据<br>突发市政要闻，被强势关注围观</li>
+<li>高频、复杂的统计数据<br>在线人数<br>投票排行榜</li>
+</ol>
+<p><strong>附加功能</strong><br>系统功能优化或升级</p>
+<ul>
+<li>单服务器升级集群</li>
+<li><code>Session</code>管理</li>
+<li><code>Token</code>管理</li>
+</ul>
+<h3 id="Redis-数据类型（5种常用）"><a href="#Redis-数据类型（5种常用）" class="headerlink" title="Redis 数据类型（5种常用）"></a>Redis 数据类型（5种常用）</h3><ul>
+<li>string –&gt; String</li>
+<li>hash –&gt; Hashmap</li>
+<li>list –&gt; LinkList</li>
+<li>set –&gt; HashSet</li>
+<li>sorted_set –&gt; TreeSet</li>
+</ul>
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p><strong>redis 数据存储格式</strong></p>
+<ul>
+<li>redis自身是一个<code>Map</code>,其中所有的数据都是采用<code>key:value</code>的形式存储</li>
+<li>数据类型指的是存储的数据的类型，也就是<code>value</code>部分的类型，<code>key</code>部分永远都是字符串</li>
+</ul>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li><strong>String 类型</strong></li>
+<li>存储的数据：单个数据，最贱的数据存储类型，也是最常用的数据存储类型</li>
+<li>存储数据的格式：一个存储空间保存一个数据</li>
+<li>存储内容：通常使用字符串，如果字符串以整数的形式展示，可以作为数字操作使用</li>
+</ul>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\20200409191821527.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="String-类型数据的基本操作"><a href="#String-类型数据的基本操作" class="headerlink" title="String 类型数据的基本操作"></a><strong>String 类型数据的基本操作</strong></h3><ul>
+<li>添加/修改数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">set</span> key value<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>获取数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">get key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>删除数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">del key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>添加/修改多个数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mset key1 valueq key2 value2 …<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>获取多个数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mget key1 key2 …<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>获取数据字符个数（字符串长度）</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">strlen key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>追加信息到原始信息后部（如果原始信息存在就追加，否则新建）</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">append key value<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221008193222956.png" srcset="/img/loading.gif" lazyload alt="image-20221008193222956"></p>
+<h3 id="String类型数据的扩展操作"><a href="#String类型数据的扩展操作" class="headerlink" title="String类型数据的扩展操作"></a>String类型数据的扩展操作</h3><p><strong>业务场景</strong><br>大型企业级应用中，分表操作是基本操作，使用多张表存储同类型数据，但是对应的主键id必须保证统一性，不能重复。Oracle数据库具有sequence设定，可以解决该问题，但是MySQL数据库并不具有类似的机制，那么如何解决？</p>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>设置数值数据增加指定范围的值</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">incr key
+incrby key increment
+incrbyfloat key increment<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>设置数值数据减少指定范围的值</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">decr key
+decrby key increment<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221008193637593.png" srcset="/img/loading.gif" lazyload alt="image-20221008193637593"></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221008193707121.png" srcset="/img/loading.gif" lazyload alt="image-20221008193707121"></p>
+<p><strong>String作为数值操作</strong></p>
+<p><code>String</code>在<code>redis</code>内部存储默认就是一个字符串，当遇到增减类操作<code>incr</code>,<code>decr</code>时会转成数值型进行计算<br><code>redis</code>所有的操作都是原子性的，采用单线程处理所有业务，命令是一个一个执行的，因此无需考虑并发带来的数据影响。<br>注意：按数值进行操作的数据，如果原始数据不能转成数值，或超过了<code>redis</code>数值上线范围，将会报错。<code>9223372036854775807</code> (java中long型数据最大值，<code>Long.MAX_VALUE</code>)</p>
+<h3 id="String-数据时效性设置"><a href="#String-数据时效性设置" class="headerlink" title="String 数据时效性设置"></a>String 数据时效性设置</h3><p><strong>业务场景</strong></p>
+<ul>
+<li><p>场景一：“最强女生”，启动海选投票，只能通过微信投票，每个微信号每4个小时只能投1票。</p>
+</li>
+<li><p>场景二：电商商家开启热门商品推荐，热门商品不能一直处于热门期，每种商品热门期维持3天，3天后自动取消热门</p>
+</li>
+<li><p>场景三：新闻网站会出现热点新闻，热点新闻最大的特征是对时效性，如何自动控制热点新闻的时效性</p>
+</li>
+</ul>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>设置数据具有指定的声明周期</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">setex key seconds value
+psetex key milliseconds value<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221008194430071.png" srcset="/img/loading.gif" lazyload alt="image-20221008194430071"></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221008195132656.png" srcset="/img/loading.gif" lazyload alt="image-20221008195132656"></p>
+<p><code>psetex</code> 和 <code>setex</code> 作用一样，都是设置过期时间，区别是：<code>psetex</code> 时间单位是毫秒，<code>setex</code> 是秒。</p>
+<p>Tips 2:</p>
+<ul>
+<li><code>redis</code> 控制数据的生命周期，通过数据是否失效控制业务行为，适用于所有具有时效性限定控制的操作</li>
+</ul>
+<h3 id="String-类型的注意事项"><a href="#String-类型的注意事项" class="headerlink" title="String 类型的注意事项"></a>String 类型的注意事项</h3><ul>
+<li><p>数据操作不成功的反馈与数据正常操作之间的差异</p>
+<ul>
+<li><p>1、表示运行结果是否成功<br> <code>（integer)0–&gt;false </code>失败<br>   <code>（integer)1–&gt;true </code>成功</p>
+</li>
+<li><p>2、表示运行结果值<br> <code>（integer)3–&gt;3 </code>3个<br>   <code>（integer)1–&gt;1 </code>1个</p>
+</li>
+</ul>
+</li>
+<li><p>数据未获取到<code>(nil）</code>等同于<code>null</code></p>
+</li>
+<li><p>数据最大存储量<code>512MB</code></p>
+</li>
+<li><p>数值计算最大范围（java中的long的最大值）</p>
+</li>
+</ul>
+<h3 id="String类型应用场景"><a href="#String类型应用场景" class="headerlink" title="String类型应用场景"></a>String类型应用场景</h3><p><strong>业务场景</strong><br>主页高频访问信息显示控制，例如新浪微博大V主页显示粉丝数与微博数量</p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221008195627422.png" srcset="/img/loading.gif" lazyload alt="image-20221008195627422"></p>
+<h3 id="key的设置约定"><a href="#key的设置约定" class="headerlink" title="key的设置约定"></a>key的设置约定</h3><p>数据库中的热点数据<code>key</code>命名惯例</p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\20200413220259916.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="Redis数据类型-Hash"><a href="#Redis数据类型-Hash" class="headerlink" title="Redis数据类型 Hash"></a>Redis数据类型 Hash</h2><h3 id="学习教程"><a href="#学习教程" class="headerlink" title="学习教程"></a>学习教程</h3><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CJ411m7Gc?p=12">https://www.bilibili.com/video/BV1CJ411m7Gc?p=12</a></p>
+<h3 id="Hash类型"><a href="#Hash类型" class="headerlink" title="Hash类型"></a>Hash类型</h3><p><strong>存储的困惑</strong><br>对象类数据的存储如果具有较为频繁的更新需求操作会显得笨重</p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652303781884.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="hash类型"><a href="#hash类型" class="headerlink" title="hash类型"></a><strong>hash类型</strong></h3><ul>
+<li>新的存储需求：对一系列存储的数据进行编组，方便管理，典型应用存储对象信息</li>
+<li>需要的内存结构：一个存储空间保存多少个键值对数据</li>
+<li><code>hash</code>类型：底层使用哈希表结构实现数据存储</li>
+</ul>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652314848056.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="hash类型数据的基本操作"><a href="#hash类型数据的基本操作" class="headerlink" title="hash类型数据的基本操作"></a>hash类型数据的基本操作</h3><ul>
+<li>添加/修改数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">hset key field value<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>获取数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hget key field
+hgetall key<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>删除数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hdel key field1 <span class="token punctuation">[</span>field2<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>添加/修改多个数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hmset key field1 value1 field2 calue2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>获取多个数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hmget key field1 field2 …<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>获取哈希表中字段的数量</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hlen key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>获取哈希表中是否存在指定的字段</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexists key field<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<h3 id="hash类型数据扩展操作"><a href="#hash类型数据扩展操作" class="headerlink" title="hash类型数据扩展操作"></a>hash类型数据扩展操作</h3><ul>
+<li>获取哈希表中所有的字段名和字段值</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hkeys key
+hvals key<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>设置指定字段的数值数据增加指定范围的值</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hincrby key field increment
+hincrbyfloat key field increment<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="hash类型数据操作的注意事项"><a href="#hash类型数据操作的注意事项" class="headerlink" title="hash类型数据操作的注意事项"></a>hash类型数据操作的注意事项</h3><ul>
+<li>hash类型下的<code>value</code>只能存储字符串，不允许存储其他类型数据，不存在嵌套现象。如果数据未获取到，对应的值为<code>(nil)</code></li>
+<li>每个<code>hash</code>可以存储<code>232-1</code>个键值对</li>
+<li><code>hash</code>类型十分贴近对象的数据存储形式，并且可以灵活添加删除对象属性。但<code>hash</code>设计初中不是为了存储大量对象而设计的，切记不可滥用，更不可以将<code>hash</code>作为对象列表使用</li>
+<li><code>hgetall</code>操作可以获取全部属性，如果内部<code>field</code>过多，遍历整体数据效率就会很低，有可能成为数据访问瓶颈</li>
+</ul>
+<h3 id="hash类型应用场景购物车"><a href="#hash类型应用场景购物车" class="headerlink" title="hash类型应用场景购物车"></a>hash类型应用场景购物车</h3><p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652318807278.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523190155910.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="Hash实现抢购"><a href="#Hash实现抢购" class="headerlink" title="Hash实现抢购"></a>Hash实现抢购</h3><p>Hash应用场景</p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523194297412.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>以商家<code>id</code>作为<code>key</code></li>
+<li>将参与抢购的商品<code>id</code>作为<code>field</code></li>
+<li>将参与抢购的商品数量作为对应的<code>value</code></li>
+<li>抢购时使用降至的方式控制产品数量</li>
+</ul>
+<h2 id="Redis数据存储-List"><a href="#Redis数据存储-List" class="headerlink" title="Redis数据存储 List"></a>Redis数据存储 List</h2><h3 id="list类型"><a href="#list类型" class="headerlink" title="list类型"></a>list类型</h3><ul>
+<li>数据存储需求：存储多个数据，并对数据进入存储空间的顺序进行区分</li>
+<li>需要的存储数据：一个存储空间保存多个数据，且通过数据可以体现进入顺序</li>
+<li>list类型：保存多个数据，底层使用双向链表存储结构实现</li>
+</ul>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523626646014.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="list类型数据基本操作"><a href="#list类型数据基本操作" class="headerlink" title="list类型数据基本操作"></a>list类型数据基本操作</h3><ul>
+<li><strong>添加/修改数据</strong></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">lpush key value1 <span class="token namespace">[value2]</span> …
+rpush key value1 <span class="token namespace">[value2]</span> …<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li><strong>获取数据</strong></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lrange key start stop
+lindex key index
+llen key<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li><strong>删除并移除数据</strong></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lpop key
+rpop key<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="list-类型数组扩展操作"><a href="#list-类型数组扩展操作" class="headerlink" title="list 类型数组扩展操作"></a><strong>list 类型数组扩展操作</strong></h3><ul>
+<li><strong>规定时间内获取并移除数据</strong></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">blpop key1 [key2] timeout
+brpop key1 [key2] timeout<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221008215815344.png" srcset="/img/loading.gif" lazyload alt="image-20221008215815344"><br>阻塞式获取，获取值如果还没有的时候可以等，如果有值就可以获取到。</p>
+<h3 id="业务场景"><a href="#业务场景" class="headerlink" title="业务场景"></a>业务场景</h3><p>微信朋友圈点赞，要求按照点赞顺序显示点赞好友信息，如果取消点赞，移除对应好友信息</p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523647532016.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li><strong>移除指定数据</strong></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lrem key count value<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221008220123068.png" srcset="/img/loading.gif" lazyload alt="image-20221008220123068"></p>
+<ul>
+<li><code>redis</code>应用于具有操作线后顺序的数据控制</li>
+</ul>
+<h3 id="list类型数据操作注意事项"><a href="#list类型数据操作注意事项" class="headerlink" title="list类型数据操作注意事项"></a>list类型数据操作注意事项</h3><ul>
+<li><code>list </code>中保存的数据都是<code>string</code>类型的，数据总容量式由西安的，最多<code>232-1</code>个元素<code>（4294967295）</code></li>
+<li>list具有索引的概念，但是操作数据时候通常以队列的形式进行入队出队操作，或以栈的形式进入栈出栈的操作</li>
+<li>获取全部数据操作结束索引设置为<code>-1</code></li>
+<li><code>list</code> 可以对数据进行分页操作，通过第一页的信息来自<code>list</code>，第2页及更多的信息通过数据库的形式加载</li>
+</ul>
+<h3 id="list类型应用场景"><a href="#list类型应用场景" class="headerlink" title="list类型应用场景"></a>list类型应用场景</h3><p><strong>业务场景</strong></p>
+<ul>
+<li><p>twitter、新浪微博、腾讯微博中个人用于的关注列表需要按照用户的关注顺序进行展示，粉丝列表需要将最近关注的粉丝列在前面</p>
+</li>
+<li><p>新闻、资讯类网站如何将最新的新闻或资讯按照发生的事件顺序展示</p>
+</li>
+<li><p>企业运营过程中，系统将产生出大量的运营数据，如何保障堕胎服务器操作日志的统一顺序输出？</p>
+<p>解决方案</p>
+</li>
+<li><p>依赖list的数据具有顺序的特征对信息进行管理</p>
+</li>
+<li><p>使用队列模型解决多路信息汇总合并的问题</p>
+</li>
+<li><p>使用栈模型解决最新消息的问题</p>
+</li>
+</ul>
+<h2 id="Redis数据类型-Set"><a href="#Redis数据类型-Set" class="headerlink" title="Redis数据类型 Set"></a>Redis数据类型 Set</h2><ul>
+<li>新的存储需求：存储大量的数据，在查询方面提供更高的效率</li>
+<li>休要的存储结构：能够保存大量的数据，搞笑的内部存储机制，便于查询</li>
+<li>set类型：与hash存储结构完全相同，仅存储键，不存储值（nil),并且值式不允许重复的</li>
+</ul>
+<h3 id="set类型数据的基本操作"><a href="#set类型数据的基本操作" class="headerlink" title="set类型数据的基本操作"></a>set类型数据的基本操作</h3><ul>
+<li>添加数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sadd key menber1 <span class="token punctuation">[</span>member2<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>获取全部数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">smembers key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>删除数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">srem key member1 <span class="token punctuation">[</span>member2<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>获取集合数据总量</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">scard key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>判断集合中是否包含指定数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sismember key member<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<h3 id="set类型数据的扩展操作"><a href="#set类型数据的扩展操作" class="headerlink" title="set类型数据的扩展操作"></a>set类型数据的扩展操作</h3><p><strong>业务场景</strong><br>每位用户首次使用进入头条时候会设置3项爱好的内容，但是后期为了增加用户的活跃度，兴趣点，必须让用户对其他信息类别逐渐产生兴趣，增加客户留存度，如何实现？</p>
+<p><strong>业务分析</strong></p>
+<ul>
+<li><p>系统分析出各个分类的最新或最热点信息条目并组织成set集合</p>
+</li>
+<li><p>随机挑选其中部分信息</p>
+</li>
+<li><p>配合用户关注信息分类中的热点信息组织展示的全信息集合</p>
+</li>
+</ul>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>随机获取集合中指定数量的数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">srandmember key <span class="token punctuation">[</span>count<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>随机获取集合中的某个数据并将该数据移出集合</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">spop key <span class="token punctuation">[</span>count<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>redis应用于随机推荐类信息检索，例如热点歌单推荐，热点新闻推荐，热点旅游线路，应用APP推荐，大V推荐等</li>
+</ul>
+<h3 id="set类型数据的扩展操作-1"><a href="#set类型数据的扩展操作-1" class="headerlink" title="set类型数据的扩展操作"></a>set类型数据的扩展操作</h3><p><strong>业务场景</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200419195350115.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>求两个集合的交、并、差集</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sinter key1 <span class="token punctuation">[</span>key2<span class="token punctuation">]</span>
+sunion key1 <span class="token punctuation">[</span>key2<span class="token punctuation">]</span>
+<span class="token function">sdiff</span> key1 <span class="token punctuation">[</span>key2<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>求两个集合的交、并、差集并存储到指定集合中</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sinterstore destination key1 <span class="token punctuation">[</span>key2<span class="token punctuation">]</span>
+sunionstore destination key1 <span class="token punctuation">[</span>key2<span class="token punctuation">]</span>
+sdiffstore destination key1 <span class="token punctuation">[</span>key2<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>将指定数据从原始集合移动到目标集合中</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">smove <span class="token builtin class-name">source</span> destination member<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li><code>redis</code>应用于同类信息的关联搜索，二度关联搜索，深度关联搜索</li>
+<li>显示共同关注（一度）</li>
+<li>显示共同好友（一度）</li>
+<li>由用户A出发，获取到好友用户B的好友信息列表（一度）</li>
+<li>由用户A出发，获取到好友用户B的购物清单列表（二度）</li>
+<li>由用户A出发，获取到好友用户B的游戏充值列表（二度）</li>
+</ul>
+<h3 id="Set类型数据操作的注意事项"><a href="#Set类型数据操作的注意事项" class="headerlink" title="Set类型数据操作的注意事项"></a>Set类型数据操作的注意事项</h3><ul>
+<li><code>set</code>类型不允许数据重复，如果添加的数据在<code>set</code>中已经存在，将只保留一份</li>
+<li><code>set</code>虽然与<code>hash</code>的存储结构相同，但是无法启用<code>hash</code>中存储值的空间</li>
+</ul>
+<p><strong>业务场景</strong></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652943755982.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>依赖set集合数据不重复的特征，依赖set集合hash存储结构特征完成数据过滤与快速查询</li>
+<li>根据用户id获取用户所有角色</li>
+<li>根据用户所有角色获取用户所有操作权限放入set集合</li>
+<li>根据用户所有觉得获取用户所有数据全选放入set集合</li>
+</ul>
+<p><strong>校验工作</strong>：redis提供基础数据还是提供校验结果<br>Tips 10:</p>
+<ul>
+<li>redis应用于同类型不重复数据的合并操作</li>
+</ul>
+<h3 id="set类型应用场景"><a href="#set类型应用场景" class="headerlink" title="set类型应用场景"></a>set类型应用场景</h3><p><strong>业务场景</strong></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\20200420110014423.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>利用set集合的数据去重特征，记录各种访问数据</li>
+<li>建立string类型数据，利用incr统计日访问量（PV)</li>
+<li>建立set模型，记录不同cookie数量（UV)</li>
+<li>建立set模型，记录不同IP数量（IP)</li>
+</ul>
+<p><strong>业务场景（黑白名单）</strong></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652944831775.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>解决方案</strong></p>
+<ul>
+<li><p>基于经营战略设定问题用户发现、鉴别规则</p>
+</li>
+<li><p>周期性更行满足规则的用户黑名单，加入set集合</p>
+</li>
+<li><p>用户行为信息达到后与黑名单进行比比对，确认行为去向</p>
+</li>
+<li><p>黑名单过滤IP地址：应用于开放游客访问权限的信息源</p>
+</li>
+<li><p>黑名单过滤设备信息：应用于限定访问设备的信息源</p>
+</li>
+<li><p>黑名单过滤用户：应用于基于访问权限的信息源</p>
+</li>
+</ul>
+<p>Tips 12:</p>
+<ul>
+<li>redis应用于基于黑名单与白名单设定的服务控制</li>
+</ul>
+<h2 id="Redis数据类型-sorted-set"><a href="#Redis数据类型-sorted-set" class="headerlink" title="Redis数据类型 sorted_set"></a>Redis数据类型 sorted_set</h2><ul>
+<li>新的存储需求：根据排序有利于数据的有效显示，需要提供一种可以根据自身特征进行排序的方式</li>
+<li>需要的存储结构：新的存储模型，可以保存可排序的数据</li>
+<li>sorted_set类型：在set的存储结构基础上添加可排序字段</li>
+</ul>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652961455767.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="sorted-set类型数据的基本操作"><a href="#sorted-set类型数据的基本操作" class="headerlink" title="sorted_set类型数据的基本操作"></a>sorted_set类型数据的基本操作</h3><ul>
+<li>添加数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zadd key score1 member1 <span class="token punctuation">[</span>score2 member2<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>获取全部数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zrange key start stop <span class="token punctuation">[</span>WITHSCORES<span class="token punctuation">]</span>
+zrevrange key start stop <span class="token punctuation">[</span>WITHSCORES<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>删除数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zrem key member <span class="token punctuation">[</span>member …<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>按条件获取数据</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zrangebyscore key min max <span class="token punctuation">[</span>WITHSCORES<span class="token punctuation">]</span> <span class="token punctuation">[</span>LIMIT<span class="token punctuation">]</span>
+zrevrangebyscore key max min <span class="token punctuation">[</span>WITHSCORES<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>条件删除</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zremrangebyrank key start stop
+zremrangebyscore key min max<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<p><strong>注意</strong>：</p>
+<ul>
+<li><p><code>min</code>与<code>max</code>用于限定搜索查询的条件</p>
+</li>
+<li><p><code>start</code>与<code>stop</code>用于限定查询范围，作用于索引，表示开始和结束索引</p>
+</li>
+<li><p><code>offset</code>与<code>count</code>用于限定查询范围，作用于查询结果，表示<code>开始位置</code>和<code>数据总量</code></p>
+</li>
+<li><p>获取集合数据总量</p>
+</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zcard key
+zcount key min max<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>集合交、并操作</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zinterstore destination numkeys key <span class="token punctuation">[</span>key …<span class="token punctuation">]</span>
+zunionstore destination numkeys key <span class="token punctuation">[</span>key …<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<p>计算给定的一个或多个有序集的交集，其中给定 <code>key</code> 的数量必须以 <code>numkeys</code> 参数指定，并将该交集(结果集)储存到 <code>destination</code> 。</p>
+<h3 id="sorted-set-类型数据的扩展操作"><a href="#sorted-set-类型数据的扩展操作" class="headerlink" title="sorted_set 类型数据的扩展操作"></a>sorted_set 类型数据的扩展操作</h3><p><strong>业务场景</strong></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652965719209.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529658190511.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>获取数据对应的索引（排名）</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zrank key member
+zrevrank key member<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>score 值获取与修改</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">zscore key member
+zincrby key increment member<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529756430013.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>Tips 13:</p>
+<ul>
+<li><code>redis </code>应用于计数器组合排序功能对应的排名</li>
+</ul>
+<h3 id="sorted-set-类型数据操作的注意事项"><a href="#sorted-set-类型数据操作的注意事项" class="headerlink" title="sorted_set 类型数据操作的注意事项"></a>sorted_set 类型数据操作的注意事项</h3><ul>
+<li><p>score 保存的数据存储空间是<code>64</code>位，如果是整数范围是</p>
+</li>
+<li><p>score保存的数据也可以是一个双精度的<code>double</code>值，基于双精度浮点数的特征，可能会丢失精度，使用时侯要慎重</p>
+</li>
+<li><p>sorted_set底层存储还是基于set结构的，因此数据不能重复，如果重复添加相同的数据，<code>score</code>值将被反复覆盖，保留最后一次修改的结果</p>
+</li>
+</ul>
+<p><strong>业务场景</strong></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\20200420131157293.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>解决方案</p>
+<ul>
+<li><p>对于基于时间线限定的任务处理，将处理时间记录位<code>score</code>值，利用排序功能区分处理的先后顺序</p>
+</li>
+<li><p>记录下一个要处理的事件，当到期后处理对应的任务，移除<code>redis</code>中的记录，并记录下一个要处理的时间</p>
+</li>
+<li><p>当新任务加入时，判定并更新当前下一个要处理的任务时间</p>
+</li>
+<li><p>为提升<code>sorted_set</code>的性能，通常将任务根据特征存储成若干个<code>sorted_set</code>.例如1小时内，1天内，年度等，操作时逐渐提升，将即将操作的若干个任务纳入到1小时内处理队列中</p>
+</li>
+<li><p>获取当前系统时间</p>
+</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">time</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p>Tips 14</p>
+<ul>
+<li><code>redis</code>应用于定时任务执行顺序管理或任务过期管理</li>
+</ul>
+<h3 id="业务场景-1"><a href="#业务场景-1" class="headerlink" title="业务场景"></a><strong>业务场景</strong></h3><p>任务/消息权重设定应用</p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\20200420132321704.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>解决方案</strong></p>
+<p>对于带有权重的任务，优先处理权重高的任务，采用<code>score</code>记录权重即可</p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529806574817.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529807350419.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>Tips 15:</li>
+<li><code>redis</code>应用于即时任务/消息队列执行管理 </li>
+</ul>
+<h2 id="数据类型实践案例"><a href="#数据类型实践案例" class="headerlink" title="数据类型实践案例"></a>数据类型实践案例</h2><p><strong>业务场景</strong></p>
+<p>人工智能领域的语义识别与自动对话将是未来服务业机器人应答呼叫体系中的重要技术，百度自研用户评价 语义识别服务，免费开放给企业试用，同时训练百度自己的模型。现对试用用户的使用行为进行限速，限制 每个用户每分钟最多发起10次调用</p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221009174400409.png" srcset="/img/loading.gif" lazyload alt="image-20221009174400409"></p>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>设计计数器，记录调用次数，用于控制业务执行次数。以用户<code>id</code>作为<code>key</code>，使用次数作为<code>value</code> </li>
+<li> 在调用前获取次数，判断是否超过限定次数 不超过次数的情况下，每次调用<code>计数+1</code> 业务调用失败，<code>计数-1 </code></li>
+<li>为计数器设置生命周期为指定周期，例如<code>1秒/分钟</code>，自动清空周期内使用次数</li>
+</ul>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221009174553101.png" srcset="/img/loading.gif" lazyload alt="image-20221009174553101"></p>
+<p><strong>解决方案改良</strong></p>
+<ul>
+<li>取消最大值的判定，利用<code>incr</code>操作超过最大值抛出异常的形式替代每次判断是否大于最大值 </li>
+<li>判断是否为<code>nil</code>， 如果是，设置为Max-次数 如果不是，计数+1 业务调用失败，计数-1 </li>
+<li>遇到异常即+操作超过上限，视为使用达到上限</li>
+</ul>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221009174829031.png" srcset="/img/loading.gif" lazyload alt="image-20221009174829031"></p>
+<p><strong>业务场景</strong></p>
+<p>使用微信的过程中，当微信接收消息后，会默认将最近接收的消息置顶，当多个好友及关注的订阅号同时发 送消息时，该排序会不停的进行交替。同时还可以将重要的会话设置为置顶。一旦用户离线后，再次打开微 信时，消息该按照什么样的顺序显示？</p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221009175046572.png" srcset="/img/loading.gif" lazyload alt="image-20221009175046572"></p>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>依赖list的数据具有顺序的特征对消息进行管理，将list结构作为栈使用 </li>
+<li>对置顶与普通会话分别创建独立的list分别管理 </li>
+<li>当某个list中接收到用户消息后，将消息发送方的id从list的一侧加入list（此处设定左侧） </li>
+<li>多个相同id发出的消息反复入栈会出现问题，在入栈之前无论是否具有当前id对应的消息，先删除对应id </li>
+<li>推送消息时先推送置顶会话list，再推送普通会话list，推送完成的list清除所有数据 </li>
+<li>消息的数量，也就是微信用户对话数量采用计数器的思想另行记录，伴随list操作同步更新</li>
+</ul>
+<p><strong>Tips 17：</strong> </p>
+<ul>
+<li> redis 应用于基于时间顺序的数据操作，而不关注具体时间</li>
+</ul>
+<h3 id="解决方案列表"><a href="#解决方案列表" class="headerlink" title="解决方案列表"></a>解决方案列表</h3><ul>
+<li>Tips 1：redis用于控制数据库表主键id，为数据库表主键提供生成策略，保障数据库表的主键唯一性 </li>
+<li>Tips 2：redis 控制数据的生命周期，通过数据是否失效控制业务行为，适用于所有具有时效性限定控制的操作 </li>
+<li>Tips 3：redis应用于各种结构型和非结构型高热度数据访问加速 </li>
+<li>Tips 4：redis 应用于购物车数据存储设计 </li>
+<li>Tips 5：redis 应用于抢购，限购类、限量发放优惠卷、激活码等业务的数据存储设计 </li>
+<li>Tips 6：redis 应用于具有操作先后顺序的数据控制 </li>
+<li>Tips 7：redis 应用于最新消息展示 </li>
+<li>Tips 8：redis 应用于随机推荐类信息检索，例如热点歌单推荐，热点新闻推荐，热卖旅游线路，应用APP推荐，大V推荐等 </li>
+<li>Tips 9：redis 应用于同类信息的关联搜索，二度关联搜索，深度关联搜索 </li>
+<li>Tips 10：redis 应用于同类型不重复数据的合并、取交集操作 </li>
+<li>Tips 11：redis 应用于同类型数据的快速去重 </li>
+<li>Tips 12：redis 应用于基于黑名单与白名单设定的服务控制 </li>
+<li>Tips 13：redis 应用于计数器组合排序功能对应的排名 </li>
+<li>Tips 14：redis 应用于定时任务执行顺序管理或任务过期管理 </li>
+<li>Tips 15：redis 应用于及时任务/消息队列执行管理 </li>
+<li>Tips 16：redis 应用于按次结算的服务控制 </li>
+<li>Tips 17：redis 应用于基于时间顺序的数据操作，而不关注具体时间</li>
+</ul>
+<h1 id="Redis通用指令"><a href="#Redis通用指令" class="headerlink" title="Redis通用指令"></a>Redis通用指令</h1><h2 id="key通用指令"><a href="#key通用指令" class="headerlink" title="key通用指令"></a>key通用指令</h2><h3 id="key-特征"><a href="#key-特征" class="headerlink" title="key 特征"></a><strong>key 特征</strong></h3><p>key是一个字符串，通过<code>key</code>获取<code>redis</code>中保存的数据</p>
+<p><strong>key应该设计哪些操作？</strong></p>
+<ul>
+<li>对于key自身状态的相关操作，例如：删除，判定存在，获取类型等 </li>
+<li>对于key有效性控制相关操作，例如：有效期设定，判定是否有效，有效状态的切换等 </li>
+<li>对于key快速查询操作，例如：按指定策略查询key </li>
+<li>……</li>
+</ul>
+<h3 id="key-基本操作"><a href="#key-基本操作" class="headerlink" title="key 基本操作"></a>key 基本操作</h3><h4 id="删除指定key"><a href="#删除指定key" class="headerlink" title="删除指定key"></a><strong>删除指定key</strong></h4><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">del key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> <span class="token function">del</span> string
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> get string
+<span class="token punctuation">(</span>nil<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h4 id="获取key是否存在"><a href="#获取key是否存在" class="headerlink" title="获取key是否存在"></a><strong>获取key是否存在</strong></h4><figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">exists key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> exists list1
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<h4 id="获取key的类型"><a href="#获取key的类型" class="headerlink" title="获取key的类型"></a><strong>获取key的类型</strong></h4><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">type</span> key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> <span class="token function">type</span> list1
+list<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="key-扩展操作（时效性控制）"><a href="#key-扩展操作（时效性控制）" class="headerlink" title="key 扩展操作（时效性控制）"></a>key 扩展操作（时效性控制）</h3><h4 id="为指定key设置有效期"><a href="#为指定key设置有效期" class="headerlink" title="为指定key设置有效期"></a><strong>为指定key设置有效期</strong></h4><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">expire key seconds
+pexpire key milliseconds
+expireat key timestamp
+pexpireat key milliseconds-timestamp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> expire name 10
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> get name
+<span class="token string">"weiwshao"</span>
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> get name
+<span class="token punctuation">(</span>nil<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> expireat name 1665310700
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> get name
+<span class="token string">"weishao"</span>
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> time
+1<span class="token punctuation">)</span> <span class="token string">"1665310693"</span>
+2<span class="token punctuation">)</span> <span class="token string">"637763"</span>
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> get name
+<span class="token string">"weishao"</span>
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> get name
+<span class="token punctuation">(</span>nil<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><code>EXPIREAT</code> 的作用和 <code>EXPIRE</code> 类似，都用于为 <code>key</code> 设置生存时间。不同在于 <code>EXPIREAT</code> 命令接受的时间参数是 UNIX 时间戳(unix timestamp)。</p>
+<h4 id="获取key的有效时间"><a href="#获取key的有效时间" class="headerlink" title="获取key的有效时间"></a><strong>获取key的有效时间</strong></h4><figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">ttl key
+pttl key<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> <span class="token function">set</span> name weishao
+OK
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> ttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token operator">-</span>1
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> expire name 10
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> ttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 7
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> ttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 3
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> pttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token operator">-</span>2
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> <span class="token function">set</span> name weishao
+OK
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> pttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token operator">-</span>1
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> expire name 10
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> pttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 7061
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> pttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token operator">-</span>2
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>当 <code>key</code> 不存在时，返回 <code>-2</code> 。</li>
+<li>当 <code>key</code> 存在但没有设置剩余生存时间时，返回 <code>-1</code> 。</li>
+<li>否则，以毫秒为单位，返回 <code>key</code> 的剩余生存时间。</li>
+</ul>
+<h4 id="切换key从时效性转换为永久性"><a href="#切换key从时效性转换为永久性" class="headerlink" title="切换key从时效性转换为永久性"></a><strong>切换key从时效性转换为永久性</strong></h4><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">persist key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> expire name 10
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> ttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 7
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> persist name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> ttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token operator">-</span>1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="key-扩展操作（查询模式）"><a href="#key-扩展操作（查询模式）" class="headerlink" title="key 扩展操作（查询模式）"></a>key 扩展操作（查询模式）</h3><h4 id="查询key"><a href="#查询key" class="headerlink" title="查询key"></a><strong>查询key</strong></h4><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">keys pattern<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p><strong>查询模式规则</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">* 匹配任意数量的任意符号 ? 配合一个任意符号 <span class="token punctuation">[</span><span class="token punctuation">]</span> 匹配一个指定符号
+keys * 查询所有
+keys it* 查询所有以it开头
+keys *heima 查询所有以heima结尾
+keys ??heima 查询所有前面两个字符任意，后面以heima结尾
+keys user:? 查询所有以user:开头，最后一个字符任意
+keys u<span class="token punctuation">[</span>st<span class="token punctuation">]</span>er:1 查询所有以u开头，以er:1结尾，中间包含一个字母，s或t<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h4 id="key-其他操作"><a href="#key-其他操作" class="headerlink" title="key 其他操作"></a><strong>key 其他操作</strong></h4><h5 id="为key改名"><a href="#为key改名" class="headerlink" title="为key改名"></a>为key改名</h5><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">rename key newkey
+renamenx key newkey<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> <span class="token function">set</span> name weishao
+OK
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> rename name name2
+OK
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379>
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> get name2
+<span class="token string">"weishao"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> get name2
+<span class="token string">"weishao"</span>
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> <span class="token function">set</span> name3 123
+OK
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> renamenx name2 name3
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>当且仅当 <code>newkey</code> 不存在时，将 <code>key</code> 改名为 <code>newkey</code> 。</p>
+<p>当 <code>key</code> 不存在时，返回一个错误。</p>
+<p>修改成功时，返回 <code>1</code> ； 如果 <code>newkey</code> 已经存在，返回 <code>0</code> 。</p>
+<h5 id="对所有key排序"><a href="#对所有key排序" class="headerlink" title="对所有key排序"></a>对所有key排序</h5><figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token function">sort</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">127.0.0.1:6379&gt; lrange list2 0 -1
+1) &quot;8&quot;
+2) &quot;6&quot;
+3) &quot;2&quot;
+4) &quot;4&quot;
+5) &quot;3&quot;
+6) &quot;6&quot;
+127.0.0.1:6379&gt; sort list2
+1) &quot;2&quot;
+2) &quot;3&quot;
+3) &quot;4&quot;
+4) &quot;6&quot;
+5) &quot;6&quot;
+6) &quot;8&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h5 id="其他key通用操作"><a href="#其他key通用操作" class="headerlink" title="其他key通用操作"></a>其他key通用操作</h5><figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">help @generic<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<h2 id="数据库通用指令"><a href="#数据库通用指令" class="headerlink" title="数据库通用指令"></a>数据库通用指令</h2><h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a><strong>数据库</strong></h3><h4 id="key-的重复问题"><a href="#key-的重复问题" class="headerlink" title="key 的重复问题"></a><strong>key 的重复问题</strong></h4><ul>
+<li><code>key</code>是由程序员定义的 </li>
+<li><code>redis</code>在使用过程中，伴随着操作数据量的增加，会出现大量的数据以及对应的<code>key </code></li>
+<li>数据不区分种类、类别混杂在一起，极易出现重复或冲突</li>
+</ul>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a><strong>解决方案</strong></h4><ul>
+<li>redis为每个服务提供有16个数据库，编号从0到15 </li>
+<li>每个数据库之间的数据相互独立</li>
+</ul>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221009204434585.png" srcset="/img/loading.gif" lazyload alt="image-20221009204434585"></p>
+<h3 id="db-基本操作"><a href="#db-基本操作" class="headerlink" title="db 基本操作"></a>db 基本操作</h3><h4 id="切换数据库"><a href="#切换数据库" class="headerlink" title="切换数据库"></a>切换数据库</h4><figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token function">select</span> index<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> <span class="token function">select</span> 1
+OK
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379<span class="token punctuation">[</span>1<span class="token punctuation">]</span>><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h4 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h4><figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">quit
+ping
+<span class="token function">echo</span> message<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> ping
+PONG<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<p>使用客户端向 Redis 服务器发送一个 <code>PING</code> ，如果服务器运作正常的话，会返回一个 <code>PONG</code> 。通常用于测试与服务器的连接是否仍然生效，或者用于测量延迟值。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">127.0.0.1:6379&gt; echo 123
+&quot;123&quot;
+127.0.0.1:6379&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>打印一个特定的信息 <code>message</code> ，测试时使用。</p>
+<h3 id="db-相关操作"><a href="#db-相关操作" class="headerlink" title="db 相关操作"></a>db 相关操作</h3><h4 id="数据移动"><a href="#数据移动" class="headerlink" title="数据移动"></a>数据移动</h4><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">move key db<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> <span class="token function">move</span> name2 1
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> exists name2
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 0
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> <span class="token function">select</span> 1
+OK
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379<span class="token punctuation">[</span>1<span class="token punctuation">]</span>> keys <span class="token operator">*</span>
+1<span class="token punctuation">)</span> <span class="token string">"name2"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h4 id="数据清除"><a href="#数据清除" class="headerlink" title="数据清除"></a>数据清除</h4><figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">dbsize
+flushdb
+flushall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379<span class="token punctuation">[</span>1<span class="token punctuation">]</span>> dbsize
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<p>返回当前数据库的 key 的数量。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> dbsize
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 16
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> flushdb
+OK
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> dbsize
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>清空当前数据库中的所有 key。此命令从不失败。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> dbsize
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 0
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> <span class="token function">select</span> 1
+OK
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379<span class="token punctuation">[</span>1<span class="token punctuation">]</span>> dbsize
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379<span class="token punctuation">[</span>1<span class="token punctuation">]</span>> <span class="token function">select</span> 0
+OK
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> flushall
+OK
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> <span class="token function">select</span> 1
+OK
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379<span class="token punctuation">[</span>1<span class="token punctuation">]</span>> dbsize
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>清空整个 <code>Redis</code> 服务器的数据(删除所有数据库的所有<code> key</code> )。此命令从不失败。</p>
+<h1 id="Jedis"><a href="#Jedis" class="headerlink" title="Jedis"></a>Jedis</h1><h2 id="Jedis简介"><a href="#Jedis简介" class="headerlink" title="Jedis简介"></a>Jedis简介</h2><h3 id="编程语言与redis"><a href="#编程语言与redis" class="headerlink" title="编程语言与redis"></a>编程语言与redis</h3><p><code>Java</code>语言连接<code>redis</code>服务 <code>Jedis</code></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221009210540279.png" srcset="/img/loading.gif" lazyload alt="image-20221009210540279"></p>
+<ul>
+<li><p>Java语言连接redis服务 </p>
+<ul>
+<li><p>Jedis </p>
+</li>
+<li><p>SpringData Redis </p>
+</li>
+<li><p>Lettuce </p>
+</li>
+</ul>
+</li>
+<li><p>C 、C++ 、C# 、Erlang、Lua 、Objective-C 、Perl 、PHP 、Python 、Ruby 、Scala </p>
+</li>
+<li><p>可视化连接redis客户端 </p>
+<ul>
+<li><p>Redis Desktop Manager </p>
+</li>
+<li><p>Redis Client </p>
+</li>
+<li><p>Redis Studi</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="HelloWorld（Jedis版）"><a href="#HelloWorld（Jedis版）" class="headerlink" title="HelloWorld（Jedis版）"></a>HelloWorld（Jedis版）</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
+<li><strong>jar包导入</strong> </li>
+</ul>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://mvnrepository.com/artifact/redis.clients/jedis">https://mvnrepository.com/artifact/redis.clients/jedis</a></p>
+<ul>
+<li><strong>基于maven</strong></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>junit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>junit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>4.12<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="客户端连接redis"><a href="#客户端连接redis" class="headerlink" title="客户端连接redis"></a>客户端连接redis</h3><h4 id="连接redis"><a href="#连接redis" class="headerlink" title="连接redis"></a><strong>连接redis</strong></h4><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Jedis</span> jedis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Jedis</span><span class="token punctuation">(</span><span class="token string">"localhost"</span><span class="token punctuation">,</span> <span class="token number">6379</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<h4 id="操作redis"><a href="#操作redis" class="headerlink" title="操作redis"></a><strong>操作redis</strong></h4><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">jedis<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"itheima"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<h4 id="关闭redis连接"><a href="#关闭redis连接" class="headerlink" title="关闭redis连接"></a><strong>关闭redis连接</strong></h4><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<h4 id="API文档"><a href="#API文档" class="headerlink" title="API文档"></a>API文档</h4><p><a target="_blank" rel="noopener" href="http://xetorthio.github.io/jedis/">http://xetorthio.github.io/jedis/</a></p>
+<h3 id="Jedis读写redis数据"><a href="#Jedis读写redis数据" class="headerlink" title="Jedis读写redis数据"></a>Jedis读写redis数据</h3><h4 id="案例：服务调用次数控制"><a href="#案例：服务调用次数控制" class="headerlink" title="案例：服务调用次数控制"></a><strong>案例：服务调用次数控制</strong></h4><p>人工智能领域的语义识别与自动对话将是未来服务业机器人应答呼叫体系中的重要技术，百度自研用户评 价语义识别服务，免费开放给企业试用，同时训练百度自己的模型。现对试用用户的使用行为进行限速， 限制每个用户每分钟最多发起10次调用</p>
+<ul>
+<li><p><strong>案例要求</strong> </p>
+<ul>
+<li><p>① 设定A、B、C三个用户 </p>
+</li>
+<li><p>② A用户限制10次/分调用，B用户限制30次/分调用，C用户不限制</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="案例：需求分析"><a href="#案例：需求分析" class="headerlink" title="案例：需求分析"></a><strong>案例：需求分析</strong></h4><ul>
+<li>① 设定一个服务方法，用于模拟实际业务调用的服务，内部采用打印模拟调用 </li>
+<li>② 在业务调用前服务调用控制单元，内部使用redis进行控制，参照之前的方案 </li>
+<li>③ 对调用超限使用异常进行控制，异常处理设定为打印提示信息 </li>
+<li>④ 主程序启动3个线程，分别表示3种不同用户的调用</li>
+</ul>
+<h4 id="案例：实现步骤"><a href="#案例：实现步骤" class="headerlink" title="案例：实现步骤"></a><strong>案例：实现步骤</strong></h4><ol>
+<li><strong>设定业务方法</strong></li>
+</ol>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">void</span> <span class="token function">business</span><span class="token punctuation">(</span><span class="token class-name">String</span> id<span class="token punctuation">,</span><span class="token keyword">long</span> num<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+ <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"用户"</span><span class="token operator">+</span>id<span class="token operator">+</span><span class="token string">"发起业务调用，当前第"</span><span class="token operator">+</span>num<span class="token operator">+</span><span class="token string">"次"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<ol start="2">
+<li><strong>设定多线类，模拟用户调用</strong></li>
+</ol>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+     <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+     	jd<span class="token punctuation">.</span><span class="token function">service</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     	<span class="token comment">//模拟调用间隔，设定为1.x秒</span>
+         <span class="token keyword">try</span><span class="token punctuation">&#123;</span>
+             <span class="token class-name">Random</span> r <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+             <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token operator">+</span> r<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token punctuation">&#125;</span><span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+             e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+         <span class="token punctuation">&#125;</span>
+     <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<ol start="3">
+<li><strong>设计redis控制方案</strong></li>
+</ol>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">void</span> <span class="token function">service</span><span class="token punctuation">(</span><span class="token class-name">String</span> id<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+     <span class="token class-name">Jedis</span> jedis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Jedis</span><span class="token punctuation">(</span><span class="token string">"localhost"</span><span class="token punctuation">,</span> <span class="token number">6379</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token class-name">String</span> value <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"compid:"</span> <span class="token operator">+</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token comment">//判定是否具有调用计数控制，利用异常进行控制处理</span>
+     <span class="token keyword">if</span><span class="token punctuation">(</span>value <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+         <span class="token comment">//没有控制，创建控制计数器</span>
+         jedis<span class="token punctuation">.</span><span class="token function">setex</span><span class="token punctuation">(</span><span class="token string">"compid:"</span> <span class="token operator">+</span> id<span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token class-name">Long</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+         <span class="token comment">//有控制，自增，并调用业务</span>
+         <span class="token keyword">try</span><span class="token punctuation">&#123;</span>
+         	<span class="token class-name">Long</span> val <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">incr</span><span class="token punctuation">(</span><span class="token string">"compid:"</span><span class="token operator">+</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+         	<span class="token function">business</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span><span class="token number">10</span><span class="token operator">+</span>val<span class="token operator">-</span><span class="token class-name">Long</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token punctuation">&#125;</span><span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">JedisDataException</span> e<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+         <span class="token comment">//调用次数溢出，弹出提示</span>
+         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"用户："</span><span class="token operator">+</span>id<span class="token operator">+</span><span class="token string">"使用次数已达到上限，请稍后再试，或升级VIP会员"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token keyword">return</span><span class="token punctuation">;</span>
+     <span class="token punctuation">&#125;</span><span class="token keyword">finally</span><span class="token punctuation">&#123;</span>
+     	jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     	<span class="token punctuation">&#125;</span>
+     <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<ol start="4">
+<li><strong>设计启动主程序</strong></li>
+</ol>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+     <span class="token class-name">MyThread</span> t1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyThread</span><span class="token punctuation">(</span><span class="token string">"初级用户"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     t1<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>后续1：对业务控制方案进行改造，设定不同用户等级的判定 </p>
+<p>后续2：将不同用户等级对应的信息、限制次数等设定到redis中，使用hash保存</p>
+<h2 id="基于连接池获取连接"><a href="#基于连接池获取连接" class="headerlink" title="基于连接池获取连接"></a>基于连接池获取连接</h2><p>JedisPool：Jedis提供的连接池技术 </p>
+<ul>
+<li><code>poolConfig</code>:连接池配置对象 </li>
+<li><code>host</code>:redis服务地址 </li>
+<li><code>port</code>:redis服务端口号</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">JedisPool</span><span class="token punctuation">(</span><span class="token class-name">GenericObjectPoolConfig</span> poolConfig<span class="token punctuation">,</span> <span class="token class-name">String</span> host<span class="token punctuation">,</span> <span class="token keyword">int</span> port<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+ <span class="token keyword">this</span><span class="token punctuation">(</span>poolConfig<span class="token punctuation">,</span> host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="封装连接参数"><a href="#封装连接参数" class="headerlink" title="封装连接参数"></a>封装连接参数</h3><ul>
+<li><strong>jedis.properties</strong></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">jedis.host</span><span class="token punctuation">=</span><span class="token value attr-value">localhost</span>
+<span class="token key attr-name">jedis.port</span><span class="token punctuation">=</span><span class="token value attr-value">6379</span>
+<span class="token key attr-name">jedis.maxTotal</span><span class="token punctuation">=</span><span class="token value attr-value">30</span>
+<span class="token key attr-name">jedis.maxIdle</span><span class="token punctuation">=</span><span class="token value attr-value">10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="加载配置信息"><a href="#加载配置信息" class="headerlink" title="加载配置信息"></a>加载配置信息</h3><ul>
+<li>静态代码块初始化资源</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">static</span><span class="token punctuation">&#123;</span>
+ <span class="token comment">//读取配置文件 获得参数值</span>
+ <span class="token class-name">ResourceBundle</span> rb <span class="token operator">=</span> <span class="token class-name">ResourceBundle</span><span class="token punctuation">.</span><span class="token function">getBundle</span><span class="token punctuation">(</span><span class="token string">"jedis"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ host <span class="token operator">=</span> rb<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"jedis.host"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ port <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>rb<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"jedis.port"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ maxTotal <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>rb<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"jedis.maxTotal"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ maxIdle <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>rb<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"jedis.maxIdle"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ poolConfig <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JedisPoolConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ poolConfig<span class="token punctuation">.</span><span class="token function">setMaxTotal</span><span class="token punctuation">(</span>maxTotal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ poolConfig<span class="token punctuation">.</span><span class="token function">setMaxIdle</span><span class="token punctuation">(</span>maxIdle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ jedisPool <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JedisPool</span><span class="token punctuation">(</span>poolConfig<span class="token punctuation">,</span>host<span class="token punctuation">,</span>port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="获取连接"><a href="#获取连接" class="headerlink" title="获取连接"></a>获取连接</h3><ul>
+<li>对外访问接口，提供<code>jedis</code>连接对象，连接从连接池获取</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Jedis</span> <span class="token function">getJedis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+     <span class="token class-name">Jedis</span> jedis <span class="token operator">=</span> jedisPool<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token keyword">return</span> jedis<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="可视化客户端"><a href="#可视化客户端" class="headerlink" title="可视化客户端"></a>可视化客户端</h2><p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010115536757.png" srcset="/img/loading.gif" lazyload alt="image-20221010115536757"></p>
+<h1 id="Redis-安装"><a href="#Redis-安装" class="headerlink" title="Redis 安装"></a>Redis 安装</h1><h2 id="基于Linux环境安装Redis"><a href="#基于Linux环境安装Redis" class="headerlink" title="基于Linux环境安装Redis"></a>基于Linux环境安装Redis</h2><ul>
+<li><h3 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a><strong>下载安装包</strong></h3></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> http://download.redis.io/releases/redis-?.?.?.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010120957375.png" srcset="/img/loading.gif" lazyload alt="image-20221010120957375"></p>
+<ul>
+<li><strong>解压</strong></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> –xvf 文件名.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010121604452.png" srcset="/img/loading.gif" lazyload alt="image-20221010121604452"></p>
+<ul>
+<li><strong>编译</strong> </li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010122116412.png" srcset="/img/loading.gif" lazyload alt="image-20221010122116412"></p>
+<ul>
+<li><strong>安装</strong></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token function">install</span> <span class="token punctuation">[</span>destdir<span class="token operator">=</span>/目录<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010122310424.png" srcset="/img/loading.gif" lazyload alt="image-20221010122310424"></p>
+<h2 id="指定端口启动服务"><a href="#指定端口启动服务" class="headerlink" title="指定端口启动服务"></a>指定端口启动服务</h2><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">redis-server –-port <span class="token number">6380</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010123927631.png" srcset="/img/loading.gif" lazyload alt="image-20221010123927631"></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010124244936.png" srcset="/img/loading.gif" lazyload alt="image-20221010124244936"></p>
+<h2 id="指定配置文件启动"><a href="#指定配置文件启动" class="headerlink" title="指定配置文件启动"></a>指定配置文件启动</h2><p><strong>删除配置文件 注释信息和无用空白并保存至新的配置文件<code>redis-6379</code>文件中</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> redis.conf <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-v</span> <span class="token string">"#"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-v</span> <span class="token string">"^$"</span> <span class="token operator">></span> redis-6379.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010125149349.png" srcset="/img/loading.gif" lazyload alt="image-20221010125149349"></p>
+<p><strong>新建日志保存位置，并获取路径</strong></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010130449881.png" srcset="/img/loading.gif" lazyload alt="image-20221010130449881"></p>
+<p><strong>修改配置<code>redis-6379</code>文件保存必要配置</strong></p>
+<p><strong>基本配置</strong> </p>
+<ul>
+<li>daemonize yes <ul>
+<li>以守护进程方式启动，使用本启动方式，redis将以服务的形式存在，日志将不再打印到命令窗口中 </li>
+</ul>
+</li>
+<li>port 6<ul>
+<li>设定当前服务启动端口号</li>
+</ul>
+</li>
+<li>dir “/自定义目录/redis/data“ <ul>
+<li>设定当前服务文件保存位置，包含日志文件、持久化文件（后面详细讲解）等</li>
+</ul>
+</li>
+<li>logfile 6***.log<ul>
+<li>设定日志文件名，便于查阅</li>
+</ul>
+</li>
+</ul>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010130013766.png" srcset="/img/loading.gif" lazyload alt="image-20221010130013766"></p>
+<p><strong>指定配置文件<code>redis-6379.conf</code>启动</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">redis-server redis-6379.conf <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010130712193.png" srcset="/img/loading.gif" lazyload alt="image-20221010130712193"></p>
+<p><strong>查看redis是否启动完成</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-ef</span> <span class="token operator">|</span> <span class="token function">grep</span> redis-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010130827016.png" srcset="/img/loading.gif" lazyload alt="image-20221010130827016"></p>
+<h2 id="配置文件启动目录管理"><a href="#配置文件启动目录管理" class="headerlink" title="配置文件启动目录管理"></a>配置文件启动目录管理</h2><p><strong>创建配置目录，并将配置文件放入目录内</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">[root@hecs-33111 redis-7.0.5]# mkdir conf
+[root@hecs-33111 redis-7.0.5]# mv redis-6379.conf conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<p><strong>以指定目录下的配置及文件启动redis</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@hecs-33111 redis-7.0.5<span class="token punctuation">]</span><span class="token comment"># redis-server conf/redis-6379.conf</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p><strong>同时启动两个不同端口的redis</strong></p>
+<ul>
+<li><strong>复制配置文件并修改</strong></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">cp redis-6379.conf redis-6380.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010164820275.png" srcset="/img/loading.gif" lazyload alt="image-20221010164820275"></p>
+<ul>
+<li><strong>同时启动两个服务</strong></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@hecs-33111 redis-7.0.5<span class="token punctuation">]</span><span class="token comment"># redis-server conf/redis-6380.conf</span>
+<span class="token punctuation">[</span>root@hecs-33111 redis-7.0.5<span class="token punctuation">]</span><span class="token comment"># redis-server conf/redis-6379.conf</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010165103534.png" srcset="/img/loading.gif" lazyload alt="image-20221010165103534"></p>
+<h1 id="Redis持久化"><a href="#Redis持久化" class="headerlink" title="Redis持久化"></a>Redis持久化</h1><h2 id="持久化简介"><a href="#持久化简介" class="headerlink" title="持久化简介"></a>持久化简介</h2><p><strong>意外的断电</strong></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010170628637.png" srcset="/img/loading.gif" lazyload alt="image-20221010170628637"></p>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010170643138.png" srcset="/img/loading.gif" lazyload alt="image-20221010170643138"></p>
+<p><strong>什么是持久化</strong></p>
+<p>利用永久性存储介质将数据进行保存，在特定的时间将保存的数据进行恢复的工作机制称为持久化。</p>
+<p><strong>为什么要进行持久化</strong></p>
+<p>防止数据的意外丢失，确保数据安全性</p>
+<p><strong>持久化过程保存什么</strong></p>
+<ul>
+<li>将当前数据状态进行保存，快照形式，存储数据结果，存储格式简单，关注点在数据 </li>
+<li>将数据的操作过程进行保存，日志形式，存储操作过程，存储格式复杂，关注点在数据的操作过程</li>
+</ul>
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010170926880.png" srcset="/img/loading.gif" lazyload alt="image-20221010170926880"></p>
+<h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><h3 id="RDB启动方式-——-save指令"><a href="#RDB启动方式-——-save指令" class="headerlink" title="RDB启动方式 —— save指令"></a>RDB启动方式 —— save指令</h3><p><strong>命令</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p>作用 手动执行一次保存操作</p>
+<p><strong>演示</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token namespace">[root@hecs-33111 redis-7.0.5]</span><span class="token comment"># redis-cli -p 6379</span>
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> 
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> 
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> 
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> save
+OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010171723018.png" srcset="/img/loading.gif" lazyload alt="image-20221010171723018"></p>
+<ul>
+<li><strong>添加数据观察rdb文件变化</strong></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> <span class="token function">set</span> name weishao
+OK
+127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> save
+OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="D:\Project\weishao-996.github.io\source_posts\黑马程序员-Redis\image-20221010172032344.png" srcset="/img/loading.gif" lazyload alt="image-20221010172032344"></p>
+<h3 id="RDB启动方式-——-save指令相关配置"><a href="#RDB启动方式-——-save指令相关配置" class="headerlink" title="RDB启动方式 —— save指令相关配置"></a>RDB启动方式 —— save指令相关配置</h3><ul>
+<li><strong>dbfilename dump.rdb</strong> <ul>
+<li>说明：设置本地数据库文件名，默认值为 dump.rdb </li>
+<li>经验：通常设置为<code>dump-端口号.rdb </code></li>
+</ul>
+</li>
+<li><strong>dir</strong> <ul>
+<li>说明：设置存储.rdb文件的路径 </li>
+<li>经验：通常设置成存储空间较大的目录中，目录名称<code>data </code></li>
+</ul>
+</li>
+<li><strong>rdbcompression yes</strong> <ul>
+<li>说明：设置存储至本地数据库时是否压缩数据，默认为<code> yes</code>，采用 <code>LZF</code> 压缩 </li>
+<li>经验：通常默认为开启状态，如果设置为no，可以节省 CPU 运行时间，但会使存储的文件变大（巨大）</li>
+</ul>
+</li>
+<li><strong>rdbchecksum yes</strong> <ul>
+<li>说明：设置是否进行<code>RDB</code>文件格式校验，该校验过程在写文件和读文件过程均进行 </li>
+<li>经验：通常默认为开启状态，如果设置为<code>no</code>，可以节约读写性过程约<code>10%</code>时间消耗，但是存储一定的数据损坏风险</li>
+</ul>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/" class="category-chain-item">Redis</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>黑马程序员-Redis</div>
+      <div>https://weishao-996.github.io/2022/10/08/黑马程序员-Redis/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Wei Shao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年10月8日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/14/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="面试-计算机网络">
+                        <span class="hidden-mobile">面试-计算机网络</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.27.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
