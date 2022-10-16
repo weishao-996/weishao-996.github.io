@@ -23,95 +23,95 @@
 <meta property="og:site_name" content="WeiBlog">
 <meta property="og:description" content="Redis 入门问题的抛出出现的问题：  海量用户 高并发  罪魁祸首——关系型数据库：  性能瓶颈：磁盘IO性能低下 扩展瓶颈：数据关系复杂，扩展性差，不便于大规模集群  解决思路 降低磁盘IO次数，越低越好 —— 内存存储 去除数据间的关系，越简单越好 —— 不存储关系，仅存储数据  Nosql简介NoSQL：即Not-OnlySQL（泛指非关系型的数据库），作为关系型数据库的补充。 作用：应">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008185402254.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008185941452.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008190042511.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008190110484.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200409191821527.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193222956.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193637593.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193707121.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008194430071.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008195132656.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008195627422.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200413220259916.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652303781884.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652314848056.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652318807278.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523190155910.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523194297412.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523626646014.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008215815344.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523647532016.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008220123068.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008185402254.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008185941452.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008190042511.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008190110484.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200409191821527.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193222956.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193637593.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193707121.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008194430071.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008195132656.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008195627422.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200413220259916.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652303781884.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652314848056.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652318807278.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523190155910.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523194297412.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523626646014.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008215815344.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523647532016.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008220123068.png">
 <meta property="og:image" content="https://./img-blog.csdnimg.cn/20200419195350115.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652943755982.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420110014423.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652944831775.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652961455767.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652965719209.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529658190511.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529756430013.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420131157293.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420132321704.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529806574817.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529807350419.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174400409.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174553101.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174829031.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009175046572.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009204434585.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009210540279.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010115536757.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010120957375.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010121604452.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010122116412.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010122310424.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010123927631.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010124244936.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010125149349.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130449881.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130013766.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130712193.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130827016.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010164820275.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010165103534.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170628637.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170643138.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170926880.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010171723018.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010172032344.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211312492.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211455930.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211925344.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212001633.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212159279.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212520404.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010215027206.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010215129772.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011141609019.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142127323.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142306626.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142546510.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142827574.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011152156869.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011164116974.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100201807.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011165301074.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100448914.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100544751.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012102219574.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012102721225.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155613605.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155656032.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155840377.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012160408015.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161432189.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161628529.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161728903.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012165810588.png">
-<meta property="og:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012181836503.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652943755982.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420110014423.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652944831775.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652961455767.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652965719209.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529658190511.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529756430013.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420131157293.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420132321704.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529806574817.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529807350419.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174400409.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174553101.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174829031.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009175046572.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009204434585.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009210540279.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010115536757.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010120957375.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010121604452.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010122116412.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010122310424.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010123927631.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010124244936.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010125149349.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130449881.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130013766.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130712193.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130827016.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010164820275.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010165103534.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170628637.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170643138.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170926880.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010171723018.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010172032344.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211312492.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211455930.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211925344.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212001633.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212159279.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212520404.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010215027206.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010215129772.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011141609019.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142127323.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142306626.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142546510.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142827574.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011152156869.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011164116974.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100201807.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011165301074.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100448914.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100544751.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012102219574.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012102721225.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155613605.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155656032.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155840377.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012160408015.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161432189.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161628529.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161728903.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012165810588.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012181836503.png">
 <meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221013125505629.png">
 <meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221013131128283.png">
 <meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221013144136576.png">
@@ -133,10 +133,10 @@
 <meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221014162507268.png">
 <meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221014162532151.png">
 <meta property="article:published_time" content="2022-10-08T10:48:31.000Z">
-<meta property="article:modified_time" content="2022-10-14T10:57:53.199Z">
+<meta property="article:modified_time" content="2022-10-16T04:24:27.366Z">
 <meta property="article:author" content="Wei Shao">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://weishao-996.github.io/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008185402254.png">
+<meta name="twitter:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008185402254.png">
   
   
   
@@ -408,7 +408,7 @@
 <li>HBase</li>
 <li>MongoDB</li>
 </ul>
-<h2 id="解决方案（电商场景）"><a href="#解决方案（电商场景）" class="headerlink" title="解决方案（电商场景）"></a>解决方案（电商场景）</h2><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008185402254.png" srcset="/img/loading.gif" lazyload alt="image-20221008185402254"></p>
+<h2 id="解决方案（电商场景）"><a href="#解决方案（电商场景）" class="headerlink" title="解决方案（电商场景）"></a>解决方案（电商场景）</h2><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008185402254.png" srcset="/img/loading.gif" lazyload alt="image-20221008185402254"></p>
 <h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>概念：<br><code>Redis(REmote DIctinary Server)</code>是用C语言开发的一个开源的高性能键值对<code>(key-value)</code>数据库<br>特征：</p>
 <ul>
 <li><p>数据间没有必然的关联关系</p>
@@ -460,7 +460,7 @@
 </ul>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">get name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008185941452.png" srcset="/img/loading.gif" lazyload alt="image-20221008185941452"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008185941452.png" srcset="/img/loading.gif" lazyload alt="image-20221008185941452"></p>
 <h3 id="清除屏幕信息"><a href="#清除屏幕信息" class="headerlink" title="清除屏幕信息"></a>清除屏幕信息</h3><ul>
 <li>功能：清除屏幕中的信息</li>
 <li>命令</li>
@@ -474,8 +474,8 @@
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">help</span> 命令名称
 <span class="token builtin class-name">help</span> @组名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008190042511.png" srcset="/img/loading.gif" lazyload alt="image-20221008190042511"></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008190110484.png" srcset="/img/loading.gif" lazyload alt="image-20221008190110484"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008190042511.png" srcset="/img/loading.gif" lazyload alt="image-20221008190042511"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008190110484.png" srcset="/img/loading.gif" lazyload alt="image-20221008190110484"></p>
 <p>推出客户端命令行模式</p>
 <ul>
 <li>功能：推出客户端</li>
@@ -511,14 +511,14 @@
 <li>redis自身是一个<code>Map</code>,其中所有的数据都是采用<code>key:value</code>的形式存储</li>
 <li>数据类型指的是存储的数据的类型，也就是<code>value</code>部分的类型，<code>key</code>部分永远都是字符串</li>
 </ul>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <ul>
 <li><strong>String 类型</strong></li>
 <li>存储的数据：单个数据，最贱的数据存储类型，也是最常用的数据存储类型</li>
 <li>存储数据的格式：一个存储空间保存一个数据</li>
 <li>存储内容：通常使用字符串，如果字符串以整数的形式展示，可以作为数字操作使用</li>
 </ul>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200409191821527.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200409191821527.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h3 id="String-类型数据的基本操作"><a href="#String-类型数据的基本操作" class="headerlink" title="String 类型数据的基本操作"></a><strong>String 类型数据的基本操作</strong></h3><ul>
 <li>添加/修改数据</li>
 </ul>
@@ -554,7 +554,7 @@
 </ul>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">append key value<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193222956.png" srcset="/img/loading.gif" lazyload alt="image-20221008193222956"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193222956.png" srcset="/img/loading.gif" lazyload alt="image-20221008193222956"></p>
 <h3 id="String类型数据的扩展操作"><a href="#String类型数据的扩展操作" class="headerlink" title="String类型数据的扩展操作"></a>String类型数据的扩展操作</h3><p><strong>业务场景</strong><br>大型企业级应用中，分表操作是基本操作，使用多张表存储同类型数据，但是对应的主键id必须保证统一性，不能重复。Oracle数据库具有sequence设定，可以解决该问题，但是MySQL数据库并不具有类似的机制，那么如何解决？</p>
 <p><strong>解决方案</strong></p>
 <ul>
@@ -570,8 +570,8 @@ incrbyfloat key increment<span aria-hidden="true" class="line-numbers-rows"><spa
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">decr key
 decrby key increment<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193637593.png" srcset="/img/loading.gif" lazyload alt="image-20221008193637593"></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193707121.png" srcset="/img/loading.gif" lazyload alt="image-20221008193707121"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193637593.png" srcset="/img/loading.gif" lazyload alt="image-20221008193637593"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193707121.png" srcset="/img/loading.gif" lazyload alt="image-20221008193707121"></p>
 <p><strong>String作为数值操作</strong></p>
 <p><code>String</code>在<code>redis</code>内部存储默认就是一个字符串，当遇到增减类操作<code>incr</code>,<code>decr</code>时会转成数值型进行计算<br><code>redis</code>所有的操作都是原子性的，采用单线程处理所有业务，命令是一个一个执行的，因此无需考虑并发带来的数据影响。<br>注意：按数值进行操作的数据，如果原始数据不能转成数值，或超过了<code>redis</code>数值上线范围，将会报错。<code>9223372036854775807</code> (java中long型数据最大值，<code>Long.MAX_VALUE</code>)</p>
 <h3 id="String-数据时效性设置"><a href="#String-数据时效性设置" class="headerlink" title="String 数据时效性设置"></a>String 数据时效性设置</h3><p><strong>业务场景</strong></p>
@@ -590,8 +590,8 @@ decrby key increment<span aria-hidden="true" class="line-numbers-rows"><span></s
 <figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">setex key seconds value
 psetex key milliseconds value<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008194430071.png" srcset="/img/loading.gif" lazyload alt="image-20221008194430071"></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008195132656.png" srcset="/img/loading.gif" lazyload alt="image-20221008195132656"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008194430071.png" srcset="/img/loading.gif" lazyload alt="image-20221008194430071"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008195132656.png" srcset="/img/loading.gif" lazyload alt="image-20221008195132656"></p>
 <p><code>psetex</code> 和 <code>setex</code> 作用一样，都是设置过期时间，区别是：<code>psetex</code> 时间单位是毫秒，<code>setex</code> 是秒。</p>
 <p>Tips 2:</p>
 <ul>
@@ -614,18 +614,18 @@ psetex key milliseconds value<span aria-hidden="true" class="line-numbers-rows">
 </li>
 </ul>
 <h3 id="String类型应用场景"><a href="#String类型应用场景" class="headerlink" title="String类型应用场景"></a>String类型应用场景</h3><p><strong>业务场景</strong><br>主页高频访问信息显示控制，例如新浪微博大V主页显示粉丝数与微博数量</p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008195627422.png" srcset="/img/loading.gif" lazyload alt="image-20221008195627422"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008195627422.png" srcset="/img/loading.gif" lazyload alt="image-20221008195627422"></p>
 <h3 id="key的设置约定"><a href="#key的设置约定" class="headerlink" title="key的设置约定"></a>key的设置约定</h3><p>数据库中的热点数据<code>key</code>命名惯例</p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200413220259916.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200413220259916.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h2 id="Redis数据类型-Hash"><a href="#Redis数据类型-Hash" class="headerlink" title="Redis数据类型 Hash"></a>Redis数据类型 Hash</h2><h3 id="学习教程"><a href="#学习教程" class="headerlink" title="学习教程"></a>学习教程</h3><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CJ411m7Gc?p=12">https://www.bilibili.com/video/BV1CJ411m7Gc?p=12</a></p>
 <h3 id="Hash类型"><a href="#Hash类型" class="headerlink" title="Hash类型"></a>Hash类型</h3><p><strong>存储的困惑</strong><br>对象类数据的存储如果具有较为频繁的更新需求操作会显得笨重</p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652303781884.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652303781884.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h3 id="hash类型"><a href="#hash类型" class="headerlink" title="hash类型"></a><strong>hash类型</strong></h3><ul>
 <li>新的存储需求：对一系列存储的数据进行编组，方便管理，典型应用存储对象信息</li>
 <li>需要的内存结构：一个存储空间保存多少个键值对数据</li>
 <li><code>hash</code>类型：底层使用哈希表结构实现数据存储</li>
 </ul>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652314848056.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652314848056.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h3 id="hash类型数据的基本操作"><a href="#hash类型数据的基本操作" class="headerlink" title="hash类型数据的基本操作"></a>hash类型数据的基本操作</h3><ul>
 <li>添加/修改数据</li>
 </ul>
@@ -680,10 +680,10 @@ hincrbyfloat key field increment<span aria-hidden="true" class="line-numbers-row
 <li><code>hash</code>类型十分贴近对象的数据存储形式，并且可以灵活添加删除对象属性。但<code>hash</code>设计初中不是为了存储大量对象而设计的，切记不可滥用，更不可以将<code>hash</code>作为对象列表使用</li>
 <li><code>hgetall</code>操作可以获取全部属性，如果内部<code>field</code>过多，遍历整体数据效率就会很低，有可能成为数据访问瓶颈</li>
 </ul>
-<h3 id="hash类型应用场景购物车"><a href="#hash类型应用场景购物车" class="headerlink" title="hash类型应用场景购物车"></a>hash类型应用场景购物车</h3><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652318807278.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523190155910.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="hash类型应用场景购物车"><a href="#hash类型应用场景购物车" class="headerlink" title="hash类型应用场景购物车"></a>hash类型应用场景购物车</h3><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652318807278.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523190155910.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h3 id="Hash实现抢购"><a href="#Hash实现抢购" class="headerlink" title="Hash实现抢购"></a>Hash实现抢购</h3><p>Hash应用场景</p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523194297412.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523194297412.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><strong>解决方案</strong></p>
 <ul>
 <li>以商家<code>id</code>作为<code>key</code></li>
@@ -696,7 +696,7 @@ hincrbyfloat key field increment<span aria-hidden="true" class="line-numbers-row
 <li>需要的存储数据：一个存储空间保存多个数据，且通过数据可以体现进入顺序</li>
 <li>list类型：保存多个数据，底层使用双向链表存储结构实现</li>
 </ul>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523626646014.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523626646014.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h3 id="list类型数据基本操作"><a href="#list类型数据基本操作" class="headerlink" title="list类型数据基本操作"></a>list类型数据基本操作</h3><ul>
 <li><strong>添加/修改数据</strong></li>
 </ul>
@@ -722,15 +722,15 @@ rpop key<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">blpop key1 [key2] timeout
 brpop key1 [key2] timeout<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008215815344.png" srcset="/img/loading.gif" lazyload alt="image-20221008215815344"><br>阻塞式获取，获取值如果还没有的时候可以等，如果有值就可以获取到。</p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008215815344.png" srcset="/img/loading.gif" lazyload alt="image-20221008215815344"><br>阻塞式获取，获取值如果还没有的时候可以等，如果有值就可以获取到。</p>
 <h3 id="业务场景"><a href="#业务场景" class="headerlink" title="业务场景"></a>业务场景</h3><p>微信朋友圈点赞，要求按照点赞顺序显示点赞好友信息，如果取消点赞，移除对应好友信息</p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523647532016.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523647532016.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <ul>
 <li><strong>移除指定数据</strong></li>
 </ul>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lrem key count value<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008220123068.png" srcset="/img/loading.gif" lazyload alt="image-20221008220123068"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008220123068.png" srcset="/img/loading.gif" lazyload alt="image-20221008220123068"></p>
 <ul>
 <li><code>redis</code>应用于具有操作线后顺序的数据控制</li>
 </ul>
@@ -845,7 +845,7 @@ sdiffstore destination key1 <span class="token punctuation">[</span>key2<span cl
 <li><code>set</code>虽然与<code>hash</code>的存储结构相同，但是无法启用<code>hash</code>中存储值的空间</li>
 </ul>
 <p><strong>业务场景</strong></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652943755982.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652943755982.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><strong>解决方案</strong></p>
 <ul>
 <li>依赖set集合数据不重复的特征，依赖set集合hash存储结构特征完成数据过滤与快速查询</li>
@@ -858,7 +858,7 @@ sdiffstore destination key1 <span class="token punctuation">[</span>key2<span cl
 <li>redis应用于同类型不重复数据的合并操作</li>
 </ul>
 <h3 id="set类型应用场景"><a href="#set类型应用场景" class="headerlink" title="set类型应用场景"></a>set类型应用场景</h3><p><strong>业务场景</strong></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420110014423.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420110014423.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><strong>解决方案</strong></p>
 <ul>
 <li>利用set集合的数据去重特征，记录各种访问数据</li>
@@ -867,7 +867,7 @@ sdiffstore destination key1 <span class="token punctuation">[</span>key2<span cl
 <li>建立set模型，记录不同IP数量（IP)</li>
 </ul>
 <p><strong>业务场景（黑白名单）</strong></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652944831775.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652944831775.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><strong>解决方案</strong></p>
 <ul>
 <li><p>基于经营战略设定问题用户发现、鉴别规则</p>
@@ -892,7 +892,7 @@ sdiffstore destination key1 <span class="token punctuation">[</span>key2<span cl
 <li>需要的存储结构：新的存储模型，可以保存可排序的数据</li>
 <li>sorted_set类型：在set的存储结构基础上添加可排序字段</li>
 </ul>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652961455767.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652961455767.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h3 id="sorted-set类型数据的基本操作"><a href="#sorted-set类型数据的基本操作" class="headerlink" title="sorted_set类型数据的基本操作"></a>sorted_set类型数据的基本操作</h3><ul>
 <li>添加数据</li>
 </ul>
@@ -943,8 +943,8 @@ zunionstore destination numkeys key <span class="token punctuation">[</span>key 
 
 <p>计算给定的一个或多个有序集的交集，其中给定 <code>key</code> 的数量必须以 <code>numkeys</code> 参数指定，并将该交集(结果集)储存到 <code>destination</code> 。</p>
 <h3 id="sorted-set-类型数据的扩展操作"><a href="#sorted-set-类型数据的扩展操作" class="headerlink" title="sorted_set 类型数据的扩展操作"></a>sorted_set 类型数据的扩展操作</h3><p><strong>业务场景</strong></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652965719209.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529658190511.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652965719209.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529658190511.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><strong>解决方案</strong></p>
 <ul>
 <li>获取数据对应的索引（排名）</li>
@@ -958,7 +958,7 @@ zrevrank key member<span aria-hidden="true" class="line-numbers-rows"><span></sp
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">zscore key member
 zincrby key increment member<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529756430013.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529756430013.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>Tips 13:</p>
 <ul>
 <li><code>redis </code>应用于计数器组合排序功能对应的排名</li>
@@ -972,7 +972,7 @@ zincrby key increment member<span aria-hidden="true" class="line-numbers-rows"><
 </li>
 </ul>
 <p><strong>业务场景</strong></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420131157293.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420131157293.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>解决方案</p>
 <ul>
 <li><p>对于基于时间线限定的任务处理，将处理时间记录位<code>score</code>值，利用排序功能区分处理的先后顺序</p>
@@ -993,35 +993,35 @@ zincrby key increment member<span aria-hidden="true" class="line-numbers-rows"><
 <li><code>redis</code>应用于定时任务执行顺序管理或任务过期管理</li>
 </ul>
 <h3 id="业务场景-1"><a href="#业务场景-1" class="headerlink" title="业务场景"></a><strong>业务场景</strong></h3><p>任务/消息权重设定应用</p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420132321704.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420132321704.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><strong>解决方案</strong></p>
 <p>对于带有权重的任务，优先处理权重高的任务，采用<code>score</code>记录权重即可</p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529806574817.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529807350419.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529806574817.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529807350419.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <ul>
 <li>Tips 15:</li>
 <li><code>redis</code>应用于即时任务/消息队列执行管理 </li>
 </ul>
 <h2 id="数据类型实践案例"><a href="#数据类型实践案例" class="headerlink" title="数据类型实践案例"></a>数据类型实践案例</h2><p><strong>业务场景</strong></p>
 <p>人工智能领域的语义识别与自动对话将是未来服务业机器人应答呼叫体系中的重要技术，百度自研用户评价 语义识别服务，免费开放给企业试用，同时训练百度自己的模型。现对试用用户的使用行为进行限速，限制 每个用户每分钟最多发起10次调用</p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174400409.png" srcset="/img/loading.gif" lazyload alt="image-20221009174400409"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174400409.png" srcset="/img/loading.gif" lazyload alt="image-20221009174400409"></p>
 <p><strong>解决方案</strong></p>
 <ul>
 <li>设计计数器，记录调用次数，用于控制业务执行次数。以用户<code>id</code>作为<code>key</code>，使用次数作为<code>value</code> </li>
 <li> 在调用前获取次数，判断是否超过限定次数 不超过次数的情况下，每次调用<code>计数+1</code> 业务调用失败，<code>计数-1 </code></li>
 <li>为计数器设置生命周期为指定周期，例如<code>1秒/分钟</code>，自动清空周期内使用次数</li>
 </ul>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174553101.png" srcset="/img/loading.gif" lazyload alt="image-20221009174553101"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174553101.png" srcset="/img/loading.gif" lazyload alt="image-20221009174553101"></p>
 <p><strong>解决方案改良</strong></p>
 <ul>
 <li>取消最大值的判定，利用<code>incr</code>操作超过最大值抛出异常的形式替代每次判断是否大于最大值 </li>
 <li>判断是否为<code>nil</code>， 如果是，设置为Max-次数 如果不是，计数+1 业务调用失败，计数-1 </li>
 <li>遇到异常即+操作超过上限，视为使用达到上限</li>
 </ul>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174829031.png" srcset="/img/loading.gif" lazyload alt="image-20221009174829031"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174829031.png" srcset="/img/loading.gif" lazyload alt="image-20221009174829031"></p>
 <p><strong>业务场景</strong></p>
 <p>使用微信的过程中，当微信接收消息后，会默认将最近接收的消息置顶，当多个好友及关注的订阅号同时发 送消息时，该排序会不停的进行交替。同时还可以将重要的会话设置为置顶。一旦用户离线后，再次打开微 信时，消息该按照什么样的顺序显示？</p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009175046572.png" srcset="/img/loading.gif" lazyload alt="image-20221009175046572"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009175046572.png" srcset="/img/loading.gif" lazyload alt="image-20221009175046572"></p>
 <p><strong>解决方案</strong></p>
 <ul>
 <li>依赖list的数据具有顺序的特征对消息进行管理，将list结构作为栈使用 </li>
@@ -1209,7 +1209,7 @@ OK
 <li>redis为每个服务提供有16个数据库，编号从0到15 </li>
 <li>每个数据库之间的数据相互独立</li>
 </ul>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009204434585.png" srcset="/img/loading.gif" lazyload alt="image-20221009204434585"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009204434585.png" srcset="/img/loading.gif" lazyload alt="image-20221009204434585"></p>
 <h3 id="db-基本操作"><a href="#db-基本操作" class="headerlink" title="db 基本操作"></a>db 基本操作</h3><h4 id="切换数据库"><a href="#切换数据库" class="headerlink" title="切换数据库"></a>切换数据库</h4><figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token function">select</span> index<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
 <figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> <span class="token function">select</span> 1
@@ -1273,7 +1273,7 @@ OK
 
 <p>清空整个 <code>Redis</code> 服务器的数据(删除所有数据库的所有<code> key</code> )。此命令从不失败。</p>
 <h1 id="Jedis"><a href="#Jedis" class="headerlink" title="Jedis"></a>Jedis</h1><h2 id="Jedis简介"><a href="#Jedis简介" class="headerlink" title="Jedis简介"></a>Jedis简介</h2><h3 id="编程语言与redis"><a href="#编程语言与redis" class="headerlink" title="编程语言与redis"></a>编程语言与redis</h3><p><code>Java</code>语言连接<code>redis</code>服务 <code>Jedis</code></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009210540279.png" srcset="/img/loading.gif" lazyload alt="image-20221009210540279"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009210540279.png" srcset="/img/loading.gif" lazyload alt="image-20221009210540279"></p>
 <ul>
 <li><p>Java语言连接redis服务 </p>
 <ul>
@@ -1437,41 +1437,41 @@ jedis<span class="token punctuation">.</span><span class="token function">get</s
      <span class="token keyword">return</span> jedis<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<h2 id="可视化客户端"><a href="#可视化客户端" class="headerlink" title="可视化客户端"></a>可视化客户端</h2><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010115536757.png" srcset="/img/loading.gif" lazyload alt="image-20221010115536757"></p>
+<h2 id="可视化客户端"><a href="#可视化客户端" class="headerlink" title="可视化客户端"></a>可视化客户端</h2><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010115536757.png" srcset="/img/loading.gif" lazyload alt="image-20221010115536757"></p>
 <h1 id="Redis-安装"><a href="#Redis-安装" class="headerlink" title="Redis 安装"></a>Redis 安装</h1><h2 id="基于Linux环境安装Redis"><a href="#基于Linux环境安装Redis" class="headerlink" title="基于Linux环境安装Redis"></a>基于Linux环境安装Redis</h2><ul>
 <li><h3 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a><strong>下载安装包</strong></h3></li>
 </ul>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> http://download.redis.io/releases/redis-?.?.?.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010120957375.png" srcset="/img/loading.gif" lazyload alt="image-20221010120957375"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010120957375.png" srcset="/img/loading.gif" lazyload alt="image-20221010120957375"></p>
 <ul>
 <li><strong>解压</strong></li>
 </ul>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> –xvf 文件名.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010121604452.png" srcset="/img/loading.gif" lazyload alt="image-20221010121604452"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010121604452.png" srcset="/img/loading.gif" lazyload alt="image-20221010121604452"></p>
 <ul>
 <li><strong>编译</strong> </li>
 </ul>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010122116412.png" srcset="/img/loading.gif" lazyload alt="image-20221010122116412"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010122116412.png" srcset="/img/loading.gif" lazyload alt="image-20221010122116412"></p>
 <ul>
 <li><strong>安装</strong></li>
 </ul>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span> <span class="token function">install</span> <span class="token punctuation">[</span>destdir<span class="token operator">=</span>/目录<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010122310424.png" srcset="/img/loading.gif" lazyload alt="image-20221010122310424"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010122310424.png" srcset="/img/loading.gif" lazyload alt="image-20221010122310424"></p>
 <h2 id="指定端口启动服务"><a href="#指定端口启动服务" class="headerlink" title="指定端口启动服务"></a>指定端口启动服务</h2><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">redis-server –-port <span class="token number">6380</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010123927631.png" srcset="/img/loading.gif" lazyload alt="image-20221010123927631"></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010124244936.png" srcset="/img/loading.gif" lazyload alt="image-20221010124244936"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010123927631.png" srcset="/img/loading.gif" lazyload alt="image-20221010123927631"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010124244936.png" srcset="/img/loading.gif" lazyload alt="image-20221010124244936"></p>
 <h2 id="指定配置文件启动"><a href="#指定配置文件启动" class="headerlink" title="指定配置文件启动"></a>指定配置文件启动</h2><p><strong>删除配置文件 注释信息和无用空白并保存至新的配置文件<code>redis-6379</code>文件中</strong></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> redis.conf <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-v</span> <span class="token string">"#"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-v</span> <span class="token string">"^$"</span> <span class="token operator">></span> redis-6379.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010125149349.png" srcset="/img/loading.gif" lazyload alt="image-20221010125149349"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010125149349.png" srcset="/img/loading.gif" lazyload alt="image-20221010125149349"></p>
 <p><strong>新建日志保存位置，并获取路径</strong></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130449881.png" srcset="/img/loading.gif" lazyload alt="image-20221010130449881"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130449881.png" srcset="/img/loading.gif" lazyload alt="image-20221010130449881"></p>
 <p><strong>修改配置<code>redis-6379</code>文件保存必要配置</strong></p>
 <p><strong>基本配置</strong> </p>
 <ul>
@@ -1492,15 +1492,15 @@ jedis<span class="token punctuation">.</span><span class="token function">get</s
 </ul>
 </li>
 </ul>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130013766.png" srcset="/img/loading.gif" lazyload alt="image-20221010130013766"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130013766.png" srcset="/img/loading.gif" lazyload alt="image-20221010130013766"></p>
 <p><strong>指定配置文件<code>redis-6379.conf</code>启动</strong></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">redis-server redis-6379.conf <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130712193.png" srcset="/img/loading.gif" lazyload alt="image-20221010130712193"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130712193.png" srcset="/img/loading.gif" lazyload alt="image-20221010130712193"></p>
 <p><strong>查看redis是否启动完成</strong></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-ef</span> <span class="token operator">|</span> <span class="token function">grep</span> redis-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130827016.png" srcset="/img/loading.gif" lazyload alt="image-20221010130827016"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130827016.png" srcset="/img/loading.gif" lazyload alt="image-20221010130827016"></p>
 <h2 id="配置文件启动目录管理"><a href="#配置文件启动目录管理" class="headerlink" title="配置文件启动目录管理"></a>配置文件启动目录管理</h2><p><strong>创建配置目录，并将配置文件放入目录内</strong></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">[root@hecs-33111 redis-7.0.5]# mkdir conf
 [root@hecs-33111 redis-7.0.5]# mv redis-6379.conf conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
@@ -1514,17 +1514,17 @@ jedis<span class="token punctuation">.</span><span class="token function">get</s
 </ul>
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">cp redis-6379.conf redis-6380.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010164820275.png" srcset="/img/loading.gif" lazyload alt="image-20221010164820275"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010164820275.png" srcset="/img/loading.gif" lazyload alt="image-20221010164820275"></p>
 <ul>
 <li><strong>同时启动两个服务</strong></li>
 </ul>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@hecs-33111 redis-7.0.5<span class="token punctuation">]</span><span class="token comment"># redis-server conf/redis-6380.conf</span>
 <span class="token punctuation">[</span>root@hecs-33111 redis-7.0.5<span class="token punctuation">]</span><span class="token comment"># redis-server conf/redis-6379.conf</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010165103534.png" srcset="/img/loading.gif" lazyload alt="image-20221010165103534"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010165103534.png" srcset="/img/loading.gif" lazyload alt="image-20221010165103534"></p>
 <h1 id="Redis-持久化"><a href="#Redis-持久化" class="headerlink" title="Redis 持久化"></a>Redis 持久化</h1><h2 id="持久化简介"><a href="#持久化简介" class="headerlink" title="持久化简介"></a>持久化简介</h2><p><strong>意外的断电</strong></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170628637.png" srcset="/img/loading.gif" lazyload alt="image-20221010170628637"></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170643138.png" srcset="/img/loading.gif" lazyload alt="image-20221010170643138"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170628637.png" srcset="/img/loading.gif" lazyload alt="image-20221010170628637"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170643138.png" srcset="/img/loading.gif" lazyload alt="image-20221010170643138"></p>
 <p><strong>什么是持久化</strong></p>
 <p>利用永久性存储介质将数据进行保存，在特定的时间将保存的数据进行恢复的工作机制称为持久化。</p>
 <p><strong>为什么要进行持久化</strong></p>
@@ -1534,7 +1534,7 @@ jedis<span class="token punctuation">.</span><span class="token function">get</s
 <li>将当前数据状态进行保存，快照形式，存储数据结果，存储格式简单，关注点在数据 </li>
 <li>将数据的操作过程进行保存，日志形式，存储操作过程，存储格式复杂，关注点在数据的操作过程</li>
 </ul>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170926880.png" srcset="/img/loading.gif" lazyload alt="image-20221010170926880"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170926880.png" srcset="/img/loading.gif" lazyload alt="image-20221010170926880"></p>
 <h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><h3 id="RDB启动方式-——-save指令"><a href="#RDB启动方式-——-save指令" class="headerlink" title="RDB启动方式 —— save指令"></a>RDB启动方式 —— save指令</h3><p><strong>命令</strong></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
@@ -1547,7 +1547,7 @@ jedis<span class="token punctuation">.</span><span class="token function">get</s
 127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> save
 OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010171723018.png" srcset="/img/loading.gif" lazyload alt="image-20221010171723018"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010171723018.png" srcset="/img/loading.gif" lazyload alt="image-20221010171723018"></p>
 <ul>
 <li><strong>添加数据观察rdb文件变化</strong></li>
 </ul>
@@ -1556,7 +1556,7 @@ OK
 127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> save
 OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010172032344.png" srcset="/img/loading.gif" lazyload alt="image-20221010172032344"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010172032344.png" srcset="/img/loading.gif" lazyload alt="image-20221010172032344"></p>
 <h4 id="RDB启动方式-——-save指令相关配置"><a href="#RDB启动方式-——-save指令相关配置" class="headerlink" title="RDB启动方式 —— save指令相关配置"></a>RDB启动方式 —— save指令相关配置</h4><ul>
 <li><strong>dbfilename dump.rdb</strong> <ul>
 <li>说明：设置本地数据库文件名，默认值为 dump.rdb </li>
@@ -1583,7 +1583,7 @@ OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <ul>
 <li><strong>修改配置文件</strong></li>
 </ul>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211312492.png" srcset="/img/loading.gif" lazyload alt="image-20221010211312492"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211312492.png" srcset="/img/loading.gif" lazyload alt="image-20221010211312492"></p>
 <ul>
 <li><strong>添加数据并save,观察rdb文件是否生成</strong></li>
 </ul>
@@ -1592,23 +1592,23 @@ OK
 <span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> save
 OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211455930.png" srcset="/img/loading.gif" lazyload alt="image-20221010211455930"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211455930.png" srcset="/img/loading.gif" lazyload alt="image-20221010211455930"></p>
 <p><strong>数据恢复演示</strong></p>
 <ul>
 <li><strong>关闭redis进程</strong></li>
 </ul>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211925344.png" srcset="/img/loading.gif" lazyload alt="image-20221010211925344"></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212001633.png" srcset="/img/loading.gif" lazyload alt="image-20221010212001633"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211925344.png" srcset="/img/loading.gif" lazyload alt="image-20221010211925344"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212001633.png" srcset="/img/loading.gif" lazyload alt="image-20221010212001633"></p>
 <ul>
 <li><strong>启动redis，观察是否有数据</strong></li>
 </ul>
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">[root@hecs-33111 redis-7.0.5]# redis-server conf&#x2F;redis-6379.conf <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212159279.png" srcset="/img/loading.gif" lazyload alt="image-20221010212159279"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212159279.png" srcset="/img/loading.gif" lazyload alt="image-20221010212159279"></p>
 <ul>
 <li><strong>关闭前的数据存在，持久化生效</strong></li>
 </ul>
-<h4 id="RDB启动方式-——-save指令工作原理"><a href="#RDB启动方式-——-save指令工作原理" class="headerlink" title="RDB启动方式 —— save指令工作原理"></a>RDB启动方式 —— save指令工作原理</h4><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212520404.png" srcset="/img/loading.gif" lazyload alt="image-20221010212520404"></p>
+<h4 id="RDB启动方式-——-save指令工作原理"><a href="#RDB启动方式-——-save指令工作原理" class="headerlink" title="RDB启动方式 —— save指令工作原理"></a>RDB启动方式 —— save指令工作原理</h4><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212520404.png" srcset="/img/loading.gif" lazyload alt="image-20221010212520404"></p>
 <p><strong>RDB启动方式</strong></p>
 <p><strong>数据量过大，单线程执行方式造成效率过低如何处理？</strong></p>
 <p>后台执行 </p>
@@ -1636,8 +1636,8 @@ OK
 <span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> bgsave
 Background saving started<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010215027206.png" srcset="/img/loading.gif" lazyload alt="image-20221010215027206"></p>
-<h4 id="RDB启动方式-——-bgsave指令工作原理"><a href="#RDB启动方式-——-bgsave指令工作原理" class="headerlink" title="RDB启动方式 —— bgsave指令工作原理"></a>RDB启动方式 —— bgsave指令工作原理</h4><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010215129772.png" srcset="/img/loading.gif" lazyload alt="image-20221010215129772"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010215027206.png" srcset="/img/loading.gif" lazyload alt="image-20221010215027206"></p>
+<h4 id="RDB启动方式-——-bgsave指令工作原理"><a href="#RDB启动方式-——-bgsave指令工作原理" class="headerlink" title="RDB启动方式 —— bgsave指令工作原理"></a>RDB启动方式 —— bgsave指令工作原理</h4><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010215129772.png" srcset="/img/loading.gif" lazyload alt="image-20221010215129772"></p>
 <h4 id="RDB启动方式-——-bgsave指令相关配置"><a href="#RDB启动方式-——-bgsave指令相关配置" class="headerlink" title="RDB启动方式 —— bgsave指令相关配置"></a>RDB启动方式 —— bgsave指令相关配置</h4><ul>
 <li><p> dbfilename dump.rdb </p>
 </li>
@@ -1696,12 +1696,12 @@ save <span class="token number">60</span> <span class="token number">10000</span
 
 <p><strong>演示</strong></p>
 <p>修改配置文件，并重新以配置文件启动</p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011141609019.png" srcset="/img/loading.gif" lazyload alt="image-20221011141609019"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011141609019.png" srcset="/img/loading.gif" lazyload alt="image-20221011141609019"></p>
 <p>添加数据观察<code>rdb</code>文件变化</p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142127323.png" srcset="/img/loading.gif" lazyload alt="image-20221011142127323"></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142306626.png" srcset="/img/loading.gif" lazyload alt="image-20221011142306626"></p>
-<h4 id="RDB启动方式-——save配置原理"><a href="#RDB启动方式-——save配置原理" class="headerlink" title="RDB启动方式 ——save配置原理"></a>RDB启动方式 ——save配置原理</h4><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142546510.png" srcset="/img/loading.gif" lazyload alt="image-20221011142546510"></p>
-<h3 id="RDB三种启动方式对比"><a href="#RDB三种启动方式对比" class="headerlink" title="RDB三种启动方式对比"></a>RDB三种启动方式对比</h3><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142827574.png" srcset="/img/loading.gif" lazyload alt="image-20221011142827574"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142127323.png" srcset="/img/loading.gif" lazyload alt="image-20221011142127323"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142306626.png" srcset="/img/loading.gif" lazyload alt="image-20221011142306626"></p>
+<h4 id="RDB启动方式-——save配置原理"><a href="#RDB启动方式-——save配置原理" class="headerlink" title="RDB启动方式 ——save配置原理"></a>RDB启动方式 ——save配置原理</h4><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142546510.png" srcset="/img/loading.gif" lazyload alt="image-20221011142546510"></p>
+<h3 id="RDB三种启动方式对比"><a href="#RDB三种启动方式对比" class="headerlink" title="RDB三种启动方式对比"></a>RDB三种启动方式对比</h3><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142827574.png" srcset="/img/loading.gif" lazyload alt="image-20221011142827574"></p>
 <h3 id="RDB特殊启动形式"><a href="#RDB特殊启动形式" class="headerlink" title="RDB特殊启动形式"></a>RDB特殊启动形式</h3><ul>
 <li><strong>全量复制</strong></li>
 </ul>
@@ -1743,7 +1743,7 @@ save <span class="token number">60</span> <span class="token number">10000</span
 <li> <code>AOF</code>(append only file)持久化：以独立日志的方式记录每次写命令，重启时再重新执行<code>AOF</code>文件中命令 达到恢复数据的目的。与<code>RDB</code>相比可以简单描述为改记录数据为记录数据产生的过程 </li>
 <li> <code>AOF</code>的主要作用是解决了数据持久化的实时性，目前已经是<code>Redis</code>持久化的主流方式</li>
 </ul>
-<h3 id="AOF写数据过程"><a href="#AOF写数据过程" class="headerlink" title="AOF写数据过程"></a>AOF写数据过程</h3><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011152156869.png" srcset="/img/loading.gif" lazyload alt="image-20221011152156869"></p>
+<h3 id="AOF写数据过程"><a href="#AOF写数据过程" class="headerlink" title="AOF写数据过程"></a>AOF写数据过程</h3><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011152156869.png" srcset="/img/loading.gif" lazyload alt="image-20221011152156869"></p>
 <h3 id="AOF写数据三种策略-appendfsync"><a href="#AOF写数据三种策略-appendfsync" class="headerlink" title="AOF写数据三种策略(appendfsync)"></a>AOF写数据三种策略(appendfsync)</h3><p> <strong>always(每次）</strong> </p>
 <p>​    每次写入操作均同步到<code>AOF</code>文件中，<code>数据零误差，性能较低 </code></p>
 <p> <strong>everysec（每秒）</strong> </p>
@@ -1763,14 +1763,14 @@ save <span class="token number">60</span> <span class="token number">10000</span
 <p>​    <code>AOF</code>持久化文件保存路径，与<code>RDB</code>持久化文件保持一致即可</p>
 <p><strong>演示</strong></p>
 <p><strong>修改配置文件，并重启服务</strong></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011164116974.png" srcset="/img/loading.gif" lazyload alt="image-20221011164116974"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011164116974.png" srcset="/img/loading.gif" lazyload alt="image-20221011164116974"></p>
 <p><strong>添加数据</strong></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token builtin class-name">set</span> age <span class="token number">55</span>
 OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100201807.png" srcset="/img/loading.gif" lazyload alt="image-20221012100201807"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100201807.png" srcset="/img/loading.gif" lazyload alt="image-20221012100201807"></p>
 <h3 id="AOF写数据遇到的问题"><a href="#AOF写数据遇到的问题" class="headerlink" title="AOF写数据遇到的问题"></a>AOF写数据遇到的问题</h3><p>如果连续执行如下指令该如何处理</p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011165301074.png" srcset="/img/loading.gif" lazyload alt="image-20221011165301074"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011165301074.png" srcset="/img/loading.gif" lazyload alt="image-20221011165301074"></p>
 <h3 id="AOF重写"><a href="#AOF重写" class="headerlink" title="AOF重写"></a>AOF重写</h3><p>随着命令不断写入<code>AOF</code>，文件会越来越大，为了解决这个问题，<code>Redis</code>引入了<code>AOF</code>重写机制压缩文件体积。<code>AOF</code>文件重 写是将<code>Redis</code>进程内的数据转化为写命令同步到新<code>AOF</code>文件的过程。简单说就是将对同一个数据的若干个条命令执行结 果转化成最终结果数据对应的指令进行记录。</p>
 <h4 id="AOF重写作用"><a href="#AOF重写作用" class="headerlink" title="AOF重写作用"></a>AOF重写作用</h4><ul>
 <li>降低磁盘占用量，提高磁盘利用率 </li>
@@ -1801,15 +1801,15 @@ OK
 <span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token builtin class-name">set</span> name <span class="token number">222</span>
 OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100448914.png" srcset="/img/loading.gif" lazyload alt="image-20221012100448914"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100448914.png" srcset="/img/loading.gif" lazyload alt="image-20221012100448914"></p>
 <ul>
 <li>手动重写</li>
 </ul>
 <figure><div class="code-wrapper"><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> BGREWRITEAOF
 Background append only file rewriting started<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100544751.png" srcset="/img/loading.gif" lazyload alt="image-20221012100544751"></p>
-<h4 id="AOF手动重写-——-bgrewriteaof指令工作原理"><a href="#AOF手动重写-——-bgrewriteaof指令工作原理" class="headerlink" title="AOF手动重写 —— bgrewriteaof指令工作原理"></a>AOF手动重写 —— bgrewriteaof指令工作原理</h4><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012102219574.png" srcset="/img/loading.gif" lazyload alt="image-20221012102219574"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100544751.png" srcset="/img/loading.gif" lazyload alt="image-20221012100544751"></p>
+<h4 id="AOF手动重写-——-bgrewriteaof指令工作原理"><a href="#AOF手动重写-——-bgrewriteaof指令工作原理" class="headerlink" title="AOF手动重写 —— bgrewriteaof指令工作原理"></a>AOF手动重写 —— bgrewriteaof指令工作原理</h4><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012102219574.png" srcset="/img/loading.gif" lazyload alt="image-20221012102219574"></p>
 <h4 id="AOF自动重写方式"><a href="#AOF自动重写方式" class="headerlink" title="AOF自动重写方式"></a>AOF自动重写方式</h4><ul>
 <li>自动重写触发条件设置</li>
 </ul>
@@ -1825,10 +1825,10 @@ aof_base_size<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 <ul>
 <li>自动重写触发条件</li>
 </ul>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012102721225.png" srcset="/img/loading.gif" lazyload alt="image-20221012102721225"></p>
-<h3 id="AOF工作流程"><a href="#AOF工作流程" class="headerlink" title="AOF工作流程"></a>AOF工作流程</h3><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155613605.png" srcset="/img/loading.gif" lazyload alt="image-20221012155613605"></p>
-<h3 id="AOF重写流程"><a href="#AOF重写流程" class="headerlink" title="AOF重写流程"></a>AOF重写流程</h3><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155656032.png" srcset="/img/loading.gif" lazyload alt="image-20221012155656032"></p>
-<h2 id="RDB-VS-AOF"><a href="#RDB-VS-AOF" class="headerlink" title="RDB VS AOF"></a>RDB VS AOF</h2><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155840377.png" srcset="/img/loading.gif" lazyload alt="image-20221012155840377"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012102721225.png" srcset="/img/loading.gif" lazyload alt="image-20221012102721225"></p>
+<h3 id="AOF工作流程"><a href="#AOF工作流程" class="headerlink" title="AOF工作流程"></a>AOF工作流程</h3><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155613605.png" srcset="/img/loading.gif" lazyload alt="image-20221012155613605"></p>
+<h3 id="AOF重写流程"><a href="#AOF重写流程" class="headerlink" title="AOF重写流程"></a>AOF重写流程</h3><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155656032.png" srcset="/img/loading.gif" lazyload alt="image-20221012155656032"></p>
+<h2 id="RDB-VS-AOF"><a href="#RDB-VS-AOF" class="headerlink" title="RDB VS AOF"></a>RDB VS AOF</h2><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155840377.png" srcset="/img/loading.gif" lazyload alt="image-20221012155840377"></p>
 <h2 id="RDB与AOF的选择之惑"><a href="#RDB与AOF的选择之惑" class="headerlink" title="RDB与AOF的选择之惑"></a>RDB与AOF的选择之惑</h2><ul>
 <li><strong>对数据非常敏感，建议使用默认的AOF持久化方案</strong> <ul>
 <li>​    <code>AOF</code>持久化策略使用<code>everysecond</code>，每秒钟<code>fsync</code>一次。该策略<code>redis</code>仍可以保持很好的处理性能，当出 现问题时，最多丢失<code>0-1</code>秒内的数据。 </li>
@@ -1849,15 +1849,15 @@ aof_base_size<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 </ul>
 </li>
 </ul>
-<h2 id="持久化应用场景"><a href="#持久化应用场景" class="headerlink" title="持久化应用场景"></a>持久化应用场景</h2><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012160408015.png" srcset="/img/loading.gif" lazyload alt="image-20221012160408015"></p>
-<h1 id="Redis-事务"><a href="#Redis-事务" class="headerlink" title="Redis 事务"></a>Redis 事务</h1><h2 id="事务简介"><a href="#事务简介" class="headerlink" title="事务简介"></a>事务简介</h2><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161432189.png" srcset="/img/loading.gif" lazyload alt="image-20221012161432189"></p>
+<h2 id="持久化应用场景"><a href="#持久化应用场景" class="headerlink" title="持久化应用场景"></a>持久化应用场景</h2><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012160408015.png" srcset="/img/loading.gif" lazyload alt="image-20221012160408015"></p>
+<h1 id="Redis-事务"><a href="#Redis-事务" class="headerlink" title="Redis 事务"></a>Redis 事务</h1><h2 id="事务简介"><a href="#事务简介" class="headerlink" title="事务简介"></a>事务简介</h2><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161432189.png" srcset="/img/loading.gif" lazyload alt="image-20221012161432189"></p>
 <p><strong>什么是事务</strong></p>
 <p>Redis执行指令过程中，多条连续执行的指令被干扰，打断，插队</p>
 <p>redis事务就是一个命令执行的队列，将一系列预定义命令包装成一个整体（一个队列）。当执行时，一次性 按照添加顺序依次执行，中间不会被打断或者干扰。</p>
 <p>一个队列中，一次性、顺序性、排他性的执行一系列命令</p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161628529.png" srcset="/img/loading.gif" lazyload alt="image-20221012161628529"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161628529.png" srcset="/img/loading.gif" lazyload alt="image-20221012161628529"></p>
 <h2 id="事务基本操作"><a href="#事务基本操作" class="headerlink" title="事务基本操作"></a>事务基本操作</h2><p><strong>事务的边界</strong></p>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161728903.png" srcset="/img/loading.gif" lazyload alt="image-20221012161728903"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161728903.png" srcset="/img/loading.gif" lazyload alt="image-20221012161728903"></p>
 <ul>
 <li><strong>开启事务</strong></li>
 </ul>
@@ -1909,7 +1909,7 @@ OK
 127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:6379> 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<h2 id="事务的工作流程"><a href="#事务的工作流程" class="headerlink" title="事务的工作流程"></a>事务的工作流程</h2><p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012165810588.png" srcset="/img/loading.gif" lazyload alt="image-20221012165810588"></p>
+<h2 id="事务的工作流程"><a href="#事务的工作流程" class="headerlink" title="事务的工作流程"></a>事务的工作流程</h2><p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012165810588.png" srcset="/img/loading.gif" lazyload alt="image-20221012165810588"></p>
 <h2 id="事务的注意事项"><a href="#事务的注意事项" class="headerlink" title="事务的注意事项"></a>事务的注意事项</h2><p><strong>定义事务的过程中，命令格式输入错误怎么办？</strong></p>
 <ul>
 <li><strong>语法错误</strong> </li>
@@ -1972,7 +1972,7 @@ QUEUED
 </ul>
 </li>
 </ul>
-<p><img src="/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012181836503.png" srcset="/img/loading.gif" lazyload alt="image-20221012181836503"></p>
+<p><img src="/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012181836503.png" srcset="/img/loading.gif" lazyload alt="image-20221012181836503"></p>
 <h1 id="Redis-锁"><a href="#Redis-锁" class="headerlink" title="Redis 锁"></a>Redis 锁</h1><h2 id="基于特定条件的事务执行——锁"><a href="#基于特定条件的事务执行——锁" class="headerlink" title="基于特定条件的事务执行——锁"></a>基于特定条件的事务执行——锁</h2><p><strong>业务场景</strong></p>
 <p>天猫双11热卖过程中，对已经售罄的货物追加补货，4个业务员都有权限进行补货。补货的操作可能是一系 列的操作，牵扯到多个连续操作，如何保障不会重复操作？</p>
 <p><strong>业务分析</strong></p>
