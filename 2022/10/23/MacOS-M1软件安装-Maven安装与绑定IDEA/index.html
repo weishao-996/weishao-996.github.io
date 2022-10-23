@@ -16,30 +16,35 @@
   <meta name="author" content="Wei Shao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基于CentOS8.2安装JDK8（压缩包下载版）下载 JDK因为Java JDK区分32位和64位系统，所以在安装之前必须先要判断以下我们的Centos系统为多少位系统，命令如下： uname -a   解释：如果有x86_64就是64位的，没有就是32位的。后面是X86或X86_64则内核是64位的，i686或i386则内核是32位的 由此可以判断我的centos为64位系统，故而我需要下载6">
+    <meta name="description" content="需要先安装好jdk  Maven下载http:&#x2F;&#x2F;maven.apache.org&#x2F;download.cgi   将解压的文件移动至制定目录下 配置环境变量vim ~&#x2F;.zshrc   激活环境变量 xuwei@xuweideMacBook-Pro local % source ~&#x2F;.zshrc   安装完成测试mvn -v   配置阿里云源&lt;mirror&gt;      &lt;id&gt;nexu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="软件安装-JDK">
-<meta property="og:url" content="https://weishao-996.github.io/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/index.html">
+<meta property="og:title" content="MacOS-M1软件安装-Maven安装与绑定IDEA">
+<meta property="og:url" content="https://weishao-996.github.io/2022/10/23/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/index.html">
 <meta property="og:site_name" content="WeiBlog">
-<meta property="og:description" content="基于CentOS8.2安装JDK8（压缩包下载版）下载 JDK因为Java JDK区分32位和64位系统，所以在安装之前必须先要判断以下我们的Centos系统为多少位系统，命令如下： uname -a   解释：如果有x86_64就是64位的，没有就是32位的。后面是X86或X86_64则内核是64位的，i686或i386则内核是32位的 由此可以判断我的centos为64位系统，故而我需要下载6">
+<meta property="og:description" content="需要先安装好jdk  Maven下载http:&#x2F;&#x2F;maven.apache.org&#x2F;download.cgi   将解压的文件移动至制定目录下 配置环境变量vim ~&#x2F;.zshrc   激活环境变量 xuwei@xuweideMacBook-Pro local % source ~&#x2F;.zshrc   安装完成测试mvn -v   配置阿里云源&lt;mirror&gt;      &lt;id&gt;nexu">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/image-20220929222014734.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/image-20220929222205170.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/image-20220929223548833.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/image-20220930104145336.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/image-20220930105059388.png">
-<meta property="article:published_time" content="2022-08-29T01:36:37.000Z">
-<meta property="article:modified_time" content="2022-10-08T06:00:42.000Z">
+<meta property="og:image" content="https://weishao-996.github.io/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023201710257.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023000756369.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023001034901.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023195252205.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023195337769.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023195428947.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023182029206.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023195704330.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023195608495.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023201248989.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023201321292.png">
+<meta property="article:published_time" content="2022-10-22T16:05:37.000Z">
+<meta property="article:modified_time" content="2022-10-23T12:17:45.198Z">
 <meta property="article:author" content="Wei Shao">
-<meta property="article:tag" content="软件安装">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://weishao-996.github.io/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/image-20220929222014734.png">
+<meta name="twitter:image" content="https://weishao-996.github.io/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023201710257.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>软件安装-JDK - WeiBlog</title>
+  <title>MacOS-M1软件安装-Maven安装与绑定IDEA - WeiBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -206,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="软件安装-JDK"></span>
+            <span id="subtitle" data-typed-text="MacOS-M1软件安装-Maven安装与绑定IDEA"></span>
           
         </div>
 
@@ -217,8 +222,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-29 09:36" pubdate>
-          2022年8月29日 上午
+        <time datetime="2022-10-23 00:05" pubdate>
+          2022年10月23日 凌晨
         </time>
       </span>
     
@@ -272,52 +277,40 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">软件安装-JDK</h1>
+            <h1 style="display: none">MacOS-M1软件安装-Maven安装与绑定IDEA</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="基于CentOS8-2安装JDK8（压缩包下载版）"><a href="#基于CentOS8-2安装JDK8（压缩包下载版）" class="headerlink" title="基于CentOS8.2安装JDK8（压缩包下载版）"></a>基于CentOS8.2安装JDK8（压缩包下载版）</h1><h2 id="下载-JDK"><a href="#下载-JDK" class="headerlink" title="下载 JDK"></a>下载 JDK</h2><p>因为Java JDK区分32位和64位系统，所以在安装之前必须先要判断以下我们的Centos系统为多少位系统，命令如下：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">uname</span> <span class="token parameter variable">-a</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+                <p><strong>需要先安装好jdk</strong></p>
+<p><img src="/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023201710257.png" srcset="/img/loading.gif" lazyload alt="image-20221023201710257"></p>
+<h1 id="Maven下载"><a href="#Maven下载" class="headerlink" title="Maven下载"></a>Maven下载</h1><p><a target="_blank" rel="noopener" href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a></p>
+<p><img src="/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023000756369.png" srcset="/img/loading.gif" lazyload alt="image-20221023000756369"></p>
+<p><img src="/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023001034901.png" srcset="/img/loading.gif" lazyload alt="image-20221023001034901"></p>
+<h1 id="将解压的文件移动至制定目录下"><a href="#将解压的文件移动至制定目录下" class="headerlink" title="将解压的文件移动至制定目录下"></a>将解压的文件移动至制定目录下</h1><p><img src="/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023195252205.png" srcset="/img/loading.gif" lazyload alt="image-20221023195252205"></p>
+<h1 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h1><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> ~/.zshrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/image-20220929222014734.png" srcset="/img/loading.gif" lazyload alt="image-20220929222014734"></p>
-<p>解释：如果有<code>x86_64</code>就是64位的，没有就是32位的。后面是X86或X86_64则内核是64位的，i686或i386则内核是32位的</p>
-<p>由此可以判断我的centos为64位系统，故而我需要下载64位系统的JDK。</p>
-<p>下载JDK，地址：<a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p>
-<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/image-20220929222205170.png" srcset="/img/loading.gif" lazyload alt="image-20220929222205170"></p>
-<h2 id="安装Java-JDK8-0"><a href="#安装Java-JDK8-0" class="headerlink" title="安装Java JDK8.0"></a>安装Java JDK8.0</h2><p>然后在Xshell中使用命令跳转到local下面创建者自己的文件夹：<code>weishao</code></p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> usr/local/   
-<span class="token function">mkdir</span> weishao   
-<span class="token builtin class-name">cd</span> weishao<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+<p><img src="/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023195337769.png" srcset="/img/loading.gif" lazyload alt="image-20221023195337769"></p>
+<p>激活环境变量</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">xuwei@xuweideMacBook-Pro <span class="token builtin class-name">local</span> % <span class="token builtin class-name">source</span> ~/.zshrc <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p>然后使用Xftp将jdk复制到weishao文件夹下面，如图所示：</p>
-<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/image-20220929223548833.png" srcset="/img/loading.gif" lazyload alt="image-20220929223548833"></p>
-<p>将上传的jdk解压，解压之后重命名为jdk8，如图所示：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> jdk-8u301-linux-x64.tar.gz
-<span class="token function">mv</span> jdk1.8.0_301 jdk8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<h1 id="安装完成测试"><a href="#安装完成测试" class="headerlink" title="安装完成测试"></a>安装完成测试</h1><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mvn <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/image-20220930104145336.png" srcset="/img/loading.gif" lazyload alt="image-20220930104145336"></p>
-<p>通过上面的步骤，我们的jdk已经全部完成安装了，接下来就是更重要的一步：配置[环境变量]</p>
-<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p><img src="/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023195428947.png" srcset="/img/loading.gif" lazyload alt="image-20221023195428947"></p>
+<h1 id="配置阿里云源"><a href="#配置阿里云源" class="headerlink" title="配置阿里云源"></a>配置阿里云源</h1><figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirror</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>nexus-aliyun<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirrorOf</span><span class="token punctuation">></span></span>central<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirrorOf</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>Nexus aliyun<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">></span></span>http://maven.aliyun.com/nexus/content/groups/public<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirror</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p>打开之后按键盘<code>（i）</code>进入编辑模式,将下面的内容复制到底部</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">JAVA_HOME</span><span class="token operator">=</span>/usr/local/weishao/jdk8
-<span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token variable">$JAVA_HOME</span>/bin:<span class="token environment constant">$PATH</span>
-<span class="token assign-left variable">CLASSPATH</span><span class="token operator">=</span><span class="token variable">$JAVA_HOME</span>/jre/lib/ext:<span class="token variable">$JAVA_HOME</span>/lib/tools.jar
-<span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span> JAVA_HOME CLASSPATH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p><img src="/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023182029206.png" srcset="/img/loading.gif" lazyload alt="image-20221023182029206"></p>
+<h1 id="配置本地仓库"><a href="#配置本地仓库" class="headerlink" title="配置本地仓库"></a>配置本地仓库</h1><p><img src="/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023195704330.png" srcset="/img/loading.gif" lazyload alt="image-20221023195704330"></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>localRepository</span><span class="token punctuation">></span></span>/Users/xuwei/codeEnv/apache-maven-3.8.6/repo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>localRepository</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
-<p>备注:根据上面的配置信息，我们既可以将环境变量的配置完成，需要注意的是，<code>PATH</code>在配置的哦时候，一定要把<code>JAVA_HOME/bin</code>放在最前面，不然使用<code>java</code>命令式，系统会找到以前的<code>JAVA</code>，在不往下找了，这样java这个可执行文件运行的目录其实不在$JAVA_HOME/bin下，而在其它目录下，会造成很大的问题。</p>
-<p>写完之后我们按键盘<code>（ESC）</code>按钮退出，然后按<code>（:wq）</code>保存并且关闭Vim。</p>
-<p>配置完成之后，最重要的一步就是使文件立即生效：命令如下：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-
-<p>让profile更新一下；</p>
-<h2 id="验证是否安装成功"><a href="#验证是否安装成功" class="headerlink" title="验证是否安装成功"></a>验证是否安装成功</h2><p>上面所有的步骤完成之后，这时候我们需要检查是否安装成功，输入如下命令，如图所示：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">java</span> <span class="token parameter variable">-version</span>
-<span class="token builtin class-name">echo</span> <span class="token variable">$JAVA_HOME</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
-
-<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/image-20220930105059388.png" srcset="/img/loading.gif" lazyload alt="image-20220930105059388"></p>
-<p>出现版本与环境变量了就是安装成功了。</p>
+<p><img src="/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023195608495.png" srcset="/img/loading.gif" lazyload alt="image-20221023195608495"></p>
+<h1 id="IDEA绑定"><a href="#IDEA绑定" class="headerlink" title="IDEA绑定"></a>IDEA绑定</h1><p><img src="/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023201248989.png" srcset="/img/loading.gif" lazyload alt="image-20221023201248989"></p>
+<p><img src="/img/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Maven%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BB%91%E5%AE%9AIDEA/image-20221023201321292.png" srcset="/img/loading.gif" lazyload alt="image-20221023201321292"></p>
 
                 
               </div>
@@ -326,34 +319,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="category-chain-item">软件安装</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">#软件安装</a>
-      
-    </div>
   
 </div>
 
@@ -363,8 +328,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>软件安装-JDK</div>
-      <div>https://weishao-996.github.io/2022/08/29/软件安装-JDK/</div>
+      <div>MacOS-M1软件安装-Maven安装与绑定IDEA</div>
+      <div>https://weishao-996.github.io/2022/10/23/MacOS-M1软件安装-Maven安装与绑定IDEA/</div>
     </div>
     <div class="license-meta">
       
@@ -376,7 +341,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年8月29日</div>
+          <div>2022年10月23日</div>
         </div>
       
       
@@ -406,18 +371,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/31/%E9%9D%A2%E8%AF%95-Mybatis/" title="面试-Mybatis">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">面试-Mybatis</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/" title="软件安装-MySQL">
-                        <span class="hidden-mobile">软件安装-MySQL</span>
+                      <a href="/2022/10/08/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Github%E5%85%B3%E8%81%94/" title="MacOS-M1软件安装-Github关联">
+                        <span class="hidden-mobile">MacOS-M1软件安装-Github关联</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -435,85 +394,6 @@
 
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar category-bar" style="margin-left: -1rem">
-    
-
-
-
-
-
-<div class="category-list">
-  
-  
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="软件安装"
-        id="heading-6aacb115d632dc4e1e2e8f804a16c97c" role="tab" data-toggle="collapse" href="#collapse-6aacb115d632dc4e1e2e8f804a16c97c"
-        aria-expanded="true"
-      >
-        软件安装
-        <span class="list-group-count">(4)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse show" id="collapse-6aacb115d632dc4e1e2e8f804a16c97c"
-           role="tabpanel" aria-labelledby="heading-6aacb115d632dc4e1e2e8f804a16c97c">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2022/10/08/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Github%E5%85%B3%E8%81%94/" title="MacOS-M1软件安装-Github关联"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">MacOS-M1软件安装-Github关联</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/10/08/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-HomeBrew/" title="MacOS-M1软件安装-HomeBrew"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">MacOS-M1软件安装-HomeBrew</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/" title="软件安装-JDK"
-           class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">软件安装-JDK</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/" title="软件安装-MySQL"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">软件安装-MySQL</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-</div>
-
-
-  </aside>
-
 
     </div>
   </div>
