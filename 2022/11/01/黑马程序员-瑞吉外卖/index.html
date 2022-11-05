@@ -1,0 +1,1492 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/bg/%E5%A4%B4%E5%83%8F.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Wei Shao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1.概述软件开发整体介绍软件开发流程 角色分工 软件环境 瑞吉外卖项目介绍项目介绍    产品原型展示 技术选型 功能架构 角色  开发环境搭建数据库环境搭建     maven项目搭建  配置pom文件&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt; &lt;project xmlns&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-瑞吉外卖">
+<meta property="og:url" content="https://weishao-996.github.io/2022/11/01/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/index.html">
+<meta property="og:site_name" content="WeiBlog">
+<meta property="og:description" content="1.概述软件开发整体介绍软件开发流程 角色分工 软件环境 瑞吉外卖项目介绍项目介绍    产品原型展示 技术选型 功能架构 角色  开发环境搭建数据库环境搭建     maven项目搭建  配置pom文件&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt; &lt;project xmlns&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0&quot;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101215252928.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101215522519.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101215648587.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101215938996.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101220015602.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101220026945.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101220045837.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101220205580.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101220659178.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101221042664.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102111505518.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102111654252.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102111841746.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102112238507.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102112545353.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102113158106.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102113400348.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102115402524.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102115954946.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102124855698.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102125237449.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102125402985.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102130411085.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102133155426.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102133224942.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102133739054.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102134134327.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102135118235.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102140144318.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102144021812.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102145713338.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102145905661.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102150012340.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102151147651.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102162928587.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102164027916.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102164105514.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102164324523.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102164459486.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102164946971.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102173922296.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102174034585.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102174205079.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221103204327722.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221103204610527.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221103204907141.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221103204932886.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221103215656433.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221103215758520.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104122116103.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104122154880.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104122521515.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104142652236.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104142847268.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104150140458.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104152321531.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104152337263.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104153501608.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104153540185.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104153638758.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104153709080.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104154042965.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104154128808.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104154630285.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104164039545.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104164213608.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104164236300.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104164457087.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104164710276.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104164915310.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104170101932.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104170519064.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104170728020.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104170746991.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104180340877.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104201612375.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104201938676.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104202215456.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104202742328.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104202806866.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104205304230.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104205416007.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104205946570.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104210307481.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104212002309.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104212207534.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104213926639.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104214108671.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105162932019.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105163102177.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105163245262.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105163421685.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105165654880.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105165709164.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105170716656.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105170740877.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105172302655.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105172347617.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105172615362.png">
+<meta property="article:published_time" content="2022-11-01T13:35:46.000Z">
+<meta property="article:modified_time" content="2022-11-05T13:02:25.236Z">
+<meta property="article:author" content="Wei Shao">
+<meta property="article:tag" content="项目">
+<meta property="article:tag" content="黑马程序员">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101215252928.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>黑马程序员-瑞吉外卖 - WeiBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.27.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"weishao-996.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"Java"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>威少のBlog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/iTab-6ozkzl.jfif') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="黑马程序员-瑞吉外卖"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-01 21:35" pubdate>
+          2022年11月1日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">黑马程序员-瑞吉外卖</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><h2 id="软件开发整体介绍"><a href="#软件开发整体介绍" class="headerlink" title="软件开发整体介绍"></a>软件开发整体介绍</h2><h3 id="软件开发流程"><a href="#软件开发流程" class="headerlink" title="软件开发流程"></a>软件开发流程</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101215252928.png" srcset="/img/loading.gif" lazyload alt="image-20221101215252928"></p>
+<h3 id="角色分工"><a href="#角色分工" class="headerlink" title="角色分工"></a>角色分工</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101215522519.png" srcset="/img/loading.gif" lazyload alt="image-20221101215522519"></p>
+<h3 id="软件环境"><a href="#软件环境" class="headerlink" title="软件环境"></a>软件环境</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101215648587.png" srcset="/img/loading.gif" lazyload alt="image-20221101215648587"></p>
+<h2 id="瑞吉外卖项目介绍"><a href="#瑞吉外卖项目介绍" class="headerlink" title="瑞吉外卖项目介绍"></a>瑞吉外卖项目介绍</h2><h3 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101215938996.png" srcset="/img/loading.gif" lazyload alt="image-20221101215938996"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101220015602.png" srcset="/img/loading.gif" lazyload alt="image-20221101220015602"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101220026945.png" srcset="/img/loading.gif" lazyload alt="image-20221101220026945"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101220045837.png" srcset="/img/loading.gif" lazyload alt="image-20221101220045837"></p>
+<h3 id="产品原型展示"><a href="#产品原型展示" class="headerlink" title="产品原型展示"></a>产品原型展示</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101220205580.png" srcset="/img/loading.gif" lazyload alt="image-20221101220205580"></p>
+<h3 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101220659178.png" srcset="/img/loading.gif" lazyload alt="image-20221101220659178"></p>
+<h3 id="功能架构"><a href="#功能架构" class="headerlink" title="功能架构"></a>功能架构</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221101221042664.png" srcset="/img/loading.gif" lazyload alt="image-20221101221042664"></p>
+<h3 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h3><p> <img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102111505518.png" srcset="/img/loading.gif" lazyload alt="image-20221102111505518"></p>
+<h2 id="开发环境搭建"><a href="#开发环境搭建" class="headerlink" title="开发环境搭建"></a>开发环境搭建</h2><h3 id="数据库环境搭建"><a href="#数据库环境搭建" class="headerlink" title="数据库环境搭建"></a>数据库环境搭建</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102111654252.png" srcset="/img/loading.gif" lazyload alt="image-20221102111654252"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102111841746.png" srcset="/img/loading.gif" lazyload alt="image-20221102111841746"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102112238507.png" srcset="/img/loading.gif" lazyload alt="image-20221102112238507"></p>
+<p> <img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102112545353.png" srcset="/img/loading.gif" lazyload alt="image-20221102112545353"></p>
+<h3 id="maven项目搭建"><a href="#maven项目搭建" class="headerlink" title="maven项目搭建"></a>maven项目搭建</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102113158106.png" srcset="/img/loading.gif" lazyload alt="image-20221102113158106"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102113400348.png" srcset="/img/loading.gif" lazyload alt="image-20221102113400348"></p>
+<h4 id="配置pom文件"><a href="#配置pom文件" class="headerlink" title="配置pom文件"></a>配置pom文件</h4><figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modelVersion</span><span class="token punctuation">></span></span>4.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>modelVersion</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>parent</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-parent<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.4.5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>relativePath</span><span class="token punctuation">/></span></span> <span class="token comment">&lt;!-- lookup parent from repository --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>parent</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.itheima<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>reggie_take_out<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.0-SNAPSHOT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>java.version</span><span class="token punctuation">></span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>java.version</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.baomidou<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mybatis-plus-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.4.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.projectlombok<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>lombok<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.18.20<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.alibaba<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>fastjson<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.2.76<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>commons-lang<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>commons-lang<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mysql-connector-java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>runtime<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.alibaba<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>druid-spring-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.1.23<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-maven-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.4.5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h4 id="配置springboot配置文件"><a href="#配置springboot配置文件" class="headerlink" title="配置springboot配置文件"></a>配置springboot配置文件</h4><figure><div class="code-wrapper"><pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">server</span><span class="token punctuation">:</span>
+<span class="token key attr-name">  port</span><span class="token punctuation">:</span> <span class="token value attr-value">8080</span>
+<span class="token key attr-name">spring</span><span class="token punctuation">:</span>
+<span class="token key attr-name">  application</span><span class="token punctuation">:</span>
+<span class="token key attr-name">    name</span><span class="token punctuation">:</span> <span class="token value attr-value">reggie_take_out</span>
+<span class="token key attr-name">  datasource</span><span class="token punctuation">:</span>
+<span class="token key attr-name">    druid</span><span class="token punctuation">:</span>
+<span class="token key attr-name">      driver-class-name</span><span class="token punctuation">:</span> <span class="token value attr-value">com.mysql.cj.jdbc.Driver</span>
+<span class="token key attr-name">      url</span><span class="token punctuation">:</span> <span class="token value attr-value">jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;allowPublicKeyRetrieval=true</span>
+<span class="token key attr-name">      username</span><span class="token punctuation">:</span> <span class="token value attr-value">root</span>
+<span class="token key attr-name">      password</span><span class="token punctuation">:</span> <span class="token value attr-value">Xuwei19941214~</span>
+<span class="token key attr-name">mybatis-plus</span><span class="token punctuation">:</span>
+<span class="token key attr-name">  configuration</span><span class="token punctuation">:</span>
+<span class="token comment">    #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射</span>
+<span class="token key attr-name">    map-underscore-to-camel-case</span><span class="token punctuation">:</span> <span class="token value attr-value">true</span>
+<span class="token key attr-name">    log-impl</span><span class="token punctuation">:</span> <span class="token value attr-value">org.apache.ibatis.logging.stdout.StdOutImpl</span>
+<span class="token key attr-name">  global-config</span><span class="token punctuation">:</span>
+<span class="token key attr-name">    db-config</span><span class="token punctuation">:</span>
+<span class="token key attr-name">      id-type</span><span class="token punctuation">:</span> <span class="token value attr-value">ASSIGN_ID</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h4 id="编写springboot启动类"><a href="#编写springboot启动类" class="headerlink" title="编写springboot启动类"></a>编写springboot启动类</h4><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>reggie</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">Slf4j</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span></span><span class="token class-name">SpringApplication</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span></span><span class="token class-name">SpringBootApplication</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Slf4j</span>
+<span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ReggieApplication</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">ReggieApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"项目启动成功..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102115402524.png" srcset="/img/loading.gif" lazyload alt="image-20221102115402524"></p>
+<h4 id="导入前端页面的静态资源"><a href="#导入前端页面的静态资源" class="headerlink" title="导入前端页面的静态资源"></a>导入前端页面的静态资源</h4><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102115954946.png" srcset="/img/loading.gif" lazyload alt="image-20221102115954946"></p>
+<p>由于MVC无法识别非static下的静态资源，需通过配置修改</p>
+<h4 id="修改mvc配置"><a href="#修改mvc配置" class="headerlink" title="修改mvc配置"></a>修改mvc配置</h4><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>reggie<span class="token punctuation">.</span>config</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">Slf4j</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Configuration</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>config<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">ResourceHandlerRegistry</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>config<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">WebMvcConfigurationSupport</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Slf4j</span>
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WebMvcConfig</span> <span class="token keyword">extends</span> <span class="token class-name">WebMvcConfigurationSupport</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token comment">/**
+     * 设置资源映射
+     * @param registry
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">addResourceHandlers</span><span class="token punctuation">(</span><span class="token class-name">ResourceHandlerRegistry</span> registry<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"开始进行静态资源映射..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        registry<span class="token punctuation">.</span><span class="token function">addResourceHandler</span><span class="token punctuation">(</span><span class="token string">"/backend/**"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addResourceLocations</span><span class="token punctuation">(</span><span class="token string">"classpath:/backend/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        registry<span class="token punctuation">.</span><span class="token function">addResourceHandler</span><span class="token punctuation">(</span><span class="token string">"/front/**"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addResourceLocations</span><span class="token punctuation">(</span><span class="token string">"classpath:/front/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">addResourceHandlers</span><span class="token punctuation">(</span>registry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102124855698.png" srcset="/img/loading.gif" lazyload alt="image-20221102124855698"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102125237449.png" srcset="/img/loading.gif" lazyload alt="image-20221102125237449"></p>
+<p>成功访问。</p>
+<h2 id="后台开发登录功能"><a href="#后台开发登录功能" class="headerlink" title="后台开发登录功能"></a>后台开发登录功能</h2><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102125402985.png" srcset="/img/loading.gif" lazyload alt="image-20221102125402985"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102130411085.png" srcset="/img/loading.gif" lazyload alt="image-20221102130411085"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102133155426.png" srcset="/img/loading.gif" lazyload alt="image-20221102133155426"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102133224942.png" srcset="/img/loading.gif" lazyload alt="image-20221102133224942"></p>
+<h3 id="代码开发"><a href="#代码开发" class="headerlink" title="代码开发"></a>代码开发</h3><h4 id="1-创建实体类Employee，和employee表进行映射"><a href="#1-创建实体类Employee，和employee表进行映射" class="headerlink" title="1)创建实体类Employee，和employee表进行映射"></a>1)创建实体类Employee，和employee表进行映射</h4><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102133739054.png" srcset="/img/loading.gif" lazyload alt="image-20221102133739054"></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>reggie<span class="token punctuation">.</span>entity</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">FieldFill</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">TableField</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">lombok<span class="token punctuation">.</span></span><span class="token class-name">Data</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">Serializable</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">LocalDateTime</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Employee</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> <span class="token number">1L</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> username<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> password<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> phone<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> sex<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> idNumber<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Integer</span> status<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">LocalDateTime</span> createTime<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">LocalDateTime</span> updateTime<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@TableField</span><span class="token punctuation">(</span>fill <span class="token operator">=</span> <span class="token class-name">FieldFill</span><span class="token punctuation">.</span><span class="token constant">INSERT</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> createUser<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@TableField</span><span class="token punctuation">(</span>fill <span class="token operator">=</span> <span class="token class-name">FieldFill</span><span class="token punctuation">.</span><span class="token constant">INSERT_UPDATE</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> updateUser<span class="token punctuation">;</span>
+
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h4 id="2-创建contrller、service、mapper"><a href="#2-创建contrller、service、mapper" class="headerlink" title="2)创建contrller、service、mapper"></a>2)创建contrller、service、mapper</h4><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102134134327.png" srcset="/img/loading.gif" lazyload alt="image-20221102134134327"></p>
+<h4 id="3-导入返回结果类R"><a href="#3-导入返回结果类R" class="headerlink" title="3)导入返回结果类R"></a>3)导入返回结果类R</h4><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102135118235.png" srcset="/img/loading.gif" lazyload alt="image-20221102135118235"></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>reggie<span class="token punctuation">.</span>common</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">lombok<span class="token punctuation">.</span></span><span class="token class-name">Data</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">HashMap</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Map</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Integer</span> code<span class="token punctuation">;</span> <span class="token comment">//编码：1成功，0和其它数字为失败</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> msg<span class="token punctuation">;</span> <span class="token comment">//错误信息</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">T</span> data<span class="token punctuation">;</span> <span class="token comment">//数据</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">Map</span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//动态数据</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token function">success</span><span class="token punctuation">(</span><span class="token class-name">T</span> object<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> r <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        r<span class="token punctuation">.</span>data <span class="token operator">=</span> object<span class="token punctuation">;</span>
+        r<span class="token punctuation">.</span>code <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> r<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">R</span> r <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">R</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        r<span class="token punctuation">.</span>msg <span class="token operator">=</span> msg<span class="token punctuation">;</span>
+        r<span class="token punctuation">.</span>code <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> r<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">String</span> key<span class="token punctuation">,</span> <span class="token class-name">Object</span> value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h4 id="4-在Controller中创建登录方法"><a href="#4-在Controller中创建登录方法" class="headerlink" title="4)在Controller中创建登录方法"></a>4)在Controller中创建登录方法</h4><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102140144318.png" srcset="/img/loading.gif" lazyload alt="image-20221102140144318"></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+     * 员工登录
+     * @param request
+     * @param employee
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/login"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">></span></span> <span class="token function">login</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">Employee</span> employee<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+
+<span class="token comment">//        1.将页面提交的密码password进行md5加密处理</span>
+        <span class="token class-name">String</span> password<span class="token operator">=</span>employee<span class="token punctuation">.</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">DigestUtils</span><span class="token punctuation">.</span><span class="token function">md5DigestAsHex</span><span class="token punctuation">(</span>password<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//        2.根据页面提交的用户名username查询数据库</span>
+        <span class="token class-name">LambdaQueryWrapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">></span></span> queryWrapper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LambdaQueryWrapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        queryWrapper<span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token class-name">Employee</span><span class="token operator">::</span><span class="token function">getUpdateTime</span><span class="token punctuation">,</span>employee<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Employee</span> emp <span class="token operator">=</span> employeeService<span class="token punctuation">.</span><span class="token function">getOne</span><span class="token punctuation">(</span>queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//        3.如果没有查询到则返回登录失败结果</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>emp<span class="token operator">==</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"登录失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+<span class="token comment">//        4.密码比对，如果不一致则返回登录失败</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>emp<span class="token punctuation">.</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"登录失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+<span class="token comment">//        5.查看员工状态，如果为已禁用状态，则返回员工已禁用结果</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>emp<span class="token punctuation">.</span><span class="token function">getStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"账号已禁用"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+<span class="token comment">//        6.登录成功，将员工id存入Session并返回登陆成功结果</span>
+        request<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"employee"</span><span class="token punctuation">,</span>emp<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span>emp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>修改前端超时时间方便调试，并清除浏览器缓存</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102144021812.png" srcset="/img/loading.gif" lazyload alt="image-20221102144021812"></p>
+<p>登录测试</p>
+<p>登录成功</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102145713338.png" srcset="/img/loading.gif" lazyload alt="image-20221102145713338"></p>
+<p>账号密码错误</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102145905661.png" srcset="/img/loading.gif" lazyload alt="image-20221102145905661"></p>
+<p>账号禁用</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102150012340.png" srcset="/img/loading.gif" lazyload alt="image-20221102150012340"></p>
+<h2 id="后台退出功能"><a href="#后台退出功能" class="headerlink" title="后台退出功能"></a>后台退出功能</h2><h3 id="需求分析-1"><a href="#需求分析-1" class="headerlink" title="需求分析"></a>需求分析</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102151147651.png" srcset="/img/loading.gif" lazyload alt="image-20221102151147651"></p>
+<h3 id="代码开发-1"><a href="#代码开发-1" class="headerlink" title="代码开发"></a>代码开发</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/logout"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">logout</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    request<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeAttribute</span><span class="token punctuation">(</span><span class="token string">"employee"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">"退出成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>验证：</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102162928587.png" srcset="/img/loading.gif" lazyload alt="image-20221102162928587"></p>
+<h1 id="2-员工管理业务开发"><a href="#2-员工管理业务开发" class="headerlink" title="2.员工管理业务开发"></a>2.员工管理业务开发</h1><h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a><strong>效果展示</strong></h2><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102164027916.png" srcset="/img/loading.gif" lazyload alt="image-20221102164027916"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102164105514.png" srcset="/img/loading.gif" lazyload alt="image-20221102164105514"></p>
+<h2 id="完善登录功能"><a href="#完善登录功能" class="headerlink" title="完善登录功能"></a>完善登录功能</h2><h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102164324523.png" srcset="/img/loading.gif" lazyload alt="image-20221102164324523"></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102164459486.png" srcset="/img/loading.gif" lazyload alt="image-20221102164459486"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102164946971.png" srcset="/img/loading.gif" lazyload alt="image-20221102164946971"></p>
+<p>创建过滤器</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102173922296.png" srcset="/img/loading.gif" lazyload alt="image-20221102173922296"></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>reggie<span class="token punctuation">.</span>filter</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>fastjson<span class="token punctuation">.</span></span><span class="token class-name">JSON</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>reggie<span class="token punctuation">.</span>common<span class="token punctuation">.</span></span><span class="token class-name">R</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">Slf4j</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">AntPathMatcher</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">WebFilter</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">HttpServletRequest</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">HttpServletResponse</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>logging<span class="token punctuation">.</span></span><span class="token class-name">LogRecord</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@WebFilter</span><span class="token punctuation">(</span>filterName <span class="token operator">=</span> <span class="token string">"loginCheckFilter"</span><span class="token punctuation">,</span>urlPatterns <span class="token operator">=</span> <span class="token string">"/*"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Slf4j</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginCheckFilter</span> <span class="token keyword">implements</span> <span class="token class-name">Filter</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">//路径匹配器，支持通配符</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">AntPathMatcher</span> <span class="token constant">PATH_MATCHER</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">AntPathMatcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doFilter</span><span class="token punctuation">(</span><span class="token class-name">ServletRequest</span> servletRequest<span class="token punctuation">,</span> <span class="token class-name">ServletResponse</span> servletResponse<span class="token punctuation">,</span> <span class="token class-name">FilterChain</span> filterChain<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">,</span> <span class="token class-name">ServletException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">HttpServletRequest</span> request<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span><span class="token punctuation">)</span>servletRequest<span class="token punctuation">;</span>
+        <span class="token class-name">HttpServletResponse</span> response<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">HttpServletResponse</span><span class="token punctuation">)</span>servletResponse<span class="token punctuation">;</span>
+
+
+        <span class="token comment">//1、获取本次请求的URI</span>
+        <span class="token class-name">String</span> requestURI <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getRequestURI</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"拦截到请求:&#123;&#125;"</span><span class="token punctuation">,</span>requestURI<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//定义不需要处理的请求路径</span>
+        <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> urls<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span>
+                <span class="token string">"/employee/login"</span><span class="token punctuation">,</span>
+                <span class="token string">"/employee/logout"</span><span class="token punctuation">,</span>
+                <span class="token string">"/backend/**"</span><span class="token punctuation">,</span>
+                <span class="token string">"/front/**"</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//2.判断本次请求是否需要处理</span>
+      <span class="token keyword">boolean</span> check<span class="token operator">=</span> <span class="token function">check</span><span class="token punctuation">(</span>urls<span class="token punctuation">,</span>requestURI<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//3.如果不需要处理，则直接方形</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>check<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"本次请求不需要处理"</span><span class="token punctuation">,</span>requestURI<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            filterChain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">//4.判断登录状态，如果已经登录，则直接放行</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"employee"</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"用户已登录，用户id为:&#123;&#125;"</span><span class="token punctuation">,</span>request<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"employee"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            filterChain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"用户未登录"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//5.如果未登录则返回未登录结果，通过输出流方式向客户端页面响应数据</span>
+        response<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">toJSONString</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"NOTLOGIN"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> urls<span class="token punctuation">,</span> <span class="token class-name">String</span> requestURI<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">String</span> url<span class="token operator">:</span>urls<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">PATH_MATCHER</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span>requestURI<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>启动类添加注解<code>@ServletComponentScan</code></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102174034585.png" srcset="/img/loading.gif" lazyload alt="image-20221102174034585"></p>
+<p>演示效果</p>
+<p>未登录状态下直接请求<code>[瑞吉外卖管理端](http://localhost:8080/backend/index.html)</code></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221102174205079.png" srcset="/img/loading.gif" lazyload alt="image-20221102174205079"></p>
+<h2 id="新增员工"><a href="#新增员工" class="headerlink" title="新增员工"></a>新增员工</h2><h3 id="需求分析-2"><a href="#需求分析-2" class="headerlink" title="需求分析"></a>需求分析</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221103204327722.png" srcset="/img/loading.gif" lazyload alt="image-20221103204327722"></p>
+<h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><p> <img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221103204610527.png" srcset="/img/loading.gif" lazyload alt="image-20221103204610527"></p>
+<p> <img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221103204907141.png" srcset="/img/loading.gif" lazyload alt="image-20221103204907141"></p>
+<h3 id="代码开发-2"><a href="#代码开发-2" class="headerlink" title="代码开发"></a>代码开发</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221103204932886.png" srcset="/img/loading.gif" lazyload alt="image-20221103204932886"></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 新增员工
+ * @param request
+ * @param employee
+ * @return
+ */</span>
+<span class="token annotation punctuation">@PostMapping</span>
+<span class="token keyword">public</span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span><span class="token class-name">Employee</span> employee<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"新增员工，员工信息：&#123;&#125;"</span><span class="token punctuation">,</span>employee<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//设置初始密码123456，需要进行md5加密处理</span>
+    employee<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span><span class="token class-name">DigestUtils</span><span class="token punctuation">.</span><span class="token function">md5DigestAsHex</span><span class="token punctuation">(</span><span class="token string">"123456"</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    employee<span class="token punctuation">.</span><span class="token function">setCreateTime</span><span class="token punctuation">(</span><span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    employee<span class="token punctuation">.</span><span class="token function">setUpdateTime</span><span class="token punctuation">(</span><span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//获取当前登录用户的id</span>
+    <span class="token class-name">Long</span> empId <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Long</span><span class="token punctuation">)</span>request<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"employee"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    employee<span class="token punctuation">.</span><span class="token function">setCreateUser</span><span class="token punctuation">(</span>empId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    employee<span class="token punctuation">.</span><span class="token function">setUpdateUser</span><span class="token punctuation">(</span>empId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    employeeService<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">"新增员工成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221103215656433.png" srcset="/img/loading.gif" lazyload alt="image-20221103215656433"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221103215758520.png" srcset="/img/loading.gif" lazyload alt="image-20221103215758520"></p>
+<p>定义异常类</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>reggie<span class="token punctuation">.</span>common</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">Slf4j</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>omg<span class="token punctuation">.</span></span><span class="token class-name">CORBA</span><span class="token punctuation">.</span><span class="token class-name">PUBLIC_MEMBER</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">ControllerAdvice</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">ExceptionHandler</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">ResponseBody</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">SQLIntegrityConstraintViolationException</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@ControllerAdvice</span>
+<span class="token annotation punctuation">@ResponseBody</span>
+<span class="token annotation punctuation">@Slf4j</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GlobalExceptionHandler</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token comment">/**
+     * 异常处理方法
+     * @param ex
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span><span class="token class-name">SQLIntegrityConstraintViolationException</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">exceptionHandler</span><span class="token punctuation">(</span><span class="token class-name">SQLIntegrityConstraintViolationException</span> ex<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>ex<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>ex<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"Duplicate entry"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> split <span class="token operator">=</span> ex<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">String</span> msg <span class="token operator">=</span> split<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">"已存在"</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"失败了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104122116103.png" srcset="/img/loading.gif" lazyload alt="image-20221104122116103"></p>
+<p>效果</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104122154880.png" srcset="/img/loading.gif" lazyload alt="image-20221104122154880"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104122521515.png" srcset="/img/loading.gif" lazyload alt="image-20221104122521515"></p>
+<h2 id="员工信息分页查询"><a href="#员工信息分页查询" class="headerlink" title="员工信息分页查询"></a>员工信息分页查询</h2><h3 id="需求分析-3"><a href="#需求分析-3" class="headerlink" title="需求分析"></a>需求分析</h3><p>  <img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104142652236.png" srcset="/img/loading.gif" lazyload alt="image-20221104142652236"></p>
+<h3 id="代码开发-3"><a href="#代码开发-3" class="headerlink" title="代码开发"></a>代码开发</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104142847268.png" srcset="/img/loading.gif" lazyload alt="image-20221104142847268"></p>
+<p>配置MP的分页插件</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>reggie<span class="token punctuation">.</span>config</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>extension<span class="token punctuation">.</span>plugins<span class="token punctuation">.</span></span><span class="token class-name">MybatisPlusInterceptor</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>extension<span class="token punctuation">.</span>plugins<span class="token punctuation">.</span>inner<span class="token punctuation">.</span></span><span class="token class-name">PaginationInnerInterceptor</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Bean</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Configuration</span></span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * 配置MP的分页插件
+ */</span>
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MybatisPlusConfig</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">MybatisPlusInterceptor</span> <span class="token function">mybatisPlusInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">MybatisPlusInterceptor</span> mybatisPlusInterceptor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MybatisPlusInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mybatisPlusInterceptor<span class="token punctuation">.</span><span class="token function">addInnerInterceptor</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">PaginationInnerInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> mybatisPlusInterceptor<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104150140458.png" srcset="/img/loading.gif" lazyload alt="image-20221104150140458"></p>
+<p>编写分页接口</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/page"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Page</span><span class="token punctuation">></span></span> <span class="token function">page</span><span class="token punctuation">(</span><span class="token keyword">int</span> page<span class="token punctuation">,</span><span class="token keyword">int</span> pageSize<span class="token punctuation">,</span><span class="token class-name">String</span> name<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">//构造分页构造器</span>
+    <span class="token class-name">Page</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">></span></span> pageInfo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Page</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>page<span class="token punctuation">,</span>pageSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//构造条件构造器</span>
+    <span class="token class-name">LambdaQueryWrapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">></span></span> queryWrapper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LambdaQueryWrapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//添加过滤条件</span>
+    queryWrapper<span class="token punctuation">.</span><span class="token function">like</span><span class="token punctuation">(</span><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isNotBlank</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token class-name">Employee</span><span class="token operator">::</span><span class="token function">getName</span><span class="token punctuation">,</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//添加排序条件</span>
+    employeeService<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span>pageInfo<span class="token punctuation">,</span>queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span>pageInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>效果</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104152321531.png" srcset="/img/loading.gif" lazyload alt="image-20221104152321531"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104152337263.png" srcset="/img/loading.gif" lazyload alt="image-20221104152337263"></p>
+<h2 id="启用-禁用员工账号"><a href="#启用-禁用员工账号" class="headerlink" title="启用/禁用员工账号"></a>启用/禁用员工账号</h2><h3 id="需求分析-4"><a href="#需求分析-4" class="headerlink" title="需求分析"></a>需求分析</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104153501608.png" srcset="/img/loading.gif" lazyload alt="image-20221104153501608"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104153540185.png" srcset="/img/loading.gif" lazyload alt="image-20221104153540185"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104153638758.png" srcset="/img/loading.gif" lazyload alt="image-20221104153638758"></p>
+<h3 id="代码开发-4"><a href="#代码开发-4" class="headerlink" title="代码开发"></a>代码开发</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104153709080.png" srcset="/img/loading.gif" lazyload alt="image-20221104153709080"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104154042965.png" srcset="/img/loading.gif" lazyload alt="image-20221104154042965"></p>
+<p>  <img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104154128808.png" srcset="/img/loading.gif" lazyload alt="image-20221104154128808"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104154630285.png" srcset="/img/loading.gif" lazyload alt="image-20221104154630285"></p>
+<p>编写更新接口</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@PutMapping</span>
+<span class="token keyword">public</span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span><span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">Employee</span> employee<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span>employee<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">Long</span> empId <span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">Long</span><span class="token punctuation">)</span> request<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"employee"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    employee<span class="token punctuation">.</span><span class="token function">setUpdateUser</span><span class="token punctuation">(</span>empId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    employee<span class="token punctuation">.</span><span class="token function">setUpdateTime</span><span class="token punctuation">(</span><span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    employeeService<span class="token punctuation">.</span><span class="token function">updateById</span><span class="token punctuation">(</span>employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">"员工信息修改成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p> <img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104164039545.png" srcset="/img/loading.gif" lazyload alt="image-20221104164039545"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104164213608.png" srcset="/img/loading.gif" lazyload alt="image-20221104164213608"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104164236300.png" srcset="/img/loading.gif" lazyload alt="image-20221104164236300"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104164457087.png" srcset="/img/loading.gif" lazyload alt="image-20221104164457087"></p>
+<p>拷贝消息转换器</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104164710276.png" srcset="/img/loading.gif" lazyload alt="image-20221104164710276"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104164915310.png" srcset="/img/loading.gif" lazyload alt="image-20221104164915310"></p>
+<p>配置扩展mvc框架的消息转换器</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 扩展mvc框架的消息转换器
+ * @param converters
+ */</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">extendMessageConverters</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">HttpMessageConverter</span><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span><span class="token punctuation">></span></span> converters<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">//创建消息转换器</span>
+    <span class="token class-name">MappingJackson2HttpMessageConverter</span> messageConverter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MappingJackson2HttpMessageConverter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//设置对象转换器，底层使用jackson将Java对象转换为json</span>
+    messageConverter<span class="token punctuation">.</span><span class="token function">setObjectMapper</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">JacksonObjectMapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//将上面的消息转换器对象追加到mvc框架的转换器集合中</span>
+    converters<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>messageConverter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104170101932.png" srcset="/img/loading.gif" lazyload alt="image-20221104170101932"></p>
+<p>效果</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104170519064.png" srcset="/img/loading.gif" lazyload alt="image-20221104170519064"></p>
+<h2 id="编辑员工信息"><a href="#编辑员工信息" class="headerlink" title="编辑员工信息"></a>编辑员工信息</h2><h3 id="需求分析-5"><a href="#需求分析-5" class="headerlink" title="需求分析"></a>需求分析</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104170728020.png" srcset="/img/loading.gif" lazyload alt="image-20221104170728020"></p>
+<h3 id="代码开发-5"><a href="#代码开发-5" class="headerlink" title="代码开发"></a>代码开发</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104170746991.png" srcset="/img/loading.gif" lazyload alt="image-20221104170746991"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104180340877.png" srcset="/img/loading.gif" lazyload alt="image-20221104180340877"></p>
+<p>编写查询详情接口</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/&#123;id&#125;"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">></span></span> <span class="token function">getById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> <span class="token class-name">Long</span> id<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"根据id查询员工信息..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Employee</span> employee <span class="token operator">=</span> employeeService<span class="token punctuation">.</span><span class="token function">getById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>employee<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span>employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"没有查询到对应的员工信息"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h1 id="3-分类管理业务"><a href="#3-分类管理业务" class="headerlink" title="3.分类管理业务"></a>3.分类管理业务</h1><h2 id="效果展示-1"><a href="#效果展示-1" class="headerlink" title="效果展示"></a><strong>效果展示</strong></h2><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104201612375.png" srcset="/img/loading.gif" lazyload alt="image-20221104201612375"></p>
+<h2 id="公共字段自动填充"><a href="#公共字段自动填充" class="headerlink" title="公共字段自动填充"></a>公共字段自动填充</h2><h3 id="问题分析-1"><a href="#问题分析-1" class="headerlink" title="问题分析"></a>问题分析</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104201938676.png" srcset="/img/loading.gif" lazyload alt="image-20221104201938676"></p>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104202215456.png" srcset="/img/loading.gif" lazyload alt="image-20221104202215456"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104202742328.png" srcset="/img/loading.gif" lazyload alt="image-20221104202742328"></p>
+<p>添加<code>@TableField</code>注解</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@TableField</span><span class="token punctuation">(</span>fill <span class="token operator">=</span> <span class="token class-name">FieldFill</span><span class="token punctuation">.</span><span class="token constant">INSERT</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> <span class="token class-name">LocalDateTime</span> createTime<span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@TableField</span><span class="token punctuation">(</span>fill <span class="token operator">=</span> <span class="token class-name">FieldFill</span><span class="token punctuation">.</span><span class="token constant">INSERT_UPDATE</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> <span class="token class-name">LocalDateTime</span> updateTime<span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@TableField</span><span class="token punctuation">(</span>fill <span class="token operator">=</span> <span class="token class-name">FieldFill</span><span class="token punctuation">.</span><span class="token constant">INSERT</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> <span class="token class-name">Long</span> createUser<span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@TableField</span><span class="token punctuation">(</span>fill <span class="token operator">=</span> <span class="token class-name">FieldFill</span><span class="token punctuation">.</span><span class="token constant">INSERT_UPDATE</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> <span class="token class-name">Long</span> updateUser<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104202806866.png" srcset="/img/loading.gif" lazyload alt="image-20221104202806866"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104205304230.png" srcset="/img/loading.gif" lazyload alt="image-20221104205304230"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104205416007.png" srcset="/img/loading.gif" lazyload alt="image-20221104205416007"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104205946570.png" srcset="/img/loading.gif" lazyload alt="image-20221104205946570"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104210307481.png" srcset="/img/loading.gif" lazyload alt="image-20221104210307481"></p>
+<p>编写baseContext工具类</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>reggie<span class="token punctuation">.</span>common</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * 基于ThreadLocal封装工具类，用户保存和获取当前登录用户id
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BaseContext</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span>  <span class="token class-name">ThreadLocal</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">></span></span> threadLocal<span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ThreadLocal</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">setCurrentId</span><span class="token punctuation">(</span><span class="token class-name">Long</span> id<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        threadLocal<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Long</span> <span class="token function">getCurrentId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> threadLocal<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>在拦截器中设置threadlocal变量</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104212002309.png" srcset="/img/loading.gif" lazyload alt="image-20221104212002309"></p>
+<p>完善自动填充</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>reggie<span class="token punctuation">.</span>common</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>core<span class="token punctuation">.</span>handlers<span class="token punctuation">.</span></span><span class="token class-name">MetaObjectHandler</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">Slf4j</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>reflection<span class="token punctuation">.</span></span><span class="token class-name">MetaObject</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Component</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">LocalDateTime</span></span><span class="token punctuation">;</span>
+
+
+<span class="token annotation punctuation">@Component</span>
+<span class="token annotation punctuation">@Slf4j</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyMetaObjectHandler</span> <span class="token keyword">implements</span> <span class="token class-name">MetaObjectHandler</span> <span class="token punctuation">&#123;</span>
+
+
+    <span class="token comment">/**
+     * 插入操作，自动填充
+     * @param metaObject
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insertFill</span><span class="token punctuation">(</span><span class="token class-name">MetaObject</span> metaObject<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"公共字段自动填充【insert】...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        metaObject<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">"creatTime"</span><span class="token punctuation">,</span> <span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        metaObject<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">"updateTime"</span><span class="token punctuation">,</span> <span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        metaObject<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">"creatUser"</span><span class="token punctuation">,</span> <span class="token class-name">BaseContext</span><span class="token punctuation">.</span><span class="token function">getCurrentId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        metaObject<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">"updateUser"</span><span class="token punctuation">,</span> <span class="token class-name">BaseContext</span><span class="token punctuation">.</span><span class="token function">getCurrentId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">/**
+     * 修改操作，自动填充
+     * @param metaObject
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">updateFill</span><span class="token punctuation">(</span><span class="token class-name">MetaObject</span> metaObject<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"公共字段自动填充【update】...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        metaObject<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">"updateTime"</span><span class="token punctuation">,</span> <span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        metaObject<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">"updateUser"</span><span class="token punctuation">,</span> <span class="token class-name">BaseContext</span><span class="token punctuation">.</span><span class="token function">getCurrentId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>取消手动填充</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104212207534.png" srcset="/img/loading.gif" lazyload alt="image-20221104212207534"></p>
+<p>演示</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104213926639.png" srcset="/img/loading.gif" lazyload alt="image-20221104213926639"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221104214108671.png" srcset="/img/loading.gif" lazyload alt="image-20221104214108671"></p>
+<h2 id="新增分类"><a href="#新增分类" class="headerlink" title="新增分类"></a>新增分类</h2><h3 id="需求分析-6"><a href="#需求分析-6" class="headerlink" title="需求分析"></a>需求分析</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105162932019.png" srcset="/img/loading.gif" lazyload alt="image-20221105162932019"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105163102177.png" srcset="/img/loading.gif" lazyload alt="image-20221105163102177"> </p>
+<h3 id="数据模型-1"><a href="#数据模型-1" class="headerlink" title="数据模型"></a>数据模型</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105163245262.png" srcset="/img/loading.gif" lazyload alt="image-20221105163245262"></p>
+<h3 id="代码开发-6"><a href="#代码开发-6" class="headerlink" title="代码开发"></a>代码开发</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105163421685.png" srcset="/img/loading.gif" lazyload alt="image-20221105163421685"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105165654880.png" srcset="/img/loading.gif" lazyload alt="image-20221105165654880"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105165709164.png" srcset="/img/loading.gif" lazyload alt="image-20221105165709164"></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 新增分类
+ * @param category
+ * @return
+ */</span>
+<span class="token annotation punctuation">@PostMapping</span>
+<span class="token keyword">public</span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">Category</span> category<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"category:&#123;&#125;"</span><span class="token punctuation">,</span>category<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    categoryService<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>category<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">"新增分类成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="分类信息的分页查询"><a href="#分类信息的分页查询" class="headerlink" title="分类信息的分页查询"></a>分类信息的分页查询</h2><h3 id="需求分析-7"><a href="#需求分析-7" class="headerlink" title="需求分析"></a>需求分析</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105170716656.png" srcset="/img/loading.gif" lazyload alt="image-20221105170716656"></p>
+<h3 id="代码开发-7"><a href="#代码开发-7" class="headerlink" title="代码开发"></a>代码开发</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105170740877.png" srcset="/img/loading.gif" lazyload alt="image-20221105170740877"></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/page"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Page</span><span class="token punctuation">></span></span> <span class="token function">page</span><span class="token punctuation">(</span><span class="token keyword">int</span> page<span class="token punctuation">,</span><span class="token keyword">int</span> pageSize<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">//分页构造器</span>
+    <span class="token class-name">Page</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Category</span><span class="token punctuation">></span></span> pageInfo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Page</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>page<span class="token punctuation">,</span> pageSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//条件构造器</span>
+    <span class="token class-name">LambdaQueryWrapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Category</span><span class="token punctuation">></span></span> queryWrapper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LambdaQueryWrapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//添加排序条件，根据sort进行排序</span>
+    queryWrapper<span class="token punctuation">.</span><span class="token function">orderByAsc</span><span class="token punctuation">(</span><span class="token class-name">Category</span><span class="token operator">::</span><span class="token function">getSort</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//进行分页查询</span>
+    categoryService<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span>pageInfo<span class="token punctuation">,</span>queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span>pageInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="删除分类"><a href="#删除分类" class="headerlink" title="删除分类"></a>删除分类</h2><h3 id="需求分析-8"><a href="#需求分析-8" class="headerlink" title="需求分析"></a>需求分析</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105172302655.png" srcset="/img/loading.gif" lazyload alt="image-20221105172302655"></p>
+<h3 id="代码开发-8"><a href="#代码开发-8" class="headerlink" title="代码开发"></a>代码开发</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105172347617.png" srcset="/img/loading.gif" lazyload alt="image-20221105172347617"></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">
+<span class="token comment">/**
+ * 根据id删除分类
+ * @param id
+ * @return
+ */</span>
+<span class="token annotation punctuation">@DeleteMapping</span>
+<span class="token keyword">public</span> <span class="token class-name">R</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">delete</span><span class="token punctuation">(</span><span class="token class-name">Long</span> id<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"删除分类，id为：&#123;&#125;"</span><span class="token punctuation">,</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name">R</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">"分类信息删除成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="功能完善"><a href="#功能完善" class="headerlink" title="功能完善"></a>功能完善</h3><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/image-20221105172615362.png" srcset="/img/loading.gif" lazyload alt="image-20221105172615362"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
+      
+        <a href="/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/">#黑马程序员</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>黑马程序员-瑞吉外卖</div>
+      <div>https://weishao-996.github.io/2022/11/01/黑马程序员-瑞吉外卖/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Wei Shao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年11月1日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/05/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/" title="MyBatis-Plus-代码生成器（新）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MyBatis-Plus-代码生成器（新）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/10/25/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/" title="MacOS-M1软件安装-MySQL">
+                        <span class="hidden-mobile">MacOS-M1软件安装-MySQL</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="项目"
+        id="heading-31ecc0e65b4cd3e6b12577382bb56d6a" role="tab" data-toggle="collapse" href="#collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
+        aria-expanded="true"
+      >
+        项目
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
+           role="tabpanel" aria-labelledby="heading-31ecc0e65b4cd3e6b12577382bb56d6a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/11/01/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/" title="黑马程序员-瑞吉外卖"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">黑马程序员-瑞吉外卖</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.27.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
