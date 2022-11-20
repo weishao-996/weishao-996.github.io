@@ -23,122 +23,14 @@
 <meta property="og:site_name" content="WeiBlog">
 <meta property="og:description" content="目录 初识Docker   Docker概念 安装Docker # 1、yum 包更新到最新  yum update # 2、安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的  yum install -y yum-utils device-mapper-persistent-data lvm2 # 3、 设置yum">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221117203116193.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221117203143879.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221117203235114.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221117203248677.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221117203526799.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221117203617473.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221117203845853.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118203938565.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118204247014.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118204825959.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118205301984.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118205500436.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118205608837.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118205728239.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118205801023.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118205827121.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118210207027.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118210314068.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118210349579.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118210451012.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118211729005.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118211903298.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221118212120394.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119140320128.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119140728720.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119142049706.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119142219103.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119142659334.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119143241802.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119143344613.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119143512053.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119143520561.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119143527847.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119150642838.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119151234849.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119151303778.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119151436997.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119151518008.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119151627073.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119151707877.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119152447918.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119152537404.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119152812943.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119153548750.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119153605557.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119155040681.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119155244415.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119155402217.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119155535372.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119173008858.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119203158768.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119203218070.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119203229479.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119203345769.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119204432501.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119204625163.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119204847664.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119205037008.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119213329980.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119214222638.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119214349524.png">
-<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/codeLearning/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98docker/%E8%B5%84%E6%96%99/imgs/1573649804623.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119214456006.png">
-<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/codeLearning/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98docker/%E8%B5%84%E6%96%99/imgs%5C1573652396669.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119215440719.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221119221014974.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120130715968.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120130749819.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120131008869.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120131751168.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120132440129.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120133459889.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120133726220.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120133948978.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120134315829.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120134530599.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120134838135.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120163713655.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120164903532.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120165116968.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120170212253.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120170509684.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120170920994.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120171246537.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120174043683.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120174230249.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120174417280.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120174501970.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120174617528.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120174712386.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120181950479.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120182206246.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120182309055.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120182520017.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120182758615.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120182940496.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120183215288.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120183254474.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120201936298.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120202727139.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120203058041.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120203333919.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120204528268.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120204549966.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120204927944.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120205000360.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120205102272.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120205141989.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221120205344250.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/bg/WX20221120-221402@2x.png">
 <meta property="article:published_time" content="2022-11-17T12:28:03.000Z">
-<meta property="article:modified_time" content="2022-11-20T12:59:34.244Z">
+<meta property="article:modified_time" content="2022-11-20T14:16:59.788Z">
 <meta property="article:author" content="Wei Shao">
 <meta property="article:tag" content="Docker">
 <meta property="article:tag" content="黑马程序员">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/image-20221117203116193.png">
+<meta name="twitter:image" content="https://weishao-996.github.io/img/bg/WX20221120-221402@2x.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -305,7 +197,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/bg/iTab-6ozkzl.jfif') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg/WX20221120-221402@2x.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
