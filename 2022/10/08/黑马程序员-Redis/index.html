@@ -23,205 +23,14 @@
 <meta property="og:site_name" content="WeiBlog">
 <meta property="og:description" content="Redis 入门问题的抛出出现的问题：  海量用户 高并发  罪魁祸首——关系型数据库：  性能瓶颈：磁盘IO性能低下 扩展瓶颈：数据关系复杂，扩展性差，不便于大规模集群  解决思路 降低磁盘IO次数，越低越好 —— 内存存储 去除数据间的关系，越简单越好 —— 不存储关系，仅存储数据  Nosql简介NoSQL：即Not-OnlySQL（泛指非关系型的数据库），作为关系型数据库的补充。 作用：应">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008185402254.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008185941452.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008190042511.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008190110484.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200409191821527.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193222956.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193637593.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008193707121.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008194430071.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008195132656.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008195627422.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200413220259916.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652303781884.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652314848056.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652318807278.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523190155910.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523194297412.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523626646014.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008215815344.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166523647532016.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008220123068.png">
-<meta property="og:image" content="https://./img-blog.csdnimg.cn/20200419195350115.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652943755982.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420110014423.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652944831775.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652961455767.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-16652965719209.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529658190511.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529756430013.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420131157293.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/20200420132321704.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529806574817.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FtcW0zMw==,size_16,color_FFFFFF,t_70-166529807350419.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174400409.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174553101.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009174829031.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009175046572.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009204434585.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221009210540279.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010115536757.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010120957375.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010121604452.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010122116412.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010122310424.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010123927631.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010124244936.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010125149349.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130449881.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130013766.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130712193.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010130827016.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010164820275.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010165103534.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170628637.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170643138.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010170926880.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010171723018.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010172032344.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211312492.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211455930.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010211925344.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212001633.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212159279.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010212520404.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010215027206.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221010215129772.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011141609019.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142127323.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142306626.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142546510.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011142827574.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011152156869.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011164116974.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100201807.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221011165301074.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100448914.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012100544751.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012102219574.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012102721225.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155613605.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155656032.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012155840377.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012160408015.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161432189.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161628529.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012161728903.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012165810588.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221012181836503.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221013125505629.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221013131128283.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221013144136576.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221013144200317.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221013144754957.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221013145837784.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221013150235170.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221013151212923.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221013151238928.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221013151547838.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221014131638733.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221014132248229.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221014133100016.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221014134814217.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221014134931474.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221014135302634.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221014140142843.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221014142336498.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221014162507268.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221014162532151.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017163836418.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017163847015.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017164832371.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017165447946.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017200718612.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017201122179.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017202520833.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017202628618.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017203447084.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017203710563.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017203741205.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017204007153.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017204029344.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017204901267.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017204924813.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017212932073.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017213705310.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017214240292.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017214743888.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221017214956086.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018164806918.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018165949891.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018171711366.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018182810865.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018182922458.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018211141094.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018211919137.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018212228270.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018213515776.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018213813008.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018213903729.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018214102909.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018214557474.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018214924564.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018215154820.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018215320585.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018215520080.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018215630899.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221018215802938.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019151305171.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019151729961.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019151925079.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019155153179.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019202524994.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019202725003.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019203036948.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019203813171.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019204608998.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019210603285.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019210730122.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019211136036.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019211257396.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019211557357.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019212827549.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019213943319.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019214204996.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019215041069.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019221124005.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221019221255502.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020103923017.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020104041099.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020104442095.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020104543307.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020104914459.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020105340354.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020105938279.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020110725445.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020110909594.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020111001703.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020111147479.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020111637321.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020112004426.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020113758577.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020162205314.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020164447238.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020165330711.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020165344324.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020165518327.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020165557352.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020165707597.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020165743895.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020165841955.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020170658042.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020170824761.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221020171634657.png">
+<meta property="og:image" content="https://weishao-996.github.io/img/bg/WX20221206-144705@2x.png">
 <meta property="article:published_time" content="2022-10-08T10:48:31.000Z">
-<meta property="article:modified_time" content="2022-10-20T09:18:18.000Z">
+<meta property="article:modified_time" content="2022-12-06T06:49:23.671Z">
 <meta property="article:author" content="Wei Shao">
+<meta property="article:tag" content="黑马程序员">
+<meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://weishao-996.github.io/img/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Redis/image-20221008185402254.png">
+<meta name="twitter:image" content="https://weishao-996.github.io/img/bg/WX20221206-144705@2x.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -3658,6 +3467,15 @@ slowlog-max-len <span class="token number">100</span> <span class="token comment
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/">#黑马程序员</a>
+      
+        <a href="/tags/Redis/">#Redis</a>
+      
+    </div>
+  
 </div>
 
 
@@ -3709,9 +3527,9 @@ slowlog-max-len <span class="token number">100</span> <span class="token comment
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/08/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-Github%E5%85%B3%E8%81%94/" title="MacOS-M1软件安装-Github关联">
+                      <a href="/2022/10/08/MacOS-M1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-HomeBrew/" title="MacOS-M1软件安装-HomeBrew">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MacOS-M1软件安装-Github关联</span>
+                        <span class="hidden-mobile">MacOS-M1软件安装-HomeBrew</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
