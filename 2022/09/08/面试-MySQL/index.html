@@ -19,105 +19,105 @@
     <meta name="description" content="基础什么是内连接、外连接、交叉连接、笛卡尔积呢 内连接（inner join）：取得两张表中满足存在连接匹配关系的记录。 外连接（outer join）：不只取得两张表中满足存在连接匹配关系的记录，还包括某张表（或两张表）中不满足匹配关系的记录。 交叉连接（cross join）：显示两张表所有记录一一对应，没有匹配关系进行筛选，它是笛卡尔积在SQL中的实现，如果A表有m行，B表有n行，那么A和B">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试-Mysql">
-<meta property="og:url" content="https://weishao-996.github.io/2022/09/08/%E9%9D%A2%E8%AF%95-MySQL/index.html">
+<meta property="og:url" content="https://weishao996.gitee.io/2022/09/08/%E9%9D%A2%E8%AF%95-MySQL/index.html">
 <meta property="og:site_name" content="WeiBlog">
 <meta property="og:description" content="基础什么是内连接、外连接、交叉连接、笛卡尔积呢 内连接（inner join）：取得两张表中满足存在连接匹配关系的记录。 外连接（outer join）：不只取得两张表中满足存在连接匹配关系的记录，还包括某张表（或两张表）中不满足匹配关系的记录。 交叉连接（cross join）：显示两张表所有记录一一对应，没有匹配关系进行筛选，它是笛卡尔积在SQL中的实现，如果A表有m行，B表有n行，那么A和B">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908105510788.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908110113813.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908110707043.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908111247064.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908112356710.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908113932735.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908114246845.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908160140480.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908172148275.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908172213800.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908174526568.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/E2S3AbqgaMevqcRf65-GykDq98ATjfCSA4IUeqk_7ME.pngtoken=W.LuJhepAXj28rmGMNzUwb-qHCaAjyOTpGOs7ceh3hGLgsV77WbxbKZOsY-xRYhbs">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908215650562.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908180104830.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908180909891.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908181309250.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908181359838.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908181455376.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908181543540.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908181632240.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908182238317.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908182729899.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908182834045.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908213313383.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908213421869.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908213517492.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908213744369.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908213841944.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908213916706.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908214058360.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908214137165.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908214216674.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908214310160.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908214404416.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908214432260.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908220733335.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908221555005.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220909144014581.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/v2-9554bb5793a4296b773f516bf6f7e846_1440w.jpg">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910140953658.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910141026496.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910145551358.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910145623148.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910165413911.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910172522706.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910164140079.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910150438065.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910151114591.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910202911377.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910203254480.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910203424203.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910203812088.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910205005074.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910205110920.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910205630795.png">
-<meta property="og:image" content="https://weishao-996.github.io/img%E9%9D%A2%E8%AF%95-MySQL/image-20220910214409739.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910214828711.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910214941003.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910215510444.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910222457105.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911123822324.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911152256595.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911152812313.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911153038317.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911154336548.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911175944047.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911180508766.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911180815226.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911180839960.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911191234515.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911191339478.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911191424281.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911191456083.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911191614690.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911191648058.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911191829890.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911192407624.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911192724348.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911192812721.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911192833689.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911193540427.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911193723009.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911193756104.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911193850811.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911193905500.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911194012918.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911194036373.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911194218075.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911194425916.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908105510788.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908110113813.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908110707043.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908111247064.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908112356710.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908113932735.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908114246845.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908160140480.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908172148275.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908172213800.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908174526568.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/E2S3AbqgaMevqcRf65-GykDq98ATjfCSA4IUeqk_7ME.pngtoken=W.LuJhepAXj28rmGMNzUwb-qHCaAjyOTpGOs7ceh3hGLgsV77WbxbKZOsY-xRYhbs">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908215650562.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908180104830.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908180909891.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908181309250.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908181359838.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908181455376.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908181543540.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908181632240.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908182238317.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908182729899.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908182834045.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908213313383.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908213421869.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908213517492.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908213744369.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908213841944.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908213916706.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908214058360.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908214137165.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908214216674.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908214310160.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908214404416.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908214432260.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908220733335.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908221555005.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220909144014581.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/v2-9554bb5793a4296b773f516bf6f7e846_1440w.jpg">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910140953658.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910141026496.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910145551358.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910145623148.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910165413911.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910172522706.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910164140079.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910150438065.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910151114591.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910202911377.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910203254480.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910203424203.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910203812088.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910205005074.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910205110920.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910205630795.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img%E9%9D%A2%E8%AF%95-MySQL/image-20220910214409739.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910214828711.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910214941003.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910215510444.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220910222457105.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911123822324.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911152256595.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911152812313.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911153038317.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911154336548.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911175944047.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911180508766.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911180815226.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911180839960.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911191234515.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911191339478.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911191424281.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911191456083.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911191614690.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911191648058.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911191829890.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911192407624.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911192724348.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911192812721.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911192833689.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911193540427.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911193723009.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911193756104.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911193850811.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911193905500.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911194012918.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911194036373.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911194218075.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220911194425916.png">
 <meta property="article:published_time" content="2022-09-08T02:38:24.000Z">
 <meta property="article:modified_time" content="2022-10-08T05:07:26.000Z">
 <meta property="article:author" content="Wei Shao">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908105510788.png">
+<meta name="twitter:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-MySQL/image-20220908105510788.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -163,7 +163,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"weishao-996.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"Java"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"weishao996.gitee.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"Java"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -1546,7 +1546,7 @@ index <span class="token operator">=</span> hash <span class="token operator">%<
   <div class="license-box my-3">
     <div class="license-title">
       <div>面试-Mysql</div>
-      <div>https://weishao-996.github.io/2022/09/08/面试-MySQL/</div>
+      <div>https://weishao996.gitee.io/2022/09/08/面试-MySQL/</div>
     </div>
     <div class="license-meta">
       

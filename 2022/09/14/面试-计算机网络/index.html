@@ -19,53 +19,53 @@
     <meta name="description" content="基础说下计算机网络体系结构计算机网络体系结构，一般有三种：OSI 七层模型、TCP&#x2F;IP 四层模型、五层结构。  简单说，OSI是一个理论上的网络通信模型，TCP&#x2F;IP是实际上的网络通信模型，五层结构就是为了介绍网络原理而折中的网络通信模型。 OSI 七层模型OSI 七层模型是国际标准化组织（International Organization for Standardization）制定的一个用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试-计算机网络">
-<meta property="og:url" content="https://weishao-996.github.io/2022/09/14/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
+<meta property="og:url" content="https://weishao996.gitee.io/2022/09/14/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
 <meta property="og:site_name" content="WeiBlog">
 <meta property="og:description" content="基础说下计算机网络体系结构计算机网络体系结构，一般有三种：OSI 七层模型、TCP&#x2F;IP 四层模型、五层结构。  简单说，OSI是一个理论上的网络通信模型，TCP&#x2F;IP是实际上的网络通信模型，五层结构就是为了介绍网络原理而折中的网络通信模型。 OSI 七层模型OSI 七层模型是国际标准化组织（International Organization for Standardization）制定的一个用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914105946014.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914110343078.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914110821509.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914111009624.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914111154827.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914111304899.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914112040289.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914112622852.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914113033757.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914114104380.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914114203771.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914115326440.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914115634809.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914130151408.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914134739072.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914140946859.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914141753002.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914141816333.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914141955788.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914145805140.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914150505696.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914151332272.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914154622322.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917175738756.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917175824100.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917181313525.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917185644793.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917190254848.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917200851731.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917201451466.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917204411106.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917204856339.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917205011615.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917205130755.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917205311385.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917205422167.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917205524690.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917205727095.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914105946014.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914110343078.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914110821509.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914111009624.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914111154827.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914111304899.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914112040289.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914112622852.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914113033757.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914114104380.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914114203771.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914115326440.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914115634809.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914130151408.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914134739072.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914140946859.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914141753002.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914141816333.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914141955788.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914145805140.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914150505696.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914151332272.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914154622322.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917175738756.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917175824100.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917181313525.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917185644793.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917190254848.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917200851731.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917201451466.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917204411106.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917204856339.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917205011615.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917205130755.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917205311385.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917205422167.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917205524690.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220917205727095.png">
 <meta property="article:published_time" content="2022-09-14T02:54:41.000Z">
 <meta property="article:modified_time" content="2022-10-08T05:08:30.000Z">
 <meta property="article:author" content="Wei Shao">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914105946014.png">
+<meta name="twitter:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220914105946014.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -111,7 +111,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"weishao-996.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"Java"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"weishao996.gitee.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"Java"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -727,7 +727,7 @@ tcp_keepalive_time = 1800<span aria-hidden="true" class="line-numbers-rows"><spa
   <div class="license-box my-3">
     <div class="license-title">
       <div>面试-计算机网络</div>
-      <div>https://weishao-996.github.io/2022/09/14/面试-计算机网络/</div>
+      <div>https://weishao996.gitee.io/2022/09/14/面试-计算机网络/</div>
     </div>
     <div class="license-meta">
       

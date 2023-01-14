@@ -19,50 +19,50 @@
     <meta name="description" content="基础说说什么是MyBatis? 优点：Mybatis 是一个半 ORM（对象关系映射）框架，它内部封装了 JDBC，开发时只需要关注SQL 语句本身，不需要花费精力去处理加载驱动、创建连接、创建statement 等繁杂的过程。程序员直接编写原生态 sql，可以严格控制 sql 执行性能，灵活度高。MyBatis 可以使用 XML 或注解来配置和映射原生信息，将 POJO 映射成数据库中的记录，避">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试-Mybatis">
-<meta property="og:url" content="https://weishao-996.github.io/2022/08/31/%E9%9D%A2%E8%AF%95-Mybatis/index.html">
+<meta property="og:url" content="https://weishao996.gitee.io/2022/08/31/%E9%9D%A2%E8%AF%95-Mybatis/index.html">
 <meta property="og:site_name" content="WeiBlog">
 <meta property="og:description" content="基础说说什么是MyBatis? 优点：Mybatis 是一个半 ORM（对象关系映射）框架，它内部封装了 JDBC，开发时只需要关注SQL 语句本身，不需要花费精力去处理加载驱动、创建连接、创建statement 等繁杂的过程。程序员直接编写原生态 sql，可以严格控制 sql 执行性能，灵活度高。MyBatis 可以使用 XML 或注解来配置和映射原生信息，将 POJO 映射成数据库中的记录，避">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124353772.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124733088.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831125002543.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831130749515.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831150538063.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831155449848.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831155632178.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831165343833.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831172605851.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831172905299.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831185515276.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831212914015.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/c6d2a5c38b2e4e6fae3da740b37596f7.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/06ed9e43f8644ff7a40eca96c27f15c1.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/f954119fbd3944ebbeccba11d8ee1ad9.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/cc432713b29a465babe833106535ffe9.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/57ebea0ab2e34e3fb6a15c8916b65100.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/dae47bea7d764a45809d612ac0a62b71.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/3c6f0b1fb377457c867002bbf8546a40.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/d52366f288e940b2afbf51d5035db571.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901114614900.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901114627565.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901123812730.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901130322195.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901145328294.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901153231196.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901153540814.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901154447146.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901155803040.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901162602848.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901163556036.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901163645793.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/2600280-20220303161626997-395362475.png">
-<meta property="og:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/2600280-20220303163713816-2112457012.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124353772.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124733088.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831125002543.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831130749515.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831150538063.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831155449848.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831155632178.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831165343833.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831172605851.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831172905299.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831185515276.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831212914015.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/c6d2a5c38b2e4e6fae3da740b37596f7.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/06ed9e43f8644ff7a40eca96c27f15c1.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/f954119fbd3944ebbeccba11d8ee1ad9.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/cc432713b29a465babe833106535ffe9.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/57ebea0ab2e34e3fb6a15c8916b65100.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/dae47bea7d764a45809d612ac0a62b71.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/3c6f0b1fb377457c867002bbf8546a40.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/d52366f288e940b2afbf51d5035db571.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901114614900.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901114627565.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901123812730.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901130322195.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901145328294.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901153231196.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901153540814.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901154447146.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901155803040.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901162602848.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901163556036.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220901163645793.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/2600280-20220303161626997-395362475.png">
+<meta property="og:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/2600280-20220303163713816-2112457012.png">
 <meta property="article:published_time" content="2022-08-31T03:29:36.000Z">
 <meta property="article:modified_time" content="2022-10-08T05:06:06.000Z">
 <meta property="article:author" content="Wei Shao">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://weishao-996.github.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124353772.png">
+<meta name="twitter:image" content="https://weishao996.gitee.io/img/%E9%9D%A2%E8%AF%95-Mybatis/image-20220831124353772.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -108,7 +108,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"weishao-996.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"Java"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"weishao996.gitee.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"Java"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -1281,7 +1281,7 @@ args <span class="token operator">=</span> <span class="token punctuation">&#123
   <div class="license-box my-3">
     <div class="license-title">
       <div>面试-Mybatis</div>
-      <div>https://weishao-996.github.io/2022/08/31/面试-Mybatis/</div>
+      <div>https://weishao996.gitee.io/2022/08/31/面试-Mybatis/</div>
     </div>
     <div class="license-meta">
       
