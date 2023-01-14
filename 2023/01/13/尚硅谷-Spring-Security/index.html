@@ -1,0 +1,896 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/bg/%E6%89%8B%E7%BB%98%E7%81%AB%E7%AE%AD.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Wei Shao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1.  SpringSecurity 框架简介1.1 概要Spring 是非常流行和成功的 Java 应用开发框架，Spring Security 正是 Spring 家族中的成员。Spring Security 基于 Spring 框架，提供了一套 Web 应用安全性的完整解决方案。 正如你可能知道的关于安全方面的两个主要区域是“认证”和“授权”（或者访问控制），一般来说，Web 应用的安全性包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring-Security">
+<meta property="og:url" content="https://weishao-996.github.io/2023/01/13/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/index.html">
+<meta property="og:site_name" content="WeiBlog">
+<meta property="og:description" content="1.  SpringSecurity 框架简介1.1 概要Spring 是非常流行和成功的 Java 应用开发框架，Spring Security 正是 Spring 家族中的成员。Spring Security 基于 Spring 框架，提供了一套 Web 应用安全性的完整解决方案。 正如你可能知道的关于安全方面的两个主要区域是“认证”和“授权”（或者访问控制），一般来说，Web 应用的安全性包">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114185801606.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114190038429.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114190328945.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114191112306.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114191359949.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114191837151.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114192007676.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114192347475.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114192501625.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114192641620.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114192704316.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114214432047.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114193319522.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114214216441.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114214300656.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114215304034.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114220246947.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114215717272.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114220345212.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114220424927.png">
+<meta property="og:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114220939686.png">
+<meta property="article:published_time" content="2023-01-13T09:39:30.000Z">
+<meta property="article:modified_time" content="2023-01-14T14:26:10.748Z">
+<meta property="article:author" content="Wei Shao">
+<meta property="article:tag" content="Spring-Security">
+<meta property="article:tag" content="尚硅谷">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://weishao-996.github.io/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114185801606.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Spring-Security - WeiBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.27.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"weishao-996.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"Java"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>威少のBlog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/iTab-6ozkzl.jfif') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Spring-Security"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-01-13 17:39" pubdate>
+          2023年1月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Spring-Security</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-SpringSecurity-框架简介"><a href="#1-SpringSecurity-框架简介" class="headerlink" title="1.  SpringSecurity 框架简介"></a><strong>1.</strong>  <strong>SpringSecurity</strong> 框架简介</h1><h2 id="1-1-概要"><a href="#1-1-概要" class="headerlink" title="1.1 概要"></a><strong>1.1</strong> 概要</h2><p>Spring 是非常流行和成功的 Java 应用开发框架，Spring Security 正是 Spring 家族中的成员。Spring Security 基于 Spring 框架，提供了一套 Web 应用安全性的完整解决方案。</p>
+<p>正如你可能知道的关于安全方面的两个主要区域是“<strong>认证</strong>”和“<strong>授权</strong>”（或者访问控制），一般来说，Web 应用的安全性包括<strong>用户认证（Authentication）和用户授权(Authorization）</strong>两个部分，这两点也是 Spring Security 重要核心功</p>
+<p><strong>（1）</strong> 用户认证指的是：验证某个用户是否为系统中的合法主体，也就是说用户能否访问该系统。用户认证一般要求用户提供用户名和密码。系统通过校验用户名和密码来完成认证过程。<strong>通俗点说就是系统认为用户是否能登录</strong></p>
+<p><strong>（2）</strong> 用户授权指的是验证某个用户是否有权限执行某个操作。在一个系统中，不同用户所具有的权限是不同的。比如对一个文件来说，有的用户只能进行读取，而有的用户可以进行修改。一般来说，系统会为不同的用户分配不同的角色，而每个角色则对应一系列的权限。<strong>通俗点讲就是系统判断用户是否有权限去做某些事情。</strong></p>
+<h2 id="1-2-历史"><a href="#1-2-历史" class="headerlink" title="1.2 历史"></a>1.2 历史</h2><p>“Spring Security 开始于 2003 年年底,““spring 的 acegi 安全系统”。 起因是 Spring开发者邮件列表中的一个问题,有人提问是否考虑提供一个基于 spring 的安全实现。</p>
+<p>Spring Security 以“The Acegi Secutity System for Spring” 的名字始于 2013 年晚些时候。一个问题提交到 Spring 开发者的邮件列表，询问是否已经有考虑一个机遇 Spring 的安全性社区实现。那时候 Spring 的社区相对较小（相对现在）。实际上 Spring 自己在2013 年只是一个存在于 ScourseForge 的项目，这个问题的回答是一个值得研究的领域，虽然目前时间的缺乏组织了我们对它的探索。</p>
+<p>考虑到这一点，一个简单的安全实现建成但是并没有发布。几周后，Spring 社区的其他成员询问了安全性，这次这个代码被发送给他们。其他几个请求也跟随而来。到 2014 年一月大约有 20 万人使用了这个代码。这些创业者的人提出一个 SourceForge 项目加入是为了，这是在 2004 三月正式成立。</p>
+<p>在早些时候，这个项目没有任何自己的验证模块，身份验证过程依赖于容器管理的安全性和 Acegi 安全性。而不是专注于授权。开始的时候这很适合，但是越来越多的用户请求额外的容器支持。容器特定的认证领域接口的基本限制变得清晰。还有一个相关的问题增加新的容器的路径，这是最终用户的困惑和错误配置的常见问题。</p>
+<p>Acegi 安全特定的认证服务介绍。大约一年后，Acegi 安全正式成为了 Spring 框架的子项目。1.0.0 最终版本是出版于 2006 -在超过两年半的大量生产的软件项目和数以百计的改进和积极利用社区的贡献</p>
+<p>Acegi 安全 2007 年底正式成为了 Spring 组合项目，更名为”Spring Security”。</p>
+<h2 id="1-3同款产品对比"><a href="#1-3同款产品对比" class="headerlink" title="**1.**3同款产品对比"></a>**1.**3同款产品对比</h2><h3 id="1-3-1-Spring-Security"><a href="#1-3-1-Spring-Security" class="headerlink" title="1.3.1 Spring Security"></a>1.3.1 Spring Security</h3><p>Spring 技术栈的组成部分。</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114185801606.png" srcset="/img/loading.gif" lazyload alt="image-20230114185801606"></p>
+<p>通过提供完整可扩展的认证和授权支持保护你的应用程序。</p>
+<p><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-security">https://spring.io/projects/spring-security</a></p>
+<p>SpringSecurity 特点：</p>
+<ul>
+<li><p>和 Spring 无缝整合。</p>
+</li>
+<li><p>全面的权限控制。</p>
+</li>
+<li><p>专门为Web 开发而设计。</p>
+<ul>
+<li>旧版本不能脱离Web 环境使用。</li>
+</ul>
+</li>
+<li><p> 新版本对整个框架进行了分层抽取，分成了核心模块和Web 模块。单独引入核心模块就可以脱离Web 环境。</p>
+</li>
+<li><p>重量级。</p>
+</li>
+</ul>
+<h3 id="1-3-2-Shiro"><a href="#1-3-2-Shiro" class="headerlink" title="1.3.2 Shiro"></a>1.3.2 Shiro</h3><p>Apache 旗下的轻量级权限控制框架。</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114190038429.png" srcset="/img/loading.gif" lazyload alt="image-20230114190038429"></p>
+<p>特点：</p>
+<ul>
+<li><p>轻量级。Shiro 主张的理念是把复杂的事情变简单。针对对性能有更高要求的互联网应用有更好表现。</p>
+</li>
+<li><p>通用性。</p>
+<ul>
+<li><p>好处：不局限于Web 环境，可以脱离Web 环境使用。</p>
+</li>
+<li><p>缺陷：在Web 环境下一些特定的需求需要手动编写代码定制。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Spring Security 是 Spring 家族中的一个安全管理框架，实际上，在 Spring Boot 出现之前，Spring Security 就已经发展了多年了，但是使用的并不多，安全管理这个领域，一直是 Shiro 的天下。</p>
+<p>相对于 Shiro，在 SSM 中整合 Spring Security 都是比较麻烦的操作，所以，Spring Security 虽然功能比 Shiro 强大，但是使用反而没有 Shiro 多（Shiro 虽然功能没有Spring Security 多，但是对于大部分项目而言，Shiro 也够用了）。</p>
+<p>自从有了 Spring Boot 之后，Spring Boot 对于 Spring Security 提供了自动化配置方案，可以使用更少的配置来使用 Spring Security。</p>
+<p>因此，一般来说，常见的安全管理技术栈的组合是这样的：</p>
+<ul>
+<li><code>SSM + Shiro</code></li>
+<li><code>Spring Boot/Spring Cloud + Spring Security</code></li>
+</ul>
+<p><strong>以上只是一个推荐的组合而已，如果单纯从技术上来说，无论怎么组合，都是可以运行的</strong></p>
+<h2 id="1-4-模块划分"><a href="#1-4-模块划分" class="headerlink" title="1.4 模块划分"></a><strong>1.4</strong> 模块划分</h2><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114190328945.png" srcset="/img/loading.gif" lazyload alt="image-20230114190328945"></p>
+<h1 id="2-SpringSecurity-入门案例"><a href="#2-SpringSecurity-入门案例" class="headerlink" title="2.  SpringSecurity 入门案例"></a>2.  SpringSecurity 入门案例</h1><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114191112306.png" srcset="/img/loading.gif" lazyload alt="image-20230114191112306"></p>
+<h2 id="2-1-创建一个项目"><a href="#2-1-创建一个项目" class="headerlink" title="2.1  创建一个项目"></a><strong>2.1</strong>  创建一个项目</h2><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114191359949.png" srcset="/img/loading.gif" lazyload alt="image-20230114191359949"></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114191837151.png" srcset="/img/loading.gif" lazyload alt="image-20230114191837151"></p>
+<p>确认pom文件相关信息</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114192007676.png" srcset="/img/loading.gif" lazyload alt="image-20230114192007676"></p>
+<h2 id="2-2-定义一个controller方法"><a href="#2-2-定义一个controller方法" class="headerlink" title="2.2 定义一个controller方法"></a>2.2 定义一个controller方法</h2><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114192347475.png" srcset="/img/loading.gif" lazyload alt="image-20230114192347475"></p>
+<h2 id="2-3-启动后并访问方法"><a href="#2-3-启动后并访问方法" class="headerlink" title="2.3 启动后并访问方法"></a>2.3 启动后并访问方法</h2><p>观察发现自动跳转到登录页面</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114192501625.png" srcset="/img/loading.gif" lazyload alt="image-20230114192501625"></p>
+<p>默认的用户名：user</p>
+<p>密码在项目启动的时候在控制台会打印，<strong>注意每次启动的时候密码都回发生变化！</strong></p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114192641620.png" srcset="/img/loading.gif" lazyload alt="image-20230114192641620"></p>
+<p>输入用户名，密码，这样表示可以访问了，404 表示我们没有这个控制器，但是我们可以访问了。</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114192704316.png" srcset="/img/loading.gif" lazyload alt="image-20230114192704316"></p>
+<h2 id="2-4-SpringSecurity-基本原理"><a href="#2-4-SpringSecurity-基本原理" class="headerlink" title="2.4 SpringSecurity 基本原理"></a>2.4 <strong>SpringSecurity</strong> 基本原理</h2><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114214432047.png" srcset="/img/loading.gif" lazyload alt="image-20230114214432047"></p>
+<p><code>SpringSecurity </code>本质是一个过滤器链： 从启动是可以获取到过滤器链：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>context<span class="token punctuation">.</span>request<span class="token punctuation">.</span>async<span class="token punctuation">.</span></span>WebAsyncManagerIntegrationFil</span> ter
+<span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>context<span class="token punctuation">.</span></span>SecurityContextPersistenceFilter</span> <span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>header<span class="token punctuation">.</span></span>HeaderWriterFilter</span> <span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>csrf<span class="token punctuation">.</span></span>CsrfFilter</span> <span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>authentication<span class="token punctuation">.</span>logout<span class="token punctuation">.</span></span>LogoutFilter</span> <span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>authentication<span class="token punctuation">.</span></span>UsernamePasswordAuthenticationFilter</span> <span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>authentication<span class="token punctuation">.</span>ui<span class="token punctuation">.</span></span>DefaultLoginPageGeneratingFilter</span> <span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>authentication<span class="token punctuation">.</span>ui<span class="token punctuation">.</span></span>DefaultLogoutPageGeneratingFilter</span> <span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>savedrequest<span class="token punctuation">.</span></span>RequestCacheAwareFilter</span> <span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servletapi<span class="token punctuation">.</span></span>SecurityContextHolderAwareRequestFilter</span> <span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>authentication<span class="token punctuation">.</span></span>AnonymousAuthenticationFilter</span> <span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>session<span class="token punctuation">.</span></span>SessionManagementFilter</span> <span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>access<span class="token punctuation">.</span></span>ExceptionTranslationFilter</span> <span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>access<span class="token punctuation">.</span>intercept<span class="token punctuation">.</span></span>FilterSecurityInterceptor</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
+<p>代码底层流程：重点看三个过滤器：</p>
+<ul>
+<li><code>FilterSecurityInterceptor</code>：是一个方法级的权限过滤器, 基本位于过滤链的最底部。</li>
+</ul>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114193319522.png" srcset="/img/loading.gif" lazyload alt="image-20230114193319522"></p>
+<p><code>super.beforeInvocation(fi) </code>表示查看之前的<code>filter</code>是否通过。</p>
+<p><code>fi.getChain().doFilter(fi.getRequest(), fi.getResponse());</code>表示真正的调用后台的服务。</p>
+<ul>
+<li><code>ExceptionTranslationFilter</code>：是个异常过滤器，用来处理在认证授权过程中抛出的异常</li>
+</ul>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114214216441.png" srcset="/img/loading.gif" lazyload alt="image-20230114214216441"></p>
+<ul>
+<li><code>UsernamePasswordAuthenticationFilter </code>：对/login 的 POST 请求做拦截，校验表单中用户名，密码。</li>
+</ul>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114214300656.png" srcset="/img/loading.gif" lazyload alt="image-20230114214300656"></p>
+<h2 id="2-5-过滤器如何进行加载的"><a href="#2-5-过滤器如何进行加载的" class="headerlink" title="2.5 过滤器如何进行加载的"></a>2.5 过滤器如何进行加载的</h2><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114215304034.png" srcset="/img/loading.gif" lazyload alt="image-20230114215304034"></p>
+<h2 id="2-6-UserDetailsService-接口讲解"><a href="#2-6-UserDetailsService-接口讲解" class="headerlink" title="2.6 UserDetailsService 接口讲解"></a>2.6 <strong>UserDetailsService</strong> 接口讲解</h2><p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114220246947.png" srcset="/img/loading.gif" lazyload alt="image-20230114220246947"></p>
+<p>当什么也没有配置的时候，账号和密码是由<code>Spring Security</code>定义生成的。而在实际项目中账号和密码都是从数据库中查询出来的。 所以我们要通过自定义逻辑控制认证逻辑。</p>
+<p>如果需要自定义逻辑时，只需要实现 UserDetailsService 接口即可。接口定义如下：</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114215717272.png" srcset="/img/loading.gif" lazyload alt="image-20230114215717272"></p>
+<p><strong>返回值 UserDetails</strong></p>
+<p>这个类是系统默认的用户“<strong>主体</strong>”</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 表示获取登录用户所有权限</span>
+<span class="token class-name">Collection</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">GrantedAuthority</span><span class="token punctuation">></span></span> <span class="token function">getAuthorities</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 表示获取密码</span>
+<span class="token class-name">String</span> <span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 表示获取用户名</span>
+<span class="token class-name">String</span> <span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 表示判断账户是否过期</span>
+<span class="token keyword">boolean</span> <span class="token function">isAccountNonExpired</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 表示判断账户是否被锁定</span>
+<span class="token keyword">boolean</span> <span class="token function">isAccountNonLocked</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 表示凭证&#123;密码&#125;是否过期</span>
+<span class="token keyword">boolean</span> <span class="token function">isCredentialsNonExpired</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 表示当前用户是否可用</span>
+<span class="token keyword">boolean</span> <span class="token function">isEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>以下是 <code>UserDetails </code>实现类</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114220345212.png" srcset="/img/loading.gif" lazyload alt="image-20230114220345212"></p>
+<p>以后我们只需要使用 User 这个实体类即可！</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114220424927.png" srcset="/img/loading.gif" lazyload alt="image-20230114220424927"></p>
+<ul>
+<li>方法参数<code>username</code></li>
+</ul>
+<p>表示用户名。此值是客户端表单传递过来的数据。默认情况下必须叫 username，否则无法接收。</p>
+<h2 id="2-7-PasswordEncoder-接口讲解"><a href="#2-7-PasswordEncoder-接口讲解" class="headerlink" title="2.7 PasswordEncoder 接口讲解"></a>2.7 PasswordEncoder 接口讲解</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 表示把参数按照特定的解析规则进行解析</span>
+<span class="token class-name">String</span> <span class="token function">encode</span><span class="token punctuation">(</span><span class="token class-name">CharSequence</span> rawPassword<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 表示验证从存储中获取的编码密码与编码后提交的原始密码是否匹配。如果密码匹配，则返回 true；如果不匹配，则返回 false。第一个参数表示需要被解析的密码。第二个参数表示存储的密码。</span>
+<span class="token keyword">boolean</span> <span class="token function">matches</span><span class="token punctuation">(</span><span class="token class-name">CharSequence</span> rawPassword<span class="token punctuation">,</span> <span class="token class-name">String</span> encodedPassword<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 表示如果解析的密码能够再次进行解析且达到更安全的结果则返回 true，否则返回false。默认返回 false。</span>
+<span class="token keyword">default</span> <span class="token keyword">boolean</span> <span class="token function">upgradeEncoding</span><span class="token punctuation">(</span><span class="token class-name">String</span> encodedPassword<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>接口实现类</p>
+<p><img src="/Users/xuwei/Desktop/%E9%A1%B9%E7%9B%AE/weishao-996.github.io/source/_posts/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/image-20230114220939686.png" srcset="/img/loading.gif" lazyload alt="image-20230114220939686"></p>
+<p><code>BCryptPasswordEncoder</code> 是 <code>Spring Security</code> 官方推荐的密码解析器，平时多使用这个解析器。</p>
+<p><code>BCryptPasswordEncoder</code> 是对bcrypt 强散列方法的具体实现。是基于 Hash 算法实现的单向加密。可以通过 strength 控制加密强度，默认 10.</p>
+<p><strong>查用方法演示</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token comment">// 创建密码解析器 </span>
+  <span class="token class-name">BCryptPasswordEncoder</span>  bCryptPasswordEncoder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BCryptPasswordEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 对密码进行加密</span>
+  <span class="token class-name">String</span> atguigu <span class="token operator">=</span> bCryptPasswordEncoder<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token string">"atguigu"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 打印加密之后的数据</span>
+  <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"加密之后数据：\t"</span><span class="token operator">+</span>atguigu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//判断原字符加密后和加密之前是否匹配</span>
+  <span class="token keyword">boolean</span> result <span class="token operator">=</span> bCryptPasswordEncoder<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span><span class="token string">"atguigu"</span><span class="token punctuation">,</span> atguigu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 打印比较结果</span>
+  <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"比较结果：\t"</span><span class="token operator">+</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java%E6%A1%86%E6%9E%B6/" class="category-chain-item">Java框架</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Java%E6%A1%86%E6%9E%B6/Spring-Security/" class="category-chain-item">Spring-Security</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Spring-Security/">#Spring-Security</a>
+      
+        <a href="/tags/%E5%B0%9A%E7%A1%85%E8%B0%B7/">#尚硅谷</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Spring-Security</div>
+      <div>https://weishao-996.github.io/2023/01/13/尚硅谷-Spring-Security/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Wei Shao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年1月13日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/01/13/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-SpringCloudAlibaba/" title="黑马程序员-SpringCloudAlibaba">
+                        <span class="hidden-mobile">黑马程序员-SpringCloudAlibaba</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'weishao-996/commit-utterance');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Spring-Security"
+        id="heading-586b26955d265287baa7d042c2a0235e" role="tab" data-toggle="collapse" href="#collapse-586b26955d265287baa7d042c2a0235e"
+        aria-expanded="true"
+      >
+        Spring-Security
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-586b26955d265287baa7d042c2a0235e"
+           role="tabpanel" aria-labelledby="heading-586b26955d265287baa7d042c2a0235e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2023/01/13/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/" title="Spring-Security"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">Spring-Security</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.27.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
