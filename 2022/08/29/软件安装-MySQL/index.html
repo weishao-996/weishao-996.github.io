@@ -1,856 +1,256 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="Hexo Theme Redefine">
-    <meta name="description" content="Hexo Theme Redefine">
-    <meta name="author" content="威少のBlog">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
-    <!--- Seo Part-->
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>软件安装-MySQL | WeiBlog</title><meta name="author" content="Wei Shao"><meta name="copyright" content="Wei Shao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基于CentOS8.2安装MySQL检测系统是否已安装Mysql执行命令rpm -qa | grep mysql 如果是下图所示，表示已安装  卸载命令如果要重新安装需要选择执行以下命令进行mysql卸载 12rpm -e mysql　　&#x2F;&#x2F; 普通删除rpm -e --nodeps mysql　　&#x2F;&#x2F; 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删  rp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件安装-MySQL">
+<meta property="og:url" content="https://weishao-996.github.io/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/index.html">
+<meta property="og:site_name" content="WeiBlog">
+<meta property="og:description" content="基于CentOS8.2安装MySQL检测系统是否已安装Mysql执行命令rpm -qa | grep mysql 如果是下图所示，表示已安装  卸载命令如果要重新安装需要选择执行以下命令进行mysql卸载 12rpm -e mysql　　&#x2F;&#x2F; 普通删除rpm -e --nodeps mysql　　&#x2F;&#x2F; 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删  rp">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://weishao-996.github.io/img/bg/WechatIMG48.png">
+<meta property="article:published_time" content="2022-08-29T01:36:37.000Z">
+<meta property="article:modified_time" content="2022-10-08T05:40:08.000Z">
+<meta property="article:author" content="Wei Shao">
+<meta property="article:tag" content="软件安装">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://weishao-996.github.io/img/bg/WechatIMG48.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://weishao-996.github.io/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软件安装-MySQL',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-08 13:40:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-    <link rel="canonical" href="https://weishao-996.github.io/2022/08/29/软件安装-mysql/"/>
-    <meta name="robots" content="index,follow">
-    <meta name="googlebot" content="index,follow">
-    <meta name="revisit-after" content="1 days">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="软件安装-MySQL">
-    <meta property="og:description" content="Hexo Theme Redefine">
-    <meta property="og:url" content="https://weishao-996.github.io2022/08/29/软件安装-MySQL/">
-    <meta property="og:image" content="/img/bg/手绘火箭.png">
-    <meta property="og:site_name" content="威少のBlog">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="软件安装-MySQL">
-    <meta name="twitter:description" content="Hexo Theme Redefine">
-    <meta name="twitter:image" content="/img/bg/手绘火箭.png">
-    <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/img/bg/手绘火箭.png" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/bg/手绘火箭.png">
-    <meta name="theme-color" content="#005080">
-    <link rel="shortcut icon" href="/img/bg/%E6%89%8B%E7%BB%98%E7%81%AB%E7%AE%AD.png">
-    
-    <title>
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-            软件安装-MySQL -
-        
-        威少のBlog
-    </title>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-<link rel="stylesheet" href="/css/style.css">
-
-    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/assets/fonts.css">
-    
-    
-    
-        <link rel="preconnect" href="https://evan.beee.top" crossorigin>
-    
-    <script id="hexo-configurations">
-    let REDEFINE = window.REDEFINE || {};
-    REDEFINE.hexo_config = {"hostname":"weishao-996.github.io","root":"/","language":"zh-CN","path":"search.xml"};
-    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true},"style":{"primary_color":"#005080","avatar":"/img/bg/WechatIMG48.png","favicon":"/img/bg/手绘火箭.png","article_img_align":"center","right_side_width":"500px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"告诉老墨 我想吃鱼了","custom_font":{"enable":false,"font_family":null,"font_url":null}},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"1.1.1","friend_links":{"columns":2}};
-    REDEFINE.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
-  </script>
-    
-    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/fontawesome/fontawesome.min.css">
-    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/fontawesome/brands.min.css">
-    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/fontawesome/solid.min.css">
-    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/fontawesome/regular.min.css">
-    
-    
-    
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-
-<body>
-<div class="progress-bar-container">
-    
-        <span class="scroll-progress-bar"></span>
-    
-
-    
-        <span class="pjax-progress-bar"></span>
-        <span class="pjax-progress-icon">
-            <i class="fa-solid fa-circle-notch fa-spin"></i>
-        </span>
-    
-</div>
-
-
-<main class="page-container">
-
-    
-
-    <div class="page-main-content">
-
-        <div class="page-main-content-top">
-            <header class="menu-wrapper">
-    
-    <div class="menu-content">
-        <div class="left">
-            
-            <a class="logo-title" href="/">
-                
-                威少のBlog
-                
-            </a>
-        </div>
-
-        <div class="right">
-            <!-- PC -->
-            <div class="pc">
-                <ul class="menu-list">
-                    
-                        
-                            <li class="menu-item">
-                                <!-- Menu -->
-                                <a class="" 
-                                    href="/"  >
-                                    
-                                        
-                                            <i class="fa-regular fa-house"></i>
-                                        
-                                        首页
-                                    
-                                </a>
-                                <!-- Submenu -->
-                                
-                            </li>
-                    
-                        
-                            <li class="menu-item">
-                                <!-- Menu -->
-                                <a class="" 
-                                    href="/archives"  >
-                                    
-                                        
-                                            <i class="fa-regular fa-archive"></i>
-                                        
-                                        归档
-                                    
-                                </a>
-                                <!-- Submenu -->
-                                
-                            </li>
-                    
-                        
-                            <li class="menu-item">
-                                <!-- Menu -->
-                                <a class="" 
-                                    href="/tags"  >
-                                    
-                                        
-                                            <i class="fa-solid fa-tag"></i>
-                                        
-                                        标签
-                                    
-                                </a>
-                                <!-- Submenu -->
-                                
-                            </li>
-                    
-                        
-                            <li class="menu-item">
-                                <!-- Menu -->
-                                <a class="" 
-                                    href="/categories"  >
-                                    
-                                        
-                                            <i class="fa-regular fa-books"></i>
-                                        
-                                        分类
-                                    
-                                </a>
-                                <!-- Submenu -->
-                                
-                            </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </li>
-                    
-                </ul>
-            </div>
-            <!-- Mobile -->
-            <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
-                
-                <div class="icon-item menu-bar">
-                    <div class="menu-bar-middle"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mobile drawer -->
-    <div class="menu-drawer">
-        <ul class="drawer-menu-list">
-            
-                
-                    <li class="drawer-menu-item flex-center">
-                        <a class="" 
-                        href="/"  >
-                             
-                                
-                                    <i class="fa-regular fa-house"></i>
-                                
-                                首页
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
-                
-                    <li class="drawer-menu-item flex-center">
-                        <a class="" 
-                        href="/archives"  >
-                             
-                                
-                                    <i class="fa-regular fa-archive"></i>
-                                
-                                归档
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
-                
-                    <li class="drawer-menu-item flex-center">
-                        <a class="" 
-                        href="/tags"  >
-                             
-                                
-                                    <i class="fa-solid fa-tag"></i>
-                                
-                                标签
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
-                
-                    <li class="drawer-menu-item flex-center">
-                        <a class="" 
-                        href="/categories"  >
-                             
-                                
-                                    <i class="fa-regular fa-books"></i>
-                                
-                                分类
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
-
-        </ul>
-    </div>
-
-    <div class="window-mask"></div>
-
-</header>
-
-
-        </div>
-
-        <div class="page-main-content-middle">
-
-            <div class="main-content">
-
-                
-                    <div class="fade-in-down-animation">
-    <div class="post-page-container">
-        <div class="article-content-container">
-
-            
-            
-                <div class="article-title">
-                    <h1 class="article-title-regular">软件安装-MySQL</h1>
-                </div>
-            
-                
-            
-
-            
-                <div class="article-header">
-                    <div class="avatar">
-                        <img src="/img/bg/WechatIMG48.png">
-                    </div>
-                    <div class="info">
-                        <div class="author">
-                            <span class="name">威少のBlog</span>
-                            
-                                <span class="author-label">lol</span>
-                            
-                        </div>
-                        <div class="meta-info">
-                            <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2022-08-29 09:36:37</span>
-        <span class="mobile">2022-08-29 09:36</span>
-    </span>
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-    
-    
-        <span class="article-pv article-meta-item">
-            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
-    
-</div>
-
-                        </div>
-                    </div>
-                </div>
-            
-
-            <div class="article-content markdown-body">
-                <h1 id="基于CentOS8-2安装MySQL"><a href="#基于CentOS8-2安装MySQL" class="headerlink" title="基于CentOS8.2安装MySQL"></a>基于CentOS8.2安装MySQL</h1><h3 id="检测系统是否已安装Mysql"><a href="#检测系统是否已安装Mysql" class="headerlink" title="检测系统是否已安装Mysql"></a>检测系统是否已安装Mysql</h3><p>执行命令<code>rpm -qa | grep mysql</code> 如果是下图所示，表示已安装</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/8409f98d101e4c94a690c9aff128860e.png"
-                      alt="img"
-                ></p>
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/bg/WechatIMG48.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="WeiBlog"><span class="site-name">WeiBlog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">软件安装-MySQL</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-29T01:36:37.000Z" title="发表于 2022-08-29 09:36:37">2022-08-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-08T05:40:08.000Z" title="更新于 2022-10-08 13:40:08">2022-10-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="软件安装-MySQL"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="基于CentOS8-2安装MySQL"><a href="#基于CentOS8-2安装MySQL" class="headerlink" title="基于CentOS8.2安装MySQL"></a>基于CentOS8.2安装MySQL</h1><h3 id="检测系统是否已安装Mysql"><a href="#检测系统是否已安装Mysql" class="headerlink" title="检测系统是否已安装Mysql"></a>检测系统是否已安装Mysql</h3><p>执行命令<code>rpm -qa | grep mysql</code> 如果是下图所示，表示已安装</p>
+<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/8409f98d101e4c94a690c9aff128860e.png" alt="img"></p>
 <h3 id="卸载命令"><a href="#卸载命令" class="headerlink" title="卸载命令"></a>卸载命令</h3><p>如果要重新安装需要选择执行以下命令进行<code>mysql卸载</code></p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -e mysql　　// 普通删除</span><br><span class="line">rpm -e --nodeps mysql　　// 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -e mysql　　// 普通删除</span><br><span class="line">rpm -e --nodeps mysql　　// 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删</span><br></pre></td></tr></table></figure>
 
 <p>rpm安装下的需逐行删除</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rpm -e --nodeps mysql-community-debugsource-8.0.30-1.el8.x86_64</span><br><span class="line">rpm -e --nodeps mysql-community-icu-data-files-8.0.30-1.el8.x86_64</span><br><span class="line">rpm -e --nodeps mysql-community-server-debuginfo-8.0.30-1.el8.x86_64</span><br><span class="line">rpm -e --nodeps mysql-community-libs-debuginfo-8.0.30-1.el8.x86_64</span><br><span class="line">rpm -e --nodeps mysql-community-server-8.0.30-1.el8.x86_64</span><br><span class="line">rpm -e --nodeps mysql-community-client-plugins-8.0.30-1.el8.x86_64</span><br><span class="line">rpm -e --nodeps mysql-community-client-debuginfo-8.0.30-1.el8.x86_64</span><br><span class="line">rpm -e --nodeps mysql-community-server-debug-debuginfo-8.0.30-1.el8.x86_64</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rpm -e --nodeps mysql-community-debugsource-8.0.30-1.el8.x86_64</span><br><span class="line">rpm -e --nodeps mysql-community-icu-data-files-8.0.30-1.el8.x86_64</span><br><span class="line">rpm -e --nodeps mysql-community-server-debuginfo-8.0.30-1.el8.x86_64</span><br><span class="line">rpm -e --nodeps mysql-community-libs-debuginfo-8.0.30-1.el8.x86_64</span><br><span class="line">rpm -e --nodeps mysql-community-server-8.0.30-1.el8.x86_64</span><br><span class="line">rpm -e --nodeps mysql-community-client-plugins-8.0.30-1.el8.x86_64</span><br><span class="line">rpm -e --nodeps mysql-community-client-debuginfo-8.0.30-1.el8.x86_64</span><br><span class="line">rpm -e --nodeps mysql-community-server-debug-debuginfo-8.0.30-1.el8.x86_64</span><br></pre></td></tr></table></figure>
 
 <p>查找mysql相关目录</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name mysql</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name mysql</span><br></pre></td></tr></table></figure>
 
 <p>对这些目录一个个的进行删除</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf</span><br></pre></td></tr></table></figure>
 
 <p>删除/etc/my.cnf 文件</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /etc/my.cnf</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /etc/my.cnf</span><br></pre></td></tr></table></figure>
 
 <p>删除 /var/log/mysql/mysqld.log文件</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/log/mysql/mysqld.log</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/log/mysql/mysqld.log</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><strong>下载</strong></h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql80-community-release-el8-3.noarch.rpm</span><br></pre></td></tr></table></figure></div>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a><strong>下载</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql80-community-release-el8-3.noarch.rpm</span><br></pre></td></tr></table></figure>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/image-20220930134049957.png"
-                      alt="image-20220930134049957"
-                ></p>
+<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/image-20220930134049957.png" alt="image-20220930134049957"></p>
 <p><strong>第二步：安装</strong></p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql80-community-release-el8-3.noarch.rpm</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql80-community-release-el8-3.noarch.rpm</span><br></pre></td></tr></table></figure>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/image-20220930134154945.png"
-                      alt="image-20220930134154945"
-                ></p>
-<h3 id="查看该yum源支持哪些版本"><a href="#查看该yum源支持哪些版本" class="headerlink" title="查看该yum源支持哪些版本"></a>查看该yum源支持哪些版本</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist all | grep mysql</span><br></pre></td></tr></table></figure></div>
+<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/image-20220930134154945.png" alt="image-20220930134154945"></p>
+<h3 id="查看该yum源支持哪些版本"><a href="#查看该yum源支持哪些版本" class="headerlink" title="查看该yum源支持哪些版本"></a>查看该yum源支持哪些版本</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist all | grep mysql</span><br></pre></td></tr></table></figure>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/image-20220930134311029.png"
-                      alt="image-20220930134311029"
-                ></p>
+<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/image-20220930134311029.png" alt="image-20220930134311029"></p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>安装过程会询问你，一直y即可</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">yum install mysql-community-server</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">yum install mysql-community-server</span><br></pre></td></tr></table></figure>
 
 <p>如遇报错</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Unable to find a match: mysql-community-server</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Unable to find a match: mysql-community-server</span><br></pre></td></tr></table></figure>
 
 <p>执行</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum module disable mysql</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum module disable mysql</span><br></pre></td></tr></table></figure>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/image-20220930134723042.png"
-                      alt="image-20220930134723042"
-                ></p>
+<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/image-20220930134723042.png" alt="image-20220930134723042"></p>
 <p>继续安装</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/image-20220930134802715.png"
-                      alt="image-20220930134802715"
-                ></p>
+<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/image-20220930134802715.png" alt="image-20220930134802715"></p>
 <h3 id="启动、查看、开机自启"><a href="#启动、查看、开机自启" class="headerlink" title="启动、查看、开机自启"></a>启动、查看、开机自启</h3><p>启动MySQL：</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure>
 
 <p>查看MySQL状态：</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status mysqld</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status mysqld</span><br></pre></td></tr></table></figure>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/image-20220930135020609.png"
-                      alt="image-20220930135020609"
-                ></p>
+<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/image-20220930135020609.png" alt="image-20220930135020609"></p>
 <p>开机自启：</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开机自启</span></span><br><span class="line">systemctl enable mysqld</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重新加载系统配置，使开机自启立马有效</span></span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开机自启</span></span><br><span class="line">systemctl enable mysqld</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重新加载系统配置，使开机自启立马有效</span></span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
 
 <h3 id="登录MySQL8"><a href="#登录MySQL8" class="headerlink" title="登录MySQL8"></a>登录MySQL8</h3><p>MySQL较大的变动就是，第一次安装会给root用户一个临时密码，我们需要拿到这个临时密码：</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &#x27;temporary password&#x27; /var/log/mysqld.log</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &#x27;temporary password&#x27; /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/4fa8124b46ee2db5abc79626e2d30b68.png"
-                      alt="img"
-                ></p>
+<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/4fa8124b46ee2db5abc79626e2d30b68.png" alt="img"></p>
 <p>还有一种查看默认密码的方式：</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /var/log/mysqld.log</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/6b414fe7163593c93060cc85dafd8abc.png"
-                      alt="img"
-                ></p>
+<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/6b414fe7163593c93060cc85dafd8abc.png" alt="img"></p>
 <p>ok，拿到默认密码后，登录：</p>
 <p>会提示你输入密码，将密码复制即可</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/b562d2b4c45d85671647c6e3bdf37159.png"
-                      alt="img"
-                ></p>
+<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/b562d2b4c45d85671647c6e3bdf37159.png" alt="img"></p>
 <h3 id="改密码"><a href="#改密码" class="headerlink" title="改密码"></a>改密码</h3><ol>
 <li>改密码，</li>
 </ol>
 <p>需要知道的是： <strong>mysql新的安全机制要求，mysql的密码必须包含英文大小写、数字以及特殊字符</strong></p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;新密码&#x27;</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;新密码&#x27;</span><br></pre></td></tr></table></figure>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/bbe63279ecf5f924c699e2869a5b1796.png"
-                      alt="img"
-                ></p>
+<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/bbe63279ecf5f924c699e2869a5b1796.png" alt="img"></p>
 <p>刷新：</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
 
 <h3 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h3><p>换库</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br></pre></td></tr></table></figure>
 
 <p>查看数据库用户</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select user,host from user;</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select user,host from user;</span><br></pre></td></tr></table></figure>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/013fefdc7c728915f4bb36c6e6c4853a.png"
-                      alt="img"
-                ></p>
+<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/013fefdc7c728915f4bb36c6e6c4853a.png" alt="img"></p>
 <p>可以看到，root用户的host未localhost，这意味着root用户只能在本机连接数据库。</p>
 <p>所以我们需要将他改为所有机器都能连：（或者指定为ip）</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update user set host=&#x27;%&#x27; where user=&#x27;root&#x27;;</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update user set host=&#x27;%&#x27; where user=&#x27;root&#x27;;</span><br></pre></td></tr></table></figure>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/6b54f883e3d9756e6069c3b5358ccf67.png"
-                      alt="img"
-                ></p>
+<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/6b54f883e3d9756e6069c3b5358ccf67.png" alt="img"></p>
 <p>因为：mysql8 之前的版本中加密规则是mysql_native_password,而在mysql8之后,加密规则是caching_sha2_password, 解决问题方法有两种,一种是升级navicat驱动,一种是把mysql用户登录密码加密规则还原成mysql_native_password. 由于用的是破解版的navicat，所以只能用第二种方法解决了</p>
 <p>修改密码，并且不对密码加密：</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;新密码&#x27;;</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;新密码&#x27;;</span><br></pre></td></tr></table></figure>
 
 <p>修改完成，退出：</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
 
 <h3 id="远程连接测试"><a href="#远程连接测试" class="headerlink" title="远程连接测试"></a>远程连接测试</h3><p>服务器防火墙记得开放3306</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/image-20220930135858626.png"
-                      alt="image-20220930135858626"
-                ></p>
-
-            </div>
-
-            
-                <div class="post-copyright-info">
-                    <div class="article-copyright-info-container">
-    <ul>
-        <li>本文标题：软件安装-MySQL</li>
-        <li>本文作者：威少のBlog</li>
-        <li>创建时间：2022-08-29 09:36:37</li>
-        <li>
-            本文链接：https://weishao-996.github.io/2022/08/29/软件安装-MySQL/
-        </li>
-        <li>
-            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
-        </li>
-    </ul>
-</div>
-
-                </div>
-            
-
-            
-                <ul class="post-tags-box">
-                    
-                        <li class="tag-item">
-                            <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">#软件安装</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            
-
-            
-
-            
-                <div class="article-nav">
-                    
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">软件安装-JDK</span>
-                                    <span class="post-nav-item">上一篇</span>
-                                </span>
-                            </a>
-                        </div>
-                    
-                    
-                        <div class="article-next">
-                            <a class="next"
-                            rel="next"
-                            href="/2022/08/29/%E9%9D%A2%E8%AF%95-Spring/"
-                            >
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">面试-Spring</span>
-                                    <span class="post-nav-item">下一篇</span>
-                                </span>
-                                <span class="right arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </span>
-                            </a>
-                        </div>
-                    
-                </div>
-            
-
-
-            
-                <div class="comment-container">
-                    <div class="comments-container">
-    <div id="comment-anchor"></div>
-    <div class="comment-area-title">
-        <i class="fa-solid fa-comments">&nbsp;评论</i>
-    </div>
-    
-
-        
-            
-
-        
-    
-</div>
-
-                </div>
-            
-        </div>
-
-        
-            <div class="toc-content-container">
-                <div class="post-toc-wrap">
-    <div class="post-toc">
-        <div class="toc-title">此页目录</div>
-        <div class="page-title">软件安装-MySQL</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8ECentOS8-2%E5%AE%89%E8%A3%85MySQL"><span class="nav-text">基于CentOS8.2安装MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%90%A6%E5%B7%B2%E5%AE%89%E8%A3%85Mysql"><span class="nav-text">检测系统是否已安装Mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E5%91%BD%E4%BB%A4"><span class="nav-text">卸载命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-text">下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%AF%A5yum%E6%BA%90%E6%94%AF%E6%8C%81%E5%93%AA%E4%BA%9B%E7%89%88%E6%9C%AC"><span class="nav-text">查看该yum源支持哪些版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E3%80%81%E6%9F%A5%E7%9C%8B%E3%80%81%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="nav-text">启动、查看、开机自启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95MySQL8"><span class="nav-text">登录MySQL8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E5%AF%86%E7%A0%81"><span class="nav-text">改密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="nav-text">远程连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95"><span class="nav-text">远程连接测试</span></a></li></ol></li></ol></li></ol>
-
-    </div>
-</div>
-            </div>
-        
-    </div>
-</div>
-
-
-                
-
-            </div>
-
-
-
-        </div>
-
-        <div class="page-main-content-bottom">
-            <footer class="footer">
-    <div class="info-container">
-        <div class="copyright-info">
-            &copy;
-            
-              <span>2022</span>
-              -
-            
-            2023&nbsp;&nbsp;<i class="fa-regular fa-computer-classic"></i>&nbsp;&nbsp;<a href="/">威少のBlog</a>
-        </div>
-        
-            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <div class="website-count info-item">
-                
-                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
-                        访问人数&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
-                    </span>
-                
-                
-                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
-                        总访问量&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
-                    </span>
-                
-            </div>
-        
-        <div class="theme-info info-item">
-            <span class="powered-by-container">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 驱动</span>
-                <br> 
-            <span class="theme-version-container">主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.1.1</a>
-        </div>
-        
-        
-        
-            <div id="start_time_div" style="display:none">
-                2022/8/17 11:45:14
-            </div>
-            <div>
-                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
-            </div>
-        
-        
-        
-            <script async data-pjax defer>
-                function odometer_init(){
-                        let el = document.getElementsByClassName('odometer');
-                        for (i = 0; i < el.length; i++) {
-                            od = new Odometer({
-                                el: el[i],
-                                format: '( ddd).dd',
-                                duration: 200
-                            });
-                        }
-                }
-                odometer_init();
-            </script>
-        
-        
-        
-    </div>  
-</footer>
-        </div>
-    </div>
-
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="right-bottom-tools page-aside-toggle">
-                <i class="fa-regular fa-outdent"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-            <li class="go-comment">
-                <i class="fa-regular fa-comments"></i>
-            </li>
-        
-    </ul>
-</div>
-
-        </div>
-    
-
-    <div class="right-bottom-side-tools">
-        <div class="side-tools-container">
-    <ul class="unfolded-tools-list">
-        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
-            <i class="fa-regular fa-magnifying-glass-plus"></i>
-        </li>
-
-        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
-            <i class="fa-regular fa-magnifying-glass-minus"></i>
-        </li>
-
-        <li class="right-bottom-tools tool-expand-width flex-center">
-            <i class="fa-regular fa-expand"></i>
-        </li>
-
-        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
-            <i class="fa-regular fa-moon"></i>
-        </li>
-
-        <!-- rss -->
-        
-
-        
-            <li class="right-bottom-tools tool-scroll-to-top flex-center">
-                <i class="fa-regular fa-arrow-up"></i>
-            </li>
-        
-
-        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
-            <i class="fa-regular fa-arrow-down"></i>
-        </li>
-    </ul>
-
-    <ul class="folded-tools-list">
-        <li class="right-bottom-tools tool-toggle-show flex-center">
-            <i class="fa-regular fa-cog fa-spin"></i>
-        </li>
-        
-    </ul>
-</div>
-
-    </div>
-
-    <div class="image-viewer-container">
-    <img src="">
-</div>
-
-
-    
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fa-solid fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="搜索..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="popup-btn-close">
-                <i class="fa-solid fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-
-
-</main>
-
-
-
-<script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/utils.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/main.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/layouts/menu-shrink.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/tools/go-top-bottom.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/tools/dark-light-toggle.js"></script>
-
-
-    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/tools/local-search.js"></script>
-
-
-
-    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/tools/code-block.js"></script>
-
-
-
-    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/layouts/lazyload.js"></script>
-
-
-
-    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/tools/runtime.js"></script>
-    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/layouts/odometer.min.js"></script>
-    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/assets/odometer-theme-minimal.css">
-
-
-<div class="post-scripts pjax">
-    
-        <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/tools/toc-toggle.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/libs/anime.min.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/layouts/toc.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/plugins/tabs.js"></script>
-    
-    
-</div>
-
-
-    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/libs/pjax.min.js"></script>
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        window.pjax = new Pjax({
-            selectors: [
-                'head title',
-                '.page-container',
-                '.pjax'
-            ],
-            history: true,
-            debug: false,
-            cacheBust: false,
-            timeout: 0,
-            analytics: false,
-            currentUrlFullReload: false,
-            scrollRestoration: false,
-            // scrollTo: true,
-        });
-
-        document.addEventListener('pjax:send', () => {
-            REDEFINE.utils.pjaxProgressBarStart();
-        });
-
-        document.addEventListener('pjax:complete', () => {
-            REDEFINE.utils.pjaxProgressBarEnd();
-            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
-            REDEFINE.refresh();
-        });
-    });
-</script>
-
-
-
-</body>
-</html>
+<p><img src="/img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/image-20220930135858626.png" alt="image-20220930135858626"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://weishao-996.github.io">Wei Shao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://weishao-996.github.io/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/">https://weishao-996.github.io/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-MySQL/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://weishao-996.github.io" target="_blank">WeiBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a></div><div class="post_share"><div class="social-share" data-image="/img/bg/WechatIMG48.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/" title="软件安装-JDK"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">软件安装-JDK</div></div></a></div><div class="next-post pull-right"><a href="/2022/08/29/%E9%9D%A2%E8%AF%95-Spring/" title="面试-Spring"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">面试-Spring</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/08/29/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-JDK/" title="软件安装-JDK"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-29</div><div class="title">软件安装-JDK</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/bg/WechatIMG48.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Wei Shao</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/weishao-996" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2427340869@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8ECentOS8-2%E5%AE%89%E8%A3%85MySQL"><span class="toc-number">1.</span> <span class="toc-text">基于CentOS8.2安装MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%90%A6%E5%B7%B2%E5%AE%89%E8%A3%85Mysql"><span class="toc-number">1.0.1.</span> <span class="toc-text">检测系统是否已安装Mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD%E5%91%BD%E4%BB%A4"><span class="toc-number">1.0.2.</span> <span class="toc-text">卸载命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.0.3.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%AF%A5yum%E6%BA%90%E6%94%AF%E6%8C%81%E5%93%AA%E4%BA%9B%E7%89%88%E6%9C%AC"><span class="toc-number">1.0.4.</span> <span class="toc-text">查看该yum源支持哪些版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.0.5.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E3%80%81%E6%9F%A5%E7%9C%8B%E3%80%81%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="toc-number">1.0.6.</span> <span class="toc-text">启动、查看、开机自启</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BB%E5%BD%95MySQL8"><span class="toc-number">1.0.7.</span> <span class="toc-text">登录MySQL8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-number">1.0.8.</span> <span class="toc-text">改密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.0.9.</span> <span class="toc-text">远程连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95"><span class="toc-number">1.0.10.</span> <span class="toc-text">远程连接测试</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/01/30/%E8%8A%8B%E9%81%93%E6%BA%90%E7%A0%81-ruoyi-vue-pro/" title="芋道源码-ruoyi-vue-pro">芋道源码-ruoyi-vue-pro</a><time datetime="2023-01-29T16:54:35.000Z" title="发表于 2023-01-30 00:54:35">2023-01-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/01/13/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/" title="尚硅谷-Spring-Security">尚硅谷-Spring-Security</a><time datetime="2023-01-13T09:39:30.000Z" title="发表于 2023-01-13 17:39:30">2023-01-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/11/21/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-RabbitMQ/" title="黑马程序员-RabbitMQ">黑马程序员-RabbitMQ</a><time datetime="2022-11-21T02:52:22.000Z" title="发表于 2022-11-21 10:52:22">2022-11-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/11/17/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/" title="黑马程序员-Docker">黑马程序员-Docker</a><time datetime="2022-11-17T12:28:03.000Z" title="发表于 2022-11-17 20:28:03">2022-11-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/11/05/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/" title="MyBatis-Plus-代码生成器（新）">MyBatis-Plus-代码生成器（新）</a><time datetime="2022-11-05T13:03:52.000Z" title="发表于 2022-11-05 21:03:52">2022-11-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Wei Shao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

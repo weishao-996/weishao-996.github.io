@@ -1,722 +1,168 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="Hexo Theme Redefine">
-    <meta name="description" content="Hexo Theme Redefine">
-    <meta name="author" content="威少のBlog">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
-    <!--- Seo Part-->
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>MyBatis-Plus-代码生成器（新） | WeiBlog</title><meta name="author" content="Wei Shao"><meta name="copyright" content="Wei Shao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="完整代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283package com.itheima.reggie;&#x2F;** * &lt;p&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis-Plus-代码生成器（新）">
+<meta property="og:url" content="https://weishao-996.github.io/2022/11/05/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/index.html">
+<meta property="og:site_name" content="WeiBlog">
+<meta property="og:description" content="完整代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283package com.itheima.reggie;&#x2F;** * &lt;p&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://weishao-996.github.io/img/bg/WechatIMG48.png">
+<meta property="article:published_time" content="2022-11-05T13:03:52.000Z">
+<meta property="article:modified_time" content="2022-11-22T03:40:25.010Z">
+<meta property="article:author" content="Wei Shao">
+<meta property="article:tag" content="MyBatis-Plus">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://weishao-996.github.io/img/bg/WechatIMG48.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://weishao-996.github.io/2022/11/05/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MyBatis-Plus-代码生成器（新）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-22 11:40:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-    <link rel="canonical" href="https://weishao-996.github.io/2022/11/05/mybatis-plus-代码生成器（新）/"/>
-    <meta name="robots" content="index,follow">
-    <meta name="googlebot" content="index,follow">
-    <meta name="revisit-after" content="1 days">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="MyBatis-Plus-代码生成器（新）">
-    <meta property="og:description" content="Hexo Theme Redefine">
-    <meta property="og:url" content="https://weishao-996.github.io2022/11/05/MyBatis-Plus-代码生成器（新）/">
-    <meta property="og:image" content="/img/bg/手绘火箭.png">
-    <meta property="og:site_name" content="威少のBlog">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="MyBatis-Plus-代码生成器（新）">
-    <meta name="twitter:description" content="Hexo Theme Redefine">
-    <meta name="twitter:image" content="/img/bg/手绘火箭.png">
-    <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/img/bg/手绘火箭.png" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/bg/手绘火箭.png">
-    <meta name="theme-color" content="#005080">
-    <link rel="shortcut icon" href="/img/bg/%E6%89%8B%E7%BB%98%E7%81%AB%E7%AE%AD.png">
-    
-    <title>
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-            MyBatis-Plus-代码生成器（新） -
-        
-        威少のBlog
-    </title>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-<link rel="stylesheet" href="/css/style.css">
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/bg/WechatIMG48.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="WeiBlog"><span class="site-name">WeiBlog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MyBatis-Plus-代码生成器（新）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-05T13:03:52.000Z" title="发表于 2022-11-05 21:03:52">2022-11-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-22T03:40:25.010Z" title="更新于 2022-11-22 11:40:25">2022-11-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E6%A1%86%E6%9E%B6/">Java框架</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E6%A1%86%E6%9E%B6/MyBatis-Plus/">MyBatis-Plus</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MyBatis-Plus-代码生成器（新）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.itheima.reggie;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * mysql 代码生成器演示例子</span></span><br><span class="line"><span class="comment"> * &lt;/p&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.mapper.BaseMapper;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.FastAutoGenerator;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.*;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * mysql 代码生成器演示例子</span></span><br><span class="line"><span class="comment"> * &lt;/p&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MysqlGenerator</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * RUN THIS</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;String&gt; tables = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">//添加需要生成的表</span></span><br><span class="line">        tables.add(<span class="string">&quot;dish&quot;</span>);</span><br><span class="line">        tables.add(<span class="string">&quot;setmeal&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        FastAutoGenerator.create(<span class="string">&quot;jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&quot;</span>,<span class="string">&quot;root&quot;</span>,<span class="string">&quot;Xuwei19941214~&quot;</span>)</span><br><span class="line">                .globalConfig(builder -&gt; &#123;</span><br><span class="line">                    builder.author(<span class="string">&quot;威少&quot;</span>)               <span class="comment">//作者</span></span><br><span class="line">                            .outputDir(<span class="string">&quot;/Users/xuwei/Desktop/项目/reggie_take_out/src/main/java&quot;</span>)    <span class="comment">//输出路径(写到java目录)</span></span><br><span class="line">                            .commentDate(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line"><span class="comment">//                          .enableSwagger()           //开启swagger</span></span><br><span class="line"><span class="comment">//                          .fileOverride();           //开启覆盖之前生成的文件</span></span><br><span class="line"></span><br><span class="line">                &#125;)</span><br><span class="line">                .packageConfig(builder -&gt; &#123;</span><br><span class="line">                    builder.parent(<span class="string">&quot;com.itheima&quot;</span>)</span><br><span class="line">                            .moduleName(<span class="string">&quot;reggie&quot;</span>)</span><br><span class="line">                            .entity(<span class="string">&quot;entity&quot;</span>)</span><br><span class="line">                            .service(<span class="string">&quot;service&quot;</span>)</span><br><span class="line">                            .serviceImpl(<span class="string">&quot;service.impl&quot;</span>)</span><br><span class="line">                            .controller(<span class="string">&quot;controller&quot;</span>)</span><br><span class="line">                            .mapper(<span class="string">&quot;mapper&quot;</span>)</span><br><span class="line">                            .xml(<span class="string">&quot;mapper.xml&quot;</span>)</span><br><span class="line">                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml,<span class="string">&quot;/Users/xuwei/Desktop/项目/reggie_take_out/src/main/resources/mapper&quot;</span>));</span><br><span class="line">                &#125;)</span><br><span class="line">                .strategyConfig(builder -&gt; &#123;</span><br><span class="line">                    builder.addInclude(tables)</span><br><span class="line"><span class="comment">//                          .addTablePrefix(&quot;p_&quot;)</span></span><br><span class="line">                            .serviceBuilder()</span><br><span class="line">                            .formatServiceFileName(<span class="string">&quot;%sService&quot;</span>)</span><br><span class="line">                            .formatServiceImplFileName(<span class="string">&quot;%sServiceImpl&quot;</span>)</span><br><span class="line">                            .entityBuilder()</span><br><span class="line">                            .enableLombok()</span><br><span class="line">                            .logicDeleteColumnName(<span class="string">&quot;is_deleted&quot;</span>)</span><br><span class="line">                            .enableTableFieldAnnotation()</span><br><span class="line">                            .controllerBuilder()</span><br><span class="line">                            <span class="comment">// 映射路径使用连字符格式，而不是驼峰</span></span><br><span class="line">                            .enableHyphenStyle()</span><br><span class="line">                            .formatFileName(<span class="string">&quot;%sController&quot;</span>)</span><br><span class="line">                            .enableRestStyle()</span><br><span class="line">                            .mapperBuilder()</span><br><span class="line">                            <span class="comment">//生成通用的resultMap</span></span><br><span class="line">                            .enableBaseResultMap()</span><br><span class="line">                            .superClass(BaseMapper.class)</span><br><span class="line">                            .formatMapperFileName(<span class="string">&quot;%sMapper&quot;</span>)</span><br><span class="line">                            .enableMapperAnnotation()</span><br><span class="line">                            .formatXmlFileName(<span class="string">&quot;%sMapper&quot;</span>);</span><br><span class="line">                &#125;)</span><br><span class="line">                .templateEngine(<span class="keyword">new</span> <span class="title class_">FreemarkerTemplateEngine</span>()) <span class="comment">// 使用Freemarker引擎模板，默认的是Velocity引擎模板</span></span><br><span class="line">                .execute();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/assets/fonts.css">
-    
-    
-    
-        <link rel="preconnect" href="https://evan.beee.top" crossorigin>
-    
-    <script id="hexo-configurations">
-    let REDEFINE = window.REDEFINE || {};
-    REDEFINE.hexo_config = {"hostname":"weishao-996.github.io","root":"/","language":"zh-CN","path":"search.xml"};
-    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true},"style":{"primary_color":"#005080","avatar":"/img/bg/WechatIMG48.png","favicon":"/img/bg/手绘火箭.png","article_img_align":"center","right_side_width":"500px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"告诉老墨 我想吃鱼了","custom_font":{"enable":false,"font_family":null,"font_url":null}},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"1.1.1","friend_links":{"columns":2}};
-    REDEFINE.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
-  </script>
-    
-    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/fontawesome/fontawesome.min.css">
-    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/fontawesome/brands.min.css">
-    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/fontawesome/solid.min.css">
-    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/fontawesome/regular.min.css">
-    
-    
-    
-<meta name="generator" content="Hexo 5.4.2"></head>
+<h1 id="导入依赖"><a href="#导入依赖" class="headerlink" title="导入依赖"></a>导入依赖</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-generator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.freemarker<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>freemarker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-
-<body>
-<div class="progress-bar-container">
-    
-        <span class="scroll-progress-bar"></span>
-    
-
-    
-        <span class="pjax-progress-bar"></span>
-        <span class="pjax-progress-icon">
-            <i class="fa-solid fa-circle-notch fa-spin"></i>
-        </span>
-    
-</div>
-
-
-<main class="page-container">
-
-    
-
-    <div class="page-main-content">
-
-        <div class="page-main-content-top">
-            <header class="menu-wrapper">
-    
-    <div class="menu-content">
-        <div class="left">
-            
-            <a class="logo-title" href="/">
-                
-                威少のBlog
-                
-            </a>
-        </div>
-
-        <div class="right">
-            <!-- PC -->
-            <div class="pc">
-                <ul class="menu-list">
-                    
-                        
-                            <li class="menu-item">
-                                <!-- Menu -->
-                                <a class="" 
-                                    href="/"  >
-                                    
-                                        
-                                            <i class="fa-regular fa-house"></i>
-                                        
-                                        首页
-                                    
-                                </a>
-                                <!-- Submenu -->
-                                
-                            </li>
-                    
-                        
-                            <li class="menu-item">
-                                <!-- Menu -->
-                                <a class="" 
-                                    href="/archives"  >
-                                    
-                                        
-                                            <i class="fa-regular fa-archive"></i>
-                                        
-                                        归档
-                                    
-                                </a>
-                                <!-- Submenu -->
-                                
-                            </li>
-                    
-                        
-                            <li class="menu-item">
-                                <!-- Menu -->
-                                <a class="" 
-                                    href="/tags"  >
-                                    
-                                        
-                                            <i class="fa-solid fa-tag"></i>
-                                        
-                                        标签
-                                    
-                                </a>
-                                <!-- Submenu -->
-                                
-                            </li>
-                    
-                        
-                            <li class="menu-item">
-                                <!-- Menu -->
-                                <a class="" 
-                                    href="/categories"  >
-                                    
-                                        
-                                            <i class="fa-regular fa-books"></i>
-                                        
-                                        分类
-                                    
-                                </a>
-                                <!-- Submenu -->
-                                
-                            </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </li>
-                    
-                </ul>
-            </div>
-            <!-- Mobile -->
-            <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
-                
-                <div class="icon-item menu-bar">
-                    <div class="menu-bar-middle"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mobile drawer -->
-    <div class="menu-drawer">
-        <ul class="drawer-menu-list">
-            
-                
-                    <li class="drawer-menu-item flex-center">
-                        <a class="" 
-                        href="/"  >
-                             
-                                
-                                    <i class="fa-regular fa-house"></i>
-                                
-                                首页
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
-                
-                    <li class="drawer-menu-item flex-center">
-                        <a class="" 
-                        href="/archives"  >
-                             
-                                
-                                    <i class="fa-regular fa-archive"></i>
-                                
-                                归档
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
-                
-                    <li class="drawer-menu-item flex-center">
-                        <a class="" 
-                        href="/tags"  >
-                             
-                                
-                                    <i class="fa-solid fa-tag"></i>
-                                
-                                标签
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
-                
-                    <li class="drawer-menu-item flex-center">
-                        <a class="" 
-                        href="/categories"  >
-                             
-                                
-                                    <i class="fa-regular fa-books"></i>
-                                
-                                分类
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
-
-        </ul>
-    </div>
-
-    <div class="window-mask"></div>
-
-</header>
-
-
-        </div>
-
-        <div class="page-main-content-middle">
-
-            <div class="main-content">
-
-                
-                    <div class="fade-in-down-animation">
-    <div class="post-page-container">
-        <div class="article-content-container">
-
-            
-            
-                <div class="article-title">
-                    <h1 class="article-title-regular">MyBatis-Plus-代码生成器（新）</h1>
-                </div>
-            
-                
-            
-
-            
-                <div class="article-header">
-                    <div class="avatar">
-                        <img src="/img/bg/WechatIMG48.png">
-                    </div>
-                    <div class="info">
-                        <div class="author">
-                            <span class="name">威少のBlog</span>
-                            
-                                <span class="author-label">lol</span>
-                            
-                        </div>
-                        <div class="meta-info">
-                            <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2022-11-05 21:03:52</span>
-        <span class="mobile">2022-11-05 21:03</span>
-    </span>
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/Java%E6%A1%86%E6%9E%B6/">Java框架</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/Java%E6%A1%86%E6%9E%B6/MyBatis-Plus/">MyBatis-Plus</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/MyBatis-Plus/">MyBatis-Plus</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-    
-    
-        <span class="article-pv article-meta-item">
-            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
-    
-</div>
-
-                        </div>
-                    </div>
-                </div>
-            
-
-            <div class="article-content markdown-body">
-                <h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.itheima.reggie;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * mysql 代码生成器演示例子</span></span><br><span class="line"><span class="comment"> * &lt;/p&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.mapper.BaseMapper;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.FastAutoGenerator;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.*;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * mysql 代码生成器演示例子</span></span><br><span class="line"><span class="comment"> * &lt;/p&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MysqlGenerator</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * RUN THIS</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;String&gt; tables = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">//添加需要生成的表</span></span><br><span class="line">        tables.add(<span class="string">&quot;dish&quot;</span>);</span><br><span class="line">        tables.add(<span class="string">&quot;setmeal&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        FastAutoGenerator.create(<span class="string">&quot;jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&quot;</span>,<span class="string">&quot;root&quot;</span>,<span class="string">&quot;Xuwei19941214~&quot;</span>)</span><br><span class="line">                .globalConfig(builder -&gt; &#123;</span><br><span class="line">                    builder.author(<span class="string">&quot;威少&quot;</span>)               <span class="comment">//作者</span></span><br><span class="line">                            .outputDir(<span class="string">&quot;/Users/xuwei/Desktop/项目/reggie_take_out/src/main/java&quot;</span>)    <span class="comment">//输出路径(写到java目录)</span></span><br><span class="line">                            .commentDate(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line"><span class="comment">//                          .enableSwagger()           //开启swagger</span></span><br><span class="line"><span class="comment">//                          .fileOverride();           //开启覆盖之前生成的文件</span></span><br><span class="line"></span><br><span class="line">                &#125;)</span><br><span class="line">                .packageConfig(builder -&gt; &#123;</span><br><span class="line">                    builder.parent(<span class="string">&quot;com.itheima&quot;</span>)</span><br><span class="line">                            .moduleName(<span class="string">&quot;reggie&quot;</span>)</span><br><span class="line">                            .entity(<span class="string">&quot;entity&quot;</span>)</span><br><span class="line">                            .service(<span class="string">&quot;service&quot;</span>)</span><br><span class="line">                            .serviceImpl(<span class="string">&quot;service.impl&quot;</span>)</span><br><span class="line">                            .controller(<span class="string">&quot;controller&quot;</span>)</span><br><span class="line">                            .mapper(<span class="string">&quot;mapper&quot;</span>)</span><br><span class="line">                            .xml(<span class="string">&quot;mapper.xml&quot;</span>)</span><br><span class="line">                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml,<span class="string">&quot;/Users/xuwei/Desktop/项目/reggie_take_out/src/main/resources/mapper&quot;</span>));</span><br><span class="line">                &#125;)</span><br><span class="line">                .strategyConfig(builder -&gt; &#123;</span><br><span class="line">                    builder.addInclude(tables)</span><br><span class="line"><span class="comment">//                          .addTablePrefix(&quot;p_&quot;)</span></span><br><span class="line">                            .serviceBuilder()</span><br><span class="line">                            .formatServiceFileName(<span class="string">&quot;%sService&quot;</span>)</span><br><span class="line">                            .formatServiceImplFileName(<span class="string">&quot;%sServiceImpl&quot;</span>)</span><br><span class="line">                            .entityBuilder()</span><br><span class="line">                            .enableLombok()</span><br><span class="line">                            .logicDeleteColumnName(<span class="string">&quot;is_deleted&quot;</span>)</span><br><span class="line">                            .enableTableFieldAnnotation()</span><br><span class="line">                            .controllerBuilder()</span><br><span class="line">                            <span class="comment">// 映射路径使用连字符格式，而不是驼峰</span></span><br><span class="line">                            .enableHyphenStyle()</span><br><span class="line">                            .formatFileName(<span class="string">&quot;%sController&quot;</span>)</span><br><span class="line">                            .enableRestStyle()</span><br><span class="line">                            .mapperBuilder()</span><br><span class="line">                            <span class="comment">//生成通用的resultMap</span></span><br><span class="line">                            .enableBaseResultMap()</span><br><span class="line">                            .superClass(BaseMapper.class)</span><br><span class="line">                            .formatMapperFileName(<span class="string">&quot;%sMapper&quot;</span>)</span><br><span class="line">                            .enableMapperAnnotation()</span><br><span class="line">                            .formatXmlFileName(<span class="string">&quot;%sMapper&quot;</span>);</span><br><span class="line">                &#125;)</span><br><span class="line">                .templateEngine(<span class="keyword">new</span> <span class="title class_">FreemarkerTemplateEngine</span>()) <span class="comment">// 使用Freemarker引擎模板，默认的是Velocity引擎模板</span></span><br><span class="line">                .execute();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<h1 id="导入依赖"><a href="#导入依赖" class="headerlink" title="导入依赖"></a>导入依赖</h1><div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-generator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.freemarker<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>freemarker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
-
-<h1 id="添加生成数据库表"><a href="#添加生成数据库表" class="headerlink" title="添加生成数据库表"></a>添加生成数据库表</h1><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/image-20221105211001754.png"
-                      alt="image-20221105211001754"
-                ></p>
-<h1 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h1><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/image-20221105211544956.png"
-                      alt="image-20221105211544956"
-                ></p>
-<h1 id="包配置"><a href="#包配置" class="headerlink" title="包配置"></a>包配置</h1><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/image-20221105211836590.png"
-                      alt="image-20221105211836590"
-                ></p>
-<h1 id="策略配置"><a href="#策略配置" class="headerlink" title="策略配置"></a>策略配置</h1><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/img/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/421d182015b73dce9227ee817e164a02.png"
-                      alt="421d182015b73dce9227ee817e164a02"
-                ></p>
+<h1 id="添加生成数据库表"><a href="#添加生成数据库表" class="headerlink" title="添加生成数据库表"></a>添加生成数据库表</h1><p><img src="/img/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/image-20221105211001754.png" alt="image-20221105211001754"></p>
+<h1 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h1><p><img src="/img/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/image-20221105211544956.png" alt="image-20221105211544956"></p>
+<h1 id="包配置"><a href="#包配置" class="headerlink" title="包配置"></a>包配置</h1><p><img src="/img/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/image-20221105211836590.png" alt="image-20221105211836590"></p>
+<h1 id="策略配置"><a href="#策略配置" class="headerlink" title="策略配置"></a>策略配置</h1><p><img src="/img/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/421d182015b73dce9227ee817e164a02.png" alt="421d182015b73dce9227ee817e164a02"></p>
 <p>官网参考</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://baomidou.com/pages/981406/#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE-datasourceconfig" >https://baomidou.com/pages/981406/#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE-datasourceconfig <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-
-            </div>
-
-            
-                <div class="post-copyright-info">
-                    <div class="article-copyright-info-container">
-    <ul>
-        <li>本文标题：MyBatis-Plus-代码生成器（新）</li>
-        <li>本文作者：威少のBlog</li>
-        <li>创建时间：2022-11-05 21:03:52</li>
-        <li>
-            本文链接：https://weishao-996.github.io/2022/11/05/MyBatis-Plus-代码生成器（新）/
-        </li>
-        <li>
-            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
-        </li>
-    </ul>
-</div>
-
-                </div>
-            
-
-            
-                <ul class="post-tags-box">
-                    
-                        <li class="tag-item">
-                            <a href="/tags/MyBatis-Plus/">#MyBatis-Plus</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            
-
-            
-
-            
-                <div class="article-nav">
-                    
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2022/11/17/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">黑马程序员-Docker</span>
-                                    <span class="post-nav-item">上一篇</span>
-                                </span>
-                            </a>
-                        </div>
-                    
-                    
-                        <div class="article-next">
-                            <a class="next"
-                            rel="next"
-                            href="/2022/11/01/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/"
-                            >
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">黑马程序员-瑞吉外卖</span>
-                                    <span class="post-nav-item">下一篇</span>
-                                </span>
-                                <span class="right arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </span>
-                            </a>
-                        </div>
-                    
-                </div>
-            
-
-
-            
-                <div class="comment-container">
-                    <div class="comments-container">
-    <div id="comment-anchor"></div>
-    <div class="comment-area-title">
-        <i class="fa-solid fa-comments">&nbsp;评论</i>
-    </div>
-    
-
-        
-            
-
-        
-    
-</div>
-
-                </div>
-            
-        </div>
-
-        
-            <div class="toc-content-container">
-                <div class="post-toc-wrap">
-    <div class="post-toc">
-        <div class="toc-title">此页目录</div>
-        <div class="page-title">MyBatis-Plus-代码生成器（新）</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-text">完整代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="nav-text">导入依赖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8"><span class="nav-text">添加生成数据库表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE"><span class="nav-text">全局配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%85%E9%85%8D%E7%BD%AE"><span class="nav-text">包配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AD%96%E7%95%A5%E9%85%8D%E7%BD%AE"><span class="nav-text">策略配置</span></a></li></ol>
-
-    </div>
-</div>
-            </div>
-        
-    </div>
-</div>
-
-
-                
-
-            </div>
-
-
-
-        </div>
-
-        <div class="page-main-content-bottom">
-            <footer class="footer">
-    <div class="info-container">
-        <div class="copyright-info">
-            &copy;
-            
-              <span>2022</span>
-              -
-            
-            2023&nbsp;&nbsp;<i class="fa-regular fa-computer-classic"></i>&nbsp;&nbsp;<a href="/">威少のBlog</a>
-        </div>
-        
-            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <div class="website-count info-item">
-                
-                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
-                        访问人数&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
-                    </span>
-                
-                
-                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
-                        总访问量&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
-                    </span>
-                
-            </div>
-        
-        <div class="theme-info info-item">
-            <span class="powered-by-container">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 驱动</span>
-                <br> 
-            <span class="theme-version-container">主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.1.1</a>
-        </div>
-        
-        
-        
-            <div id="start_time_div" style="display:none">
-                2022/8/17 11:45:14
-            </div>
-            <div>
-                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
-            </div>
-        
-        
-        
-            <script async data-pjax defer>
-                function odometer_init(){
-                        let el = document.getElementsByClassName('odometer');
-                        for (i = 0; i < el.length; i++) {
-                            od = new Odometer({
-                                el: el[i],
-                                format: '( ddd).dd',
-                                duration: 200
-                            });
-                        }
-                }
-                odometer_init();
-            </script>
-        
-        
-        
-    </div>  
-</footer>
-        </div>
-    </div>
-
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="right-bottom-tools page-aside-toggle">
-                <i class="fa-regular fa-outdent"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-            <li class="go-comment">
-                <i class="fa-regular fa-comments"></i>
-            </li>
-        
-    </ul>
-</div>
-
-        </div>
-    
-
-    <div class="right-bottom-side-tools">
-        <div class="side-tools-container">
-    <ul class="unfolded-tools-list">
-        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
-            <i class="fa-regular fa-magnifying-glass-plus"></i>
-        </li>
-
-        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
-            <i class="fa-regular fa-magnifying-glass-minus"></i>
-        </li>
-
-        <li class="right-bottom-tools tool-expand-width flex-center">
-            <i class="fa-regular fa-expand"></i>
-        </li>
-
-        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
-            <i class="fa-regular fa-moon"></i>
-        </li>
-
-        <!-- rss -->
-        
-
-        
-            <li class="right-bottom-tools tool-scroll-to-top flex-center">
-                <i class="fa-regular fa-arrow-up"></i>
-            </li>
-        
-
-        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
-            <i class="fa-regular fa-arrow-down"></i>
-        </li>
-    </ul>
-
-    <ul class="folded-tools-list">
-        <li class="right-bottom-tools tool-toggle-show flex-center">
-            <i class="fa-regular fa-cog fa-spin"></i>
-        </li>
-        
-    </ul>
-</div>
-
-    </div>
-
-    <div class="image-viewer-container">
-    <img src="">
-</div>
-
-
-    
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fa-solid fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="搜索..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="popup-btn-close">
-                <i class="fa-solid fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-
-
-</main>
-
-
-
-<script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/utils.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/main.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/layouts/menu-shrink.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/tools/go-top-bottom.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/tools/dark-light-toggle.js"></script>
-
-
-    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/tools/local-search.js"></script>
-
-
-
-    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/tools/code-block.js"></script>
-
-
-
-    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/layouts/lazyload.js"></script>
-
-
-
-    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/tools/runtime.js"></script>
-    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/layouts/odometer.min.js"></script>
-    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/assets/odometer-theme-minimal.css">
-
-
-<div class="post-scripts pjax">
-    
-        <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/tools/toc-toggle.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/libs/anime.min.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/layouts/toc.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/plugins/tabs.js"></script>
-    
-    
-</div>
-
-
-    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.1/source/js/libs/pjax.min.js"></script>
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        window.pjax = new Pjax({
-            selectors: [
-                'head title',
-                '.page-container',
-                '.pjax'
-            ],
-            history: true,
-            debug: false,
-            cacheBust: false,
-            timeout: 0,
-            analytics: false,
-            currentUrlFullReload: false,
-            scrollRestoration: false,
-            // scrollTo: true,
-        });
-
-        document.addEventListener('pjax:send', () => {
-            REDEFINE.utils.pjaxProgressBarStart();
-        });
-
-        document.addEventListener('pjax:complete', () => {
-            REDEFINE.utils.pjaxProgressBarEnd();
-            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
-            REDEFINE.refresh();
-        });
-    });
-</script>
-
-
-
-</body>
-</html>
+<p><a target="_blank" rel="noopener" href="https://baomidou.com/pages/981406/#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE-datasourceconfig">https://baomidou.com/pages/981406/#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE-datasourceconfig</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://weishao-996.github.io">Wei Shao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://weishao-996.github.io/2022/11/05/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/">https://weishao-996.github.io/2022/11/05/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://weishao-996.github.io" target="_blank">WeiBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MyBatis-Plus/">MyBatis-Plus</a></div><div class="post_share"><div class="social-share" data-image="/img/bg/WechatIMG48.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/17/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/" title="黑马程序员-Docker"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">黑马程序员-Docker</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/01/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/" title="黑马程序员-瑞吉外卖"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">黑马程序员-瑞吉外卖</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/25/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Mybatis-Plus/" title="黑马程序员-Mybatis-Plus"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-25</div><div class="title">黑马程序员-Mybatis-Plus</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/bg/WechatIMG48.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Wei Shao</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/weishao-996" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2427340869@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">完整代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="toc-number">2.</span> <span class="toc-text">导入依赖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8"><span class="toc-number">3.</span> <span class="toc-text">添加生成数据库表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">全局配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%85%E9%85%8D%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text">包配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E9%85%8D%E7%BD%AE"><span class="toc-number">6.</span> <span class="toc-text">策略配置</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/01/30/%E8%8A%8B%E9%81%93%E6%BA%90%E7%A0%81-ruoyi-vue-pro/" title="芋道源码-ruoyi-vue-pro">芋道源码-ruoyi-vue-pro</a><time datetime="2023-01-29T16:54:35.000Z" title="发表于 2023-01-30 00:54:35">2023-01-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/01/13/%E5%B0%9A%E7%A1%85%E8%B0%B7-Spring-Security/" title="尚硅谷-Spring-Security">尚硅谷-Spring-Security</a><time datetime="2023-01-13T09:39:30.000Z" title="发表于 2023-01-13 17:39:30">2023-01-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/11/21/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-RabbitMQ/" title="黑马程序员-RabbitMQ">黑马程序员-RabbitMQ</a><time datetime="2022-11-21T02:52:22.000Z" title="发表于 2022-11-21 10:52:22">2022-11-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/11/17/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98-Docker/" title="黑马程序员-Docker">黑马程序员-Docker</a><time datetime="2022-11-17T12:28:03.000Z" title="发表于 2022-11-17 20:28:03">2022-11-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/11/05/MyBatis-Plus-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%88%E6%96%B0%EF%BC%89/" title="MyBatis-Plus-代码生成器（新）">MyBatis-Plus-代码生成器（新）</a><time datetime="2022-11-05T13:03:52.000Z" title="发表于 2022-11-05 21:03:52">2022-11-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Wei Shao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
