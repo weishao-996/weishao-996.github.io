@@ -4764,7 +4764,7 @@ ul.wl-sort {
   top: 108px;
   border-radius: 0px;
   display: none;
-  width: 400px;
+  width: 500px;
   height: auto;
   max-height: calc(100vh - 210px);
   overflow-y: auto;
