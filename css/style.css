@@ -1027,7 +1027,26 @@ pre code {
 .highlight {
   border-radius: 0px 0px 18px 18px;
   padding-bottom: 5px;
+  overflow: auto;
   border-top: 1px solid var(--shadow-color-1);
+}
+.highlight:hover::-webkit-scrollbar-thumb {
+  border: 3px solid rgba(183,183,183,0.3);
+}
+.highlight::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  transition: all 0.2s ease;
+  display: block;
+}
+.highlight::-webkit-scrollbar-track {
+  background: transparent;
+  border: none;
+}
+.highlight::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  border: 3px solid rgba(183,183,183,0);
+  transition: all 0.2s ease;
 }
 .highlight pre {
   border: none;
@@ -1232,6 +1251,18 @@ pre .deletion {
   box-shadow: var(--redefine-box-shadow-flat);
   padding-top: 20px;
   margin-top: 10px;
+  position: relative;
+}
+.highlight-container[data-rel] figcaption {
+  font-weight: bold;
+  font-size: 16px;
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.highlight-container[data-rel] figcaption a {
+  margin-left: 10px;
 }
 .highlight-container[data-rel]::before {
   position: absolute;
@@ -1973,7 +2004,7 @@ pre .deletion {
   transition: all 0.1s linear;
 }
 .post-toc-wrap .post-toc .nav .nav-child {
-  display: block;
+  display: none;
 }
 .post-toc-wrap .post-toc .nav .active > .nav-child {
   display: block;
@@ -3192,12 +3223,15 @@ ul.wl-sort {
 }
 .menu-wrapper .menu-content .right .pc .menu-list .menu-item {
   float: left;
-  padding: 5px;
   position: relative;
   margin-left: 30px;
   font-size: 1rem;
   cursor: pointer;
   color: var(--default-text-color);
+}
+.menu-wrapper .menu-content .right .pc .menu-list .menu-item a {
+  display: block;
+  padding: 5px;
 }
 .menu-wrapper .menu-content .right .pc .menu-list .menu-item:first-child {
   margin-left: 0;
@@ -3245,7 +3279,7 @@ ul.wl-sort {
   -webkit-transform: translate(-50%, 0);
   -o-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
-  margin-top: 8px;
+  margin-top: 0px;
   width: auto;
   text-align: center;
   list-style: none;
@@ -4434,6 +4468,24 @@ ul.wl-sort {
 .post-page-container.show-toc .toc-content-container {
   display: block;
 }
+.post-page-container.show-toc .toc-content-container:hover::-webkit-scrollbar-thumb {
+  border: 3px solid rgba(183,183,183,0.3);
+}
+.post-page-container.show-toc .toc-content-container::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  transition: all 0.2s ease;
+  display: block;
+}
+.post-page-container.show-toc .toc-content-container::-webkit-scrollbar-track {
+  background: transparent;
+  border: none;
+}
+.post-page-container.show-toc .toc-content-container::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  border: 3px solid rgba(183,183,183,0);
+  transition: all 0.2s ease;
+}
 .post-page-container.show-toc .article-content-container {
   width: calc(100% - 210px) !important;
 }
@@ -4759,6 +4811,94 @@ ul.wl-sort {
     display: none;
   }
 }
+.post-page-container .article-content-container .recommended-article {
+  overflow: visible !important;
+}
+.post-page-container .article-content-container .recommended-article .recommended-article-header {
+  margin: 2rem 0 0.8rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.post-page-container .article-content-container .recommended-article .recommended-article-group {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: visible !important;
+}
+@media screen and (max-width: $device-tablet) {
+  .post-page-container .article-content-container .recommended-article .recommended-article-group {
+    height: 190px;
+    overflow: scroll;
+    -ms-overflow-style: none;
+  }
+  .post-page-container .article-content-container .recommended-article .recommended-article-group::-webkit-scrollbar {
+    width: 0 !important;
+  }
+}
+.post-page-container .article-content-container .recommended-article .recommended-article-group .recommended-article-item {
+  padding: 10px;
+  border-radius: 18px;
+  box-sizing: border-box;
+  background: var(--background-color);
+  box-shadow: var(--redefine-box-shadow);
+  box-shadow: var(--redefine-box-shadow-flat);
+  padding: 12px !important;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: calc(100%/3 - 18px);
+  max-height: 200px;
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 0;
+}
+.post-page-container .article-content-container .recommended-article .recommended-article-group .recommended-article-item:hover {
+  box-shadow: var(--redefine-box-shadow-hover);
+}
+@media (max-width: 780px) {
+  .post-page-container .article-content-container .recommended-article .recommended-article-group .recommended-article-item {
+    padding: 8px;
+    border-radius: 14.4px;
+  }
+}
+@media (max-width: 500px) {
+  .post-page-container .article-content-container .recommended-article .recommended-article-group .recommended-article-item {
+    padding: 6px;
+    border-radius: 10.799999999999999px;
+  }
+}
+@media screen and (max-width: $device-tablet) {
+  .post-page-container .article-content-container .recommended-article .recommended-article-group .recommended-article-item {
+    width: calc(100%/2 - 18px);
+  }
+}
+@media screen and (max-width: $device-mobile) {
+  .post-page-container .article-content-container .recommended-article .recommended-article-group .recommended-article-item {
+    width: calc(100% - 18px);
+  }
+}
+.post-page-container .article-content-container .recommended-article .recommended-article-group .recommended-article-item:nth-child(3n+1) {
+  margin-left: 0 !important;
+}
+.post-page-container .article-content-container .recommended-article .recommended-article-group .recommended-article-item img {
+  display: flex;
+  width: calc(100% + 24px);
+  height: 150px;
+  object-fit: cover;
+  border-radius: 14px 14px 0px 0px;
+  margin: -12px -12px 0 -12px !important;
+}
+.post-page-container .article-content-container .recommended-article .recommended-article-group .recommended-article-item span {
+  margin-top: 0.5rem;
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
 .post-page-container .toc-content-container {
   position: sticky;
   top: 108px;
@@ -4924,6 +5064,21 @@ ul.wl-sort {
   padding: 10px 8px;
   display: inline-block;
   box-sizing: border-box;
+}
+.nf-container {
+  width: 100%;
+  text-align: center;
+}
+.nf-text {
+  vertical-align: middle;
+}
+.nf-text h1 {
+  line-height: 1;
+  font-size: 100px;
+  vertical-align: baseline;
+  display: inline-block;
+  padding-right: 12px;
+  color: var(first-text-color);
 }
 .note-large {
   box-shadow: var(--redefine-box-shadow-flat);
