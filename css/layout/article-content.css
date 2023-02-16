@@ -212,7 +212,7 @@ redefine-tablet()
   top: $menu-height$spacing-unit;
   border-radius: $redefine-border-radius-none;
   display: none;
-  width: 250px;
+  width: 400px;
   height: auto;
   max-height: calc(100vh - 210px);
   overflow-y: auto;
